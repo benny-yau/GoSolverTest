@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4582F9E7-7416-4317-942F-9136180E7F65}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UnitTestProject</RootNamespace>
+    <AssemblyName>UnitTestProject</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="DailyGoProblems.cs" />
+    <Compile Include="ImmovableTest.cs" />
+    <Compile Include="KillerFormationTest.cs" />
+    <Compile Include="LinkHelperTest.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="RestoreNeutralMove\GenericNeutralMoveTest.cs" />
+    <Compile Include="RestoreNeutralMove\MustHaveNeutralMoveTest.cs" />
+    <Compile Include="RestoreNeutralMove\SpecificNeutralMoveTest.cs" />
+    <Compile Include="BentFourTest.cs" />
+    <Compile Include="LifeCheck\BothAliveTest.cs" />
+    <Compile Include="DictatePointsTest.cs" />
+    <Compile Include="CorrectedSolutionsTest.cs" />
+    <Compile Include="KoTest.cs" />
+    <Compile Include="CheckForRecursionTest.cs" />
+    <Compile Include="LifeCheck\PartiallyAliveTest.cs" />
+    <Compile Include="PerformanceBenchmarkTest.cs" />
+    <Compile Include="SurvivalPointsTest.cs" />
+    <Compile Include="TenThousandYearKoTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LifeCheck\LifeCheckTest.cs" />
+    <Compile Include="TryMoveHelper\AtariRedundantMoveTest.cs" />
+    <Compile Include="TryMoveHelper\BaseLineKillerMoveTest.cs" />
+    <Compile Include="TryMoveHelper\BaseLineSurvivalMoveTest.cs" />
+    <Compile Include="TryMoveHelper\CoveredEyeMoveTest.cs" />
+    <Compile Include="TryMoveHelper\MultiPointSuicidalMoveTest.cs" />
+    <Compile Include="TryMoveHelper\SuicidalWithinNonKillableGroupTest.cs" />
+    <Compile Include="TryMoveHelper\ThreeLibertySuicidalTest.cs" />
+    <Compile Include="TryMoveHelper\CreateRandomMoveTest.cs" />
+    <Compile Include="TryMoveHelper\FillKoEyeMoveTest.cs" />
+    <Compile Include="TryMoveHelper\FindAndResolveAtariTest.cs" />
+    <Compile Include="TryMoveHelper\LeapMoveTest.cs" />
+    <Compile Include="TryMoveHelper\NeutralPointMoveTest.cs" />
+    <Compile Include="TryMoveHelper\RedundantEyeDiagonalMoveTest.cs" />
+    <Compile Include="TryMoveHelper\RedundantEyeFillerTest.cs" />
+    <Compile Include="TryMoveHelper\RedundantKoMoveTest.cs" />
+    <Compile Include="TryMoveHelper\SuicidalConnectAndDieTest.cs" />
+    <Compile Include="TryMoveHelper\SinglePointSuicidalMoveTest.cs" />
+    <Compile Include="TryMoveHelper\SuicidalResponseMoveTest.cs" />
+    <Compile Include="TryMoveHelper\SurvivalTigerMouthMoveTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Go\GoSharpBase\GoSharpBase.csproj">
+      <Project>{070868aa-6c88-496c-a800-849998ed4405}</Project>
+      <Name>GoSharpBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Go\Go\GoSharp.csproj">
+      <Project>{122984f9-6f07-40f0-a76f-2d9db818ebb4}</Project>
+      <Name>GoSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Go\ScenarioCollection\ScenarioCollection.csproj">
+      <Project>{899f0dc7-bb58-4f0f-ac5d-d914b0aec74b}</Project>
+      <Name>ScenarioCollection</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
