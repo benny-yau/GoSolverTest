@@ -2315,7 +2315,13 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isSuicidal, true);
+            Assert.AreEqual(isSuicidal, false);
+
+            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
 
         /*
@@ -3737,7 +3743,7 @@ namespace UnitTestProject
 
         /*
  13 . X . X . . . . . . . . . . . . . . . 
- 14 . X O X . . . . . . . . . . . . . . . 
+ 14 . X . X . . . . . . . . . . . . . . . 
  15 X O X X . . . . . . . . . . . . . . . 
  16 . O O O X X X . . . . . . . . . . . . 
  17 O . O X O O X . . . . . . . . . . . . 
@@ -3754,6 +3760,7 @@ namespace UnitTestProject
             g.MakeMove(3, 17);
             g.MakeMove(2, 17);
             g.MakeMove(3, 18);
+            g.Board[2, 14] = Content.Empty;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Point p = new Point(0, 16);
             GameTryMove tryMove = new GameTryMove(g);
@@ -3761,6 +3768,12 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
             Assert.AreEqual(tryMove.IsDiagonalEyeMove, true);
+
+            Game.useMonteCarloRuntime = false;
+            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
         }
     }
 }

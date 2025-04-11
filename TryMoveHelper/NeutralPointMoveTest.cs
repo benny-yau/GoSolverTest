@@ -2219,5 +2219,40 @@ namespace UnitTestProject
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isNeutralPoint, false);
         }
+
+        /*
+ 12 . . X . . . . . . . . . . . . . . . . 
+ 13 . X . . . . . . . . . . . . . . . . . 
+ 14 . . X O O . O . . . . . . . . . . . . 
+ 15 O O O X O . . . . . . . . . . . . . . 
+ 16 O O X X X O . . . . . . . . . . . . . 
+ 17 O X . . X O . . . . . . . . . . . . . 
+ 18 . X X X X O . . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_GuanZiPu_A2_101Weiqi()
+        {
+            Scenario s = new Scenario();
+            Game m = s.Scenario_GuanZiPu_A2();
+            Game g = new Game(m);
+            g.MakeMove(2, 17);
+            g.MakeMove(2, 18);
+            g.MakeMove(0, 17);
+            g.MakeMove(1, 18);
+            g.MakeMove(0, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+
+            Point q = new Point(0, 14);
+            GameTryMove tryMove = new GameTryMove(g);
+            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(q.x, q.y);
+            Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
+            Assert.AreEqual(isNeutralPoint, false);
+
+            Game.useMonteCarloRuntime = false;
+            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
+        }
     }
 }

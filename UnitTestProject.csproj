@@ -104,15 +104,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Go\GoSharpBase\GoSharpBase.csproj">
+    <ProjectReference Include="..\GoSolver\GoSharpBase\GoSharpBase.csproj">
       <Project>{070868aa-6c88-496c-a800-849998ed4405}</Project>
       <Name>GoSharpBase</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Go\Go\GoSharp.csproj">
+    <ProjectReference Include="..\GoSolver\Go\GoSharp.csproj">
       <Project>{122984f9-6f07-40f0-a76f-2d9db818ebb4}</Project>
       <Name>GoSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Go\ScenarioCollection\ScenarioCollection.csproj">
+    <ProjectReference Include="..\GoSolver\ScenarioCollection\ScenarioCollection.csproj">
       <Project>{899f0dc7-bb58-4f0f-ac5d-d914b0aec74b}</Project>
       <Name>ScenarioCollection</Name>
     </ProjectReference>

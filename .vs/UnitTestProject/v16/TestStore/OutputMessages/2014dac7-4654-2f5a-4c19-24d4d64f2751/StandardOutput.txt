@@ -1,0 +1,271 @@
+
+
+Debug Trace:
+Game try moves: (6,18),(4,17),(5,16),(5,18),(6,17),(3,18),(4,16),(4,18),(6,16)
+
+
+Trying game move at (6, 18) at depth 14 (1 out of 9) | Last moves: (5,17),(7,18)
+	Game try moves: (8,18),(6,16),(4,18),(3,18),(4,16),(4,17),(5,16),(5,18),(6,17)
+	Trying game move at (8, 18) at depth 13 (1 out of 9) | Last moves: (5,17),(7,18),(6,18)
+		Game try moves: (4,17),(5,16),(3,18),(4,16),(4,18),(6,16)
+		Trying game move at (4, 17) at depth 12 (1 out of 6) | Last moves: (5,17),(7,18),(6,18),(8,18)
+			Game try moves: (6,16),(3,18),(4,18),(6,17)
+			Trying game move at (6, 16) at depth 11 (1 out of 4) | Last moves: (5,17),(7,18),(6,18),(8,18),(4,17)
+			Time taken for (6, 16) at depth 11: 12 | Result: Alive
+			Trying game move at (3, 18) at depth 11 (2 out of 4) | Last moves: (5,17),(7,18),(6,18),(8,18),(4,17)
+			Time taken for (3, 18) at depth 11: 7 | Result: Alive
+			Trying game move at (4, 18) at depth 11 (3 out of 4) | Last moves: (5,17),(7,18),(6,18),(8,18),(4,17)
+			Time taken for (4, 18) at depth 11: 18 | Result: Alive
+			Trying game move at (6, 17) at depth 11 (4 out of 4) | Last moves: (5,17),(7,18),(6,18),(8,18),(4,17)
+			Time taken for (6, 17) at depth 11: 2 | Result: Alive
+		Time taken for (4, 17) at depth 12: 47 | Result: Alive
+	Time taken for (8, 18) at depth 13: 71 | Result: Alive
+	Trying game move at (6, 16) at depth 13 (2 out of 9) | Last moves: (5,17),(7,18),(6,18)
+		Game try moves: (6,17),(8,18),(5,16),(4,17),(3,18),(4,16),(4,18),(5,18)
+		Trying game move at (6, 17) at depth 12 (1 out of 8) | Last moves: (5,17),(7,18),(6,18),(6,16)
+			Game try moves: (4,16),(4,18),(3,18),(4,17),(5,16)
+			Trying game move at (4, 16) at depth 11 (1 out of 5) | Last moves: (5,17),(7,18),(6,18),(6,16),(6,17)
+			Time taken for (4, 16) at depth 11: 12 | Result: Alive
+			Trying game move at (4, 18) at depth 11 (2 out of 5) | Last moves: (5,17),(7,18),(6,18),(6,16),(6,17)
+			Time taken for (4, 18) at depth 11: 10 | Result: Alive
+			Trying game move at (3, 18) at depth 11 (3 out of 5) | Last moves: (5,17),(7,18),(6,18),(6,16),(6,17)
+			Time taken for (3, 18) at depth 11: 166 | Result: Dead
+		Time taken for (6, 17) at depth 12: 196 | Result: Dead
+		Trying game move at (8, 18) at depth 12 (2 out of 8) | Last moves: (5,17),(7,18),(6,18),(6,16)
+			Game try moves: (4,16),(5,16),(9,18),(4,18),(3,18),(4,17),(6,17)
+			Trying game move at (4, 16) at depth 11 (1 out of 7) | Last moves: (5,17),(7,18),(6,18),(6,16),(8,18)
+			Time taken for (4, 16) at depth 11: 45 | Result: Alive
+			Trying game move at (5, 16) at depth 11 (2 out of 7) | Last moves: (5,17),(7,18),(6,18),(6,16),(8,18)
+			Time taken for (5, 16) at depth 11: 317 | Result: Dead
+		Time taken for (8, 18) at depth 12: 370 | Result: Dead
+		Trying game move at (5, 16) at depth 12 (3 out of 8) | Last moves: (5,17),(7,18),(6,18),(6,16)
+		Time taken for (5, 16) at depth 12: 3 | Result: Dead
+		Trying game move at (4, 17) at depth 12 (4 out of 8) | Last moves: (5,17),(7,18),(6,18),(6,16)
+		Time taken for (4, 17) at depth 12: 2 | Result: Dead
+		Trying game move at (3, 18) at depth 12 (5 out of 8) | Last moves: (5,17),(7,18),(6,18),(6,16)
+		Time taken for (3, 18) at depth 12: 2 | Result: Dead
+		Trying game move at (4, 16) at depth 12 (6 out of 8) | Last moves: (5,17),(7,18),(6,18),(6,16)
+		Time taken for (4, 16) at depth 12: 2 | Result: Dead
+		Trying game move at (4, 18) at depth 12 (7 out of 8) | Last moves: (5,17),(7,18),(6,18),(6,16)
+		Time taken for (4, 18) at depth 12: 2 | Result: Dead
+		Trying game move at (5, 18) at depth 12 (8 out of 8) | Last moves: (5,17),(7,18),(6,18),(6,16)
+		Time taken for (5, 18) at depth 12: 3 | Result: Dead
+	Time taken for (6, 16) at depth 13: 588 | Result: Dead
+Time taken for (6, 18) at depth 14: 672 | Result: Dead
+
+
+Trying game move at (4, 17) at depth 14 (2 out of 9) | Last moves: (5,17),(7,18)
+	Game try moves: (6,16),(6,17),(6,18),(3,18),(4,18),(5,16),(5,18)
+	Trying game move at (6, 16) at depth 13 (1 out of 7) | Last moves: (5,17),(7,18),(4,17)
+		Game try moves: (6,17),(5,16),(6,18),(3,18),(5,18),(4,18)
+		Trying game move at (6, 17) at depth 12 (1 out of 6) | Last moves: (5,17),(7,18),(4,17),(6,16)
+			Game try moves: (3,18),(4,18),(5,18),(6,18),(5,16)
+			Trying game move at (3, 18) at depth 11 (1 out of 5) | Last moves: (5,17),(7,18),(4,17),(6,16),(6,17)
+			Time taken for (3, 18) at depth 11: 0 | Result: Alive
+			Trying game move at (4, 18) at depth 11 (2 out of 5) | Last moves: (5,17),(7,18),(4,17),(6,16),(6,17)
+			Time taken for (4, 18) at depth 11: 0 | Result: Alive
+			Trying game move at (5, 18) at depth 11 (3 out of 5) | Last moves: (5,17),(7,18),(4,17),(6,16),(6,17)
+			Time taken for (5, 18) at depth 11: 0 | Result: Alive
+			Trying game move at (6, 18) at depth 11 (4 out of 5) | Last moves: (5,17),(7,18),(4,17),(6,16),(6,17)
+			Time taken for (6, 18) at depth 11: 2 | Result: Alive
+			Trying game move at (5, 16) at depth 11 (5 out of 5) | Last moves: (5,17),(7,18),(4,17),(6,16),(6,17)
+			Time taken for (5, 16) at depth 11: 58 | Result: Dead
+		Time taken for (6, 17) at depth 12: 67 | Result: Dead
+		Trying game move at (5, 16) at depth 12 (2 out of 6) | Last moves: (5,17),(7,18),(4,17),(6,16)
+		Time taken for (5, 16) at depth 12: 1 | Result: Dead
+		Trying game move at (6, 18) at depth 12 (3 out of 6) | Last moves: (5,17),(7,18),(4,17),(6,16)
+		Time taken for (6, 18) at depth 12: 2 | Result: Dead
+		Trying game move at (3, 18) at depth 12 (4 out of 6) | Last moves: (5,17),(7,18),(4,17),(6,16)
+		Time taken for (3, 18) at depth 12: 0 | Result: Dead
+		Trying game move at (5, 18) at depth 12 (5 out of 6) | Last moves: (5,17),(7,18),(4,17),(6,16)
+		Time taken for (5, 18) at depth 12: 1 | Result: Dead
+		Trying game move at (4, 18) at depth 12 (6 out of 6) | Last moves: (5,17),(7,18),(4,17),(6,16)
+		Time taken for (4, 18) at depth 12: 1 | Result: Dead
+	Time taken for (6, 16) at depth 13: 78 | Result: Dead
+Time taken for (4, 17) at depth 14: 83 | Result: Dead
+
+
+Trying game move at (5, 16) at depth 14 (3 out of 9) | Last moves: (5,17),(7,18)
+	Game try moves: (6,17),(4,18),(6,18),(3,18),(4,17),(5,18)
+	Trying game move at (6, 17) at depth 13 (1 out of 6) | Last moves: (5,17),(7,18),(5,16)
+		Game try moves: (6,16),(4,17),(4,18),(6,18),(5,18),(3,18)
+		Trying game move at (6, 16) at depth 12 (1 out of 6) | Last moves: (5,17),(7,18),(5,16),(6,17)
+			Game try moves: (6,18),(8,18),(4,18),(3,18),(4,17),(5,18)
+			Trying game move at (6, 18) at depth 11 (1 out of 6) | Last moves: (5,17),(7,18),(5,16),(6,17),(6,16)
+			Time taken for (6, 18) at depth 11: 50 | Result: Dead
+		Time taken for (6, 16) at depth 12: 55 | Result: Dead
+		Trying game move at (4, 17) at depth 12 (2 out of 6) | Last moves: (5,17),(7,18),(5,16),(6,17)
+		Time taken for (4, 17) at depth 12: 1 | Result: Dead
+		Trying game move at (4, 18) at depth 12 (3 out of 6) | Last moves: (5,17),(7,18),(5,16),(6,17)
+		Time taken for (4, 18) at depth 12: 9 | Result: Dead
+		Trying game move at (6, 18) at depth 12 (4 out of 6) | Last moves: (5,17),(7,18),(5,16),(6,17)
+		Time taken for (6, 18) at depth 12: 5 | Result: Dead
+		Trying game move at (5, 18) at depth 12 (5 out of 6) | Last moves: (5,17),(7,18),(5,16),(6,17)
+		Time taken for (5, 18) at depth 12: 1 | Result: Dead
+		Trying game move at (3, 18) at depth 12 (6 out of 6) | Last moves: (5,17),(7,18),(5,16),(6,17)
+		Time taken for (3, 18) at depth 12: 2 | Result: Dead
+	Time taken for (6, 17) at depth 13: 80 | Result: Dead
+Time taken for (5, 16) at depth 14: 85 | Result: Dead
+
+
+Trying game move at (5, 18) at depth 14 (4 out of 9) | Last moves: (5,17),(7,18)
+	Game try moves: (6,16),(6,17),(3,18),(4,16),(4,17),(4,18),(5,16),(6,18)
+	Trying game move at (6, 16) at depth 13 (1 out of 8) | Last moves: (5,17),(7,18),(5,18)
+		Game try moves: (6,17),(5,16),(6,18),(4,17),(4,18),(3,18),(4,16)
+		Trying game move at (6, 17) at depth 12 (1 out of 7) | Last moves: (5,17),(7,18),(5,18),(6,16)
+			Game try moves: (4,16),(3,18),(4,17),(4,18),(5,16)
+			Trying game move at (4, 16) at depth 11 (1 out of 5) | Last moves: (5,17),(7,18),(5,18),(6,16),(6,17)
+			Time taken for (4, 16) at depth 11: 7 | Result: Alive
+			Trying game move at (3, 18) at depth 11 (2 out of 5) | Last moves: (5,17),(7,18),(5,18),(6,16),(6,17)
+			Time taken for (3, 18) at depth 11: 36 | Result: Alive
+			Trying game move at (4, 17) at depth 11 (3 out of 5) | Last moves: (5,17),(7,18),(5,18),(6,16),(6,17)
+			Time taken for (4, 17) at depth 11: 8 | Result: Alive
+			Trying game move at (4, 18) at depth 11 (4 out of 5) | Last moves: (5,17),(7,18),(5,18),(6,16),(6,17)
+			Time taken for (4, 18) at depth 11: 37 | Result: Alive
+			Trying game move at (5, 16) at depth 11 (5 out of 5) | Last moves: (5,17),(7,18),(5,18),(6,16),(6,17)
+			Time taken for (5, 16) at depth 11: 6 | Result: Alive
+		Time taken for (6, 17) at depth 12: 103 | Result: Alive
+	Time taken for (6, 16) at depth 13: 105 | Result: Alive
+	Trying game move at (6, 17) at depth 13 (2 out of 8) | Last moves: (5,17),(7,18),(5,18)
+		Game try moves: (6,16),(6,18),(4,17),(5,16),(3,18),(4,16),(4,18)
+		Trying game move at (6, 16) at depth 12 (1 out of 7) | Last moves: (5,17),(7,18),(5,18),(6,17)
+			Game try moves: (4,16),(8,18),(3,18),(4,17),(4,18),(5,16)
+			Trying game move at (4, 16) at depth 11 (1 out of 6) | Last moves: (5,17),(7,18),(5,18),(6,17),(6,16)
+			Time taken for (4, 16) at depth 11: 23 | Result: Alive
+			Trying game move at (8, 18) at depth 11 (2 out of 6) | Last moves: (5,17),(7,18),(5,18),(6,17),(6,16)
+			Time taken for (8, 18) at depth 11: 13 | Result: Alive
+			Trying game move at (3, 18) at depth 11 (3 out of 6) | Last moves: (5,17),(7,18),(5,18),(6,17),(6,16)
+			Time taken for (3, 18) at depth 11: 10 | Result: Alive
+			Trying game move at (4, 17) at depth 11 (4 out of 6) | Last moves: (5,17),(7,18),(5,18),(6,17),(6,16)
+			Time taken for (4, 17) at depth 11: 24 | Result: Alive
+			Trying game move at (4, 18) at depth 11 (5 out of 6) | Last moves: (5,17),(7,18),(5,18),(6,17),(6,16)
+			Time taken for (4, 18) at depth 11: 13 | Result: Alive
+			Trying game move at (5, 16) at depth 11 (6 out of 6) | Last moves: (5,17),(7,18),(5,18),(6,17),(6,16)
+			Time taken for (5, 16) at depth 11: 12 | Result: Alive
+		Time taken for (6, 16) at depth 12: 106 | Result: Alive
+	Time taken for (6, 17) at depth 13: 109 | Result: Alive
+	Trying game move at (3, 18) at depth 13 (3 out of 8) | Last moves: (5,17),(7,18),(5,18)
+		Game try moves: (4,18),(6,18),(5,16),(4,17),(6,17),(4,16),(6,16)
+		Trying game move at (4, 18) at depth 12 (1 out of 7) | Last moves: (5,17),(7,18),(5,18),(3,18)
+			Game try moves: (2,18),(4,16),(6,16),(6,17),(5,16),(6,18),(4,17)
+			Trying game move at (2, 18) at depth 11 (1 out of 7) | Last moves: (5,17),(7,18),(5,18),(3,18),(4,18)
+			Time taken for (2, 18) at depth 11: 79 | Result: Alive
+			Trying game move at (4, 16) at depth 11 (2 out of 7) | Last moves: (5,17),(7,18),(5,18),(3,18),(4,18)
+			Time taken for (4, 16) at depth 11: 182 | Result: Dead
+		Time taken for (4, 18) at depth 12: 268 | Result: Dead
+		Trying game move at (6, 18) at depth 12 (2 out of 7) | Last moves: (5,17),(7,18),(5,18),(3,18)
+			Game try moves: (8,18),(4,16),(4,17),(6,16),(4,18),(5,16),(6,17)
+			Trying game move at (8, 18) at depth 11 (1 out of 7) | Last moves: (5,17),(7,18),(5,18),(3,18),(6,18)
+			Time taken for (8, 18) at depth 11: 73 | Result: Alive
+			Trying game move at (4, 16) at depth 11 (2 out of 7) | Last moves: (5,17),(7,18),(5,18),(3,18),(6,18)
+			Time taken for (4, 16) at depth 11: 187 | Result: Dead
+		Time taken for (6, 18) at depth 12: 267 | Result: Dead
+		Trying game move at (5, 16) at depth 12 (3 out of 7) | Last moves: (5,17),(7,18),(5,18),(3,18)
+			Game try moves: (4,17),(6,17),(4,18),(6,18)
+			Trying game move at (4, 17) at depth 11 (1 out of 4) | Last moves: (5,17),(7,18),(5,18),(3,18),(5,16)
+			Time taken for (4, 17) at depth 11: 55 | Result: Alive
+			Trying game move at (6, 17) at depth 11 (2 out of 4) | Last moves: (5,17),(7,18),(5,18),(3,18),(5,16)
+			Time taken for (6, 17) at depth 11: 55 | Result: Alive
+			Trying game move at (4, 18) at depth 11 (3 out of 4) | Last moves: (5,17),(7,18),(5,18),(3,18),(5,16)
+			Time taken for (4, 18) at depth 11: 13 | Result: Alive
+			Trying game move at (6, 18) at depth 11 (4 out of 4) | Last moves: (5,17),(7,18),(5,18),(3,18),(5,16)
+			Time taken for (6, 18) at depth 11: 32 | Result: Alive
+		Time taken for (5, 16) at depth 12: 161 | Result: Alive
+	Time taken for (3, 18) at depth 13: 699 | Result: Alive
+	Trying game move at (4, 16) at depth 13 (4 out of 8) | Last moves: (5,17),(7,18),(5,18)
+		Game try moves: (4,17),(5,16),(6,18),(4,18),(6,17),(3,18),(6,16)
+		Trying game move at (4, 17) at depth 12 (1 out of 7) | Last moves: (5,17),(7,18),(5,18),(4,16)
+			Game try moves: (6,16),(6,17),(3,18),(6,18),(5,16)
+			Trying game move at (6, 16) at depth 11 (1 out of 5) | Last moves: (5,17),(7,18),(5,18),(4,16),(4,17)
+			Time taken for (6, 16) at depth 11: 12 | Result: Dead
+		Time taken for (4, 17) at depth 12: 16 | Result: Dead
+		Trying game move at (5, 16) at depth 12 (2 out of 7) | Last moves: (5,17),(7,18),(5,18),(4,16)
+			Game try moves: (3,18),(6,17),(4,18),(6,18),(4,17)
+			Trying game move at (3, 18) at depth 11 (1 out of 5) | Last moves: (5,17),(7,18),(5,18),(4,16),(5,16)
+			Time taken for (3, 18) at depth 11: 11 | Result: Alive
+			Trying game move at (6, 17) at depth 11 (2 out of 5) | Last moves: (5,17),(7,18),(5,18),(4,16),(5,16)
+			Time taken for (6, 17) at depth 11: 35 | Result: Alive
+			Trying game move at (4, 18) at depth 11 (3 out of 5) | Last moves: (5,17),(7,18),(5,18),(4,16),(5,16)
+			Time taken for (4, 18) at depth 11: 15 | Result: Alive
+			Trying game move at (6, 18) at depth 11 (4 out of 5) | Last moves: (5,17),(7,18),(5,18),(4,16),(5,16)
+			Time taken for (6, 18) at depth 11: 8 | Result: Alive
+			Trying game move at (4, 17) at depth 11 (5 out of 5) | Last moves: (5,17),(7,18),(5,18),(4,16),(5,16)
+			Time taken for (4, 17) at depth 11: 25 | Result: Alive
+		Time taken for (5, 16) at depth 12: 101 | Result: Alive
+	Time taken for (4, 16) at depth 13: 119 | Result: Alive
+	Trying game move at (4, 17) at depth 13 (5 out of 8) | Last moves: (5,17),(7,18),(5,18)
+		Game try moves: (4,18),(4,16),(6,18),(5,16),(6,17),(3,18),(6,16)
+		Trying game move at (4, 18) at depth 12 (1 out of 7) | Last moves: (5,17),(7,18),(5,18),(4,17)
+			Game try moves: (6,16),(6,17),(2,18),(5,16),(6,18),(4,16)
+			Trying game move at (6, 16) at depth 11 (1 out of 6) | Last moves: (5,17),(7,18),(5,18),(4,17),(4,18)
+			Time taken for (6, 16) at depth 11: 6 | Result: Alive
+			Trying game move at (6, 17) at depth 11 (2 out of 6) | Last moves: (5,17),(7,18),(5,18),(4,17),(4,18)
+			Time taken for (6, 17) at depth 11: 36 | Result: Alive
+			Trying game move at (2, 18) at depth 11 (3 out of 6) | Last moves: (5,17),(7,18),(5,18),(4,17),(4,18)
+			Time taken for (2, 18) at depth 11: 37 | Result: Alive
+			Trying game move at (5, 16) at depth 11 (4 out of 6) | Last moves: (5,17),(7,18),(5,18),(4,17),(4,18)
+			Time taken for (5, 16) at depth 11: 9 | Result: Alive
+			Trying game move at (6, 18) at depth 11 (5 out of 6) | Last moves: (5,17),(7,18),(5,18),(4,17),(4,18)
+			Time taken for (6, 18) at depth 11: 7 | Result: Alive
+			Trying game move at (4, 16) at depth 11 (6 out of 6) | Last moves: (5,17),(7,18),(5,18),(4,17),(4,18)
+			Time taken for (4, 16) at depth 11: 25 | Result: Alive
+		Time taken for (4, 18) at depth 12: 128 | Result: Alive
+	Time taken for (4, 17) at depth 13: 130 | Result: Alive
+	Trying game move at (4, 18) at depth 13 (6 out of 8) | Last moves: (5,17),(7,18),(5,18)
+		Game try moves: (4,17),(3,18),(6,18),(5,16),(4,16),(6,17),(6,16)
+		Trying game move at (4, 17) at depth 12 (1 out of 7) | Last moves: (5,17),(7,18),(5,18),(4,18)
+			Game try moves: (6,16),(6,17),(5,16),(6,18),(3,18)
+			Trying game move at (6, 16) at depth 11 (1 out of 5) | Last moves: (5,17),(7,18),(5,18),(4,18),(4,17)
+			Time taken for (6, 16) at depth 11: 29 | Result: Dead
+		Time taken for (4, 17) at depth 12: 34 | Result: Dead
+		Trying game move at (3, 18) at depth 12 (2 out of 7) | Last moves: (5,17),(7,18),(5,18),(4,18)
+			Game try moves: (6,16),(6,17),(4,16),(5,16),(6,18),(4,17)
+			Trying game move at (6, 16) at depth 11 (1 out of 6) | Last moves: (5,17),(7,18),(5,18),(4,18),(3,18)
+			Time taken for (6, 16) at depth 11: 10 | Result: Alive
+			Trying game move at (6, 17) at depth 11 (2 out of 6) | Last moves: (5,17),(7,18),(5,18),(4,18),(3,18)
+			Time taken for (6, 17) at depth 11: 13 | Result: Alive
+			Trying game move at (4, 16) at depth 11 (3 out of 6) | Last moves: (5,17),(7,18),(5,18),(4,18),(3,18)
+			Time taken for (4, 16) at depth 11: 18 | Result: Alive
+			Trying game move at (5, 16) at depth 11 (4 out of 6) | Last moves: (5,17),(7,18),(5,18),(4,18),(3,18)
+			Time taken for (5, 16) at depth 11: 7 | Result: Alive
+			Trying game move at (6, 18) at depth 11 (5 out of 6) | Last moves: (5,17),(7,18),(5,18),(4,18),(3,18)
+			Time taken for (6, 18) at depth 11: 5 | Result: Alive
+			Trying game move at (4, 17) at depth 11 (6 out of 6) | Last moves: (5,17),(7,18),(5,18),(4,18),(3,18)
+			Time taken for (4, 17) at depth 11: 55 | Result: Alive
+		Time taken for (3, 18) at depth 12: 117 | Result: Alive
+	Time taken for (4, 18) at depth 13: 155 | Result: Alive
+	Trying game move at (5, 16) at depth 13 (7 out of 8) | Last moves: (5,17),(7,18),(5,18)
+		Game try moves: (4,16),(6,18),(6,16),(4,17),(3,18),(4,18),(6,17)
+		Trying game move at (4, 16) at depth 12 (1 out of 7) | Last moves: (5,17),(7,18),(5,18),(5,16)
+			Game try moves: (6,17),(3,18),(4,18),(6,18),(6,16)
+			Trying game move at (6, 17) at depth 11 (1 out of 5) | Last moves: (5,17),(7,18),(5,18),(5,16),(4,16)
+			Time taken for (6, 17) at depth 11: 11 | Result: Alive
+			Trying game move at (3, 18) at depth 11 (2 out of 5) | Last moves: (5,17),(7,18),(5,18),(5,16),(4,16)
+			Time taken for (3, 18) at depth 11: 14 | Result: Alive
+			Trying game move at (4, 18) at depth 11 (3 out of 5) | Last moves: (5,17),(7,18),(5,18),(5,16),(4,16)
+			Time taken for (4, 18) at depth 11: 8 | Result: Alive
+			Trying game move at (6, 18) at depth 11 (4 out of 5) | Last moves: (5,17),(7,18),(5,18),(5,16),(4,16)
+			Time taken for (6, 18) at depth 11: 6 | Result: Alive
+			Trying game move at (6, 16) at depth 11 (5 out of 5) | Last moves: (5,17),(7,18),(5,18),(5,16),(4,16)
+			Time taken for (6, 16) at depth 11: 8 | Result: Alive
+		Time taken for (4, 16) at depth 12: 55 | Result: Alive
+	Time taken for (5, 16) at depth 13: 57 | Result: Alive
+	Trying game move at (6, 18) at depth 13 (8 out of 8) | Last moves: (5,17),(7,18),(5,18)
+		Game try moves: (6,17),(4,17),(5,16),(3,18),(4,16),(4,18),(6,16)
+		Trying game move at (6, 17) at depth 12 (1 out of 7) | Last moves: (5,17),(7,18),(5,18),(6,18)
+			Game try moves: (3,18),(4,16),(4,17),(4,18),(5,16)
+			Trying game move at (3, 18) at depth 11 (1 out of 5) | Last moves: (5,17),(7,18),(5,18),(6,18),(6,17)
+			Time taken for (3, 18) at depth 11: 116 | Result: Alive
+			Trying game move at (4, 16) at depth 11 (2 out of 5) | Last moves: (5,17),(7,18),(5,18),(6,18),(6,17)
+			Time taken for (4, 16) at depth 11: 23 | Result: Alive
+			Trying game move at (4, 17) at depth 11 (3 out of 5) | Last moves: (5,17),(7,18),(5,18),(6,18),(6,17)
+			Time taken for (4, 17) at depth 11: 7 | Result: Alive
+			Trying game move at (4, 18) at depth 11 (4 out of 5) | Last moves: (5,17),(7,18),(5,18),(6,18),(6,17)
+			Time taken for (4, 18) at depth 11: 10 | Result: Alive
+			Trying game move at (5, 16) at depth 11 (5 out of 5) | Last moves: (5,17),(7,18),(5,18),(6,18),(6,17)
+			Time taken for (5, 16) at depth 11: 6 | Result: Alive
+		Time taken for (6, 17) at depth 12: 170 | Result: Alive
+	Time taken for (6, 18) at depth 13: 172 | Result: Alive
+Time taken for (5, 18) at depth 14: 1555 | Result: Alive
+Time taken (exhaustive): 2400
+Final move: (5,18) | Final result: Alive | Reached end of depth: True

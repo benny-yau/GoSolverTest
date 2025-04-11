@@ -1,0 +1,55 @@
+
+
+Debug Trace:
+Game try moves: (7,16),(1,14),(2,14)
+Game try moves: (7,16),(1,14),(2,14)
+
+
+Trying game move at (7, 16) at depth 16 (1 out of 3) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17)
+	Game try moves: (5,14),(2,14),(3,15),(1,14)
+	Trying game move at (5, 14) at depth 15 (1 out of 4) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16)
+		Game try moves: (1,14),(2,14)
+		Trying game move at (1, 14) at depth 14 (1 out of 2) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16),(5,14)
+			Game try moves: (3,15),(2,14)
+			Trying game move at (3, 15) at depth 13 (1 out of 2) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16),(5,14),(1,14)
+			Time taken for (3, 15) at depth 13: 19 | Result: Dead
+			Trying game move at (2, 14) at depth 13 (2 out of 2) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16),(5,14),(1,14)
+			Time taken for (2, 14) at depth 13: 0 | Result: Alive
+		Time taken for (1, 14) at depth 14: 20 | Result: Alive
+		Trying game move at (2, 14) at depth 14 (2 out of 2) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16),(5,14)
+			Game try moves: (3,15)
+			Trying game move at (3, 15) at depth 13 (1 out of 1) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16),(5,14),(2,14)
+			Time taken for (3, 15) at depth 13: 19 | Result: Dead
+		Time taken for (2, 14) at depth 14: 20 | Result: Dead
+	Time taken for (5, 14) at depth 15: 43 | Result: Dead
+	Trying game move at (2, 14) at depth 15 (2 out of 4) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16)
+		Game try moves: (5,14),(1,14)
+		Trying game move at (5, 14) at depth 14 (1 out of 2) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16),(2,14)
+			Game try moves: (3,15)
+			Trying game move at (3, 15) at depth 13 (1 out of 1) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16),(2,14),(5,14)
+			Time taken for (3, 15) at depth 13: 6 | Result: Dead
+		Time taken for (5, 14) at depth 14: 11 | Result: Dead
+	Time taken for (2, 14) at depth 15: 12 | Result: Dead
+	Trying game move at (3, 15) at depth 15 (3 out of 4) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16)
+		Game try moves: (5,14),(4,18),(1,14),(2,14)
+		Trying game move at (5, 14) at depth 14 (1 out of 4) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16),(3,15)
+			Game try moves: (2,14),(1,14)
+			Trying game move at (2, 14) at depth 13 (1 out of 2) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16),(3,15),(5,14)
+			Time taken for (2, 14) at depth 13: 6 | Result: Dead
+			Trying game move at (1, 14) at depth 13 (2 out of 2) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16),(3,15),(5,14)
+			Time taken for (1, 14) at depth 13: 14 | Result: Dead
+		Time taken for (5, 14) at depth 14: 26 | Result: Dead
+	Time taken for (3, 15) at depth 15: 28 | Result: Dead
+	Trying game move at (1, 14) at depth 15 (4 out of 4) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16)
+		Game try moves: (5,14),(4,18)
+		Trying game move at (5, 14) at depth 14 (1 out of 2) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16),(1,14)
+			Game try moves: (3,15),(2,14)
+			Trying game move at (3, 15) at depth 13 (1 out of 2) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16),(1,14),(5,14)
+			Time taken for (3, 15) at depth 13: 17 | Result: Dead
+			Trying game move at (2, 14) at depth 13 (2 out of 2) | Last moves: (3,14),(4,14),(5,15),(6,15),(5,16),(5,17),(6,17),(4,17),(7,16),(1,14),(5,14)
+			Time taken for (2, 14) at depth 13: 7 | Result: Dead
+		Time taken for (5, 14) at depth 14: 33 | Result: Dead
+	Time taken for (1, 14) at depth 15: 36 | Result: Dead
+Time taken for (7, 16) at depth 16: 123 | Result: Dead
+Time taken (exhaustive): 128
+Final move: (7,16) | Final result: Dead | Reached end of depth: False

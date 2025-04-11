@@ -2607,7 +2607,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(isRedundant, true);
         }
 
         /*
@@ -2713,7 +2713,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(isRedundant, true);
 
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
@@ -3326,7 +3326,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, true);
+            Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -4115,6 +4115,35 @@ namespace UnitTestProject
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead) || moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
+        }
+
+        /*
+ 14 O O . . O . . . . . . . . . . . . . . 
+ 15 X X O O . . . . . . . . . . . . . . . 
+ 16 . X X X O O . . . . . . . . . . . . . 
+ 17 O O . X X O . O . . . . . . . . . . . 
+ 18 . X . X . O . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_Corner_A67_6()
+        {
+            Scenario s = new Scenario();
+            Game m = s.Scenario_Corner_A67();
+            Game g = new Game(m);
+            g.MakeMove(1, 17);
+            g.MakeMove(0, 15);
+            g.MakeMove(0, 17);
+            g.MakeMove(1, 18);
+            g.MakeMove(4, 18);
+            g.MakeMove(3, 18);
+            g.Board[4, 18] = Content.Empty;
+            g.Board[5, 18] = Content.White;
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Point p = new Point(0, 18);
+            GameTryMove tryMove = new GameTryMove(g);
+            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
         }
 
         /*
