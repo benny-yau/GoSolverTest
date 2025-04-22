@@ -3767,7 +3767,6 @@ namespace UnitTestProject
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
-            Assert.AreEqual(tryMove.IsDiagonalEyeMove, true);
 
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;

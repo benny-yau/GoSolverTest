@@ -1,0 +1,210 @@
+
+
+Debug Trace:
+Start of mcts: 
+Count: 60 | Last moves: (8,15),(1,16)
+Count: 120 | Last moves: (8,15),(1,15),(2,16)
+Confirm alive at: (1,15),(1,14),(0,15),(2,16) | Alive
+Pruned node: (1,15),(1,14),(0,15)
+Count: 180 | Last moves: (1,15),(1,14),(2,16),(1,16),(2,15)
+Count: 240 | Last moves: (1,15),(1,14),(2,16),(3,15),(3,16)
+Count: 300 | Last moves: (1,15),(1,14),(1,16),(2,16),(6,14)
+Verifying game: (1,15),(1,14),(8,15),(0,15),(0,14),(7,15)
+Time taken (exhaustive): 9289
+Not verified: (1,15),(1,14),(8,15),(0,15),(0,14),(7,15)
+Pruned node: (1,15),(1,14),(8,15),(0,15),(0,14),(7,15)
+Verifying game: (1,15),(1,14),(8,15),(0,15),(0,14),(1,16)
+Time taken (exhaustive): 790
+Verified: (1,15),(1,14),(8,15),(0,15),(0,14),(1,16)
+Pruned node: (1,15),(1,14),(8,15),(0,15),(0,14)
+	Start of mcts: (1,15),(1,14),(8,15),(0,15),(2,16)
+	Verifying game: (1,15),(1,14),(8,15),(0,15),(2,16),(1,16)
+Time taken (exhaustive): 777
+	Verified: (1,15),(1,14),(8,15),(0,15),(2,16),(1,16)
+	Answer move for (1,15),(1,14),(8,15),(0,15),(2,16): (1,16)
+	Time taken (mcts): 975
+Sibling node pruned.
+Pruned node: (1,15),(1,14),(8,15),(0,15),(2,16)
+All child nodes pruned.
+MCTS recursion up level. WinResult: True
+Pruned node: (1,15),(1,14),(8,15)
+	Start of mcts: (1,15),(1,14),(2,16)
+	Verifying game: (1,15),(1,14),(2,16),(2,15),(1,16),(3,15)
+Time taken (exhaustive): 56
+	Not verified: (1,15),(1,14),(2,16),(2,15),(1,16),(3,15)
+	Pruned node: (1,15),(1,14),(2,16),(2,15),(1,16),(3,15)
+	All child nodes pruned.
+	MCTS recursion up level. WinResult: False
+	Pruned node: (1,15),(1,14),(2,16),(2,15)
+	Hit top at level: 4 WinResult: False Recursion: True
+	Verifying game: (1,15),(1,14),(2,16),(1,16),(2,15),(3,15)
+Time taken (exhaustive): 36
+	Not verified: (1,15),(1,14),(2,16),(1,16),(2,15),(3,15)
+	Pruned node: (1,15),(1,14),(2,16),(1,16),(2,15),(3,15)
+	Verifying game: (1,15),(1,14),(2,16),(1,16),(2,15),(0,15)
+Time taken (exhaustive): 543
+	Verified: (1,15),(1,14),(2,16),(1,16),(2,15),(0,15)
+	Pruned node: (1,15),(1,14),(2,16),(1,16),(2,15)
+		Start of mcts: (1,15),(1,14),(2,16),(1,16),(6,18)
+		Verifying game: (1,15),(1,14),(2,16),(1,16),(6,18),(0,15)
+Time taken (exhaustive): 157
+		Verified: (1,15),(1,14),(2,16),(1,16),(6,18),(0,15)
+		Answer move for (1,15),(1,14),(2,16),(1,16),(6,18): (0,15)
+		Time taken (mcts): 228
+	Sibling node pruned.
+	Pruned node: (1,15),(1,14),(2,16),(1,16),(6,18)
+		Start of mcts: (1,15),(1,14),(2,16),(1,16),(8,15)
+		Verifying game: (1,15),(1,14),(2,16),(1,16),(8,15),(0,15)
+Time taken (exhaustive): 734
+		Verified: (1,15),(1,14),(2,16),(1,16),(8,15),(0,15)
+		Answer move for (1,15),(1,14),(2,16),(1,16),(8,15): (0,15)
+		Time taken (mcts): 1030
+	Sibling node pruned.
+	Pruned node: (1,15),(1,14),(2,16),(1,16),(8,15)
+		Start of mcts: (1,15),(1,14),(2,16),(1,16),(3,15)
+		Verifying game: (1,15),(1,14),(2,16),(1,16),(3,15),(0,15)
+Time taken (exhaustive): 278
+		Verified: (1,15),(1,14),(2,16),(1,16),(3,15),(0,15)
+		Answer move for (1,15),(1,14),(2,16),(1,16),(3,15): (0,15)
+		Time taken (mcts): 334
+	Sibling node pruned.
+	Pruned node: (1,15),(1,14),(2,16),(1,16),(3,15)
+		Start of mcts: (1,15),(1,14),(2,16),(1,16),(4,15)
+		Verifying game: (1,15),(1,14),(2,16),(1,16),(4,15),(2,15)
+Time taken (exhaustive): 173
+		Verified: (1,15),(1,14),(2,16),(1,16),(4,15),(2,15)
+		Answer move for (1,15),(1,14),(2,16),(1,16),(4,15): (2,15)
+		Time taken (mcts): 619
+	Sibling node pruned.
+	Pruned node: (1,15),(1,14),(2,16),(1,16),(4,15)
+		Start of mcts: (1,15),(1,14),(2,16),(1,16),(0,15)
+		Verifying game: (1,15),(1,14),(2,16),(1,16),(0,15),(2,15)
+Time taken (exhaustive): 7402
+		Not verified: (1,15),(1,14),(2,16),(1,16),(0,15),(2,15)
+		Pruned node: (1,15),(1,14),(2,16),(1,16),(0,15),(2,15)
+		Hit top at level: 6 WinResult: False Recursion: False
+		Verifying game: (1,15),(1,14),(2,16),(1,16),(0,15),(3,15)
+Time taken (exhaustive): 29
+		Not verified: (1,15),(1,14),(2,16),(1,16),(0,15),(3,15)
+		Pruned node: (1,15),(1,14),(2,16),(1,16),(0,15),(3,15)
+		Hit top at level: 6 WinResult: False Recursion: False
+		Time taken (mcts): 8462
+	Parent node pruned.
+	Pruned node: (1,15),(1,14),(2,16),(1,16)
+	Count: 60 | Last moves: (1,15),(1,14),(2,16),(3,15),(6,18),(4,15)
+	Verifying game: (1,15),(1,14),(2,16),(3,15),(1,16),(4,15)
+Time taken (exhaustive): 91
+	Not verified: (1,15),(1,14),(2,16),(3,15),(1,16),(4,15)
+	Pruned node: (1,15),(1,14),(2,16),(3,15),(1,16),(4,15)
+	Verifying game: (1,15),(1,14),(2,16),(3,15),(1,16),(3,16)
+Time taken (exhaustive): 42
+	Not verified: (1,15),(1,14),(2,16),(3,15),(1,16),(3,16)
+	Pruned node: (1,15),(1,14),(2,16),(3,15),(1,16),(3,16)
+	Verifying game: (1,15),(1,14),(2,16),(3,15),(1,16),(2,15)
+Time taken (exhaustive): 25
+	Not verified: (1,15),(1,14),(2,16),(3,15),(1,16),(2,15)
+	Pruned node: (1,15),(1,14),(2,16),(3,15),(1,16),(2,15)
+	Verifying game: (1,15),(1,14),(2,16),(3,15),(1,16),(3,14)
+Time taken (exhaustive): 64
+	Not verified: (1,15),(1,14),(2,16),(3,15),(1,16),(3,14)
+	Pruned node: (1,15),(1,14),(2,16),(3,15),(1,16),(3,14)
+	All child nodes pruned.
+	MCTS recursion up level. WinResult: False
+	Pruned node: (1,15),(1,14),(2,16),(3,15)
+	Hit top at level: 4 WinResult: False Recursion: True
+	Time taken (mcts): 24120
+Parent node pruned.
+Pruned node: (1,15),(1,14)
+Count: 360 | Last moves: (1,15),(1,16),(1,14),(3,3)
+Count: 420 | Last moves: (1,15),(1,16),(2,16),(2,15),(0,15)
+Verifying game: (1,15),(1,16),(2,16),(2,15),(1,14),(3,15)
+Time taken (exhaustive): 39
+Not verified: (1,15),(1,16),(2,16),(2,15),(1,14),(3,15)
+Pruned node: (1,15),(1,16),(2,16),(2,15),(1,14),(3,15)
+All child nodes pruned.
+MCTS recursion up level. WinResult: False
+Pruned node: (1,15),(1,16),(2,16),(2,15)
+Count: 480 | Last moves: (1,15),(1,16),(2,16),(3,15),(8,15)
+Count: 540 | Last moves: (1,15),(1,16),(2,16),(3,15),(3,14),(1,14)
+Verifying game: (1,15),(1,16),(2,16),(3,15),(6,18),(3,3)
+Time taken (exhaustive): 319
+Not verified: (1,15),(1,16),(2,16),(3,15),(6,18),(3,3)
+Pruned node: (1,15),(1,16),(2,16),(3,15),(6,18),(3,3)
+Verifying game: (1,15),(1,16),(2,16),(3,15),(6,18),(4,15)
+Time taken (exhaustive): 420
+Not verified: (1,15),(1,16),(2,16),(3,15),(6,18),(4,15)
+Pruned node: (1,15),(1,16),(2,16),(3,15),(6,18),(4,15)
+Verifying game: (1,15),(1,16),(2,16),(3,15),(6,18),(3,16)
+Time taken (exhaustive): 296
+Not verified: (1,15),(1,16),(2,16),(3,15),(6,18),(3,16)
+Pruned node: (1,15),(1,16),(2,16),(3,15),(6,18),(3,16)
+Verifying game: (1,15),(1,16),(2,16),(3,15),(6,18),(2,15)
+Time taken (exhaustive): 126
+Not verified: (1,15),(1,16),(2,16),(3,15),(6,18),(2,15)
+Pruned node: (1,15),(1,16),(2,16),(3,15),(6,18),(2,15)
+Verifying game: (1,15),(1,16),(2,16),(3,15),(6,18),(3,14)
+Time taken (exhaustive): 169
+Not verified: (1,15),(1,16),(2,16),(3,15),(6,18),(3,14)
+Pruned node: (1,15),(1,16),(2,16),(3,15),(6,18),(3,14)
+All child nodes pruned.
+MCTS recursion up level. WinResult: False
+Pruned node: (1,15),(1,16),(2,16),(3,15)
+Verifying game: (1,15),(1,16),(2,16),(1,14),(6,18),(0,15)
+Time taken (exhaustive): 97
+Verified: (1,15),(1,16),(2,16),(1,14),(6,18),(0,15)
+Pruned node: (1,15),(1,16),(2,16),(1,14),(6,18)
+	Start of mcts: (1,15),(1,16),(2,16),(1,14),(2,15)
+	Verifying game: (1,15),(1,16),(2,16),(1,14),(2,15),(3,15)
+Time taken (exhaustive): 19
+	Not verified: (1,15),(1,16),(2,16),(1,14),(2,15),(3,15)
+	Pruned node: (1,15),(1,16),(2,16),(1,14),(2,15),(3,15)
+	Hit top at level: 6 WinResult: False Recursion: False
+	Verifying game: (1,15),(1,16),(2,16),(1,14),(2,15),(0,15)
+Time taken (exhaustive): 369
+	Verified: (1,15),(1,16),(2,16),(1,14),(2,15),(0,15)
+	Answer move for (1,15),(1,16),(2,16),(1,14),(2,15): (0,15)
+	Time taken (mcts): 832
+Sibling node pruned.
+Pruned node: (1,15),(1,16),(2,16),(1,14),(2,15)
+	Start of mcts: (1,15),(1,16),(2,16),(1,14),(4,15)
+	Verifying game: (1,15),(1,16),(2,16),(1,14),(4,15),(2,15)
+Time taken (exhaustive): 131
+	Verified: (1,15),(1,16),(2,16),(1,14),(4,15),(2,15)
+	Answer move for (1,15),(1,16),(2,16),(1,14),(4,15): (2,15)
+	Time taken (mcts): 436
+Sibling node pruned.
+Pruned node: (1,15),(1,16),(2,16),(1,14),(4,15)
+	Start of mcts: (1,15),(1,16),(2,16),(1,14),(0,15)
+	Verifying game: (1,15),(1,16),(2,16),(1,14),(0,15),(2,15)
+Time taken (exhaustive): 5451
+	Not verified: (1,15),(1,16),(2,16),(1,14),(0,15),(2,15)
+	Pruned node: (1,15),(1,16),(2,16),(1,14),(0,15),(2,15)
+	Hit top at level: 6 WinResult: False Recursion: False
+	Verifying game: (1,15),(1,16),(2,16),(1,14),(0,15),(3,15)
+Time taken (exhaustive): 20
+	Not verified: (1,15),(1,16),(2,16),(1,14),(0,15),(3,15)
+	Pruned node: (1,15),(1,16),(2,16),(1,14),(0,15),(3,15)
+	Hit top at level: 6 WinResult: False Recursion: False
+	Time taken (mcts): 6150
+Parent node pruned.
+Pruned node: (1,15),(1,16),(2,16),(1,14)
+All child nodes pruned.
+MCTS recursion up level. WinResult: False
+Pruned node: (1,15),(1,16)
+Count: 600 | Last moves: (1,15),(8,15),(1,14)
+All child nodes pruned.
+MCTS recursion up level. WinResult: False
+Pruned node: (1,15),(8,15)
+All child nodes pruned.
+Answer move: (1,15)
+Verifying game: (1,15),(8,15),(1,14)
+Time taken (exhaustive): 7
+Verified: (1,15),(8,15),(1,14)
+Pruned node: (1,15),(8,15)
+All child nodes pruned.
+Answer move: (1,15)
+2 minutes and 1 second
+Total time taken (mcts): 121123
+
+
+Final move: (1,15) | Final result: Dead | Reached end of depth: False

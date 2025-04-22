@@ -2203,5 +2203,33 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
         }
+
+
+        /*
+ 13 . . . . . . O O O . O . . . . . . . . 
+ 14 . . . O O O X X O . . . . . . . . . . 
+ 15 . . . O X X X . X O . . . . . . . . . 
+ 16 . . O X X O . O X O . . . . . . . . . 
+ 17 . O . O X O . . X O . . . . . . . . . 
+ 18 . . . O X X X X O O . . . . . . . . .
+         */
+        [TestMethod]
+        public void BothAliveTest_20230430_8_2()
+        {
+            Game g = DailyGoProblems.Scenario_20230430_8();
+
+            g.MakeMove(7, 14);
+            g.MakeMove(8, 14);
+            g.MakeMove(6, 14);
+            g.MakeMove(7, 16);
+            g.MakeMove(8, 17);
+            g.MakeMove(5, 16);
+            g.MakeMove(4, 16);
+            g.MakeMove(8, 18);
+
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Boolean enablePassMove = BothAliveHelper.EnableCheckForPassMove(g.Board);
+            Assert.AreEqual(enablePassMove, true);
+        }
     }
 }

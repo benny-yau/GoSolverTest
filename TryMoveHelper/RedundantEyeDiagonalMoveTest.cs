@@ -811,5 +811,35 @@ namespace UnitTestProject
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
         }
 
+
+        /*
+ 13 . O . . . . . . . . . . . . . . . . . 
+ 14 . . . O O . . . . . . . . . . . . . . 
+ 15 . O O X X O . . . . . . . . . . . . . 
+ 16 . X X O X O . . . . . . . . . . . . . 
+ 17 X . X O X O . . . . . . . . . . . . . 
+ 18 . X . O . . . . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void RedundantEyeDiagonalMoveTest_Scenario_XuanXuanGo_A16()
+        {
+            Scenario s = new Scenario();
+            Game m = s.Scenario_XuanXuanGo_A16();
+            Game g = new Game(m);
+            g.MakeMove(1, 17);
+            g.MakeMove(0, 17);
+            g.MakeMove(3, 17);
+            g.MakeMove(2, 17);
+            g.MakeMove(3, 18);
+            g.MakeMove(1, 18);
+            g.MakeMove(3, 16);
+
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Game.useMonteCarloRuntime = false;
+            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
+        }
     }
 }
