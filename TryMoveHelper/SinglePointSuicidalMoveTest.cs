@@ -2118,11 +2118,17 @@ namespace UnitTestProject
             g.GameInfo.SearchDepth = 26;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(1, 18);
+            Point p = new Point(0, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
+
+            Game.useMonteCarloRuntime = false;
+            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
         }
     }
 }

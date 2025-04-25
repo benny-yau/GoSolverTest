@@ -1022,6 +1022,7 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 18))) != null, true);
 
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
@@ -1029,49 +1030,6 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
-
-        /*
- 11 . . X . . . . . . . . . . . . . . . . 
- 12 . X . . X . . . . . . . . . . . . . . 
- 13 . X O O X . . . . . . . . . . . . . . 
- 14 O O . O . . . . . . . . . . . . . . . 
- 15 . X X O X . . . . . . . . . . . . . . 
- 16 . . O X X . . . . . . . . . . . . . . 
- 17 X O O O X . . . . . . . . . . . . . . 
- 18 . X . O . . . . . . . . . . . . . . . 
-         */
-        [TestMethod]
-        public void SpecificNeutralMoveTest_Scenario_XuanXuanGo_A28_101Weiqi()
-        {
-            Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A28_101Weiqi();
-            Game g = new Game(m);
-            g.MakeMove(2, 18);
-            g.MakeMove(1, 16);
-            g.MakeMove(2, 16);
-            g.MakeMove(1, 18);
-            g.MakeMove(2, 15);
-            g.MakeMove(3, 18);
-            g.MakeMove(0, 17);
-            g.MakeMove(0, 13);
-            g.MakeMove(0, 15);
-            g.MakeMove(0, 12);
-            g.MakeMove(0, 16);
-            g.MakeMove(0, 14);
-            g.MakeMove(1, 15);
-            g.MakeMove(0, 13);
-            g.MakeMove(0, 18);
-            //g.MakeMove(3, 14);
-
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
-        }
-
 
         /*
  14 . . . . . . . . X X X . . . . . . . . 
@@ -1102,6 +1060,46 @@ namespace UnitTestProject
             Point p = new Point(10, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.Board.InternalMakeMove(p.x, p.y, Content.Black);
+            GameTryMove resultMove = RedundantMoveHelper.GetSpecificNeutralMove(g, new List<GameTryMove>() { tryMove });
+            Assert.AreEqual(resultMove != null, true);
+
+            Game.useMonteCarloRuntime = false;
+            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+        }
+
+        /*
+  9 . O O O . . . . . . . . . . . . . . . 
+ 10 . O X O . . . . . . . . . . . . . . . 
+ 11 . X X X O O . . . . . . . . . . . . . 
+ 12 X X . X X O . . . . . . . . . . . . . 
+ 13 O O O X O O . . . . . . . . . . . . . 
+ 14 . X X O . . . . . . . . . . . . . . . 
+ 15 . X O O . . . . . . . . . . . . . . . 
+ 16 O X O . . . . . . . . . . . . . . . . 
+ 17 X X O . . . . . . . . . . . . . . . . 
+ 18 . O O . . . . . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void SpecificNeutralMoveTest_Scenario_XuanXuanQiJing_Weiqi101_B51_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_B51();
+            g.MakeMove(4, 13);
+            g.MakeMove(1, 12);
+            g.MakeMove(1, 13);
+            g.MakeMove(3, 12);
+            g.MakeMove(0, 13);
+            g.MakeMove(0, 12);
+            g.MakeMove(0, 16);
+            g.MakeMove(0, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+
+            Point p = new Point(0, 18);
+            GameTryMove tryMove = new GameTryMove(g);
+            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             GameTryMove resultMove = RedundantMoveHelper.GetSpecificNeutralMove(g, new List<GameTryMove>() { tryMove });
             Assert.AreEqual(resultMove != null, true);
 
