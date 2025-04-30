@@ -64,6 +64,8 @@
     <Compile Include="Main.cs" />
     <Compile Include="RestoreNeutralMove\GenericNeutralMoveTest.cs" />
     <Compile Include="RestoreNeutralMove\MustHaveNeutralMoveTest.cs" />
+    <Compile Include="RestoreNeutralMove\PreAtariMoveTest.cs" />
+    <Compile Include="RestoreNeutralMove\RestoreNeutralMoveTest.cs" />
     <Compile Include="RestoreNeutralMove\SpecificNeutralMoveTest.cs" />
     <Compile Include="BentFourTest.cs" />
     <Compile Include="LifeCheck\BothAliveTest.cs" />

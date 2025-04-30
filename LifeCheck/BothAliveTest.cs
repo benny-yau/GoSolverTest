@@ -1750,11 +1750,9 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(0, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(isRedundant, true);
 
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();

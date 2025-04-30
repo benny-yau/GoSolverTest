@@ -12,35 +12,6 @@ namespace UnitTestProject
     {
 
         /*
-         12 . . . O O . . O . . . . . . . . . . . 
-         13 . . O X X X . . . . . . . . . . . . . 
-         14 . . O X . X O . . . . . . . . . . . . 
-         15 . . O O X X O . O . . . . . . . . . . 
-         16 . . O X X O X X O . . . . . . . . . . 
-         17 . . O X X O . X O . O . . . . . . . . 
-         18 . . . . X O . X X O . . . . . . . . . 
-         */
-        [TestMethod]
-        public void MustHaveNeutralMoveTest_Scenario5dan27_3()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario5dan27();
-            g.MakeMove(4, 18);
-            g.MakeMove(5, 18);
-            g.MakeMove(4, 16);
-            g.MakeMove(5, 16);
-            g.MakeMove(4, 17);
-
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(2, 18);
-            GameTryMove move = new GameTryMove(g);
-            move.MakeMoveResult = move.TryGame.Board.InternalMakeMove(p.x, p.y, Content.White);
-            Boolean isNeutralMove = RedundantMoveHelper.NeutralPointKillMove(move);
-            Assert.AreEqual(isNeutralMove, true);
-        }
-
-        /*
  12 . . . O O . . O . . . . . . . . . . . 
  13 . . O X X X . . . . . . . . . . . . . 
  14 . . O X . X O . . . . . . . . . . . . 
@@ -68,11 +39,10 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             g.MakeMove(-1, -1);
 
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.Board.InternalMakeMove(p.x, p.y, Content.White);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isNeutralMove = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralMove, true);
+            Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Game.useMonteCarloRuntime = false;
@@ -111,9 +81,7 @@ namespace UnitTestProject
             g.MakeMove(0, 14);
             g.MakeMove(0, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
 
@@ -151,9 +119,7 @@ namespace UnitTestProject
             g.MakeMove(0, 18);
             g.MakeMove(2, 18);
             g.MakeMove(2, 16);
-            Point p = new Point(3, 18);
-            GameTryMove move = new GameTryMove(g);
-            move.MakeMoveResult = move.TryGame.MakeMove(p.x, p.y);
+            GameTryMove move = new GameTryMove(g, new Point(3, 18));
             Boolean result = RedundantMoveHelper.NeutralPointKillMove(move);
             Assert.AreEqual(move.MustHaveNeutralPoint, false);
             Assert.AreEqual(result, true);
@@ -182,8 +148,7 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             g.MakeMove(7, 17);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(3, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralPoint, true);
             Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
@@ -225,8 +190,7 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(0, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralPoint, true);
             Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
@@ -261,8 +225,7 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(6, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralPoint, true);
             Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
@@ -298,8 +261,7 @@ namespace UnitTestProject
             g.MakeMove(5, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
 
@@ -394,6 +356,11 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
+            Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
+            Assert.AreEqual(isNeutralPoint, true);
+            Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
+
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -407,7 +374,7 @@ namespace UnitTestProject
  15 . . . X X X X X O O X . . . . . . . . 
  16 . . X O X O O O O O X . . . . . . . . 
  17 . . X O O O X X X O X . . . . . . . . 
- 18 . . . X X . . O O O . . . . . . . . . 
+ 18 . X . X X . . O O O . . . . . . . . . 
          */
         [TestMethod]
         public void MustHaveNeutralMoveTest_Scenario_TianLongTu_Q16827_2()
@@ -425,7 +392,6 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             g.MakeMove(7, 18);
             g.Board[1, 18] = Content.Black;
-            g.GameInfo.Survival = SurviveOrKill.KillWithKo;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             Game.useMonteCarloRuntime = false;
@@ -459,6 +425,10 @@ namespace UnitTestProject
             g.MakeMove(0, 13);
             g.MakeMove(0, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 12));
+            Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
+            Assert.AreEqual(isNeutralPoint, true);
+            Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
 
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -492,8 +462,7 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 14);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 14));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralPoint, true);
             Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
@@ -535,8 +504,7 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(6, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralPoint, true);
             Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
@@ -576,9 +544,7 @@ namespace UnitTestProject
             g.MakeMove(0, 15);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 13);
-            GameTryMove move = new GameTryMove(g);
-            move.MakeMoveResult = move.TryGame.Board.InternalMakeMove(p.x, p.y, Content.White);
+            GameTryMove move = new GameTryMove(g, new Point(0, 13));
             RedundantMoveHelper.NeutralPointKillMove(move);
             Assert.AreEqual(move.MustHaveNeutralPoint, false);
         }
@@ -604,8 +570,7 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralPoint, true);
             Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
@@ -641,8 +606,7 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(6, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralPoint, true);
             Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
@@ -701,6 +665,11 @@ namespace UnitTestProject
             g.Board[0, 14] = Content.Empty;
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 14));
+            Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
+            Assert.AreEqual(isNeutralPoint, true);
+            Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
+
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -726,6 +695,11 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
             g.Board[9, 18] = Content.Empty;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(8, 18));
+            Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
+            Assert.AreEqual(isNeutralPoint, true);
+            Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
+
             GameTryMove endGameMove = tryMoves.Where(m => m.Move.Equals(new Point(8, 18))).FirstOrDefault();
             Assert.AreEqual(endGameMove != null, true);
         }
@@ -760,10 +734,9 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             g.MakeMove(8, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(2, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
+            Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
+            Assert.AreEqual(isNeutralPoint, true);
             Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
 
             Game.useMonteCarloRuntime = false;
@@ -863,10 +836,7 @@ namespace UnitTestProject
             gi.movablePoints.Add(new Point(5, 17));
             gi.movablePoints.Add(new Point(5, 18));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(0, 14);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.Board.InternalMakeMove(p.x, p.y, Content.Black);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 14));
             Boolean isNeutralMove = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralMove, false);
 
@@ -905,10 +875,7 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(0, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(3, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
 
@@ -934,6 +901,7 @@ namespace UnitTestProject
         [TestMethod]
         public void MustHaveNeutralMoveTest_20221229_7()
         {
+            //not must have move
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
             Game g = new Game(gi);
@@ -971,10 +939,7 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(0, 9));
             gi.killMovablePoints.Add(new Point(0, 17));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(0, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 16));
             Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
@@ -1008,9 +973,7 @@ namespace UnitTestProject
             g.GameInfo.movablePoints.Add(new Point(10, 18));
             g.GameInfo.killMovablePoints.Add(new Point(11, 18));
 
-            Point p = new Point(10, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(10, 18));
             Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
 
@@ -1044,10 +1007,7 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             g.MakeMove(0, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
 
@@ -1083,10 +1043,7 @@ namespace UnitTestProject
             g.MakeMove(0, 15);
             g.MakeMove(1, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(0, 14);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 14));
             Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
 

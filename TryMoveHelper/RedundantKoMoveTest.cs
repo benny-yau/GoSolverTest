@@ -65,7 +65,7 @@ namespace UnitTestProject
             Point p = new Point(3, 15);
             GameTryMove move = new GameTryMove(g);
             move.MakeKoMove(p, SurviveOrKill.Survive);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalPreKoMove(move);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(move);
             Assert.AreEqual(isRedundantKo, true);
 
             (ConfirmAliveResult result, List<GameTryMove> tryMoves, GameTryMove koBlockedMove) = g.GetSurvivalMoves(g);
@@ -101,7 +101,7 @@ namespace UnitTestProject
             Point p = new Point(2, 15);
             GameTryMove move = new GameTryMove(g);
             move.MakeKoMove(p, SurviveOrKill.Kill);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerKoMove(move);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(move);
             Assert.AreEqual(isRedundantKo, true);
 
             (ConfirmAliveResult result, List<GameTryMove> tryMoves, GameTryMove koBlockedMove) = g.GetKillMoves(g);
@@ -131,7 +131,7 @@ namespace UnitTestProject
             Point p = new Point(2, 15);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Survive);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, true);
 
             (ConfirmAliveResult result, List<GameTryMove> tryMoves, GameTryMove koBlockedMove) = g.GetKillMoves(g);
@@ -221,7 +221,7 @@ namespace UnitTestProject
             Point p = new Point(2, 15);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Survive);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, true);
 
             g.MakeMove(1, 18);
@@ -264,7 +264,7 @@ namespace UnitTestProject
             Point p = new Point(2, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Survive);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -307,7 +307,7 @@ namespace UnitTestProject
             Point p = new Point(3, 14);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Survive);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -384,7 +384,7 @@ namespace UnitTestProject
             Point p = new Point(2, 15);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Survive);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, true);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
@@ -443,7 +443,7 @@ namespace UnitTestProject
             Point p = new Point(5, 17);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, true);
 
             g.MakeMove(5, 17);
@@ -614,7 +614,7 @@ namespace UnitTestProject
             Point p = new Point(1, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             /*
@@ -778,7 +778,7 @@ namespace UnitTestProject
             Point p = new Point(6, 17);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -816,7 +816,7 @@ namespace UnitTestProject
             Point p = new Point(0, 16);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -889,7 +889,7 @@ namespace UnitTestProject
             Point p = new Point(0, 15);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
             Boolean isSuicidalRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidalRedundant, false);
@@ -926,7 +926,7 @@ namespace UnitTestProject
 
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isNeutralPoint, false);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
@@ -966,7 +966,7 @@ namespace UnitTestProject
             Point p = new Point(4, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Survive);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, true);
 
             g.MakeMove(4, 18);
@@ -1041,7 +1041,7 @@ namespace UnitTestProject
             Point p = new Point(0, 14);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Survive);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
@@ -1074,7 +1074,7 @@ namespace UnitTestProject
             Point p = new Point(3, 17);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Survive);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1105,7 +1105,7 @@ namespace UnitTestProject
             Point p = new Point(4, 16);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.UseMapMoves = Game.UseSolutionPoints = false;
@@ -1140,7 +1140,7 @@ namespace UnitTestProject
             Point p = new Point(2, 17);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
         }
 
@@ -1207,7 +1207,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1242,7 +1242,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1287,7 +1287,7 @@ namespace UnitTestProject
             Point p = new Point(1, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1326,7 +1326,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1362,7 +1362,7 @@ namespace UnitTestProject
             Point p = new Point(1, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1407,7 +1407,7 @@ namespace UnitTestProject
             Point p = new Point(0, 15);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
-            Boolean isRedundant = RedundantMoveHelper.RedundantKillerKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1643,7 +1643,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, true);
         }
 
@@ -1671,7 +1671,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundant = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1712,7 +1712,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundant = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1779,7 +1779,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundant = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1857,7 +1857,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundant = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1894,7 +1894,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundant = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1935,7 +1935,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundant = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1984,7 +1984,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
 
@@ -2020,7 +2020,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
@@ -2061,7 +2061,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundant = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
@@ -2100,7 +2100,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
@@ -2144,7 +2144,7 @@ namespace UnitTestProject
             Point p = new Point(1, 14);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isSuicidal = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isSuicidal = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 14))) != null, false);
@@ -2222,7 +2222,7 @@ namespace UnitTestProject
             Point p = new Point(0, 15);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
@@ -2263,7 +2263,7 @@ namespace UnitTestProject
             Point p = new Point(0, 13);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -2344,7 +2344,7 @@ namespace UnitTestProject
             Point p = new Point(0, 16);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, true);
 
             Game.useMonteCarloRuntime = false;
@@ -2391,7 +2391,7 @@ namespace UnitTestProject
             Point p = new Point(0, 16);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, true);
 
             Game.useMonteCarloRuntime = false;
@@ -2471,7 +2471,7 @@ namespace UnitTestProject
             Point p = new Point(0, 17);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
@@ -2514,7 +2514,7 @@ namespace UnitTestProject
             Point p = new Point(0, 17);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
@@ -2860,7 +2860,7 @@ namespace UnitTestProject
             Point p = new Point(3, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.UseMapMoves = Game.UseSolutionPoints = false;
@@ -2934,7 +2934,7 @@ namespace UnitTestProject
             Point p = new Point(8, 17);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -3033,7 +3033,7 @@ namespace UnitTestProject
             Point p = new Point(0, 16);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -3098,7 +3098,7 @@ namespace UnitTestProject
             Point p = new Point(1, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
         }
 
@@ -3150,7 +3150,7 @@ namespace UnitTestProject
             Point p = new Point(2, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -3354,7 +3354,7 @@ namespace UnitTestProject
             Point p = new Point(0, 15);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -3421,7 +3421,7 @@ namespace UnitTestProject
             Point p = new Point(0, 14);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -3462,7 +3462,7 @@ namespace UnitTestProject
             Point p = new Point(10, 16);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
 
@@ -3495,7 +3495,7 @@ namespace UnitTestProject
             Point p = new Point(7, 16);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, true);
         }
 
@@ -3595,7 +3595,7 @@ namespace UnitTestProject
             Point p = new Point(0, 14);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             Game.useMonteCarloRuntime = false;
@@ -3664,7 +3664,7 @@ namespace UnitTestProject
             Point p = new Point(0, 15);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.Board.InternalMakeMove(p.x, p.y, Content.Black);
-            Boolean isNeutralMove = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isNeutralMove = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isNeutralMove, false);
         }
 
@@ -3690,7 +3690,7 @@ namespace UnitTestProject
             Point p = new Point(7, 17);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isSuicidal = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isSuicidal = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
             Game.useMonteCarloRuntime = false;
@@ -3722,7 +3722,7 @@ namespace UnitTestProject
             Point p = new Point(5, 15);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isSuicidal = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove);
+            Boolean isSuicidal = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
             Game.useMonteCarloRuntime = false;

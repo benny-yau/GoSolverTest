@@ -1168,7 +1168,7 @@ namespace UnitTestProject
             Point p = new Point(0, 16);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;

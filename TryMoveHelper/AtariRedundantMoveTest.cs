@@ -540,7 +540,7 @@ namespace UnitTestProject
  12 . . O . . . . . . . . . . . . . . . . 
  13 . . . . . . . . . . . . . . . . . . . 
  14 . O O . . . . . . . . . . . . . . . . 
- 15 O X O . . . . . . . . . . . . . . . . 
+ 15 . X O . . . . . . . . . . . . . . . . 
  16 X X . O O O . . . . . . . . . . . . . 
  17 X . X X X O . O . . . . . . . . . . . 
  18 X O . X . . . . . . . . . . . . . . .
@@ -561,12 +561,13 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
             g.MakeMove(0, 17);
             g.MakeMove(1, 18);
+            g.Board[0, 15] = Content.Empty;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 18);
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(isRedundant, true);
 
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 17))) != null, true);
         }
@@ -663,7 +664,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 15);
+            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 16);
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -695,7 +696,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 16);
+            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 17);
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 

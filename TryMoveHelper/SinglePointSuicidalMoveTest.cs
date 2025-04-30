@@ -920,17 +920,15 @@ namespace UnitTestProject
             g.MakeMove(5, 13);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(4, 14);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 15));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(isSuicidal, true);
 
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(4, 14)) || move.Equals(new Point(4, 15)), true);
+            Assert.AreEqual(move.Equals(new Point(4, 14)), true);
         }
 
         /*

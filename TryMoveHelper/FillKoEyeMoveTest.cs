@@ -887,7 +887,7 @@ namespace UnitTestProject
             GameTryMove tryMove2 = new GameTryMove(g);
             tryMove2.MakeMoveResult = tryMove2.TryGame.MakeMove(q.x, q.y);
 
-            Boolean isRedundant2 = RedundantMoveHelper.RedundantKillerPreKoMove(tryMove2);
+            Boolean isRedundant2 = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove2);
             Assert.AreEqual(isRedundant2, false);
         }
 
@@ -926,7 +926,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
 
-            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalPreKoMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
             g.MakeMove(3, 3);

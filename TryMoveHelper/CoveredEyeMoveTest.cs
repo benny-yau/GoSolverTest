@@ -850,6 +850,7 @@ namespace UnitTestProject
         [TestMethod]
         public void CoveredEyeMoveTest_Scenario_XuanXuanQiJing_Weiqi101_18410()
         {
+            //not covered eye
             Scenario s = new Scenario();
             Game m = s.Scenario_XuanXuanQiJing_Weiqi101_18410();
             Game g = new Game(m);
@@ -1672,7 +1673,7 @@ namespace UnitTestProject
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             
             Assert.AreEqual(RedundantMoveHelper.RedundantCoveredEyeMove(tryMove), false);
-            Assert.AreEqual(RedundantMoveHelper.RedundantKillerPreKoMove(tryMove), false);
+            Assert.AreEqual(RedundantMoveHelper.RedundantSurvivalKoMove(tryMove), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(p)) != null, true);
 
 
