@@ -10,9 +10,6 @@ namespace UnitTestProject
     [TestClass]
     public class RestoreNeutralMoveTest
     {
-
-
-
         /*
  12 . O O O O . . . . . . . . . . . . . . 
  13 . O . . . O . . . . . . . . . . . . . 
@@ -23,7 +20,7 @@ namespace UnitTestProject
  18 . O X . . . . . . . . . . . . . . . .
         */
         [TestMethod]
-        public void NeutralPointMoveTest_Scenario_WuQingYuan_Q6150()
+        public void RestoreNeutralMoveTest_Scenario_WuQingYuan_Q6150()
         {
             Scenario s = new Scenario();
             Game m = s.Scenario_WuQingYuan_Q6150();
@@ -57,7 +54,7 @@ namespace UnitTestProject
  18 . O X O O . . . . . . . . . . . . . .
         */
         [TestMethod]
-        public void NeutralPointMoveTest_Scenario_Corner_B21()
+        public void RestoreNeutralMoveTest_Scenario_Corner_B21()
         {
             Scenario s = new Scenario();
             Game m = s.Scenario_Corner_B21();
@@ -88,7 +85,7 @@ namespace UnitTestProject
  18 . O O X O . . . . . . . . . . . . . . 
          */
         [TestMethod]
-        public void SpecificNeutralMoveTest_Scenario_XuanXuanQiJing_Weiqi101_18410()
+        public void RestoreNeutralMoveTest_Scenario_XuanXuanQiJing_Weiqi101_18410()
         {
             Scenario s = new Scenario();
             Game m = s.Scenario_XuanXuanQiJing_Weiqi101_18410();
@@ -121,7 +118,7 @@ namespace UnitTestProject
  18 . . O . O O X . . O . . . . . . . . . 
         */
         [TestMethod]
-        public void SpecificNeutralMoveTest_Scenario_TianLongTu_Q16827_3()
+        public void RestoreNeutralMoveTest_Scenario_TianLongTu_Q16827_3()
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_TianLongTu_Q16827();
@@ -164,7 +161,7 @@ namespace UnitTestProject
     18 O O . O X X . . . . . . . . . . . . . 
         */
         [TestMethod]
-        public void GenericNeutralMoveTest_Scenario4dan17_2()
+        public void RestoreNeutralMoveTest_Scenario4dan17_2()
         {
             Scenario s = new Scenario();
             Game m = s.Scenario4dan17();
@@ -199,7 +196,7 @@ namespace UnitTestProject
  18 . X O . O O X . . . . . . . . . . . .
         */
         [TestMethod]
-        public void GenericNeutralMoveTest_Scenario_XuanXuanGo_Q18340()
+        public void RestoreNeutralMoveTest_Scenario_XuanXuanGo_Q18340()
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanGo_Q18340();
@@ -247,7 +244,7 @@ namespace UnitTestProject
          18 . . O X X X . O . O X O . . . . . . .
         */
         [TestMethod]
-        public void GenericNeutralMoveTest_Scenario_XuanXuanGo_Q18500()
+        public void RestoreNeutralMoveTest_Scenario_XuanXuanGo_Q18500()
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanGo_Q18500();

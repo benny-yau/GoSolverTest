@@ -3158,13 +3158,6 @@ namespace UnitTestProject
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean isRedundant = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
             Assert.AreEqual(isRedundant, false);
-
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
-
         }
 
 

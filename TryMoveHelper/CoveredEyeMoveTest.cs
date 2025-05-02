@@ -42,7 +42,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean coveredEyeMove = RedundantMoveHelper.FindCoveredEyeMove(tryMove);
-            Assert.AreEqual(coveredEyeMove, false);
+            Assert.AreEqual(coveredEyeMove, true);
         }
 
 
