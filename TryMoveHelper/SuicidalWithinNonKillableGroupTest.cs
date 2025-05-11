@@ -155,6 +155,36 @@ namespace UnitTestProject
             Assert.AreEqual(isSuicidal, true);
         }
 
+        /*
+ 10 . . X X X X . . . . . . . . . . . . . 
+ 11 . X O O O O X X . . . . . . . . . . . 
+ 12 . X . . . O O O X . . . . . . . . . . 
+ 13 . X . X O O X X X . . . . . . . . . . 
+ 14 . X . . . O O X . . . . . . . . . . . 
+ 15 . X O O O O X X . . . . . . . . . . . 
+ 16 . . X X . X X . . . . . . . . . . . . 
+ 17 . . . . . . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q17241()
+        {
+            Scenario s = new Scenario();
+            Game m = s.Scenario_TianLongTu_Q17241();
+            Game g = new Game(m);
+            g.MakeMove(6, 13);
+            g.MakeMove(5, 12);
+            g.MakeMove(7, 13);
+            g.MakeMove(5, 13);
+            g.MakeMove(6, 15);
+            g.MakeMove(5, 14);
+            g.MakeMove(3, 13);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Game.useMonteCarloRuntime = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
+        }
 
     }
 }

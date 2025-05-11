@@ -2478,9 +2478,9 @@ namespace UnitTestProject
  12 . X . . . . . . . . . . . . . . . . . 
  13 . . X . . . . . . . . . . . . . . . . 
  14 . X X X O O . . . . . . . . . . . . . 
- 15 . O O O X O . . . . . . . . . . . . . 
+ 15 X O O O X O . . . . . . . . . . . . . 
  16 O O X X X . . . . . . . . . . . . . . 
- 17 . O X . X . . . . . . . . . . . . . . 
+ 17 . O X . X . O . . . . . . . . . . . . 
  18 . O X . X . . . . . . . . . . . . . . 
          */
         [TestMethod]
@@ -2489,6 +2489,7 @@ namespace UnitTestProject
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White, 22);
             Game g = new Game(gi);
+            g.SetupMove(0, 15, Content.Black);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(1, 12, Content.Black);
             g.SetupMove(1, 14, Content.Black);
@@ -2512,6 +2513,7 @@ namespace UnitTestProject
             g.SetupMove(4, 18, Content.Black);
             g.SetupMove(5, 14, Content.White);
             g.SetupMove(5, 15, Content.White);
+            g.SetupMove(6, 17, Content.White);
             g.GameInfo.targetPoints.Add(new Point(1, 17));
 
             for (int x = 0; x <= 4; x++)
@@ -2542,10 +2544,10 @@ namespace UnitTestProject
         /*
  12 . X . . . . . . . . . . . . . . . . . 
  13 . X X . . . . . . . . . . . . . . . . 
- 14 . O X X X O O . . . . . . . . . . . . 
+ 14 X O X X X O O . . . . . . . . . . . . 
  15 O O X O O X O . . . . . . . . . . . . 
  16 O . O O . X . . . . . . . . . . . . . 
- 17 . O X X X X . . . . . . . . . . . . . 
+ 17 . O X X X X . O . . . . . . . . . . . 
  18 . O X . . X . . . . . . . . . . . . .
          */
         [TestMethod]
@@ -2554,6 +2556,7 @@ namespace UnitTestProject
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White, 22);
             Game g = new Game(gi);
+            g.SetupMove(0, 14, Content.Black);
             g.SetupMove(0, 15, Content.White);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(1, 12, Content.Black);
@@ -2582,6 +2585,7 @@ namespace UnitTestProject
             g.SetupMove(5, 18, Content.Black);
             g.SetupMove(6, 14, Content.White);
             g.SetupMove(6, 15, Content.White);
+            g.SetupMove(7, 17, Content.White);
             g.GameInfo.targetPoints.Add(new Point(1, 17));
 
             for (int x = 0; x <= 5; x++)
@@ -2709,5 +2713,69 @@ namespace UnitTestProject
 
         }
 
+        /*
+ 15 . . . . X X X X X . . . . . . . . . . 
+ 16 . . X . X O O O O X X X . . . . . . . 
+ 17 . . X O O O X . O O O X . . . . . . . 
+ 18 . . . X O X . X X O X . . . . . . . .
+         */
+        [TestMethod]
+        public void CoveredEyeMoveTest_Scenario_WuQingYuan_Q31673_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WuQingYuan_Q31673();
+            g.MakeMove(8, 18);
+            g.MakeMove(8, 17);
+            g.MakeMove(7, 18);
+            g.MakeMove(4, 18);
+            g.MakeMove(10, 18);
+            g.MakeMove(9, 18);
+            g.MakeMove(6, 17);
+            g.MakeMove(5, 17);
+            g.MakeMove(5, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
+            Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+
+            Game.useMonteCarloRuntime = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
+
+        }
+
+        /*
+ 15 . . . O O O O O O . . . . . . . . . . 
+ 16 . . O O X O X X . O . . . . . . . . . 
+ 17 . . O X X X . X X O . . . . . . . . . 
+ 18 . . X . X . X O O . . . . . . . . . .
+         */
+        [TestMethod]
+        public void CoveredEyeMoveTest_Scenario_GuanZiPu_Q19336()
+        {
+            Scenario s = new Scenario();
+            Game m = s.Scenario_GuanZiPu_Q19336();
+            Game g = new Game(m);
+            g.MakeMove(3, 18);
+            g.MakeMove(4, 18);
+            g.MakeMove(3, 16);
+            g.MakeMove(2, 18);
+            g.MakeMove(8, 18);
+            g.MakeMove(4, 17);
+
+            g.MakeMove(7, 18);
+            g.MakeMove(7, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(9, 18));
+            Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+
+            Game.useMonteCarloRuntime = false;
+            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+        }
     }
 }

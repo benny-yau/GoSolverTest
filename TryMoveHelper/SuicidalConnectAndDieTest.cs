@@ -3289,7 +3289,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(isRedundant, true);
 
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -4288,6 +4288,41 @@ namespace UnitTestProject
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 17);
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+        }
+
+        /*
+ 11 . O . . . . . . . . . . . . . . . . . 
+ 12 . . . . . . . . . . . . . . . . . . . 
+ 13 X O O . . . . . . . . . . . . . . . . 
+ 14 X X O O . . . . . . . . . . . . . . . 
+ 15 O X X O . . . . . . . . . . . . . . . 
+ 16 O X X O . . . . . . . . . . . . . . . 
+ 17 O . X O . O . . . . . . . . . . . . . 
+ 18 . X O . . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_A4Q11_101Weiqi_3()
+        {
+            Scenario s = new Scenario();
+            Game m = s.Scenario_GuanZiPu_A4Q11_101Weiqi();
+            Game g = new Game(m);
+            g.MakeMove(2, 18);
+            g.MakeMove(1, 18);
+            g.MakeMove(0, 17);
+            g.MakeMove(1, 16);
+            g.MakeMove(2, 14);
+            g.MakeMove(0, 13);
+            g.MakeMove(0, 15);
+            g.MakeMove(0, 14);
+            g.MakeMove(0, 16);
+            g.MakeMove(1, 15);
+
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Game.useMonteCarloRuntime = false;
+            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
     }
 }
