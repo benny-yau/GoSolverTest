@@ -374,5 +374,40 @@ namespace UnitTestProject
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
 
+        /*
+ 12 X X X . . . . . . . . . . . . . . . . 
+ 13 X O O X . . . . . . . . . . . . . . . 
+ 14 O . O O X . . . . . . . . . . . . . . 
+ 15 . O O O X . . . . . . . . . . . . . . 
+ 16 X . O . X . . . . . . . . . . . . . . 
+ 17 X O O X . X . . . . . . . . . . . . . 
+ 18 . X X . . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RestoreNeutralMoveTest_Scenario_XuanXuanGo_A26()
+        {
+            Scenario s = new Scenario();
+            Game m = s.Scenario_XuanXuanGo_A26();
+            Game g = new Game(m);
+            g.MakeMove(2, 18);
+            g.MakeMove(1, 15);
+            g.MakeMove(1, 18);
+            g.MakeMove(3, 14);
+            g.MakeMove(0, 13);
+            g.MakeMove(0, 14);
+            g.MakeMove(1, 14);
+            g.MakeMove(2, 14);
+
+            g.MakeMove(0, 16);
+            g.MakeMove(2, 13);
+            g.MakeMove(0, 17);
+            g.MakeMove(2, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Game.useMonteCarloRuntime = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+        }
+
     }
 }

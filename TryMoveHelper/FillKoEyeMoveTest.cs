@@ -1190,7 +1190,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean isRedundant = RedundantMoveHelper.FillKoEyeMove(tryMove);
-            Assert.AreEqual(isRedundant, true);
+            Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;

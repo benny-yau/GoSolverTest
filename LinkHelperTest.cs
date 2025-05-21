@@ -1736,6 +1736,9 @@ namespace UnitTestProject
             Boolean coveredEyeMove = RedundantMoveHelper.FindCoveredEyeMove(tryMove);
             Assert.AreEqual(coveredEyeMove, false);
 
+            Boolean isLink = LinkHelper.PossibleLinkForGroups(tryMove.TryGame.Board, g.Board);
+            Assert.AreEqual(isLink, true);
+
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;

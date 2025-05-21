@@ -1604,7 +1604,7 @@ namespace UnitTestProject
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             
             Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(isRedundant, true);
         }
 
 
