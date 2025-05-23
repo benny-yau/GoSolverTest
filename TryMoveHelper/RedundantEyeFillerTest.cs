@@ -7,6 +7,9 @@ using System.Collections.Generic;
 
 namespace UnitTestProject
 {
+    /// <summary>
+    /// now obsolete
+    /// </summary>
     [TestClass]
     public class RedundantEyeFillerTest
     {

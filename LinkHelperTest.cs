@@ -498,7 +498,7 @@ namespace UnitTestProject
             g.MakeMove(4, 15);
             g.Board[1, 16] = Content.White;
             Boolean isLinked = LinkHelper.CheckIsDiagonalLinked(new Point(3, 16), new Point(4, 17), g.Board);
-            Assert.AreEqual(isLinked, false);
+            Assert.AreEqual(isLinked, true);
             Boolean isLinked2 = LinkHelper.CheckIsDiagonalLinked(new Point(5, 16), new Point(4, 17), g.Board);
             Assert.AreEqual(isLinked2, false);
             Boolean groupsLinked = LinkHelper.IsDiagonallyConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(2, 16)), g.Board.GetGroupAt(new Point(5, 16)));

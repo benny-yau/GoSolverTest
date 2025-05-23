@@ -883,6 +883,7 @@ namespace UnitTestProject
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(move.Equals(new Point(3, 18)), true);
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
 
@@ -981,6 +982,7 @@ namespace UnitTestProject
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(move.Equals(new Point(10, 18)), true);
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
 
@@ -1015,6 +1017,7 @@ namespace UnitTestProject
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(move.Equals(new Point(6, 18)), true);
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
 
@@ -1051,8 +1054,83 @@ namespace UnitTestProject
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(move.Equals(new Point(0, 14)), true);
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
 
+        /*
+ 13 . . . . . X X X X . . . . . . . . . . 
+ 14 . . X X X O O O X . . . . . . . . . . 
+ 15 . . X O O O . O . . . . . . . . . . . 
+ 16 . . X O X X O O X X . . . . . . . . . 
+ 17 . . X O X . . . O X . . . . . . . . . 
+ 18 . . . X X O O . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void MustHaveNeutralMoveTest_Tianyuan()
+        {
+            Scenario s = new Scenario();
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            Game g = new Game(gi);
+            g.SetupMove(2, 14, Content.Black);
+            g.SetupMove(2, 15, Content.Black);
+            g.SetupMove(2, 16, Content.Black);
+            g.SetupMove(2, 17, Content.Black);
+            g.SetupMove(3, 14, Content.Black);
+            g.SetupMove(3, 15, Content.White);
+            g.SetupMove(3, 16, Content.White);
+            g.SetupMove(3, 17, Content.White);
+            g.SetupMove(3, 18, Content.Black);
+            g.SetupMove(4, 14, Content.Black);
+            g.SetupMove(4, 15, Content.White);
+            g.SetupMove(4, 16, Content.Black);
+            g.SetupMove(4, 17, Content.Black);
+            g.SetupMove(4, 18, Content.Black);
+            g.SetupMove(5, 13, Content.Black);
+            g.SetupMove(5, 14, Content.White);
+            g.SetupMove(5, 15, Content.White);
+            g.SetupMove(5, 16, Content.Black);
+            g.SetupMove(5, 18, Content.White);
+            g.SetupMove(6, 13, Content.Black);
+            g.SetupMove(6, 14, Content.White);
+            g.SetupMove(6, 16, Content.White);
+            g.SetupMove(6, 18, Content.White);
+            g.SetupMove(7, 13, Content.Black);
+            g.SetupMove(7, 14, Content.White);
+            g.SetupMove(7, 15, Content.White);
+            g.SetupMove(7, 16, Content.White);
+            g.SetupMove(8, 13, Content.Black);
+            g.SetupMove(8, 14, Content.Black);
+            g.SetupMove(8, 16, Content.Black);
+            g.SetupMove(8, 17, Content.White);
+            g.SetupMove(9, 16, Content.Black);
+            g.SetupMove(9, 17, Content.Black);
+
+            g.GameInfo.targetPoints.Add(new Point(4, 15));
+
+            for (int x = 2; x <= 7; x++)
+            {
+                for (int y = 14; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.movablePoints.Add(new Point(8, 17));
+            gi.movablePoints.Add(new Point(8, 18));
+            gi.movablePoints.Add(new Point(9, 18));
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+            gi.killMovablePoints.Add(new Point(8, 15));
+            gi.killMovablePoints.Add(new Point(1, 18));
+            gi.killMovablePoints.Add(new Point(10, 18));
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
+            Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
+            Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
+
+            Game.useMonteCarloRuntime = false;
+            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(move.Equals(new Point(2, 18)), true);
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+        }
     }
 }
