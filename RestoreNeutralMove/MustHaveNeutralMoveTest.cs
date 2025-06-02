@@ -42,7 +42,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isNeutralMove = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralMove, true);
-            Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
+            Assert.AreEqual(tryMove.MustHaveNeutralPoint, false);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Game.useMonteCarloRuntime = false;

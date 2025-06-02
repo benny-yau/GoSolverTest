@@ -5719,9 +5719,9 @@ namespace UnitTestProject
                     gi.movablePoints.Add(new Point(x, y));
             }
             gi.killMovablePoints.AddRange(gi.movablePoints);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             g.MakeMove(1, 17);
             g.MakeMove(2, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Point p = new Point(0, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);

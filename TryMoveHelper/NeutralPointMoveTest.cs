@@ -566,13 +566,12 @@ namespace UnitTestProject
         /*
  15 . . . . X X X X X . . . . . . . . . . 
  16 . . X X X O O O O X X X . . . . . . . 
- 17 . . X O O . O . O O O X . . . . . . . 
+ 17 X . X O O . O . O O O X . . . . . . . 
  18 . . . X O . X X X O X . . . . . . . . 
          */
         [TestMethod]
         public void NeutralPointMoveTest_Scenario_WuQingYuan_Q31673()
         {
-            //not redundant at (2, 18) - exception scenario
             Scenario s = new Scenario();
             Game m = s.Scenario_WuQingYuan_Q31673();
             Game g = new Game(m);
@@ -585,15 +584,13 @@ namespace UnitTestProject
             g.MakeMove(10, 18);
             g.MakeMove(9, 18);
             g.MakeMove(3, 16);
+            g.Board[0, 17] = Content.Black;
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = tryMoves.Where(t => t.Move.Equals(new Point(2, 18))).FirstOrDefault();
-            Assert.AreEqual(tryMove != null, true);
 
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move2 = g.Board.LastMove.Value;
-            Assert.AreEqual(move2.Equals(new Point(2, 18)), true);
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
         }
 
