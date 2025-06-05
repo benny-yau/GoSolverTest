@@ -4370,5 +4370,33 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
+
+        /*
+ 14 . X X X X . . . . . . . . . . . . . . 
+ 15 . . O O . X . . . . . . . . . . . . . 
+ 16 X O X O O X . . . . . . . . . . . . . 
+ 17 X O X O X X . . . . . . . . . . . . . 
+ 18 . . . O . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q2834_2()
+        {
+            Scenario s = new Scenario();
+            Game m = s.Scenario_TianLongTu_Q2834();
+            Game g = new Game(m);
+            g.MakeMove(0, 17);
+            g.MakeMove(1, 16);
+            g.MakeMove(2, 16);
+            g.MakeMove(3, 16);
+            g.MakeMove(2, 17);
+            g.MakeMove(3, 18);
+            g.MakeMove(0, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+
+            GameTryMove tryMove = new GameTryMove(g);
+            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 15);
+            Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isSuicidal, false);
+        }
     }
 }

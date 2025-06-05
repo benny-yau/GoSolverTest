@@ -919,6 +919,7 @@ namespace UnitTestProject
             g.Board[5, 14] = g.Board[5, 13] = g.Board[2, 15] = g.Board[0, 15] = g.Board[5, 16] = Content.Black;
             g.Board[4, 14] = g.Board[6, 14] = g.Board[4, 17] = g.Board[0, 14] = Content.White;
             g.Board[1, 15] = g.Board[5, 15] = Content.Empty;
+            g.GameInfo.movablePoints.Add(new Point(1, 15));
             g.GameInfo.movablePoints.Add(new Point(4, 13));
             g.GameInfo.movablePoints.Add(new Point(5, 12));
             g.GameInfo.movablePoints.Add(new Point(6, 13));
