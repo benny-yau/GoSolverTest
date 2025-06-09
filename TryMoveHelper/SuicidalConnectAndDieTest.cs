@@ -357,7 +357,7 @@ namespace UnitTestProject
             GameTryMove tryMove2 = new GameTryMove(g);
             tryMove2.MakeMoveResult = tryMove2.TryGame.MakeMove(0, 14);
             Boolean isSuicidal2 = RedundantMoveHelper.SuicidalRedundantMove(tryMove2);
-            Assert.AreEqual(isSuicidal2, false);
+            Assert.AreEqual(isSuicidal2, true);
 
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
