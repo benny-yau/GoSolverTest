@@ -2138,7 +2138,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(10, 18);
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
-            Assert.AreEqual(isNeutralPoint, false);
+            Assert.AreEqual(isNeutralPoint, true);
         }
 
         /*

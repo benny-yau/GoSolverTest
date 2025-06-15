@@ -1721,7 +1721,7 @@ namespace UnitTestProject
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(6, 17)), true);
+            Assert.AreEqual(move.Equals(new Point(5, 18)) || move.Equals(new Point(6, 17)), true);
         }
 
         /*

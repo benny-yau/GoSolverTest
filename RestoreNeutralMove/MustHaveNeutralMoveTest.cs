@@ -663,6 +663,7 @@ namespace UnitTestProject
             Game m = s.Scenario_WindAndTime_Q29475();
             Game g = new Game(m);
             g.Board[0, 14] = Content.Empty;
+            g.GameInfo.killMovablePoints.Add(new Point(0, 14));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 14));
