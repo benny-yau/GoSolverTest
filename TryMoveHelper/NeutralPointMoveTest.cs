@@ -1248,6 +1248,46 @@ namespace UnitTestProject
         }
 
         /*
+ 11 . . O . . . . . . . . . . . . . . . . 
+ 12 . O . . . . . . . . . . . . . . . . . 
+ 13 O X O O . . . . . . . . . . . . . . . 
+ 14 X X X X O . . . . . . . . . . . . . . 
+ 15 O X . X O . . . . . . . . . . . . . . 
+ 16 . O X X O . . . . . . . . . . . . . . 
+ 17 O O X O O . . . . . . . . . . . . . . 
+ 18 . O X . O . . . . . . . . . . . . . . 
+        */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_XuanXuanGo_A28_101Weiqi_7()
+        {
+            Scenario s = new Scenario();
+            Game m = s.Scenario_XuanXuanGo_A28_101Weiqi();
+            Game g = new Game(m);
+            g.MakeMove(2, 18);
+            g.MakeMove(1, 16);
+            g.MakeMove(2, 16);
+            g.MakeMove(0, 17);
+            g.MakeMove(1, 15);
+            g.MakeMove(1, 18);
+            g.MakeMove(3, 14);
+            g.MakeMove(0, 15);
+            g.MakeMove(0, 14);
+            g.MakeMove(4, 18);
+            g.Board[0, 13] = Content.White;
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Point p = new Point(0, 12);
+            GameTryMove tryMove = new GameTryMove(g);
+            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            Boolean isRedundant = RedundantMoveHelper.FindCoveredEyeMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+
+            Game.useMonteCarloRuntime = false;
+            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(move.Equals(new Point(0, 12)), true);
+        }
+        /*
  14 . . . . . . . X X . . . . . . . . . . 
  15 . . . X . X X O O X . . . . . . . . . 
  16 . . X O X O O O . . X . . . . . . . . 
@@ -1928,7 +1968,6 @@ namespace UnitTestProject
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanGo_A28_101Weiqi();
-            g.GameInfo.SearchDepth = 30;
             g.MakeMove(2, 18);
             g.MakeMove(1, 16);
             g.MakeMove(2, 16);
@@ -2176,5 +2215,54 @@ namespace UnitTestProject
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
         }
 
+
+        /*
+ 11 . . O . . . . . . . . . . . . . . . . 
+ 12 . O O . . . . . . . . . . . . . . . . 
+ 13 . X X O . . . . . . . . . . . . . . . 
+ 14 X . X O O . . . . . . . . . . . . . . 
+ 15 O X X X O . . . . . . . . . . . . . . 
+ 16 . O X X O . . . . . . . . . . . . . . 
+ 17 O O O X O . . . . . . . . . . . . . . 
+ 18 . . O X O . . . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_XuanXuanGo_A28_101Weiqi_8()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A28_101Weiqi();
+            g.MakeMove(2, 18);
+            g.MakeMove(1, 16);
+            g.MakeMove(2, 16);
+            g.MakeMove(0, 17);
+            g.MakeMove(1, 15);
+            g.MakeMove(1, 18);
+            g.MakeMove(3, 14);
+            g.MakeMove(0, 15);
+            g.MakeMove(0, 14);
+            g.MakeMove(3, 3);
+
+            g.Board[1, 14] = Content.Empty;
+            g.Board[3, 14] = Content.White;
+            g.Board[2, 15] = Content.Black;
+            g.Board[2, 13] = Content.Black;
+            g.Board[2, 12] = Content.White;
+
+            g.Board[3, 17] = Content.Black;
+            g.Board[1, 18] = Content.Empty;
+            g.Board[2, 18] = Content.White;
+            g.Board[2, 17] = Content.White;
+            g.Board[3, 18] = Content.Black;
+            g.Board[4, 18] = Content.White;
+
+            g.GameInfo.targetPoints = new List<Point>() { new Point(2, 16) };
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+
+            Game.useMonteCarloRuntime = false;
+            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
+        }
     }
 }
