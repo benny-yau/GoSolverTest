@@ -2392,7 +2392,7 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
             g.GameInfo.RuntimeScript_KillMove = null;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            List<Point> points = new List<Point>() { new Point(0, 17) }; //new Point(2, 18)
+            List<Point> points = new List<Point>() { new Point(0, 17), new Point(1, 16), new Point(2, 18) };
             foreach (Point p in points)
             {
                 GameTryMove tryMove = new GameTryMove(g);
@@ -4398,5 +4398,44 @@ namespace UnitTestProject
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
+
+        /*
+ 13 . . O . . . . . . . . . . . . . . . . 
+ 14 O O . . . . . . . . . . . . . . . . . 
+ 15 . X O O O O . . . . . . . . . . . . . 
+ 16 X X O X . . O . . . . . . . . . . . . 
+ 17 X O X X X X O . . . . . . . . . . . . 
+ 18 . O O O X X O . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_A14()
+        {
+            Scenario s = new Scenario();
+            Game m = s.Scenario_GuanZiPu_A14();
+            Game g = new Game(m);
+            g.MakeMove(1, 17);
+            g.MakeMove(0, 16);
+            g.MakeMove(1, 18);
+            g.MakeMove(0, 17);
+            g.MakeMove(0, 14);
+            g.MakeMove(5, 18);
+            g.MakeMove(2, 18);
+            g.MakeMove(3, 17);
+
+            g.MakeMove(3, 18);
+            g.MakeMove(4, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+
+            GameTryMove tryMove = new GameTryMove(g);
+            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 15);
+            Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isSuicidal, false);
+
+            Game.useMonteCarloRuntime = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+        }
+
     }
 }

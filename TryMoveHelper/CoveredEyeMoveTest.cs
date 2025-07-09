@@ -2609,7 +2609,7 @@ namespace UnitTestProject
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
+            Assert.AreEqual(move.Equals(new Point(0, 13)), true);
 
         }
 

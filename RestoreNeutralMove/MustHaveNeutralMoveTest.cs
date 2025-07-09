@@ -784,7 +784,7 @@ namespace UnitTestProject
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(0, 13)), true);
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
 
         /*

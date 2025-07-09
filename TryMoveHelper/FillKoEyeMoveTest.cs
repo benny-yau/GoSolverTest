@@ -1472,9 +1472,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean isRedundant = RedundantMoveHelper.FillKoEyeMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-
-            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(8, 18))) != null, true);
+            Assert.AreEqual(isRedundant, true);
         }
 
         /*

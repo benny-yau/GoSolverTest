@@ -3731,5 +3731,50 @@ namespace UnitTestProject
             Assert.AreEqual(move.Equals(new Point(5, 15)), true);
         }
 
+        /*
+ 12 X X . . . . . . . . . . . . . . . . . 
+ 13 O O X . . . . . . . . . . . . . . . . 
+ 14 . O X X . . . . . . . . . . . . . . . 
+ 15 X O . . . . . . . . . . . . . . . . . 
+ 16 X O O X X . X . . . . . . . . . . . . 
+ 17 X O O O X X . . . . . . . . . . . . . 
+ 18 . X O X . X . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantKoMoveTest_Scenario_TianLongTu_Q16456_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16456();
+            g.MakeMove(4, 17);
+            g.MakeMove(2, 16);
+            g.MakeMove(5, 18);
+            g.MakeMove(2, 17);
+            g.MakeMove(3, 18);
+            g.MakeMove(1, 15);
+            g.MakeMove(0, 17);
+            g.MakeMove(2, 18);
+            g.MakeMove(0, 14);
+            g.MakeMove(0, 18);
+            g.MakeMove(1, 18);
+
+            g.Board[0, 16] = Content.Black;
+            g.Board[0, 15] = Content.Black;
+            g.Board[0, 14] = Content.Empty;
+            g.Board[0, 13] = Content.White;
+            g.Board[1, 14] = Content.White;
+            g.Board[1, 13] = Content.White;
+            g.Board[2, 13] = Content.Black;
+            g.Board[1, 12] = Content.Black;
+            g.Board[0, 12] = Content.Black;
+            g.GameInfo.movablePoints.Add(new Point(0, 14));
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+
+            Point p = new Point(4, 18);
+            GameTryMove tryMove = new GameTryMove(g);
+            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            Boolean isSuicidal = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
+            Assert.AreEqual(isSuicidal, false);
+        }
+
     }
 }
