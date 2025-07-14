@@ -396,6 +396,12 @@ namespace UnitTestProject
             g.Board[1, 15] = g.Board[0, 16] = Content.White;
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+
+            GameTryMove tryMove = new GameTryMove(g);
+            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 18);
+            Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isSuicidal, true);
+
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();

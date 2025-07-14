@@ -1133,5 +1133,42 @@ namespace UnitTestProject
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
+
+        /*
+ 13 . O O . . . . . . . . . . . . . . . . 
+ 14 . . . O . . . . . . . . . . . . . . . 
+ 15 X X X O . . . . . . . . . . . . . . . 
+ 16 X . O X O O O . O . . . . . . . . . . 
+ 17 . O O X X X X O . . . . . . . . . . . 
+ 18 . O X . X . O . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void MustHaveNeutralMoveTest_Scenario_XuanXuanGo_A54_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A54();
+            g.MakeMove(1, 18);
+            g.MakeMove(0, 16);
+            g.MakeMove(1, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(6, 18);
+            g.MakeMove(0, 15);
+            g.MakeMove(3, 18);
+            g.MakeMove(2, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+
+            Point p = new Point(7, 18);
+            GameTryMove tryMove = new GameTryMove(g);
+            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
+            Assert.AreEqual(tryMove.MustHaveNeutralPoint, true);
+
+            Game.useMonteCarloRuntime = false;
+            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.Equals(ConfirmAliveResult.Dead), true);
+        }
+
     }
 }
