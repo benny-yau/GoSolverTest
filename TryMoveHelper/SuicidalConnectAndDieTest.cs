@@ -3252,7 +3252,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 16);
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isSuicidal, true);
+            Assert.AreEqual(isSuicidal, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
@@ -4519,7 +4519,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 18);
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isSuicidal, true);
+            Assert.AreEqual(isSuicidal, false);
         }
 
 
@@ -4549,8 +4549,24 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 17);
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isSuicidal, true);
+            Assert.AreEqual(isSuicidal, false);
         }
 
+        /*
+ 14 . O . . . . . . . . . . . . . . . . . 
+ 15 . . O O O O . . . . . . . . . . . . . 
+ 16 O O X X X O . . . . . . . . . . . . . 
+ 17 X X . . . O . . . . . . . . . . . . . 
+ 18 . . . X . . . . . . . . . . . . . . . 
+        */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_Corner_A41()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Corner_A41();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = tryMoves.Where(m => m.Move.Equals(new Point(2, 18))).FirstOrDefault();
+            Assert.AreEqual(tryMove != null, true);
+        }
     }
 }

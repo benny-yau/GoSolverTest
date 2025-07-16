@@ -1675,5 +1675,93 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
+
+
+        /*
+ 13 . . X . . . X . . . . . . . . . . . . 
+ 14 . . . . X . . X . . . . . . . . . . . 
+ 15 . . X . X O O X . . . . . . . . . . . 
+ 16 . . X O O O O O X . . . . . . . . . . 
+ 17 . X O . O . X O X . X . . . . . . . . 
+ 18 . X X O . X . O O X . . . . . . . . .
+        */
+        [TestMethod]
+        public void KillerFormationTest_Scenario_WindAndTime_Q30256()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WindAndTime_Q30256();
+            g.MakeMove(5, 18);
+            g.MakeMove(5, 16);
+            g.MakeMove(6, 17);
+            g.MakeMove(4, 16);
+            g.MakeMove(2, 18);
+            g.MakeMove(6, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+
+            Game.useMonteCarloRuntime = false;
+            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.Equals(ConfirmAliveResult.Dead), true);
+        }
+
+        /*
+ 13 X X X . . . . . . . . . . . . . . . . 
+ 14 X O X . . . . . . . . . . . . . . . . 
+ 15 O . O X . . . . . . . . . . . . . . . 
+ 16 O O O X . X . . . . . . . . . . . . . 
+ 17 X . O O X . . . . . . . . . . . . . . 
+ 18 . X O . . . . . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void KillerFormationTest_Scenario_XuanXuanGo_A7()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A7();
+            g.MakeMove(1, 15);
+            g.MakeMove(1, 16);
+            g.MakeMove(0, 17);
+            g.MakeMove(0, 16);
+            g.MakeMove(0, 14);
+            g.MakeMove(0, 18);
+            g.MakeMove(1, 18);
+            g.MakeMove(2, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+
+            Game.useMonteCarloRuntime = false;
+            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.Equals(ConfirmAliveResult.Dead), true);
+        }
+
+        /*
+ 10 . X X . . . . . . . . . . . . . . . . 
+ 11 . O X . . . . . . . . . . . . . . . . 
+ 12 . O . . . . . . . . . . . . . . . . . 
+ 13 O O X X . . . . . . . . . . . . . . . 
+ 14 X . O . X . . . . . . . . . . . . . . 
+ 15 . O . O X . . . . . . . . . . . . . . 
+ 16 . O O . X . . . . . . . . . . . . . . 
+ 17 X X X X . . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void KillerFormationTest_Scenario_WindAndTime_Q30302()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WindAndTime_Q30302();
+            g.MakeMove(0, 14);
+            g.MakeMove(1, 15);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = tryMoves.Where(m => m.Move.Equals(new Point(1, 14))).FirstOrDefault();
+            Assert.AreEqual(tryMove != null, true);
+
+            Game.useMonteCarloRuntime = false;
+            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.Equals(ConfirmAliveResult.Dead), true);
+        }
     }
 }

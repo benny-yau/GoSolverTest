@@ -368,14 +368,16 @@ namespace UnitTestProject
         public void LeapMoveTest_Scenario_GuanZiPu_B3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_B3();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_B3();
 
             Point p = new Point(1, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean isLeapMove = RedundantMoveHelper.SurvivalLeapMove(tryMove);
             Assert.AreEqual(isLeapMove, false);
+
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.Where(n => n.Move.Equals(new Point(1, 18))).FirstOrDefault() != null, true);
         }
 
 
