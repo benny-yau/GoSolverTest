@@ -31,7 +31,7 @@ namespace UnitTestProject
 
             g.Board.InternalMakeMove(3, 16, Content.White);
             Assert.AreEqual(g.Board.CapturedPoints.Count() == 1, true);
-            Assert.AreEqual(g.Board.singlePointCapture.Value.Equals(new Point(4, 16)), true);
+            Assert.AreEqual(g.Board.KoCapture.Value.Equals(new Point(4, 16)), true);
 
             MakeMoveResult result = g.Board.InternalMakeMove(4, 16, Content.Black);
             Assert.AreEqual(result == MakeMoveResult.KoBlocked, true);

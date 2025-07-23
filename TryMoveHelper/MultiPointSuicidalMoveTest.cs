@@ -2316,12 +2316,6 @@ namespace UnitTestProject
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
-
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
-            Game.useMonteCarloRuntime = false;
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
 
         /*

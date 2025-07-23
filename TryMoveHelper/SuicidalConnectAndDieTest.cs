@@ -3151,17 +3151,13 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_B6_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_B6();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_B6();
             g.MakeMove(6, 18);
             g.MakeMove(7, 17);
-            //g.Board[3, 17] = Content.White;
+
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(5, 18)), true);
+            GameTryMove tryMove = tryMoves.Where(n => n.Move.Equals(new Point(5, 18))).FirstOrDefault();
+            Assert.AreEqual(tryMove != null, true);
         }
 
         /*

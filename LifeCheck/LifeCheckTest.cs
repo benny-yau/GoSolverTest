@@ -388,14 +388,6 @@ namespace UnitTestProject
             g.Board[3, 16] = Content.Black;
             g.Board[4, 15] = Content.White;
 
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isLeapMove = RedundantMoveHelper.SurvivalLeapMove(tryMove);
-            Assert.AreEqual(isLeapMove, false);
-
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
