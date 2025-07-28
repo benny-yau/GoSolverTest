@@ -2196,5 +2196,38 @@ namespace UnitTestProject
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
         }
 
+
+        /*
+  8 . . O . . . . . . . . . . . . . . . . 
+  9 . O . . . . . . . . . . . . . . . . . 
+ 10 X X O . . . . . . . . . . . . . . . . 
+ 11 . X O . . . . . . . . . . . . . . . . 
+ 12 . O X O . . . . . . . . . . . . . . . 
+ 13 . X X O . . . . . . . . . . . . . . . 
+ 14 X O . X O . . . . . . . . . . . . . . 
+ 15 . X X X O . . . . . . . . . . . . . . 
+ 16 O O X X O . . . . . . . . . . . . . . 
+ 17 O O O O O . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void LifeCheckTest_Scenario_XuanXuanGo_A67_101Weiqi()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A67_101Weiqi();
+            g.MakeMove(1, 14);
+            g.MakeMove(2, 15);
+            g.MakeMove(1, 12);
+            g.MakeMove(0, 14);
+            g.MakeMove(1, 16);
+            g.MakeMove(0, 10);
+            g.MakeMove(0, 17);
+            g.MakeMove(1, 13);
+
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
+            Assert.AreEqual(result != ConfirmAliveResult.Alive, true);
+        }
+
     }
 }

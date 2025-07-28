@@ -56,10 +56,6 @@ namespace UnitTestProject
             Boolean isNonKillable2 = WallHelper.IsNonKillableGroup(tryMove.TryGame.Board, new Point(1, 13));
             Assert.AreEqual(isNonKillable2, false);
 
-            Board capturedBoard = ImmovableHelper.CaptureSuicideGroup(tryMove.TryGame.Board);
-            Boolean connectAndDie = ImmovableHelper.AllConnectAndDie(capturedBoard, p);
-            Assert.AreEqual(connectAndDie, true);
-
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;

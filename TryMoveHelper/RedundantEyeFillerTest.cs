@@ -2510,9 +2510,9 @@ namespace UnitTestProject
             g.MakeMove(3, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 16);
-            Boolean isFillerMove = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isFillerMove, false);
+            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 16);
+            Boolean isFillerMove = RedundantMoveHelper.RedundantFillerMove(tryMove);
+            Assert.AreEqual(isFillerMove, true);
         }
 
         /*
