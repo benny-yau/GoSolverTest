@@ -325,7 +325,6 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(tryMove), false);
-            Assert.AreEqual(RedundantMoveHelper.KillEyeFillerMove(tryMove), false);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;

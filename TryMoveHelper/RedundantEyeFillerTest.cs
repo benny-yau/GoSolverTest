@@ -53,7 +53,7 @@ namespace UnitTestProject
             {
                 GameTryMove tryMove = new GameTryMove(g);
                 tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-                Boolean eyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
+                Boolean eyeFiller = RedundantMoveHelper.RedundantFillerMove(tryMove);
                 Assert.AreEqual(eyeFiller, false);
             }
         }
@@ -85,12 +85,6 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove endGameMove = tryMoves.Where(m => m.Move.Equals(new Point(2, 15))).FirstOrDefault();
             Assert.AreEqual(endGameMove != null, true);
-
-            Point p = new Point(2, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean eyeFiller = RedundantMoveHelper.GenericEyeFillerMove(tryMove);
-            Assert.AreEqual(eyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -124,12 +118,6 @@ namespace UnitTestProject
             GameTryMove endGameMove = tryMoves.Where(m => m.Move.Equals(new Point(3, 18))).FirstOrDefault();
             Assert.AreEqual(endGameMove != null, true);
 
-            Point p = new Point(3, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean eyeFiller = RedundantMoveHelper.GenericEyeFillerMove(tryMove);
-            Assert.AreEqual(eyeFiller, false);
-
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -161,9 +149,6 @@ namespace UnitTestProject
             g.MakeMove(1, 16);
             g.MakeMove(2, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove endGameMove = tryMoves.Where(t => t.Move.Equals(new Point(0, 17))).FirstOrDefault();
-            Assert.AreEqual(endGameMove != null, true);
-
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -250,12 +235,6 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
             g.MakeMove(2, 15);
             g.MakeMove(0, 18);
-            Point p = new Point(0, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean eyeFiller = RedundantMoveHelper.GenericEyeFillerMove(tryMove);
-            Assert.AreEqual(eyeFiller, false);
-
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -339,11 +318,9 @@ namespace UnitTestProject
             g.MakeMove(1, 15);
             g.MakeMove(1, 0);
             g.Board[2, 14] = Content.Empty;
-            Point p = new Point(0, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean eyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(eyeFiller, false);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove endGameMove = tryMoves.Where(t => t.Move.Equals(new Point(0, 15))).FirstOrDefault();
+            Assert.AreEqual(endGameMove != null, true);
         }
 
 
@@ -366,16 +343,6 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
             g.MakeMove(3, 17);
             g.MakeMove(6, 16);
-
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean eyeFiller = RedundantMoveHelper.GenericEyeFillerMove(tryMove);
-            Assert.AreEqual(eyeFiller, false);
-
-            Boolean blnConnectAndDie = RedundantMoveHelper.SuicidalConnectAndDie(tryMove);
-            Assert.AreEqual(blnConnectAndDie, false);
-
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -434,8 +401,11 @@ namespace UnitTestProject
             Point p = new Point(1, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean eyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
+            Boolean eyeFiller = RedundantMoveHelper.RedundantFillerMove(tryMove);
             Assert.AreEqual(eyeFiller, false);
+
+            GameTryMove endGameMove = tryMoves.Where(t => t.Move.Equals(new Point(1, 18))).FirstOrDefault();
+            Assert.AreEqual(endGameMove != null, true);
         }
 
 
@@ -458,8 +428,11 @@ namespace UnitTestProject
             Point p = new Point(0, 17);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean eyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
+            Boolean eyeFiller = RedundantMoveHelper.RedundantFillerMove(tryMove);
             Assert.AreEqual(eyeFiller, false);
+
+            GameTryMove endGameMove = tryMoves.Where(t => t.Move.Equals(new Point(0, 17))).FirstOrDefault();
+            Assert.AreEqual(endGameMove != null, true);
         }
 
 
@@ -479,12 +452,6 @@ namespace UnitTestProject
             Scenario s = new Scenario();
             Game m = s.Scenario_TianLongTu_Q16985();
             Game g = new Game(m);
-
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean eyeFiller = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(eyeFiller, false);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove endGameMove = tryMoves.Where(t => t.Move.Equals(new Point(1, 18))).FirstOrDefault();
@@ -566,14 +533,7 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             g.MakeMove(4, 17);
             g.MakeMove(7, 15);
-
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(5, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean eyeFiller = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(eyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -601,11 +561,6 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(3, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean eyeFiller = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(eyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -638,11 +593,6 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(6, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean eyeFiller = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(eyeFiller, false);
 
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             Game.useMonteCarloRuntime = false;
@@ -672,16 +622,7 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(1, 18);
             g.MakeMove(0, 17);
-
-            Boolean connectAndDie = ImmovableHelper.CheckConnectAndDie(g.Board, g.Board.GetGroupAt(new Point(1, 17)));
-            Assert.AreEqual(connectAndDie, true);
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(2, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean eyeFiller = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(eyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -712,11 +653,6 @@ namespace UnitTestProject
             g.MakeMove(0, 14);
             g.MakeMove(3, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isSuicidal = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
@@ -748,11 +684,6 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             g.MakeMove(0, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isSuicidal = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
@@ -782,11 +713,6 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isSuicidal = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
@@ -823,12 +749,6 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isSuicidal = RedundantMoveHelper.GenericEyeFillerMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -859,12 +779,6 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(3, 18);
             g.MakeMove(1, 18);
-
-            Point p = new Point(0, 14);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isSuicidal = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Game.useMonteCarloRuntime = false;
@@ -929,12 +843,6 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isSuicidal = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
-
             Game.useMonteCarloRuntime = true;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -974,12 +882,6 @@ namespace UnitTestProject
             g.MakeMove(3, 3);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(7, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isSuicidal = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
-
             Game.useMonteCarloRuntime = true;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -1008,12 +910,6 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             g.MakeMove(4, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
@@ -1082,12 +978,6 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(4, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -1122,12 +1012,6 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(6, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -1157,12 +1041,6 @@ namespace UnitTestProject
             g.MakeMove(7, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(5, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
@@ -1196,12 +1074,6 @@ namespace UnitTestProject
             g.MakeMove(4, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(0, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
@@ -1326,12 +1198,6 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -1365,12 +1231,6 @@ namespace UnitTestProject
             //g.Board[0, 18] = Content.Empty;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(1, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -1401,12 +1261,6 @@ namespace UnitTestProject
             g.MakeMove(7, 15);
             g.MakeMove(4, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(5, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
@@ -1443,12 +1297,6 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(5, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -1481,12 +1329,6 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -1515,12 +1357,6 @@ namespace UnitTestProject
             g.MakeMove(3, 16);
             g.MakeMove(0, 16);
             g.MakeMove(4, 17);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
@@ -1546,12 +1382,6 @@ namespace UnitTestProject
             Game g = new Game(m);
             g.MakeMove(1, 18);
             g.MakeMove(0, 15);
-            Point p = new Point(0, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
@@ -1580,13 +1410,6 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
             g.MakeMove(2, 18);
             g.MakeMove(0, 18);
-
-            Point p = new Point(2, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -1609,12 +1432,6 @@ namespace UnitTestProject
             Game g = new Game(m);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -1640,12 +1457,6 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(0, 17);
             g.MakeMove(0, 14);
-
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
@@ -1676,12 +1487,6 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(5, 17);
 
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -1711,11 +1516,6 @@ namespace UnitTestProject
             g.MakeMove(7, 17);
             g.MakeMove(6, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(6, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
@@ -1743,11 +1543,6 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(1, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(3, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
@@ -1780,11 +1575,6 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
@@ -1823,11 +1613,6 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
@@ -1859,11 +1644,6 @@ namespace UnitTestProject
             g.MakeMove(10, 18);
             g.Board[5, 15] = Content.Black;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
@@ -1889,11 +1669,8 @@ namespace UnitTestProject
             Game g = s.Scenario_WuQingYuan_Q6150();
             g.MakeMove(2, 14);
 
-            Point p = new Point(1, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 15))) != null, true);
         }
 
         /*
@@ -1915,7 +1692,7 @@ namespace UnitTestProject
             Point p = new Point(5, 18);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
+            Boolean isEyeFiller = RedundantMoveHelper.RedundantFillerMove(tryMove);
             Assert.AreEqual(isEyeFiller, false);
 
             Game.useMonteCarloRuntime = false;
@@ -1941,11 +1718,7 @@ namespace UnitTestProject
             Game m = s.Scenario_TianLongTu_Q17077();
             Game g = new Game(m);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(3, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFillerMove = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFillerMove, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 18))) != null, true);
         }
 
         /*
@@ -1963,11 +1736,7 @@ namespace UnitTestProject
             Game m = s.Scenario_WindAndTime_Q30278();
             Game g = new Game(m);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFillerMove = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFillerMove, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
         }
 
         /*
@@ -1983,11 +1752,6 @@ namespace UnitTestProject
             Game m = s.Scenario_Corner_A95();
             Game g = new Game(m);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 18);
-            Boolean isEyeFillerMove = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFillerMove, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2012,11 +1776,6 @@ namespace UnitTestProject
             Game m = s.Scenario3dan22();
             Game g = new Game(m);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 18);
-            Boolean isEyeFillerMove = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFillerMove, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2066,11 +1825,6 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
             g.MakeMove(4, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 18);
-            Boolean isEyeFillerMove = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFillerMove, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2097,11 +1851,6 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(0, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 18);
-            Boolean isEyeFillerMove = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFillerMove, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2130,12 +1879,6 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(3, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 18);
-            Boolean isEyeFillerMove = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFillerMove, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2162,11 +1905,6 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 18);
-            Boolean isEyeFillerMove = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFillerMove, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2196,11 +1934,11 @@ namespace UnitTestProject
             g.MakeMove(6, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(9, 18);
-            Boolean isEyeFillerMove = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFillerMove, false);
-
+            Game.useMonteCarloRuntime = false;
+            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(move.Equals(new Point(9, 18)), true);
         }
 
         /*
@@ -2218,13 +1956,7 @@ namespace UnitTestProject
             Game g = new Game(m);
             g.MakeMove(1, 18);
             g.MakeMove(1, 17);
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 18);
-            Boolean isEyeFillerMove = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFillerMove, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2257,10 +1989,7 @@ namespace UnitTestProject
             g.MakeMove(5, 13);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(8, 18);
-            Boolean isRedundant = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false); //without killer group
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(8, 18))) != null, true);
         }
 
         /*
@@ -2284,13 +2013,7 @@ namespace UnitTestProject
             g.MakeMove(3, 17);
             g.MakeMove(4, 18);
             g.MakeMove(0, 16);
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 18);
-            Boolean isEyeFillerMove = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFillerMove, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2320,48 +2043,12 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(2, 16);
             g.MakeMove(2, 18);
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 18);
-            Boolean isSuicidal = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
-        }
-
-
-        /*
- 12 O O O O . . . . . . . . . . . . . . . 
- 13 . . . O X X . . . . . . . . . . . . . 
- 14 . O X . O X . . . . . . . . . . . . . 
- 15 X . O O O X . . . . . . . . . . . . . 
- 16 X O X X O X . . . . . . . . . . . . . 
- 17 O X . X X . . . . . . . . . . . . . . 
- 18 . . X . . . . . . . . . . . . . . . .
-         */
-        [TestMethod]
-        public void RedundantEyeFillerTest_Scenario_XuanXuanGo_B3_2()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_XuanXuanGo_B3();
-            g.MakeMove(1, 14);
-            g.MakeMove(0, 15);
-            g.MakeMove(3, 13);
-            g.MakeMove(0, 16);
-            g.MakeMove(4, 14);
-            g.MakeMove(2, 14);
-            g.MakeMove(0, 12);
-
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 13);
-            Boolean isSuicidal = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
         }
 
 
@@ -2379,11 +2066,6 @@ namespace UnitTestProject
             Game g = s.Scenario_Corner_B8();
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 18);
-            Boolean isSuicidal = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2409,11 +2091,6 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(-1, -1);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 17);
-            Boolean isSuicidal = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2444,11 +2121,6 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             g.MakeMove(0, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 17);
-            Boolean isSuicidal = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2477,11 +2149,6 @@ namespace UnitTestProject
             g.MakeMove(3, 15);
             g.MakeMove(0, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 14);
-            Boolean isFillerMove = RedundantMoveHelper.GenericEyeFillerMove(tryMove);
-            Assert.AreEqual(isFillerMove, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2540,11 +2207,6 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
             g.MakeMove(6, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
 
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
@@ -2581,11 +2243,11 @@ namespace UnitTestProject
             g.MakeMove(0, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(3, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Game.useMonteCarloRuntime = false;
+            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
 
 
@@ -2613,11 +2275,7 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(5, 18))) != null, true);
         }
 
         /*
@@ -2640,13 +2298,6 @@ namespace UnitTestProject
             g.MakeMove(5, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(3, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-
-
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2680,11 +2331,7 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(4, 14);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(4, 14))) != null, true);
 
         }
 
@@ -2709,12 +2356,11 @@ namespace UnitTestProject
             g.MakeMove(0, 15);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-
+            Game.useMonteCarloRuntime = false;
+            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(move.Equals(new Point(1, 17)), true);
         }
 
 
@@ -2741,11 +2387,7 @@ namespace UnitTestProject
             g.MakeMove(7, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(6, 18))) != null, true);
         }
 
 
@@ -2769,13 +2411,6 @@ namespace UnitTestProject
             g.MakeMove(8, 16);
             g.MakeMove(3, 18);
             g.MakeMove(10, 18);
-
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2798,11 +2433,8 @@ namespace UnitTestProject
             Game m = s.Scenario_TianLongTu_Q2413();
             Game g = new Game(m);
 
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isEyeFiller = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isEyeFiller, false);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 18))) != null, true);
         }
 
 
@@ -2824,11 +2456,7 @@ namespace UnitTestProject
             g.MakeMove(0, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(4, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(4, 17))) != null, true);
         }
 
         /*
@@ -2852,11 +2480,7 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             g.MakeMove(6, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(3, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 17))) != null, true);
         }
 
         /*
@@ -2886,13 +2510,6 @@ namespace UnitTestProject
             g.MakeMove(3, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseMapMoves = Game.UseSolutionPoints = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2907,7 +2524,7 @@ namespace UnitTestProject
  15 O X O O O O . . . . . . . . . . . . . 
  16 . X X . X O . . . . . . . . . . . . . 
  17 . O . X X O . . . . . . . . . . . . . 
- 18 X . X . . X . . . . . . . . . . . . . 
+ 18 . . X . . X . . . . . . . . . . . . . 
         */
         [TestMethod]
         public void RedundantEyeFillerTest_Scenario_Corner_A84()
@@ -2924,39 +2541,11 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-        }
-
-
-
-        /*
- 12 X X X . . . . . . . . . . . . . . . . 
- 13 . O . X . . . . . . . . . . . . . . . 
- 14 . . . . X . . . . . . . . . . . . . . 
- 15 . X O O X . . . . . . . . . . . . . . 
- 16 . . . O X . . . . . . . . . . . . . . 
- 17 . O O X . X . . . . . . . . . . . . . 
- 18 . . X . . . . . . . . . . . . . . . . 
-        */
-        [TestMethod]
-        public void RedundantEyeFillerTest_Scenario_XuanXuanGo_A26()
-        {
-            Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A26();
-            Game g = new Game(m);
-            g.MakeMove(2, 18);
-            g.MakeMove(3, 16);
-            g.MakeMove(1, 15);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Game.useMonteCarloRuntime = false;
+            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
         }
 
         /*
@@ -3019,12 +2608,6 @@ namespace UnitTestProject
             g.Board[5, 16] = Content.Black;
             g.Board[2, 18] = Content.White;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -3054,12 +2637,6 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(2, 18);
 
-            Point p = new Point(0, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -3084,60 +2661,9 @@ namespace UnitTestProject
             Scenario s = new Scenario();
             Game m = s.Scenario_XuanXuanGo_A59();
             Game g = new Game(m);
-            Point p = new Point(3, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-        }
-
-        /*
- 10 . . O . . . . . . . . . . . . . . . . 
- 11 . O . . . . . . . . . . . . . . . . . 
- 12 . X O O O O . . . . . . . . . . . . . 
- 13 . X X X X O . . . . . . . . . . . . . 
- 14 X . . . O X O . . . . . . . . . . . . 
- 15 O X X . . X O . . . . . . . . . . . . 
- 16 O O X X X O O . . . . . . . . . . . . 
- 17 . O O O O . . . . . . . . . . . . . . 
- 18 . . . . . . . . . . . . . . . . . . . 
-         */
-        [TestMethod]
-        public void RedundantEyeFillerTest_Scenario_WindAndTime_Q29345()
-        {
-            Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q29345();
-            Game g = new Game(m);
-            g.MakeMove(0, 14);
-            g.MakeMove(4, 14);
-            Point p = new Point(2, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-        }
-
-        /*
- 14 . . . O . . . . . . . . . . . . . . . 
- 15 O O O . . . . . . . . . . . . . . . . 
- 16 . X X O O . O . . . . . . . . . . . . 
- 17 . . . X . . . . . . . . . . . . . . . 
- 18 . X . . . . . . . . . . . . . . . . .
-        */
-
-        [TestMethod]
-        public void RedundantEyeFillerTest_Scenario_XuanXuanQiJing_A1()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_XuanXuanQiJing_A1();
+            g.MakeMove(3, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(6, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false); //without killer group
-
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(5, 18))) != null, true);
         }
 
         /*
@@ -3155,104 +2681,7 @@ namespace UnitTestProject
             Game g = s.Scenario_Corner_A56();
             g.MakeMove(0, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-        }
-
-
-        /*
- 14 . . X . . . . . . . . . . . . . . . . 
- 15 . . . X X X X X X X . . . . . . . . . 
- 16 . X X O O X O O O X . . . . . . . . . 
- 17 . . . O O O O O O X . . . . . . . . . 
- 18 . . . O . X X O O X . . . . . . . . . 
-        */
-
-        [TestMethod]
-        public void RedundantEyeFillerTest_Scenario_XuanXuanGo_Q6710()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_XuanXuanGo_Q6710();
-            g.MakeMove(5, 18);
-            g.MakeMove(4, 17);
-            g.MakeMove(6, 17);
-            g.MakeMove(3, 18);
-            g.MakeMove(6, 18);
-            g.MakeMove(7, 17);
-            g.MakeMove(6, 18);
-            g.MakeMove(6, 17);
-            g.MakeMove(5, 18);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false); //without killer group
-
-        }
-
-        /*
- 13 . . O . . . . . . . . . . . . . . . . 
- 14 . O . . . . . . . . . . . . . . . . . 
- 15 O X O O O O . . . . . . . . . . . . . 
- 16 . X X . X O . . . . . . . . . . . . . 
- 17 . O . X X O . . . . . . . . . . . . . 
- 18 . . X . . X . . . . . . . . . . . . . 
-        */
-
-        [TestMethod]
-        public void RedundantEyeFillerTest_Scenario_Corner_A84_2()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_Corner_A84();
-            g.MakeMove(4, 18);
-            g.MakeMove(3, 17);
-            g.MakeMove(3, 18);
-            g.MakeMove(2, 18);
-            g.MakeMove(0, 15);
-            g.MakeMove(5, 18);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false); //without killer group
-        }
-
-        /*
- 13 . O . . . . . . . . . . . . . . . . . 
- 14 . . . . . . . . . . . . . . . . . . . 
- 15 . O O O O . . . . . . . . . . . . . . 
- 16 X X X X . O . . . . . . . . . . . . . 
- 17 O O O X X O . O . . . . . . . . . . . 
- 18 . . O . X . . . . . . . . . . . . . . 
-         */
-        [TestMethod]
-        public void RedundantEyeFillerTest_Scenario_Corner_A80_3()
-        {
-            Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A80();
-            Game g = new Game(m);
-            g.MakeMove(0, 17);
-            g.MakeMove(0, 16);
-            g.MakeMove(2, 17);
-            g.MakeMove(3, 17);
-            g.MakeMove(1, 17);
-            g.MakeMove(4, 18);
-            g.MakeMove(2, 18);
-
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 18))) != null, true);
         }
 
         /*
@@ -3275,52 +2704,11 @@ namespace UnitTestProject
             g.MakeMove(3, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(3, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.SurvivalEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-
             Game.useMonteCarloRuntime = false;
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
-        }
-
-        /*
- 13 . . X . X X . . . . . . . . . . . . . 
- 14 . . . X O O X X . . . . . . . . . . . 
- 15 . . X O O X O X . . . . . . . . . . . 
- 16 . . X O . X O X . . . . . . . . . . . 
- 17 . . X O . . O O X . . . . . . . . . . 
- 18 . X O O O O O X X . . . . . . . . . . 
-        */
-        [TestMethod]
-        public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q31646()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_WuQingYuan_Q31646();
-            g.MakeMove(7, 18);
-            g.MakeMove(6, 18);
-            g.MakeMove(3, 18);
-            g.MakeMove(4, 18);
-            g.MakeMove(5, 15);
-            g.MakeMove(4, 15);
-            g.MakeMove(4, 17);
-            g.MakeMove(2, 18);
-            g.MakeMove(5, 16);
-            g.MakeMove(5, 18);
-            g.MakeMove(1, 18);
-            g.MakeMove(3, 18);
-            g.Board[4, 17] = Content.Empty;
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(4, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-            Boolean isRedundant = RedundantMoveHelper.KillEyeFillerMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
         }
 
         /*

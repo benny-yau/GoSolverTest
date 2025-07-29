@@ -263,7 +263,7 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             g.MakeMove(0, 14);
 
-            Boolean semiSolidEye = EyeHelper.FindSemiSolidEye(new Point(2, 17), g.Board, Content.White).Item1;
+            Boolean semiSolidEye = EyeHelper.FindSemiSolidEye(g.Board, new Point(2, 17), Content.White).Item1;
             Assert.AreEqual(semiSolidEye, false);
 
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
@@ -419,8 +419,8 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             g.MakeMove(6, 16);
             Content c = Content.White;
-            Assert.AreEqual(EyeHelper.FindSemiSolidEye(new Point(5, 16), g.Board, c).Item1, true);
-            Assert.AreEqual(EyeHelper.FindSemiSolidEye(new Point(7, 15), g.Board, c).Item1, true);
+            Assert.AreEqual(EyeHelper.FindSemiSolidEye(g.Board, new Point(5, 16), c).Item1, true);
+            Assert.AreEqual(EyeHelper.FindSemiSolidEye(g.Board, new Point(7, 15), c).Item1, true);
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
             Assert.AreEqual(result == ConfirmAliveResult.Alive, true);
         }
@@ -455,8 +455,8 @@ namespace UnitTestProject
             Assert.AreEqual(EyeHelper.FindUncoveredEye(g.Board, new Point(7, 15), c), true);
             Assert.AreEqual(EyeHelper.FindUncoveredEye(g.Board, new Point(5, 16), c), false);
 
-            Assert.AreEqual(EyeHelper.FindSemiSolidEye(new Point(4, 17), g.Board, c).Item1, true);
-            Assert.AreEqual(EyeHelper.FindSemiSolidEye(new Point(7, 15), g.Board, c).Item1, false);
+            Assert.AreEqual(EyeHelper.FindSemiSolidEye(g.Board, new Point(4, 17), c).Item1, true);
+            Assert.AreEqual(EyeHelper.FindSemiSolidEye(g.Board, new Point(7, 15), c).Item1, false);
 
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
             Assert.AreEqual(result == ConfirmAliveResult.Alive, true);
@@ -1161,7 +1161,7 @@ namespace UnitTestProject
             g.Board[8, 18] = Content.Empty;
             g.Board[9, 18] = Content.Black;
 
-            Boolean realEye = EyeHelper.FindSemiSolidEye(new Point(5, 17), g.Board, Content.Black).Item1;
+            Boolean realEye = EyeHelper.FindSemiSolidEye(g.Board, new Point(5, 17), Content.Black).Item1;
             Assert.AreEqual(realEye, false);
 
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
@@ -1188,7 +1188,7 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             g.MakeMove(3, 17);
 
-            Boolean realEye = EyeHelper.FindSemiSolidEye(new Point(4, 17), g.Board, Content.Black).Item1;
+            Boolean realEye = EyeHelper.FindSemiSolidEye(g.Board, new Point(4, 17), Content.Black).Item1;
             Assert.AreEqual(realEye, false);
 
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
@@ -1216,7 +1216,7 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             g.MakeMove(5, 15);
 
-            (Boolean realEye, List<Point> immovablePoints) = EyeHelper.FindSemiSolidEye(new Point(5, 18), g.Board, Content.White);
+            (Boolean realEye, List<Point> immovablePoints) = EyeHelper.FindSemiSolidEye(g.Board, new Point(5, 18), Content.White);
             Assert.AreEqual(realEye, true);
 
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
@@ -1307,7 +1307,7 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            (Boolean realEye, List<Point> immovablePoints) = EyeHelper.FindSemiSolidEye(new Point(1, 18), g.Board, Content.Black);
+            (Boolean realEye, List<Point> immovablePoints) = EyeHelper.FindSemiSolidEye(g.Board, new Point(1, 18), Content.Black);
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
             Assert.AreEqual(result == ConfirmAliveResult.Alive, false);
         }
@@ -1547,7 +1547,7 @@ namespace UnitTestProject
             g.MakeMove(0, 15);
             g.MakeMove(0, 16);
 
-            Boolean semiSolidEye = EyeHelper.FindSemiSolidEye(new Point(1, 16), g.Board, Content.Black).Item1;
+            Boolean semiSolidEye = EyeHelper.FindSemiSolidEye(g.Board, new Point(1, 16), Content.Black).Item1;
             Assert.AreEqual(semiSolidEye, false);
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
             Assert.AreEqual(result == ConfirmAliveResult.Alive, false);
@@ -1673,14 +1673,14 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             g.MakeMove(3, 18);
             g.MakeMove(2, 18);
-            (Boolean isRealEye, _) = EyeHelper.FindSemiSolidEye(new Point(2, 17), g.Board, Content.White);
+            (Boolean isRealEye, _) = EyeHelper.FindSemiSolidEye(g.Board, new Point(2, 17), Content.White);
             Assert.AreEqual(isRealEye, false);
 
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
             Assert.AreEqual(result == ConfirmAliveResult.Alive, false);
 
             g.Board[0, 18] = Content.White;
-            Assert.AreEqual(EyeHelper.FindSemiSolidEye(new Point(2, 17), g.Board, Content.White).Item1, false);
+            Assert.AreEqual(EyeHelper.FindSemiSolidEye(g.Board, new Point(2, 17), Content.White).Item1, false);
 
         }
 
@@ -1710,7 +1710,7 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(0, 18);
             g.MakeMove(1, 18);
-            (Boolean isRealEye, _) = EyeHelper.FindSemiSolidEye(new Point(2, 16), g.Board, Content.Black);
+            (Boolean isRealEye, _) = EyeHelper.FindSemiSolidEye(g.Board, new Point(2, 16), Content.Black);
             Assert.AreEqual(isRealEye, false);
 
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
@@ -1827,7 +1827,7 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(0, 13);
             g.MakeMove(2, 14);
-            (Boolean isRealEye, _) = EyeHelper.FindSemiSolidEye(new Point(1, 16), g.Board, Content.Black);
+            (Boolean isRealEye, _) = EyeHelper.FindSemiSolidEye(g.Board, new Point(1, 16), Content.Black);
             Assert.AreEqual(isRealEye, false);
 
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
@@ -2039,7 +2039,7 @@ namespace UnitTestProject
             g.Board[6, 14] = Content.White;
             g.Board[7, 15] = Content.White;
             g.Board[5, 18] = Content.Black;
-            Boolean realEye = EyeHelper.FindSemiSolidEye(new Point(4, 17), g.Board, Content.Black).Item1;
+            Boolean realEye = EyeHelper.FindSemiSolidEye(g.Board, new Point(4, 17), Content.Black).Item1;
             Assert.AreEqual(realEye, false);
             g.GameInfo.targetPoints.Clear();
             g.GameInfo.targetPoints.Add(new Point(2, 17));
@@ -2223,6 +2223,33 @@ namespace UnitTestProject
             g.MakeMove(0, 10);
             g.MakeMove(0, 17);
             g.MakeMove(1, 13);
+
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
+            Assert.AreEqual(result != ConfirmAliveResult.Alive, true);
+        }
+
+        /*
+ 14 . O O . . . . . . . . . . . . . . . . 
+ 15 X O . O O O . . . . . . . . . . . . . 
+ 16 O O X O X O . . . . . . . . . . . . . 
+ 17 X X . X X O . O . . . . . . . . . . . 
+ 18 . X . . . X . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void LifeCheckTest_Scenario_Corner_B28_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Corner_B28();
+            g.MakeMove(1, 17);
+            g.MakeMove(0, 16);
+            g.MakeMove(0, 17);
+            g.MakeMove(3, 16);
+            g.MakeMove(0, 15);
+            g.MakeMove(1, 15);
+            g.MakeMove(3, 17);
+            g.MakeMove(1, 16);
+            g.MakeMove(1, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
