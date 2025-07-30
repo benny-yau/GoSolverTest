@@ -7,70 +7,48 @@ using System.Collections.Generic;
 
 namespace UnitTestProject
 {
-    /// <summary>
-    /// now obsolete
-    /// </summary>
     [TestClass]
     public class RedundantEyeFillerTest
     {
 
         /*
- 13 . X X . . . . . . . . . . . . . . . . 
- 14 O O . . X . . . . . . . . . . . . . . 
- 15 . O O O . . . . . . . . . . . . . . . 
- 16 . . . O O X X . . . . . . . . . . . . 
- 17 . O . . O O X . . . . . . . . . . . . 
- 18 . O . . . O . . . . . . . . . . . . .
-         */
+ 13 . . . . . . . . . . . . . . . . . . . 
+ 14 . . . . . . . X X . . . . . . . . . . 
+ 15 . . . X X X X O O X . . . . . . . . . 
+ 16 . . X O . O O . . X X . . . . . . . . 
+ 17 . . X O . . . . O O X . X . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
+        */
         [TestMethod]
-        public void RedundantEyeFillerTest_Scenario_GuanZiPu_B3()
+        public void RedundantEyeFillerTest_Scenario_TianLongTu_Q17132()
         {
-            //within killer group
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_B3();
-            Game g = new Game(m);
-            g.MakeMove(1, 18);
-            g.MakeMove(2, 17);
-            g.MakeMove(4, 16);
-            g.MakeMove(0, 15);
-            g.MakeMove(0, 14);
-            g.MakeMove(4, 18);
-            g.MakeMove(5, 18);
-            g.MakeMove(0, 17);
-            g.MakeMove(1, 17);
-
-            g.MakeMove(0, 16);
-            g.MakeMove(0, 18);
-            g.MakeMove(2, 18);
-            g.MakeMove(1, 18);
-            g.MakeMove(0, 18);
-            g.MakeMove(1, 17);
-            g.MakeMove(-1, -1);
-            g.GameInfo.RuntimeScript_KillMove = null;
+            Game g = s.Scenario_TianLongTu_Q17132();
+            g.MakeMove(9, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            List<Point> points = new List<Point>() { new Point(4, 18) };
+            List<Point> points = new List<Point>() { new Point(5, 18), new Point(6, 18), new Point(8, 18) };
             foreach (Point p in points)
             {
                 GameTryMove tryMove = new GameTryMove(g);
                 tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
                 Boolean eyeFiller = RedundantMoveHelper.RedundantFillerMove(tryMove);
-                Assert.AreEqual(eyeFiller, false);
+                Assert.AreEqual(eyeFiller, true);
             }
         }
 
 
-        /*
- 10 . . X . . . . . . . . . . . . . . . . 
- 11 . . . X X X . . . . . . . . . . . . . 
- 12 . X X O O O X . . . . . . . . . . . . 
- 13 O O O . . O . X . . . . . . . . . . . 
- 14 . X O X X O . . . . . . . . . . . . . 
- 15 . O . . X O X . . . . . . . . . . . . 
- 16 . X O O O X X . . . . . . . . . . . . 
- 17 . X X X X . . . . . . . . . . . . . . 
- 18 . . . . . . . . . . . . . . . . . . . 
-        */
-        [TestMethod]
+            /*
+     10 . . X . . . . . . . . . . . . . . . . 
+     11 . . . X X X . . . . . . . . . . . . . 
+     12 . X X O O O X . . . . . . . . . . . . 
+     13 O O O . . O . X . . . . . . . . . . . 
+     14 . X O X X O . . . . . . . . . . . . . 
+     15 . O . . X O X . . . . . . . . . . . . 
+     16 . X O O O X X . . . . . . . . . . . . 
+     17 . X X X X . . . . . . . . . . . . . . 
+     18 . . . . . . . . . . . . . . . . . . . 
+            */
+            [TestMethod]
         public void RedundantEyeFillerTest_Scenario_WindAndTime_Q30005()
         {
             Scenario s = new Scenario();
@@ -91,9 +69,6 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 15)), true);
         }
-
-
-
 
         /*
  13 . . . . X . X X . . . . . . . . . . . 
@@ -123,8 +98,6 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
         }
-
-
 
         /*
  11 . X . . . . . . . . . . . . . . . . . 
