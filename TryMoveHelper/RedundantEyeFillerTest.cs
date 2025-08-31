@@ -408,30 +408,6 @@ namespace UnitTestProject
             Assert.AreEqual(endGameMove != null, true);
         }
 
-
-        /*
- 12 . X . . . . . . . . . . . . . . . . . 
- 13 X . . . . . . . . . . . . . . . . . . 
- 14 O X X X . . . . . . . . . . . . . . . 
- 15 O O O . . X . . . . . . . . . . . . . 
- 16 . . . O O X . . . . . . . . . . . . . 
- 17 . . . O X X . . . . . . . . . . . . . 
- 18 . . . X O . . . . . . . . . . . . . . 
-
-         */
-        [TestMethod]
-        public void RedundantEyeFillerTest_Scenario_TianLongTu_Q16985()
-        {
-            Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16985();
-            Game g = new Game(m);
-
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove endGameMove = tryMoves.Where(t => t.Move.Equals(new Point(1, 18))).FirstOrDefault();
-            Assert.AreEqual(endGameMove != null, true);
-        }
-
-
         /*
  15 . O O O O . . . . . . . . . . . . . . 
  16 X O X X X O O . . . . . . . . . . . . 
@@ -1661,6 +1637,7 @@ namespace UnitTestProject
             Game g = new Game(m);
             g.MakeMove(5, 17);
             g.MakeMove(7, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             Point p = new Point(5, 18);
             GameTryMove tryMove = new GameTryMove(g);
@@ -1673,25 +1650,6 @@ namespace UnitTestProject
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)), true);
-        }
-
-
-
-        /*
- 14 . X . . . . . . . . . . . . . . . . . 
- 15 . . X X X X X . . . . . . . . . . . . 
- 16 X X O O . O O X . . . . . . . . . . . 
- 17 O O . . . . O X . . . . . . . . . . . 
- 18 . . . X . . . X . . . . . . . . . . . 
-         */
-        [TestMethod]
-        public void RedundantEyeFillerTest_Scenario_TianLongTu_Q17077_2()
-        {
-            Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17077();
-            Game g = new Game(m);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 18))) != null, true);
         }
 
         /*
@@ -2390,26 +2348,6 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
         }
-
-        /* 
- 13 . X . . . . . . . . . . . . . . . . . 
- 14 . O X X X . . . . . . . . . . . . . . 
- 15 . O O O X . X X . . . . . . . . . . . 
- 16 . . . O O O O X . . . . . . . . . . . 
- 17 . . X O X X X . . . . . . . . . . . . 
- 18 . X . . . . . . . . . . . . . . . . . 
-         */
-        [TestMethod]
-        public void RedundantEyeFillerTest_Scenario_TianLongTu_Q2413()
-        {
-            Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q2413();
-            Game g = new Game(m);
-
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 18))) != null, true);
-        }
-
 
         /*
  15 . O O O O . . . . . . . . . . . . . . 

@@ -793,7 +793,7 @@ namespace UnitTestProject
  14 . X X X O O . . . . . . . . . . . . . 
  15 . O O O X O . . . . . . . . . . . . . 
  16 O O . X X O . . . . . . . . . . . . . 
- 17 . O X . X . . . . . . . . . . . . . . 
+ 17 . O X . X . O . . . . . . . . . . . . 
  18 . O X . X . . . . . . . . . . . . . .
          */
         [TestMethod]
@@ -824,6 +824,7 @@ namespace UnitTestProject
             g.SetupMove(5, 14, Content.White);
             g.SetupMove(5, 15, Content.White);
             g.SetupMove(5, 16, Content.White);
+            g.SetupMove(6, 17, Content.White);
             g.GameInfo.targetPoints.Add(new Point(1, 17));
 
             for (int x = 0; x <= 4; x++)
