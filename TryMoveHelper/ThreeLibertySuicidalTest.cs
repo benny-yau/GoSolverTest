@@ -301,7 +301,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             
-            Boolean tigerMouth = ImmovableHelper.IsConfirmTigerMouth(g.Board, tryMove.TryGame.Board, new Point(0, 17)) != null;
+            Boolean tigerMouth = ImmovableHelper.IsConfirmTigerMouth(g.Board, tryMove.TryGame.Board) != null;
             Assert.AreEqual(tigerMouth, true);
 
         }

@@ -186,5 +186,38 @@ namespace UnitTestProject
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
         }
 
+        /*
+  13 O O O . O . . . . . . . . . . . . . . 
+  14 . . . O . . . . . . . . . . . . . . . 
+  15 X . X O . . . . . . . . . . . . . . . 
+  16 . . . . O . . . . . . . . . . . . . . 
+  17 . X . X O . . . . . . . . . . . . . . 
+  18 . . X O O . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantNeuralNetMoveTest_Scenario_XuanXuanGo_A82_101Weiqi()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A82_101Weiqi();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
+        }
+
+
+        /*
+ 14 . O O O . . . . . . . . . . . . . . . 
+ 15 O X X O . . . . . . . . . . . . . . . 
+ 16 . . X O . O O . O . . . . . . . . . . 
+ 17 . X . X X X O . . . . . . . . . . . . 
+ 18 . . . . . X . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void RedundantNeuralNetMoveTest_Scenario_Corner_A139()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Corner_A139();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(2, 17))) != null, true);
+        }
     }
 }
