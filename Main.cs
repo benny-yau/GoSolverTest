@@ -17,7 +17,7 @@ namespace UnitTestProject
         public static void AssemblyInitialize(TestContext testContext)
         {
             //set to true to start leela zero, to remove redundant neural net moves in LeelaSharp project
-            MonteCarloGame.useLeelaZero = true;
+            MonteCarloGame.useLeelaZero = false;
 
             try
             {

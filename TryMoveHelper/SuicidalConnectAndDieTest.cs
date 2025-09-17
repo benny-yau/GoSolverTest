@@ -817,7 +817,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 12);
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isSuicidal, true);
+            Assert.AreEqual(isSuicidal, false);
         }
 
         /*

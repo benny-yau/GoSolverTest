@@ -2128,5 +2128,66 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
         }
+
+        /*
+ 10 . X X . . . . . . . . . . . . . . . . 
+ 11 O O X . . . . . . . . . . . . . . . . 
+ 12 . O . . . . . . . . . . . . . . . . . 
+ 13 . O X X . . . . . . . . . . . . . . . 
+ 14 X . O X X . . . . . . . . . . . . . . 
+ 15 . O O O X . . . . . . . . . . . . . . 
+ 16 . O O X X . . . . . . . . . . . . . . 
+ 17 X X X X . . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_WindAndTime_Q30302_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WindAndTime_Q30302();
+            g.MakeMove(0, 14);
+            g.MakeMove(1, 15);
+            g.MakeMove(3, 16);
+            g.MakeMove(0, 11);
+            g.MakeMove(3, 14);
+            g.MakeMove(2, 15);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 12));
+            Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isSuicidal, true);
+        }
+
+        /*
+ 13 . . . . . . . O . . . . . . . . . . . 
+ 14 . . . . . . O . O . . . . . . . . . . 
+ 15 . . . . . O . . . O O O . . . . . . . 
+ 16 . . . O O X X X X O X O . . . . . . . 
+ 17 . O . O X . X X X X X O . . . . . . . 
+ 18 . . . O . X . . . X X O . . . . . . . 
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_Q18500_4()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_Q18500();
+            g.MakeMove(8, 18);
+            g.MakeMove(6, 17);
+            g.MakeMove(7, 18);
+            g.MakeMove(10, 18);
+            g.MakeMove(9, 16);
+            g.MakeMove(9, 17);
+            g.MakeMove(6, 18);
+            g.MakeMove(7, 17);
+            g.MakeMove(11, 18);
+            g.MakeMove(8, 17);
+            g.MakeMove(3, 18);
+            g.MakeMove(9, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
+            Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isSuicidal, true);
+        }
     }
 }
