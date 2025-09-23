@@ -3856,29 +3856,5 @@ namespace UnitTestProject
             Assert.AreEqual(isRedundant, false);
         }
 
-
-        /*
- 14 . . X X X X . X . . . . . . . . . . . 
- 15 . . X O O . X . . . . . . . . . . . . 
- 16 . X O . O X O X X . . . . . . . . . . 
- 17 . X O X O . O O X . . . . . . . . . . 
- 18 . X O . . . . . . . . . . . . . . . .
-         */
-        [TestMethod]
-        public void SuicidalRedundantMoveTest__Scenario_Nie137()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_Nie137();
-            g.MakeMove(5, 16);
-            g.MakeMove(4, 16);
-            g.MakeMove(3, 17);
-            g.MakeMove(2, 18);
-
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
-            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-        }
-
     }
 }

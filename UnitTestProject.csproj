@@ -89,7 +89,6 @@
     <Compile Include="TryMoveHelper\ThreeLibertySuicidalTest.cs" />
     <Compile Include="TryMoveHelper\CreateRandomMoveTest.cs" />
     <Compile Include="TryMoveHelper\FillKoEyeMoveTest.cs" />
-    <Compile Include="TryMoveHelper\FindAndResolveAtariTest.cs" />
     <Compile Include="TryMoveHelper\LeapMoveTest.cs" />
     <Compile Include="TryMoveHelper\NeutralPointMoveTest.cs" />
     <Compile Include="TryMoveHelper\RedundantEyeDiagonalMoveTest.cs" />
