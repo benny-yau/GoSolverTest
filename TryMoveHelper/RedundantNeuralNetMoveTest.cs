@@ -219,5 +219,22 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(2, 17))) != null, true);
         }
+
+        /*
+ 14 . . . . X X X . . . . . . . . . . . . 
+ 15 . X X X O O X X X X . . . . . . . . . 
+ 16 . X . O . . . O O X . . . . . . . . . 
+ 17 . X O . . O . O . X . . . . . . . . . 
+ 18 . X . . . . . . X . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantNeuralNetMoveTest_Scenario_TianLongTu_Q16525()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16525();
+            g.MakeMove(6, 15);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 18))) != null, true);
+        }
     }
 }

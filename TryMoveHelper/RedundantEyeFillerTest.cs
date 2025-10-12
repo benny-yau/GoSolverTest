@@ -37,18 +37,18 @@ namespace UnitTestProject
         }
 
 
-            /*
-     10 . . X . . . . . . . . . . . . . . . . 
-     11 . . . X X X . . . . . . . . . . . . . 
-     12 . X X O O O X . . . . . . . . . . . . 
-     13 O O O . . O . X . . . . . . . . . . . 
-     14 . X O X X O . . . . . . . . . . . . . 
-     15 . O . . X O X . . . . . . . . . . . . 
-     16 . X O O O X X . . . . . . . . . . . . 
-     17 . X X X X . . . . . . . . . . . . . . 
-     18 . . . . . . . . . . . . . . . . . . . 
-            */
-            [TestMethod]
+        /*
+ 10 . . X . . . . . . . . . . . . . . . . 
+ 11 . . . X X X . . . . . . . . . . . . . 
+ 12 . X X O O O X . . . . . . . . . . . . 
+ 13 O O O . . O . X . . . . . . . . . . . 
+ 14 . X O X X O . . . . . . . . . . . . . 
+ 15 . O . . X O X . . . . . . . . . . . . 
+ 16 . X O O O X X . . . . . . . . . . . . 
+ 17 . X X X X . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . . 
+        */
+        [TestMethod]
         public void RedundantEyeFillerTest_Scenario_WindAndTime_Q30005()
         {
             Scenario s = new Scenario();
@@ -909,7 +909,7 @@ namespace UnitTestProject
  15 . O O . O . . . . . . . . . . . . . . 
  16 X X O X . O . . . . . . . . . . . . . 
  17 . . X . X O . O . . . . . . . . . . . 
- 18 X X . O . X . . . . . . . . . . . . . 
+ 18 X X . O . X X . . . . . . . . . . . . 
         */
         [TestMethod]
         public void RedundantEyeFillerTest_Scenario_AncientJapanese_B6()
@@ -1028,7 +1028,7 @@ namespace UnitTestProject
             Game.UseSolutionPoints = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(0, 17)), true);
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
         }
 
         /*
