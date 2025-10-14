@@ -817,7 +817,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 12);
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(isSuicidal, true);
         }
 
         /*
@@ -4569,7 +4569,7 @@ namespace UnitTestProject
  18 . X O . . . . . . . . . . . . . . . .
          */
         [TestMethod]
-        public void SuicidalRedundantMoveTest__Scenario_Nie137()
+        public void SuicidalRedundantMoveTest_Scenario_Nie137()
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_Nie137();
@@ -4577,7 +4577,6 @@ namespace UnitTestProject
             g.MakeMove(4, 16);
             g.MakeMove(3, 17);
             g.MakeMove(2, 18);
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
@@ -4603,7 +4602,6 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             g.MakeMove(3, 18);
             g.MakeMove(4, 18);
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(3, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);

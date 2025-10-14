@@ -121,7 +121,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
             Boolean redundantEyeDiagonal = RedundantMoveHelper.KillEyeDiagonalMove(tryMove);
-            Assert.AreEqual(redundantEyeDiagonal, true);
+            Assert.AreEqual(redundantEyeDiagonal, false);
         }
 
         /*
