@@ -2190,7 +2190,7 @@ namespace UnitTestProject
  15 . . O O O O O O X . . . . . . . . . . 
  16 O O X X X X O X O O . O . . . . . . . 
  17 X X O X . X O X O . . . . . . . . . . 
- 18 . . O X . O X X . . . . . . . . . . . 
+ 18 . . O X . . X X . . . . . . . . . . . 
         */
         [TestMethod]
         public void RedundantEyeFillerTest_Scenario_XuanXuanQiJing_B25()

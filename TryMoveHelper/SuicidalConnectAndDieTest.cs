@@ -489,7 +489,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 11);
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(isSuicidal, true);
         }
 
         /*
@@ -678,7 +678,7 @@ namespace UnitTestProject
  14 . . X X X . . . . . . . . . . . . . . 
  15 . X O O O X X . . . . . . . . . . . . 
  16 . X O . O O . X X . . . . . . . . . . 
- 17 . X O . 。 X O O X . . . . . . . . . . 
+ 17 . X O . . X O O X . . . . . . . . . . 
  18 . X . O . O X . X . . . . . . . . . . 
          */
         [TestMethod]
@@ -4607,5 +4607,28 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
+
+        /*
+ 12 . X X X . . . . . . . . . . . . . . . 
+ 13 . X O O X X . . . . . . . . . . . . . 
+ 14 . X O . O X . . . . . . . . . . . . . 
+ 15 X X O O O O X . . . . . . . . . . . . 
+ 16 X O . . X X X . . . . . . . . . . . . 
+ 17 O . . O X . . . . . . . . . . . . . . 
+ 18 . O . . . . . . . . . . . . . . . . . 
+        */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario2dan21_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario2dan21();
+            g.MakeMove(0, 16);
+            g.MakeMove(0, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
+            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isRedundant, true);
+        }
+
     }
 }

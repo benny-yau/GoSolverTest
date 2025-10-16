@@ -2189,5 +2189,25 @@ namespace UnitTestProject
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
         }
+
+        /*
+ 14 . . . . . . . . O . O . . . . . . . . 
+ 15 . . . . . . . O . . . . . . . . . . . 
+ 16 . . . O O O . O X O O O . . . . . . . 
+ 17 . O O X X X X X . X X O . . . . . . . 
+ 18 . . X . . . . . . X O . . . . . . . . 
+        */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_Side_A5()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Side_A5();
+            g.MakeMove(10, 18);
+            g.MakeMove(9, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(8, 17));
+            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isRedundant, true);
+        }
     }
 }

@@ -352,8 +352,8 @@ namespace UnitTestProject
  14 . X O X . . . . . . . . . . . . . . . 
  15 X O . O X . . . . . . . . . . . . . . 
  16 O O O O X . X . . . . . . . . . . . . 
- 17 X X X O . X . . . . . . . . . . . . . 
- 18 O O . O . . . . . . . . . . . . . . . 
+ 17 X X . O . X . . . . . . . . . . . . . 
+ 18 . O . O . . . . . . . . . . . . . . . 
          */
         [TestMethod]
         public void RestoreNeutralMoveTest_Scenario4dan17()
