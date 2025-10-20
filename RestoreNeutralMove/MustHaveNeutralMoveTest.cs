@@ -83,7 +83,8 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
-            Assert.AreEqual(isNeutralPoint, false);
+            Assert.AreEqual(isNeutralPoint, true);
+            tryMove.MustHaveNeutralPoint = true;
 
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();

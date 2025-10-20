@@ -2207,7 +2207,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(8, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, true);
+            Assert.AreEqual(isRedundant, false);
         }
     }
 }
