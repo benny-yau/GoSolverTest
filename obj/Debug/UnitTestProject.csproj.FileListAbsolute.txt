@@ -43,10 +43,10 @@ D:\Projects\GoSolverPublish\GoSolverTest\bin\Debug\GoSharp.dll.config
 D:\Projects\GoSolverPublish\GoSolverTest\bin\Debug\ScenarioCollection.pdb
 D:\Projects\GoSolverPublish\GoSolverTest\bin\Debug\ScenarioCollection.dll.config
 D:\Projects\GoSolverPublish\GoSolverTest\bin\Debug\CSScriptLibrary.xml
-D:\Projects\GoSolverPublish\GoSolverTest\bin\Debug\zh-Hans\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
 D:\Projects\GoSolverPublish\GoSolverTest\obj\Debug\UnitTestProject.csproj.AssemblyReference.cache
 D:\Projects\GoSolverPublish\GoSolverTest\obj\Debug\UnitTestProject.csproj.CoreCompileInputs.cache
-D:\Projects\GoSolverPublish\GoSolverTest\obj\Debug\UnitTestProject.csproj.CopyComplete
 D:\Projects\GoSolverPublish\GoSolverTest\obj\Debug\UnitTestProject.exe
 D:\Projects\GoSolverPublish\GoSolverTest\obj\Debug\UnitTestProject.pdb
 D:\Projects\GoSolverPublish2\GoSolverTest\obj\Debug\UnitTest.294DD5B1.Up2Date
+D:\Projects\GoSolverPublish\GoSolverTest\obj\Debug\UnitTestProject.exe.config
+D:\Projects\GoSolverPublish\GoSolverTest\obj\Debug\UnitTest.294DD5B1.Up2Date

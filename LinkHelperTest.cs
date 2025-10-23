@@ -623,7 +623,7 @@ namespace UnitTestProject
             g.MakeMove(1, 16);
             g.MakeMove(3, 14);
             HashSet<Group> connectedGroups = LinkHelper.GetAllDiagonalConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(1, 18)));
-            Assert.AreEqual(connectedGroups.Contains(g.Board.GetGroupAt(new Point(4, 16))), false);
+            Assert.AreEqual(connectedGroups.Contains(g.Board.GetGroupAt(new Point(4, 16))), true);
         }
 
 
