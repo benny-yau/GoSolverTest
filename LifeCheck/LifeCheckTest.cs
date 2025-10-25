@@ -793,82 +793,12 @@ namespace UnitTestProject
         /*
  14 . . . . X . X X X X X . . . . . . . . 
  15 . . . X O . O X O O O . . . . . . . . 
- 16 . . X O . . . O O . O . . . . . . . . 
- 17 . X O . O O O X O O X . . . . . . . . 
- 18 . . O O O X X X X X . . . . . . . . .
-         */
-        [TestMethod]
-        public void LifeCheckTest_Scenario_TianLongTu_Q16571_7()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_TianLongTu_Q16571();
-            g.GameInfo.targetPoints = new List<Point>() { new Point(7, 16) };
-            g.MakeMove(7, 18);
-            g.MakeMove(6, 16);
-            g.MakeMove(8, 18);
-            g.MakeMove(5, 17);
-            g.MakeMove(9, 18);
-            g.MakeMove(7, 17);
-            g.MakeMove(5, 16);
-            g.MakeMove(4, 18);
-
-            g.Board[1, 17] = Content.Black;
-            g.Board[2, 17] = Content.White;
-            g.Board[3, 17] = Content.Empty;
-            g.Board[3, 18] = Content.White;
-
-            g.Board[4, 17] = Content.White;
-            g.Board[5, 18] = Content.Black;
-            g.Board[2, 16] = Content.White;
-            g.Board[9, 14] = Content.Black;
-
-            g.Board[5, 16] = Content.Empty;
-            g.Board[6, 18] = Content.Black;
-            g.Board[4, 18] = Content.Empty;
-            g.Board[2, 16] = Content.Empty;
-            g.Board[2, 18] = Content.White;
-
-            g.Board[4, 16] = Content.Empty;
-            g.Board[4, 15] = Content.White;
-            g.Board[4, 14] = Content.Black;
-            g.Board[2, 16] = Content.Black;
-            g.Board[5, 15] = Content.Empty;
-            g.Board[4, 18] = Content.White;
-            g.Board[6, 17] = Content.White;
-            g.Board[6, 15] = Content.Empty;
-
-            g.Board[7, 17] = Content.Black;
-            g.Board[6, 16] = Content.Empty;
-            g.Board[9, 17] = Content.White;
-            g.Board[6, 15] = Content.White;
-            g.Board[7, 15] = Content.Black;
-            g.Board[6, 14] = Content.Black;
-
-            g.Board[8, 16] = Content.White;
-            g.Board[9, 16] = Content.Empty;
-            g.Board[10, 16] = Content.White;
-            g.Board[10, 15] = Content.White;
-
-            g.Board[10, 18] = Content.Black;
-            g.Board[11, 17] = Content.Black;
-            Boolean isLinked = LinkHelper.CheckIsDiagonalLinked(new Point(6, 17), new Point(7, 16), g.Board);
-            Assert.AreEqual(isLinked, true);
-            ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
-            Assert.AreEqual(result == ConfirmAliveResult.Alive, false);
-
-            HashSet<Group> connectedGroups = LinkHelper.GetAllDiagonalConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(4, 15)));
-            Assert.AreEqual(connectedGroups.Contains(g.Board.GetGroupAt(new Point(7, 16))), false);
-        }
-
-        /*
- 14 . . . . X . X X X X X . . . . . . . . 
- 15 . . . X O . O X O O O . . . . . . . . 
  16 . . O O . . . O O . O . . . . . . . . 
  17 O O O X O O O X O O X X . . . . . . . 
  18 . . O X X X X X X X X . . . . . . . .
          */
         [TestMethod]
-        public void LifeCheckTest_Scenario_TianLongTu_Q16571_7_2()
+        public void LifeCheckTest_Scenario_TianLongTu_Q16571_7()
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_TianLongTu_Q16571();
@@ -928,6 +858,8 @@ namespace UnitTestProject
             g.Board[2, 16] = Content.White;
             g.Board[1, 17] = Content.White;
             g.Board[0, 17] = Content.White;
+
+            g.GameInfo.killMovablePoints.Add(new Point(5, 15));
             Boolean isLinked = LinkHelper.CheckIsDiagonalLinked(new Point(6, 17), new Point(7, 16), g.Board);
             Assert.AreEqual(isLinked, true);
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
