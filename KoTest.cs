@@ -54,14 +54,13 @@ namespace UnitTestProject
         public void KoTest_Scenario3dan17()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario3dan17();
-            Game g = new Game(m);
+            Game g = s.Scenario3dan17();
             g.MakeMove(0, 13);
             g.MakeMove(0, 12);
             g.MakeMove(1, 12);
             g.MakeMove(1, 11);
             g.MakeMove(0, 11);
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(Game.PassMove), true);
@@ -84,8 +83,7 @@ namespace UnitTestProject
         public void KoTest_Scenario3dan17_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario3dan17();
-            Game g = new Game(m);
+            Game g = s.Scenario3dan17();
             g.MakeMove(0, 13);
             g.MakeMove(0, 12);
             g.MakeMove(1, 12);
@@ -93,7 +91,7 @@ namespace UnitTestProject
             g.MakeMove(1, 13);
             g.MakeMove(2, 13);
             g.MakeMove(0, 11);
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(Game.PassMove), true);
@@ -111,8 +109,7 @@ namespace UnitTestProject
         public void KoTest_Scenario_WuQingYuan_Q31680()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31680();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31680();
             g.MakeMove(2, 16);
             g.MakeMove(1, 18);
             g.MakeMove(4, 18);
@@ -127,7 +124,7 @@ namespace UnitTestProject
             g.MakeMove(0, 18);
             g.MakeMove(4, 18);*/
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -147,14 +144,13 @@ namespace UnitTestProject
         public void KoTest_Scenario_TianLongTu_Q16487()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16487();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16487();
             g.MakeMove(4, 16);
             g.MakeMove(5, 15);
             g.MakeMove(3, 18);
             g.MakeMove(2, 18);
 
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -204,8 +200,7 @@ namespace UnitTestProject
         public void KoTest_Scenario_WuQingYuan_Q31498_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31498();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31498();
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 17);
@@ -235,8 +230,7 @@ namespace UnitTestProject
         {
             //non-direct ko or multi-stage ko
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A80();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A80();
             g.MakeMove(1, 18);
             g.MakeMove(0, 16);
             g.MakeMove(4, 16);
@@ -247,8 +241,7 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
             g.MakeMove(4, 18);
             g.GameInfo.SearchDepth = 40;
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(Game.PassMove), true);
@@ -267,8 +260,7 @@ namespace UnitTestProject
         public void KoTest_Scenario_Corner_A80_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A80();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A80();
             g.MakeMove(1, 18);
             g.MakeMove(0, 16);
             g.MakeMove(4, 16);
@@ -285,7 +277,7 @@ namespace UnitTestProject
             g.MakeMove(0, 18);
             g.MakeMove(5, 18);
             g.GameInfo.SearchDepth = 40;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -306,8 +298,7 @@ namespace UnitTestProject
         {
             //not ko
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_B9();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_B9();
             g.MakeMove(3, 17);
             g.MakeMove(2, 18);
             g.MakeMove(3, 18);

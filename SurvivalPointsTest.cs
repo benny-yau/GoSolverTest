@@ -25,8 +25,7 @@ namespace UnitTestProject
         public void SurvivalPointsTest_Scenario1kyu11()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario1kyu11();
-            Game g = new Game(m);
+            Game g = s.Scenario1kyu11();
             g.MakeMove(4, 16);
             g.MakeMove(6, 18);
             g.MakeMove(3, 18);
@@ -57,8 +56,7 @@ namespace UnitTestProject
         public void SurvivalPointsTest_Scenario_XuanXuanGo_B32()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_B32();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_B32();
             g.MakeMove(1, 14);
             g.MakeMove(0, 12);
             g.MakeMove(0, 11);
@@ -79,8 +77,7 @@ namespace UnitTestProject
         public void SurvivalPointsTest_Scenario_XuanXuanGo_A59()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A59();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A59();
             //gi.correctedSolutions.Add(new CorrectedList(new List<Point>() { new Point(6, 15), new Point(6, 16), new Point(6, 18), new Point(7, 18), new Point(5, 18), new Point(4, 17) }));
             g.MakeMove(6, 15);
             g.MakeMove(6, 16);
@@ -92,8 +89,7 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             g.MakeMove(3, 17);*/
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
         }

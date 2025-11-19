@@ -544,9 +544,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(2, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 15));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -608,9 +606,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(2, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 15));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -2448,8 +2444,7 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(7, 18));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -2514,8 +2509,7 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
@@ -3470,9 +3464,7 @@ namespace UnitTestProject
                         g.MakeMove(0, 14);
                         g.MakeMove(0, 17);
                         g.MakeMove(1, 18);
-                        Point p = new Point(0, 18);
-                        GameTryMove tryMove = new GameTryMove(g);
-                        tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+                        GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
                         Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
                         Assert.AreEqual(isRedundant, false);*/
 
@@ -4299,8 +4291,7 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
@@ -4688,9 +4679,7 @@ namespace UnitTestProject
             g.Board.LastMoves.Clear();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(6, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 16));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(6, 16))) != null, true);
@@ -4759,9 +4748,7 @@ namespace UnitTestProject
             gi.survivalPoints.Add(new Point(5, 16));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(8, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(8, 18));
             Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
             Assert.AreEqual(isRedundant, false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(8, 18))) != null, true);
@@ -5382,9 +5369,7 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
@@ -5668,9 +5653,7 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(0, 15));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(6, 18))) != null, true);
@@ -5723,9 +5706,7 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
             g.MakeMove(2, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isRedundant = RedundantMoveHelper.RedundantNeuralNetMove(tryMove);
             Assert.AreEqual(isRedundant, true);
         }
@@ -5908,9 +5889,7 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(9, 15));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(7, 14);
-            GameTryMove move = new GameTryMove(g);
-            move.MakeMoveResult = move.TryGame.MakeMove(p.x, p.y);
+            GameTryMove move = new GameTryMove(g, new Point(7, 14));
             Boolean isRedundant = RedundantMoveHelper.FindPotentialEye(move);
             Assert.AreEqual(isRedundant, false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(7, 14))) != null, true);
@@ -5984,9 +5963,7 @@ namespace UnitTestProject
             g.MakeMove(1, 12);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(1, 11);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 11));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 11))) != null, true);
@@ -6269,12 +6246,12 @@ namespace UnitTestProject
         public static Game SearchAnswer(Game m)
         {
             Game g = new Game(m);
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             MonteCarloMapping.searchAnswer = true;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
 
-            Game.UseSolutionPoints = Game.UseMapMoves = true;
+            Game.UseMapMoves = true;
             MonteCarloMapping.searchAnswer = false;
             return g;
         }

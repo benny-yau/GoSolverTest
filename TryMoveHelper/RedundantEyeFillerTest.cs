@@ -113,8 +113,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q31537_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31537();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31537();
             g.MakeMove(2, 18);
             g.MakeMove(1, 18);
             g.MakeMove(0, 15);
@@ -140,8 +139,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Nie87()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Nie87();
-            Game g = new Game(m);
+            Game g = s.Scenario_Nie87();
             g.MakeMove(5, 17);
             g.MakeMove(3, 17);
             g.MakeMove(5, 18);
@@ -168,8 +166,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanGo_B10()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_B10();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_B10();
             g.MakeMove(1, 15);
             g.MakeMove(4, 17);
             g.MakeMove(0, 15);
@@ -198,8 +195,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanGo_B12()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_B12();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_B12();
             g.MakeMove(3, 16);
             g.MakeMove(2, 17);
             g.MakeMove(1, 18);
@@ -225,8 +221,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A67()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A67();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A67();
             g.MakeMove(1, 17);
             g.MakeMove(4, 18);
             g.MakeMove(0, 16);
@@ -309,8 +304,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q31435()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31435();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31435();
             g.MakeMove(5, 17);
             g.MakeMove(5, 16);
             g.MakeMove(4, 17);
@@ -334,8 +328,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_GuanZiPu_A17()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A17();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A17();
 
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
@@ -367,13 +360,10 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_B40()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_B40();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_B40();
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean eyeFiller = RedundantMoveHelper.RedundantFillerMove(tryMove);
             Assert.AreEqual(eyeFiller, false);
 
@@ -394,13 +384,10 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanGo_B10_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_B10();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_B10();
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
             Boolean eyeFiller = RedundantMoveHelper.RedundantFillerMove(tryMove);
             Assert.AreEqual(eyeFiller, false);
 
@@ -419,8 +406,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A56()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A56();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A56();
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
@@ -441,8 +427,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A61()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A61();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A61();
             g.MakeMove(3, 18);
             g.MakeMove(2, 17);
             g.MakeMove(0, 17);
@@ -470,8 +455,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_TianLongTu_Q17239()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17239();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17239();
             g.MakeMove(3, 17);
             g.MakeMove(3, 16);
             g.MakeMove(5, 17);
@@ -502,8 +486,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario1dan19()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario1dan19();
-            Game g = new Game(m);
+            Game g = s.Scenario1dan19();
             g.MakeMove(4, 16);
             g.MakeMove(2, 17);
             g.MakeMove(1, 18);
@@ -530,8 +513,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q31602()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31602();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31602();
             g.MakeMove(6, 17);
             g.MakeMove(7, 16);
             g.MakeMove(6, 18);
@@ -543,7 +525,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -563,8 +545,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q31640()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31640();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31640();
             g.MakeMove(4, 17);
             g.MakeMove(4, 16);
             g.MakeMove(4, 18);
@@ -592,8 +573,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanGo_A7()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A7();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A7();
             g.MakeMove(0, 17);
             g.MakeMove(1, 17);
             g.MakeMove(1, 15);
@@ -603,8 +583,7 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -622,8 +601,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Nie1()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Nie1();
-            Game g = new Game(m);
+            Game g = s.Scenario_Nie1();
             g.MakeMove(1, 18);
             g.MakeMove(3, 18);
             g.MakeMove(2, 16);
@@ -634,8 +612,7 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -652,8 +629,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A67_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A67();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A67();
             g.MakeMove(1, 17);
             g.MakeMove(0, 17);
             g.MakeMove(2, 18);
@@ -663,8 +639,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -685,8 +660,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanGo_B12_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_B12();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_B12();
             g.MakeMove(3, 16);
             g.MakeMove(1, 16);
             g.MakeMove(2, 15);
@@ -698,8 +672,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -720,8 +693,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q31537()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31537();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31537();
             g.MakeMove(2, 18);
             g.MakeMove(0, 18);
             g.MakeMove(2, 16);
@@ -730,8 +702,7 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 14)), true);
@@ -749,8 +720,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_GuanZiPu_A16()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A16();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A16();
             g.MakeMove(1, 18);
             g.MakeMove(3, 17);
             g.MakeMove(5, 18);
@@ -760,8 +730,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 17)) || move.Equals(new Point(3, 18)), true);
@@ -779,8 +748,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_GuanZiPu_A37()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A37();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A37();
             g.MakeMove(8, 17);
             g.MakeMove(8, 18);
             g.MakeMove(5, 17);
@@ -793,7 +761,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             Game.useMonteCarloRuntime = true;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 18)), true);
@@ -809,8 +777,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_GuanZiPu_A36()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A36();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A36();
             g.MakeMove(9, 18);
             g.MakeMove(7, 17);
             g.MakeMove(10, 18);
@@ -832,7 +799,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             Game.useMonteCarloRuntime = true;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -849,8 +816,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A58()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A58();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A58();
             g.MakeMove(0, 16);
             g.MakeMove(3, 17);
             g.MakeMove(6, 17);
@@ -860,8 +826,7 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)), true);
@@ -881,8 +846,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A132()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A132();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A132();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(1, 17);
@@ -895,8 +859,7 @@ namespace UnitTestProject
             g.MakeMove(0, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)) || move.Equals(new Point(1, 17)), true);
@@ -915,8 +878,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_AncientJapanese_B6()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_AncientJapanese_B6();
-            Game g = new Game(m);
+            Game g = s.Scenario_AncientJapanese_B6();
             g.MakeMove(0, 16);
             g.MakeMove(1, 17);
             g.MakeMove(1, 18);
@@ -927,8 +889,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 18)), true);
@@ -949,8 +910,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_GuanZiPu_Q1970()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_Q1970();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_Q1970();
             g.MakeMove(0, 15);
             g.MakeMove(5, 13);
             g.MakeMove(0, 16);
@@ -961,8 +921,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -979,8 +938,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q30919()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q30919();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q30919();
             g.MakeMove(8, 16);
             g.MakeMove(7, 17);
             g.MakeMove(3, 18);
@@ -991,8 +949,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 17)), true);
@@ -1010,8 +967,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A80()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A80();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A80();
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
             g.MakeMove(1, 18);
@@ -1024,8 +980,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -1043,8 +998,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q31339()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31339();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31339();
             g.MakeMove(3, 17);
             g.MakeMove(0, 17);
             g.MakeMove(1, 14);
@@ -1054,8 +1008,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -1074,8 +1027,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q31305()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31305();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31305();
 
             g.MakeMove(4, 14);
             g.MakeMove(3, 14);
@@ -1087,8 +1039,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 16)), true);
@@ -1106,8 +1057,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A68()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A68();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A68();
             g.MakeMove(1, 18);
             g.MakeMove(3, 18);
             g.MakeMove(3, 17);
@@ -1117,8 +1067,7 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 17)), true);
@@ -1136,8 +1085,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A61_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A61();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A61();
             g.MakeMove(3, 18);
             g.MakeMove(2, 17);
             g.MakeMove(0, 17);
@@ -1147,8 +1095,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -1167,8 +1114,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanGo_B10_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_B10();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_B10();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(1, 16);
@@ -1180,8 +1126,7 @@ namespace UnitTestProject
             //g.Board[0, 18] = Content.Empty;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 17)), true);
@@ -1200,8 +1145,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanQiJing_Weiqi101_2282()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_2282();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_2282();
             g.MakeMove(6, 18);
             g.MakeMove(7, 18);
             g.MakeMove(6, 16);
@@ -1211,8 +1155,7 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 17)), true);
@@ -1231,8 +1174,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_TianLongTu_Q16902()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16902();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16902();
             g.MakeMove(4, 17);
             g.MakeMove(2, 18);
             g.MakeMove(4, 18);
@@ -1246,8 +1188,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 17)) || move.Equals(new Point(4, 16)), true);
@@ -1264,8 +1205,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_TianLongTu_Q16827()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16827();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16827();
             g.MakeMove(5, 17);
             g.MakeMove(4, 16);
             g.MakeMove(10, 18);
@@ -1278,8 +1218,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
@@ -1297,8 +1236,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q31498()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31498();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31498();
             g.MakeMove(4, 18);
             g.MakeMove(1, 17);
             g.MakeMove(1, 18);
@@ -1307,8 +1245,7 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(4, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -1327,13 +1264,11 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A5()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A5();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A5();
             g.MakeMove(1, 18);
             g.MakeMove(0, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 17)), true);
@@ -1353,14 +1288,12 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q31428()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31428();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31428();
             g.MakeMove(1, 16);
             g.MakeMove(1, 17);
             g.MakeMove(2, 18);
             g.MakeMove(0, 18);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
@@ -1377,12 +1310,10 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanGo_A4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A4();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A4();
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 17)), true);
@@ -1399,16 +1330,14 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario1dan10()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario1dan10();
-            Game g = new Game(m);
+            Game g = s.Scenario1dan10();
             g.MakeMove(2, 18);
             g.MakeMove(2, 16);
             g.MakeMove(0, 16);
             g.MakeMove(0, 17);
             g.MakeMove(0, 14);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -1426,8 +1355,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_TianLongTu_Q16827_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16827();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16827();
             g.MakeMove(4, 16);
             g.MakeMove(4, 17);
             g.MakeMove(7, 18);
@@ -1436,8 +1364,7 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(5, 17);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 18)), true);
@@ -1453,8 +1380,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_GuanZiPu_A36_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A36();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A36();
             g.MakeMove(3, 17);
             g.MakeMove(4, 18);
             g.MakeMove(8, 17);
@@ -1466,8 +1392,7 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)) || move.Equals(new Point(6, 17)), true);
@@ -1484,8 +1409,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_TianLongTu_Q17077()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17077();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17077();
             g.MakeMove(5, 18);
             g.MakeMove(4, 17);
             g.MakeMove(4, 18);
@@ -1493,8 +1417,7 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 17)), true);
@@ -1513,8 +1436,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanGo_A82_101Weiqi()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A82_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A82_101Weiqi();
             g.MakeMove(2, 17);
             g.MakeMove(2, 16);
             g.MakeMove(3, 16);
@@ -1525,8 +1447,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 16)), true);
@@ -1546,8 +1467,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario4dan17()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario4dan17();
-            Game g = new Game(m);
+            Game g = s.Scenario4dan17();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 15);
@@ -1563,8 +1483,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -1582,8 +1501,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q30919_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q30919();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q30919();
             g.MakeMove(9, 15);
             g.MakeMove(7, 17);
             g.MakeMove(3, 18);
@@ -1594,8 +1512,7 @@ namespace UnitTestProject
             g.Board[5, 15] = Content.Black;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 18)), true);
@@ -1633,20 +1550,16 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Side_B35()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Side_B35();
-            Game g = new Game(m);
+            Game g = s.Scenario_Side_B35();
             g.MakeMove(5, 17);
             g.MakeMove(7, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isEyeFiller = RedundantMoveHelper.RedundantFillerMove(tryMove);
             Assert.AreEqual(isEyeFiller, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)), true);
@@ -1664,8 +1577,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WindAndTime_Q30278()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30278();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30278();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
         }
@@ -1680,11 +1592,9 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A95()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A95();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A95();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -1704,11 +1614,9 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario3dan22()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario3dan22();
-            Game g = new Game(m);
+            Game g = s.Scenario3dan22();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -1727,13 +1635,11 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario3dan22_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario3dan22();
-            Game g = new Game(m);
+            Game g = s.Scenario3dan22();
             g.MakeMove(1, 18);
             g.MakeMove(3, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 17)) || move.Equals(new Point(2, 18)), true);
@@ -1751,13 +1657,11 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q31445()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31445();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31445();
             g.MakeMove(4, 17);
             g.MakeMove(4, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)), true);
@@ -1775,15 +1679,13 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_TianLongTu_Q15017()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q15017();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q15017();
             g.MakeMove(1, 15);
             g.MakeMove(1, 16);
             g.MakeMove(0, 16);
             g.MakeMove(0, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -1802,16 +1704,14 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_TianLongTu_Q15017_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q15017();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q15017();
             g.MakeMove(1, 15);
             g.MakeMove(1, 16);
             g.MakeMove(0, 16);
             g.MakeMove(0, 17);
             g.MakeMove(3, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -1827,8 +1727,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q16508()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q16508();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q16508();
             g.MakeMove(3, 16);
             g.MakeMove(4, 17);
             g.MakeMove(3, 17);
@@ -1836,8 +1735,7 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -1854,8 +1752,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_GuanZiPu_A36_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A36();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A36();
             g.MakeMove(3, 18);
             g.MakeMove(4, 18);
             g.MakeMove(6, 18);
@@ -1865,8 +1762,7 @@ namespace UnitTestProject
             g.MakeMove(6, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(9, 18)), true);
@@ -1883,13 +1779,11 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A6()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A6();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A6();
             g.MakeMove(1, 18);
             g.MakeMove(1, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -1909,8 +1803,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanGo_A171_101Weiqi()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A171_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A171_101Weiqi();
             g.MakeMove(6, 14);
             g.MakeMove(8, 16);
             g.MakeMove(4, 15);
@@ -1934,8 +1827,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanQiJing_Weiqi101_7245()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_7245();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_7245();
             g.MakeMove(5, 18);
             g.MakeMove(1, 15);
             g.MakeMove(3, 16);
@@ -1945,8 +1837,7 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             g.MakeMove(0, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -1965,8 +1856,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_B43()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_B43();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_B43();
             g.MakeMove(1, 17);
             g.MakeMove(2, 17);
             g.MakeMove(1, 16);
@@ -1975,8 +1865,7 @@ namespace UnitTestProject
             g.MakeMove(2, 16);
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -1997,8 +1886,7 @@ namespace UnitTestProject
             Game g = s.Scenario_Corner_B8();
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -2014,16 +1902,14 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A80_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A80();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A80();
             g.MakeMove(1, 18);
             g.MakeMove(0, 16);
             g.MakeMove(4, 16);
             g.MakeMove(3, 18);
             g.MakeMove(-1, -1);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 17)), true);
@@ -2042,8 +1928,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WindAndTime_Q30275()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30275();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30275();
             g.MakeMove(3, 18);
             g.MakeMove(3, 17);
             g.MakeMove(0, 15);
@@ -2052,8 +1937,7 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             g.MakeMove(0, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 17)), true);
@@ -2075,13 +1959,11 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WindAndTime_Q29378()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q29378();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q29378();
             g.MakeMove(3, 15);
             g.MakeMove(0, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 14)), true);
@@ -2101,14 +1983,12 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q6150_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q6150();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q6150();
             g.MakeMove(2, 14);
             g.MakeMove(0, 15);
             g.MakeMove(3, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 16);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 16));
             Boolean isFillerMove = RedundantMoveHelper.RedundantFillerMove(tryMove);
             Assert.AreEqual(isFillerMove, true);
         }
@@ -2124,8 +2004,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_TianLongTu_Q17154()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17154();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17154();
             g.MakeMove(4, 18);
             g.MakeMove(3, 17);
             g.MakeMove(0, 15);
@@ -2139,8 +2018,7 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -2160,8 +2038,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A132_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A132();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A132();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(1, 17);
@@ -2174,8 +2051,7 @@ namespace UnitTestProject
             g.MakeMove(0, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -2196,8 +2072,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanQiJing_B25()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_B25();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_B25();
             g.MakeMove(8, 17);
             g.MakeMove(7, 18);
             g.MakeMove(2, 17);
@@ -2221,16 +2096,14 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WindAndTime_Q29487()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q29487();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q29487();
             g.MakeMove(4, 18);
             g.MakeMove(6, 18);
             g.MakeMove(5, 16);
             g.MakeMove(5, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 17)) || move.Equals(new Point(4, 17)), true);
@@ -2249,8 +2122,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanGo_Q18331()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_Q18331();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_Q18331();
             g.MakeMove(0, 15);
             g.MakeMove(1, 14);
             g.MakeMove(0, 13);
@@ -2279,16 +2151,14 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A9_Ext_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A9_Ext();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A9_Ext();
             g.MakeMove(1, 18);
             g.MakeMove(4, 18);
             g.MakeMove(2, 18);
             g.MakeMove(0, 15);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 17)), true);
@@ -2307,8 +2177,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanGo_Q18500()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_Q18500();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_Q18500();
             g.MakeMove(8, 18);
             g.MakeMove(10, 18);
             g.MakeMove(9, 16);
@@ -2333,8 +2202,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_TianLongTu_Q16827_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16827();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16827();
             g.MakeMove(4, 16);
             g.MakeMove(4, 17);
             g.MakeMove(7, 18);
@@ -2342,8 +2210,7 @@ namespace UnitTestProject
             g.MakeMove(8, 16);
             g.MakeMove(3, 18);
             g.MakeMove(10, 18);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -2359,8 +2226,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A56_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A56();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A56();
             g.MakeMove(1, 18);
             g.MakeMove(2, 18);
             g.MakeMove(3, 18);
@@ -2382,8 +2248,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanQiJing_Weiqi101_2282_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_2282();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_2282();
             g.MakeMove(7, 18);
             g.MakeMove(6, 18);
             g.MakeMove(6, 17);
@@ -2404,8 +2269,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_GuanZiPu_A17_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A17();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A17();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(1, 18);
@@ -2421,8 +2285,7 @@ namespace UnitTestProject
             g.MakeMove(3, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -2441,8 +2304,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Corner_A84()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A84();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A84();
             g.MakeMove(4, 18);
             g.MakeMove(3, 17);
             g.MakeMove(3, 18);
@@ -2452,8 +2314,7 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -2470,8 +2331,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanQiJing_Weiqi101_7245_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_7245();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_7245();
             g.MakeMove(5, 18);
             g.MakeMove(2, 16);
             g.MakeMove(2, 18);
@@ -2483,8 +2343,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -2502,8 +2361,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_TianLongTu_Q17154_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17154();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17154();
             g.MakeMove(4, 18);
             g.MakeMove(3, 17);
             g.MakeMove(0, 15);
@@ -2519,8 +2377,7 @@ namespace UnitTestProject
             g.Board[5, 16] = Content.Black;
             g.Board[2, 18] = Content.White;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -2539,8 +2396,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q31339_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31339();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31339();
             g.MakeMove(0, 18);
             g.MakeMove(2, 16);
             g.MakeMove(1, 14);
@@ -2548,8 +2404,7 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(2, 18);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -2570,8 +2425,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_XuanXuanGo_A59()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A59();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A59();
             g.MakeMove(3, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(5, 18))) != null, true);
@@ -2605,8 +2459,7 @@ namespace UnitTestProject
         public void RedundantEyeFillerTest_Scenario_Phenomena_Q25182()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Phenomena_Q25182();
-            Game g = new Game(m);
+            Game g = s.Scenario_Phenomena_Q25182();
             g.MakeMove(4, 18);
             g.MakeMove(0, 18);
             g.MakeMove(1, 18);
@@ -2615,8 +2468,7 @@ namespace UnitTestProject
             g.MakeMove(3, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -2646,8 +2498,7 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);

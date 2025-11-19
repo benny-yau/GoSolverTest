@@ -40,8 +40,7 @@ namespace UnitTestProject
             g.MakeMove(-1, -1);
             g.MakeMove(3, 18);
             g.MakeMove(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
 
 
             Boolean isRecursion = GameHelper.CheckForRecursion(tryMove);
@@ -60,8 +59,7 @@ namespace UnitTestProject
         {
             //double ko recursion
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16446();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16446();
             g.MakeMove(2, 17);
             g.MakeMove(3, 16);
             g.MakeMove(1, 18);
@@ -70,9 +68,7 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             g.MakeMove(1, 16);
 
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
@@ -98,8 +94,7 @@ namespace UnitTestProject
         {
             //double ko recursion
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A28_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A28_101Weiqi();
             g.MakeMove(2, 18);
             g.MakeMove(1, 16);
             g.MakeMove(2, 16);
@@ -135,8 +130,7 @@ namespace UnitTestProject
         {
             //double ko recursion
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16975();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16975();
             g.MakeMove(5, 17);
             g.MakeMove(5, 18);
             g.MakeMove(6, 16);
@@ -174,8 +168,7 @@ namespace UnitTestProject
         {
             //not recursion anymore
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A4Q11_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A4Q11_101Weiqi();
             g.MakeMove(2, 18);
             g.MakeMove(1, 18);
             g.MakeMove(0, 17);
@@ -215,8 +208,7 @@ namespace UnitTestProject
         {
             //not recursion anymore
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A4Q11_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A4Q11_101Weiqi();
             g.MakeMove(2, 18);
             g.MakeMove(1, 18);
             g.MakeMove(0, 17);
@@ -246,8 +238,7 @@ namespace UnitTestProject
             //eternal life https://senseis.xmp.net/?EternalLife
             //exception to result dead - to handle as corrected solution
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_Q14971();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_Q14971();
             g.MakeMove(1, 17);
             g.MakeMove(1, 18);
             g.MakeMove(1, 15);
@@ -261,7 +252,7 @@ namespace UnitTestProject
             Boolean found = tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(2, 18))) != null;
             Assert.AreEqual(found, true);
 
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -281,8 +272,7 @@ namespace UnitTestProject
         public void CheckForRecursionTest_Scenario_XuanXuanGo_A27()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A27();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A27();
             g.MakeMove(1, 14);
             g.MakeMove(1, 16);
             g.MakeMove(2, 16);
@@ -298,9 +288,7 @@ namespace UnitTestProject
             g.MakeMove(-1, -1);
 
             //if not suicidal at (0, 18) much greater depth is required to verify recursion and return result as alive
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
 
@@ -327,8 +315,7 @@ namespace UnitTestProject
         public void CheckForRecursionTest_Scenario_Corner_B41()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_B41();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_B41();
             g.MakeMove(3, 18);
             g.MakeMove(0, 17);
             g.MakeMove(1, 16);
@@ -360,8 +347,7 @@ namespace UnitTestProject
         {
             //recursion problem in connect and die
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_Q18331();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_Q18331();
             g.MakeMove(1, 16);
             g.MakeMove(1, 14);
             g.MakeMove(0, 16);

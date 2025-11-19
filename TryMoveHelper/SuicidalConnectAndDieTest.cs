@@ -38,14 +38,11 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -63,8 +60,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16738()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16738();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16738();
             g.MakeMove(5, 18);
             g.MakeMove(3, 17);
             g.MakeMove(2, 18);
@@ -80,14 +76,11 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean blnConnectAndDie = RedundantMoveHelper.SuicidalConnectAndDie(tryMove);
             Assert.AreEqual(blnConnectAndDie, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -103,8 +96,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_A17()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A17();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A17();
             g.MakeMove(1, 17);
             g.MakeMove(3, 16);
             g.MakeMove(2, 16);
@@ -114,14 +106,11 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             g.MakeMove(4, 17);
 
-            Point p = new Point(2, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
@@ -139,8 +128,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16827()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16827();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16827();
             g.MakeMove(7, 17);
             g.MakeMove(8, 16);
             g.MakeMove(3, 18);
@@ -153,14 +141,11 @@ namespace UnitTestProject
             g.MakeMove(5, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(4, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 18)), true);
@@ -176,8 +161,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_A17_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A17();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A17();
             g.MakeMove(1, 17);
             g.MakeMove(0, 18);
             g.MakeMove(3, 17);
@@ -188,9 +172,7 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(3, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
 
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
@@ -200,8 +182,7 @@ namespace UnitTestProject
 
             Assert.AreEqual(WallHelper.IsNonKillableGroup(g.Board, g.Board.GetGroupAt(new Point(2, 18))), false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -218,8 +199,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_A17_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A17();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A17();
             g.MakeMove(1, 17);
             g.MakeMove(0, 18);
             g.MakeMove(3, 17);
@@ -232,16 +212,11 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            Point p = new Point(3, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
-
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = true;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -261,15 +236,12 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_B6()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_B6();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_B6();
             g.MakeMove(5, 18);
             g.MakeMove(7, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
 
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
@@ -289,16 +261,13 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_B1()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_B1();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_B1();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
@@ -317,13 +286,11 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_A27()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A27();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A27();
             g.MakeMove(6, 17);
             g.MakeMove(6, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(6, 16);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 16));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -344,13 +311,11 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WindAndTime_Q30064()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30064();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30064();
             g.MakeMove(1, 14);
             g.MakeMove(1, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 13);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 13));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
@@ -359,8 +324,7 @@ namespace UnitTestProject
             Boolean isSuicidal2 = RedundantMoveHelper.SuicidalRedundantMove(tryMove2);
             Assert.AreEqual(isSuicidal2, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 13)), true);
@@ -377,8 +341,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A55()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A55();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A55();
             g.MakeMove(1, 18);
             g.MakeMove(2, 17);
             g.MakeMove(4, 17);
@@ -386,13 +349,11 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(3, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
@@ -409,11 +370,9 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q2834()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q2834();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q2834();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
@@ -435,8 +394,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16738_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16738();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16738();
             g.MakeMove(5, 18);
             g.MakeMove(3, 17);
             g.MakeMove(2, 18);
@@ -454,8 +412,7 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -479,15 +436,13 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_Weiqi101_B74()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_B74();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_B74();
             g.MakeMove(1, 10);
             g.MakeMove(0, 10);
             g.MakeMove(0, 14);
             g.MakeMove(0, 13);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 11);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 11));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
         }
@@ -503,13 +458,11 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WuQingYuan_Q31680_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31680();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31680();
             g.MakeMove(2, 16);
             g.MakeMove(1, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -526,21 +479,18 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario6kyu13()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario6kyu13();
-            Game g = new Game(m);
+            Game g = s.Scenario6kyu13();
             g.MakeMove(3, 17);
             g.MakeMove(4, 17);
             g.MakeMove(4, 18);
             g.MakeMove(5, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(6, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 18)), true);
@@ -559,8 +509,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A54_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A54();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A54();
             g.MakeMove(0, 17);
             g.MakeMove(1, 17);
             g.MakeMove(1, 16);
@@ -572,8 +521,7 @@ namespace UnitTestProject
             g.MakeMove(0, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
@@ -593,13 +541,11 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WuQingYuan_Q31493()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31493();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31493();
             g.MakeMove(3, 18);
             g.MakeMove(4, 17);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 16);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 16));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -616,13 +562,11 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q17081_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17081();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17081();
             g.MakeMove(9, 18);
             g.MakeMove(8, 18);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -638,11 +582,9 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_A61()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_A61();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_A61();
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -658,17 +600,14 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A30()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A30();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A30();
             g.MakeMove(0, 17);
             g.MakeMove(2, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)) || move.Equals(new Point(5, 18)), true);
@@ -685,19 +624,16 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WuQingYuan_Q31435()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31435();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31435();
             g.MakeMove(5, 17);
             g.MakeMove(5, 16);
             g.MakeMove(6, 18);
             g.MakeMove(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 17)), true);
@@ -714,13 +650,11 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_Weiqi101_2398()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_2398();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_2398();
             g.MakeMove(1, 18);
             g.MakeMove(2, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -738,14 +672,12 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_B25()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_B25();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_B25();
             g.MakeMove(8, 17);
             g.MakeMove(7, 18);
             g.MakeMove(2, 17);
             g.MakeMove(3, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
@@ -770,12 +702,10 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_B7()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_B7();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_B7();
             g.MakeMove(5, 14);
             g.MakeMove(4, 14);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 13);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 13));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -795,8 +725,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A151_101Weiqi_4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A151_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
             g.MakeMove(2, 14);
             g.MakeMove(1, 14);
             g.MakeMove(3, 15);
@@ -814,8 +743,7 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(0, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 12);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 12));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
         }
@@ -835,8 +763,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A151_101Weiqi_7()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A151_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
             g.MakeMove(2, 14);
             g.MakeMove(1, 14);
             g.MakeMove(3, 15);
@@ -855,8 +782,7 @@ namespace UnitTestProject
             g.MakeMove(0, 14);
             g.Board[0, 9] = Content.White;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 12);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 12));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -876,12 +802,10 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WindAndTime_Q30198()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30198();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30198();
             g.MakeMove(1, 14);
             g.MakeMove(0, 13);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 13);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 13));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -898,8 +822,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A17()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A17();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A17();
             g.MakeMove(0, 15);
             g.MakeMove(3, 17);
             g.MakeMove(4, 16);
@@ -908,8 +831,7 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
             g.MakeMove(2, 15);
             g.MakeMove(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(3, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -928,8 +850,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16925()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16925();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16925();
             g.MakeMove(0, 16);
             g.MakeMove(4, 17);
             g.MakeMove(0, 17);
@@ -941,8 +862,7 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
             g.MakeMove(3, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 15);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 15));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
@@ -968,8 +888,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_A39()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_A39();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_A39();
             g.MakeMove(0, 10);
             g.MakeMove(2, 14);
             g.MakeMove(0, 14);
@@ -978,13 +897,11 @@ namespace UnitTestProject
             g.MakeMove(0, 12);
             g.MakeMove(1, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 17)), true);
@@ -1003,8 +920,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario4dan17_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario4dan17();
-            Game g = new Game(m);
+            Game g = s.Scenario4dan17();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 15);
@@ -1026,13 +942,11 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
             g.MakeMove(1, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 17)), true);
@@ -1050,11 +964,9 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario1dan4_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario1dan4();
-            Game g = new Game(m);
+            Game g = s.Scenario1dan4();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 16);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 16));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -1072,8 +984,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_Weiqi101_2282()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_2282();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_2282();
             g.MakeMove(6, 18);
             g.MakeMove(7, 18);
             g.MakeMove(6, 16);
@@ -1084,8 +995,7 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
@@ -1110,8 +1020,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_A39_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_A39();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_A39();
             g.MakeMove(0, 10);
             g.MakeMove(2, 14);
             g.MakeMove(0, 14);
@@ -1122,8 +1031,7 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
             g.MakeMove(1, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
@@ -1150,8 +1058,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_B32()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_B32();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_B32();
             g.MakeMove(1, 11);
             g.MakeMove(1, 14);
             g.MakeMove(1, 12);
@@ -1161,8 +1068,7 @@ namespace UnitTestProject
             g.MakeMove(0, 10);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 11);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 11));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -1179,8 +1085,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WindAndTime_Q30403_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30403();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30403();
             g.MakeMove(4, 17);
             g.MakeMove(0, 17);
             g.MakeMove(0, 18);
@@ -1190,13 +1095,11 @@ namespace UnitTestProject
             g.MakeMove(3, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 18)), true);
@@ -1214,8 +1117,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A17_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A17();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A17();
             g.MakeMove(0, 15);
             g.MakeMove(3, 17);
             g.MakeMove(4, 16);
@@ -1226,13 +1128,11 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(3, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -1252,8 +1152,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario4dan17_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario4dan17();
-            Game g = new Game(m);
+            Game g = s.Scenario4dan17();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 15);
@@ -1262,13 +1161,11 @@ namespace UnitTestProject
             g.MakeMove(2, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
@@ -1285,8 +1182,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_Q18796_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_Q18796();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_Q18796();
             g.MakeMove(3, 18);
             g.MakeMove(3, 17);
             g.MakeMove(2, 18);
@@ -1294,13 +1190,11 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             g.MakeMove(0, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 17)), true);
@@ -1318,8 +1212,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WindAndTime_Q30234_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30234();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30234();
             g.MakeMove(2, 18);
             g.MakeMove(0, 17);
             g.MakeMove(1, 18);
@@ -1329,13 +1222,11 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             g.MakeMove(5, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 17)), true);
@@ -1352,8 +1243,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_Q6710_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_Q6710();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_Q6710();
             g.MakeMove(5, 18);
             g.MakeMove(4, 17);
             g.MakeMove(6, 17);
@@ -1361,13 +1251,11 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             g.MakeMove(7, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)) || move.Equals(new Point(6, 18)), true);
@@ -1385,13 +1273,11 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_Q14981_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_Q14981();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_Q14981();
             g.MakeMove(6, 18);
             g.MakeMove(0, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -1410,8 +1296,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_A38_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_A38();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_A38();
             g.MakeMove(5, 18);
             g.MakeMove(6, 18);
             g.MakeMove(1, 17);
@@ -1420,8 +1305,7 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -1443,20 +1327,17 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_B17()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_B17();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_B17();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 12))) != null, true);
 
             g.MakeMove(0, 12);
             g.MakeMove(1, 13);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 10);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 10));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 10)), true);
@@ -1473,21 +1354,18 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_A36()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_A36();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_A36();
             g.MakeMove(2, 16);
             g.MakeMove(3, 16);
             g.MakeMove(5, 16);
             g.MakeMove(0, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -1507,8 +1385,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A113_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A113();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A113();
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 18);
@@ -1519,13 +1396,11 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -1546,12 +1421,10 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A53_101Weiqi()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A53_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A53_101Weiqi();
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 15);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 15));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -1570,16 +1443,14 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A75_101Weiqi()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A75_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A75_101Weiqi();
             g.MakeMove(0, 16);
             g.MakeMove(0, 14);
             g.MakeMove(1, 16);
             g.MakeMove(0, 15);
             g.MakeMove(3, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -1597,8 +1468,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WuQingYuan_Q30986()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q30986();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q30986();
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
             g.MakeMove(3, 16);
@@ -1607,8 +1477,7 @@ namespace UnitTestProject
             g.MakeMove(9, 18);
             g.MakeMove(6, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 17)), true);
@@ -1624,8 +1493,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_A17_4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A17();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A17();
             g.MakeMove(1, 17);
             g.MakeMove(6, 18);
             g.MakeMove(2, 16);
@@ -1636,13 +1504,11 @@ namespace UnitTestProject
             g.MakeMove(3, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 18)), true);
@@ -1660,8 +1526,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16738_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16738();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16738();
             g.MakeMove(5, 18);
             g.MakeMove(3, 15);
             g.MakeMove(1, 14);
@@ -1672,13 +1537,11 @@ namespace UnitTestProject
             g.MakeMove(4, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 18)), true);
@@ -1695,8 +1558,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q17132()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17132();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17132();
             g.MakeMove(3, 18);
             g.MakeMove(7, 18);
             g.MakeMove(9, 18);
@@ -1711,13 +1573,11 @@ namespace UnitTestProject
             g.MakeMove(9, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(7, 16);
+            GameTryMove tryMove = new GameTryMove(g, new Point(7, 16));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(7, 16)), true);
@@ -1736,8 +1596,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A113_4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A113();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A113();
             g.MakeMove(1, 17);
             g.MakeMove(0, 15);
             g.MakeMove(1, 18);
@@ -1748,13 +1607,11 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 16);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 16));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 16)), true);
@@ -1773,8 +1630,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A80_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A80();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A80();
             g.MakeMove(0, 16);
             g.MakeMove(0, 17);
             g.MakeMove(1, 18);
@@ -1784,13 +1640,11 @@ namespace UnitTestProject
             g.MakeMove(0, 15);
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(3, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -1809,16 +1663,13 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario2dan21()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario2dan21();
-            Game g = new Game(m);
+            Game g = s.Scenario2dan21();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 16);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 16));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 16)), true);
@@ -1837,8 +1688,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A9_Ext_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A9_Ext();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A9_Ext();
             g.MakeMove(1, 18);
             g.MakeMove(0, 18);
             g.MakeMove(1, 17);
@@ -1846,13 +1696,11 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             g.MakeMove(0, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 17)), true);
@@ -1870,8 +1718,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A138_101Weiqi()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A138_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A138_101Weiqi();
             g.MakeMove(6, 18);
             g.MakeMove(8, 17);
             g.MakeMove(7, 18);
@@ -1881,13 +1728,11 @@ namespace UnitTestProject
             g.MakeMove(9, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)), true);
@@ -1907,18 +1752,15 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario2dan8()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario2dan8();
-            Game g = new Game(m);
+            Game g = s.Scenario2dan8();
             g.MakeMove(1, 15);
             g.MakeMove(0, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 17)), true);
@@ -1937,20 +1779,17 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A14()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A14();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A14();
             g.MakeMove(2, 16);
             g.MakeMove(2, 15);
             g.MakeMove(0, 15);
             g.MakeMove(1, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 17)), true);
@@ -1971,20 +1810,17 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WindAndTime_Q29481()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q29481();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q29481();
             g.MakeMove(4, 14);
             g.MakeMove(3, 15);
             g.MakeMove(4, 15);
             g.MakeMove(4, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(3, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 17)), true);
@@ -2002,8 +1838,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16748()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16748();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16748();
             g.MakeMove(4, 17);
             g.MakeMove(4, 16);
             g.MakeMove(3, 17);
@@ -2011,13 +1846,11 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 18)), true);
@@ -2038,21 +1871,18 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_Q1970_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_Q1970();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_Q1970();
 
             g.MakeMove(4, 15);
             g.MakeMove(0, 17);
             g.MakeMove(0, 15);
             g.MakeMove(6, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 15);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 15));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 15)), true);
@@ -2070,8 +1900,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A85_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A85();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A85();
             g.MakeMove(1, 18);
             g.MakeMove(2, 18);
             g.MakeMove(0, 17);
@@ -2081,13 +1910,11 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 16);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 16));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -2109,8 +1936,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A151_101Weiqi_5()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A151_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
             g.MakeMove(0, 15);
             g.MakeMove(3, 15);
             g.MakeMove(1, 13);
@@ -2122,8 +1948,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -2140,8 +1965,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Side_B35()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Side_B35();
-            Game g = new Game(m);
+            Game g = s.Scenario_Side_B35();
             g.MakeMove(3, 18);
             g.MakeMove(5, 17);
             g.MakeMove(6, 17);
@@ -2152,8 +1976,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -2171,8 +1994,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A82_101Weiqi_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A82_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A82_101Weiqi();
             g.MakeMove(0, 17);
             g.MakeMove(0, 18);
             g.MakeMove(1, 14);
@@ -2192,8 +2014,7 @@ namespace UnitTestProject
             Boolean checkConnectAndDie = ImmovableHelper.CheckConnectAndDie(g.Board, g.Board.GetGroupAt(new Point(1, 17)));
             Assert.AreEqual(checkConnectAndDie, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -2212,12 +2033,9 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Nie1()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Nie1();
-            Game g = new Game(m);
+            Game g = s.Scenario_Nie1();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -2235,8 +2053,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WindAndTime_Q30358()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30358();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30358();
             g.MakeMove(7, 15);
             g.MakeMove(4, 16);
             g.MakeMove(4, 18);
@@ -2247,14 +2064,11 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(7, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(7, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(7, 18)), true);
@@ -2277,13 +2091,10 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_Weiqi101_B74_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_B74();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_B74();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(1, 10);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 10));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -2302,8 +2113,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_Q1970_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_Q1970();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_Q1970();
             g.MakeMove(4, 15);
             g.MakeMove(5, 15);
             g.MakeMove(6, 14);
@@ -2316,9 +2126,7 @@ namespace UnitTestProject
             g.MakeMove(4, 13);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(5, 12);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 12));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -2335,8 +2143,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q17160_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17160();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17160();
             g.MakeMove(5, 17);
             g.MakeMove(3, 16);
             g.MakeMove(7, 18);
@@ -2347,14 +2154,11 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(8, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(8, 16));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(8, 16)), true);
@@ -2372,8 +2176,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_B3_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_B3();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_B3();
             g.MakeMove(1, 18);
             g.MakeMove(2, 17);
             g.MakeMove(4, 16);
@@ -2415,8 +2218,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_A38_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_A38();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_A38();
             g.MakeMove(5, 18);
             g.MakeMove(6, 18);
             g.MakeMove(1, 17);
@@ -2428,13 +2230,11 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(0, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -2454,8 +2254,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_18467_101Weiqi()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_18467_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_18467_101Weiqi();
             g.MakeMove(7, 18);
             g.MakeMove(4, 18);
             g.MakeMove(3, 17);
@@ -2467,13 +2266,11 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(1, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(3, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -2492,8 +2289,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_B36()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_B36();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_B36();
             g.MakeMove(0, 17);
             g.MakeMove(1, 18);
             g.MakeMove(0, 16);
@@ -2501,13 +2297,11 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(8, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(8, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -2525,8 +2319,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16446()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16446();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16446();
             g.MakeMove(3, 16);
             g.MakeMove(1, 16);
             g.MakeMove(2, 17);
@@ -2534,13 +2327,11 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             g.MakeMove(2, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -2560,8 +2351,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16738_4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16738();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16738();
 
             g.MakeMove(5, 18);
             g.MakeMove(0, 17);
@@ -2573,13 +2363,11 @@ namespace UnitTestProject
             g.MakeMove(2, 15);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(3, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 16));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -2598,8 +2386,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A26_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A26();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A26();
             g.MakeMove(2, 18);
             g.MakeMove(1, 14);
             g.MakeMove(1, 18);
@@ -2609,9 +2396,7 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(0, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 14);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 14));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
         }
@@ -2628,8 +2413,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16738_5()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16738();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16738();
             g.MakeMove(5, 18);
             g.MakeMove(4, 18);
             g.MakeMove(2, 18);
@@ -2644,9 +2428,7 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
 
@@ -2669,8 +2451,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A84_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A84();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A84();
             g.MakeMove(0, 17);
             g.MakeMove(1, 17);
             g.MakeMove(3, 17);
@@ -2680,9 +2461,7 @@ namespace UnitTestProject
             g.MakeMove(0, 15);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -2704,8 +2483,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_B10()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_B10();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_B10();
             g.MakeMove(1, 18);
             g.MakeMove(0, 17);
             g.MakeMove(2, 17);
@@ -2715,14 +2493,11 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(1, 17);
             g.MakeMove(4, 17);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -2740,8 +2515,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Side_B19()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Side_B19();
-            Game g = new Game(m);
+            Game g = s.Scenario_Side_B19();
             g.MakeMove(4, 16);
             g.MakeMove(8, 18);
             g.MakeMove(7, 16);
@@ -2751,14 +2525,11 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             g.MakeMove(5, 17);
             g.MakeMove(6, 17);
-            Point p = new Point(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead) || moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
@@ -2775,8 +2546,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Side_A20()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Side_A20();
-            Game g = new Game(m);
+            Game g = s.Scenario_Side_A20();
             g.MakeMove(3, 18);
             g.MakeMove(3, 17);
             g.MakeMove(5, 18);
@@ -2784,14 +2554,11 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
             g.MakeMove(6, 18);
 
-            Point p = new Point(4, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isRedundant = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(isRedundant, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -2809,8 +2576,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16605()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16605();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16605();
             g.MakeMove(5, 17);
             g.MakeMove(3, 18);
             g.MakeMove(6, 17);
@@ -2820,14 +2586,11 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
             g.MakeMove(5, 18);
 
-            Point p = new Point(4, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 16));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -2845,8 +2608,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_A8()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_A8();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_A8();
             g.MakeMove(3, 17);
             g.MakeMove(2, 17);
             g.MakeMove(1, 18);
@@ -2855,14 +2617,12 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
 
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -2880,8 +2640,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WuQingYuan_Q15126()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q15126();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q15126();
             g.MakeMove(1, 18);
             g.MakeMove(2, 18);
             g.MakeMove(1, 17);
@@ -2890,15 +2649,12 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(3, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 17));
 
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -2921,8 +2677,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A145_101Weiqi()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A145_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A145_101Weiqi();
             g.MakeMove(2, 12);
             g.MakeMove(0, 13);
             g.MakeMove(1, 12);
@@ -2933,15 +2688,12 @@ namespace UnitTestProject
             g.MakeMove(1, 13);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 10);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 10));
 
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -2958,8 +2710,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q17154_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17154();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17154();
             g.MakeMove(1, 18);
             g.MakeMove(1, 17);
             g.MakeMove(2, 18);
@@ -2969,15 +2720,12 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
 
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -2995,8 +2743,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q17081()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17081();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17081();
             g.MakeMove(9, 18);
             g.MakeMove(4, 18);
             g.MakeMove(5, 17);
@@ -3008,8 +2755,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -3025,20 +2771,17 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_B33()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_B33();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_B33();
             g.MakeMove(3, 18);
             g.MakeMove(0, 17);
             g.MakeMove(0, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(2, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 17));
 
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -3067,7 +2810,7 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -3084,19 +2827,16 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A8_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A8();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A8();
             g.MakeMove(1, 17);
             g.MakeMove(0, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
 
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -3116,8 +2856,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_B40()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_B40();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_B40();
             g.MakeMove(2, 18);
             g.MakeMove(1, 16);
             g.MakeMove(0, 16);
@@ -3126,8 +2865,7 @@ namespace UnitTestProject
             g.MakeMove(0, 15);
             g.MakeMove(0, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -3168,8 +2906,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WuQingYuan_Q31398()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31398();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31398();
             g.MakeMove(6, 17);
             g.MakeMove(6, 16);
             g.MakeMove(5, 17);
@@ -3180,8 +2917,7 @@ namespace UnitTestProject
             g.MakeMove(8, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -3199,8 +2935,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WuQingYuan_Q31580()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31580();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31580();
             g.MakeMove(7, 18);
             g.MakeMove(5, 17);
             g.MakeMove(6, 18);
@@ -3210,8 +2945,7 @@ namespace UnitTestProject
             g.MakeMove(6, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -3231,8 +2965,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WindAndTime_Q30332()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30332();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30332();
             g.MakeMove(1, 15);
             g.MakeMove(2, 15);
             g.MakeMove(1, 14);
@@ -3241,13 +2974,11 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 16);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 16));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -3266,8 +2997,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WuQingYuan_Q31499_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31499();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31499();
             g.MakeMove(2, 14);
             g.MakeMove(0, 14);
             g.MakeMove(0, 16);
@@ -3283,9 +3013,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
 
@@ -3308,8 +3036,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A85_4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A85();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A85();
             g.MakeMove(4, 18);
             g.MakeMove(2, 17);
             g.MakeMove(0, 17);
@@ -3320,9 +3047,7 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
 
@@ -3388,9 +3113,7 @@ namespace UnitTestProject
             gi.survivalPoints.Add(new Point(5, 16));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(6, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 16));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -3413,8 +3136,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WindAndTime_Q30053()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30053();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30053();
             g.MakeMove(5, 15);
             g.MakeMove(4, 15);
             g.MakeMove(5, 17);
@@ -3443,8 +3165,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16693()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16693();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16693();
             g.MakeMove(2, 18);
             g.MakeMove(4, 18);
             g.MakeMove(5, 16);
@@ -3470,8 +3191,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16738_6()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16738();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16738();
             g.MakeMove(5, 18);
             g.MakeMove(4, 18);
             g.MakeMove(2, 18);
@@ -3490,9 +3210,7 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
 
@@ -3515,8 +3233,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16738_7()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16738();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16738();
             g.MakeMove(5, 18);
             g.MakeMove(4, 18);
             g.MakeMove(2, 18);
@@ -3540,9 +3257,7 @@ namespace UnitTestProject
             g.Board[4, 16] = g.Board[8, 18] = Content.Black;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(0, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
 
@@ -3566,8 +3281,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16487()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16487();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16487();
             g.MakeMove(4, 16);
             g.MakeMove(5, 15);
             g.MakeMove(3, 18);
@@ -3578,9 +3292,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
         }
@@ -3597,8 +3309,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q17132_5()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17132();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17132();
             g.MakeMove(3, 18);
             g.MakeMove(4, 16);
             g.MakeMove(4, 18);
@@ -3607,9 +3318,7 @@ namespace UnitTestProject
             g.MakeMove(5, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(6, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
         }
@@ -3626,8 +3335,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16738_8()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16738();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16738();
 
             g.MakeMove(5, 18);
             g.MakeMove(0, 17);
@@ -3640,9 +3348,7 @@ namespace UnitTestProject
             g.Board[5, 18] = g.Board[6, 18] = g.Board[1, 18] = Content.Empty;
             g.Board[3, 18] = g.Board[4, 18] = g.Board[3, 16] = Content.Black;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -3665,18 +3371,15 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Nie4_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Nie4();
-            Game g = new Game(m);
+            Game g = s.Scenario_Nie4();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -3694,20 +3397,17 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_ScenarioHighLevel23_2()
         {
             Scenario s = new Scenario();
-            Game m = s.ScenarioHighLevel23();
-            Game g = new Game(m);
+            Game g = s.ScenarioHighLevel23();
             g.MakeMove(1, 16);
             g.MakeMove(1, 17);
             g.MakeMove(0, 17);
             g.MakeMove(0, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(2, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -3777,9 +3477,7 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(3, 16));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(7, 14);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(7, 14));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -3801,16 +3499,13 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16594()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16594();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16594();
             g.MakeMove(9, 18);
             g.MakeMove(6, 17);
             g.MakeMove(4, 17);
             g.MakeMove(4, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
@@ -3826,22 +3521,18 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WuQingYuan_Q31680_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31680();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31680();
             g.MakeMove(2, 16);
             g.MakeMove(1, 18);
             g.MakeMove(4, 18);
             g.MakeMove(4, 17);
             g.MakeMove(0, 16);
 
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -3859,8 +3550,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q17183()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17183();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17183();
             g.MakeMove(3, 17);
             g.MakeMove(5, 17);
             g.MakeMove(3, 16);
@@ -3872,13 +3562,11 @@ namespace UnitTestProject
             g.Board[6, 16] = Content.Empty;
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -3897,17 +3585,14 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_Weiqi101_18410_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_18410();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_18410();
             g.MakeMove(1, 16);
             g.MakeMove(0, 15);
             g.MakeMove(1, 17);
             g.MakeMove(1, 18);
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(3, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
 
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
@@ -3924,8 +3609,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q17132_4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17132();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17132();
             g.MakeMove(3, 18);
             g.MakeMove(4, 16);
             g.MakeMove(4, 18);
@@ -3936,9 +3620,7 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(4, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
         }
@@ -3955,8 +3637,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A67_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A67();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A67();
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
             g.MakeMove(0, 17);
@@ -3964,13 +3645,11 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             g.MakeMove(2, 17);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -3988,22 +3667,18 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WuQingYuan_Q31670()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31670();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31670();
             g.MakeMove(7, 18);
             g.MakeMove(6, 15);
             g.MakeMove(4, 18);
             g.MakeMove(6, 17);
             g.MakeMove(6, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -4067,14 +3742,11 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(7, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(3, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -4093,8 +3765,7 @@ namespace UnitTestProject
         {
             //not double ko
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A67();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A67();
             g.MakeMove(1, 17);
             g.MakeMove(0, 15);
             g.MakeMove(0, 17);
@@ -4102,14 +3773,11 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead) || moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
@@ -4126,8 +3794,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A67_6()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A67();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A67();
             g.MakeMove(1, 17);
             g.MakeMove(0, 15);
             g.MakeMove(0, 17);
@@ -4137,9 +3804,7 @@ namespace UnitTestProject
             g.Board[4, 18] = Content.Empty;
             g.Board[5, 18] = Content.White;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
@@ -4156,8 +3821,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A67_4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A67();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A67();
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
             g.MakeMove(0, 17);
@@ -4173,8 +3837,7 @@ namespace UnitTestProject
             g.Board[0, 14] = g.Board[0, 13] = Content.Black;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -4190,8 +3853,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_Corner_A67_5()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A67();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A67();
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
             g.MakeMove(0, 17);
@@ -4204,13 +3866,11 @@ namespace UnitTestProject
             g.GameInfo.movablePoints.Add(new Point(0, 14));
             g.GameInfo.killMovablePoints.Add(new Point(0, 13));
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -4233,16 +3893,14 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_WindAndTime_Q30241()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30241();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30241();
             g.MakeMove(0, 11);
             g.MakeMove(0, 12);
             g.MakeMove(3, 13);
             g.MakeMove(2, 13);
             g.MakeMove(1, 11);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -4260,11 +3918,9 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_A38_4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_A38();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_A38();
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -4285,8 +3941,7 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(4, 15);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -4305,8 +3960,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_A4Q11_101Weiqi_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A4Q11_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A4Q11_101Weiqi();
             g.MakeMove(2, 18);
             g.MakeMove(1, 18);
             g.MakeMove(0, 17);
@@ -4319,8 +3973,7 @@ namespace UnitTestProject
             g.MakeMove(1, 15);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -4353,9 +4006,7 @@ namespace UnitTestProject
             g.MakeMove(7, 17);
             g.MakeMove(5, 18);
 
-            Point p = new Point(4, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
 
@@ -4377,8 +4028,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q2834_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q2834();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q2834();
             g.MakeMove(0, 17);
             g.MakeMove(1, 16);
             g.MakeMove(2, 16);
@@ -4388,8 +4038,7 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 15);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 15));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -4406,8 +4055,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_A14()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A14();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A14();
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
             g.MakeMove(1, 18);
@@ -4421,8 +4069,7 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 15);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 15));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
@@ -4443,8 +4090,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A28()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A28();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A28();
             g.MakeMove(3, 18);
             g.MakeMove(2, 18);
             g.MakeMove(1, 18);
@@ -4453,8 +4099,7 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(3, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
         }
@@ -4480,8 +4125,7 @@ namespace UnitTestProject
             Game g = s.Scenario_XuanXuanQiJing_Weiqi101_B74();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 10);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 10));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
         }
@@ -4508,8 +4152,7 @@ namespace UnitTestProject
             g.MakeMove(0, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -4538,8 +4181,7 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
         }
@@ -4654,6 +4296,24 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 15));
+            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
+
+        /*
+ 14 . X X X . . . . . . . . . . . . . . . 
+ 15 O . O X . . . . . . . . . . . . . . . 
+ 16 . O O O X . . . . . . . . . . . . . . 
+ 17 X . X O X . . . . . . . . . . . . . . 
+ 18 O . X O X . . . . . . . . . . . . . . 
+        */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario7kyu25_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario7kyu25();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }

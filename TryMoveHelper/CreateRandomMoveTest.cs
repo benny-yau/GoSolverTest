@@ -20,8 +20,7 @@ namespace UnitTestProject
         public void CreateRandomMoveTest_Scenario_WuQingYuan_Q31445()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31445();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31445();
             g.MakeMove(4, 17);
             g.MakeMove(4, 16);
             g.MakeMove(3, 18);
@@ -42,8 +41,7 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundant, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);

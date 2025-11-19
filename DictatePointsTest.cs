@@ -23,8 +23,7 @@ namespace UnitTestProject
         public void DictatePointsTest_Scenario_TianLongTu_Q17255()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17255();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17255();
             g.MakeMove(3, 18);
             g.MakeMove(4, 18);
             g.MakeMove(6, 18);
@@ -32,7 +31,7 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             g.MakeMove(2, 18);
 
-            Game.UseSolutionPoints = Game.UseMapMoves = true; //false
+            Game.UseMapMoves = true; //false
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 16)), true);

@@ -83,8 +83,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_XuanXuanQiJing_B57()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_B57();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_B57();
             g.MakeMove(0, 11);
             g.MakeMove(0, 12);
             g.MakeMove(2, 12);
@@ -120,8 +119,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_WuQingYuan_Q31493()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31493();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31493();
             g.MakeMove(4, 14);
             g.MakeMove(4, 15);
             g.MakeMove(4, 17);
@@ -154,8 +152,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_WuQingYuan_Q31493_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31493();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31493();
             g.MakeMove(4, 14);
             g.MakeMove(4, 15);
             g.MakeMove(4, 17);
@@ -191,8 +188,7 @@ namespace UnitTestProject
         {
             //simple seki with 2 neighbour groups
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A151_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
             g.MakeMove(0, 15);
             g.MakeMove(0, 14);
             g.MakeMove(1, 12);
@@ -236,8 +232,7 @@ namespace UnitTestProject
             Boolean enablePassMove = BothAliveHelper.EnableCheckForPassMove(g.Board);
             Assert.AreEqual(enablePassMove, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(Game.PassMove), true);
@@ -310,8 +305,7 @@ namespace UnitTestProject
         {
             //complex seki
             Scenario s = new Scenario();
-            Game m = s.Scenario3dan22();
-            Game g = new Game(m);
+            Game g = s.Scenario3dan22();
             g.MakeMove(2, 18);
             g.MakeMove(1, 18);
             g.MakeMove(0, 18);
@@ -348,8 +342,7 @@ namespace UnitTestProject
             //complex seki
             //one neighbour group only
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_A8();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_A8();
             g.MakeMove(0, 17);
             g.MakeMove(3, 17);
             g.MakeMove(1, 17);
@@ -387,8 +380,7 @@ namespace UnitTestProject
         {
             //simple seki
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A27();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A27();
             g.MakeMove(1, 14);
             g.MakeMove(1, 16);
             g.MakeMove(2, 16);
@@ -398,9 +390,7 @@ namespace UnitTestProject
             g.MakeMove(2, 14);
             g.MakeMove(2, 18);
             g.MakeMove(1, 18);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
 
@@ -431,8 +421,7 @@ namespace UnitTestProject
         {
             //simple seki
             Scenario s = new Scenario();
-            Game m = s.Scenario3dan16();
-            Game g = new Game(m);
+            Game g = s.Scenario3dan16();
             g.MakeMove(4, 14);
             g.MakeMove(5, 14);
             g.MakeMove(4, 15);
@@ -466,8 +455,7 @@ namespace UnitTestProject
         {
             //two-point eye to remove if both are covered eyes
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30005();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30005();
 
             g.MakeMove(3, 15);
             g.MakeMove(4, 12);
@@ -508,8 +496,7 @@ namespace UnitTestProject
         {
             //complex seki - to clear all killer groups
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30213();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30213();
             g.MakeMove(1, 15);
             g.MakeMove(0, 16);
             g.MakeMove(3, 14);
@@ -540,8 +527,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_TianLongTu_Q16827()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16827();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16827();
             g.MakeMove(6, 17);
             g.MakeMove(5, 17);
             g.MakeMove(7, 17);
@@ -573,8 +559,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_TianLongTu_Q16424()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16424();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16424();
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 17);
@@ -602,8 +587,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_Nie73()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Nie73();
-            Game g = new Game(m);
+            Game g = s.Scenario_Nie73();
             g.MakeMove(3, 18);
             g.MakeMove(6, 17);
             g.MakeMove(0, 17);
@@ -690,8 +674,7 @@ namespace UnitTestProject
             Boolean enablePassMove = BothAliveHelper.EnableCheckForPassMove(g.Board);
             Assert.AreEqual(enablePassMove, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.Equals(ConfirmAliveResult.Dead), true);
@@ -747,8 +730,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_Corner_B43()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_B43();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_B43();
             g.MakeMove(0, 15);
             g.MakeMove(1, 16);
             g.MakeMove(2, 17);
@@ -769,8 +751,7 @@ namespace UnitTestProject
             Boolean enablePassMove = BothAliveHelper.EnableCheckForPassMove(g.Board);
             Assert.AreEqual(enablePassMove, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
@@ -790,8 +771,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario5dan27()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario5dan27();
-            Game g = new Game(m);
+            Game g = s.Scenario5dan27();
             g.MakeMove(4, 18);
             g.MakeMove(5, 18);
             g.MakeMove(4, 16);
@@ -804,8 +784,7 @@ namespace UnitTestProject
             Boolean enablePassMove = BothAliveHelper.EnableCheckForPassMove(g.Board);
             Assert.AreEqual(enablePassMove, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -827,8 +806,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_WindAndTime_Q30005_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30005();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30005();
             g.MakeMove(1, 14);
             g.MakeMove(4, 12);
             g.MakeMove(3, 14);
@@ -858,8 +836,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_Corner_A123()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A123();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A123();
             g.MakeMove(2, 16);
             g.MakeMove(1, 16);
             g.MakeMove(0, 18);
@@ -891,8 +868,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_TianLongTu_Q16738()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16738();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16738();
             g.MakeMove(5, 18);
             g.MakeMove(3, 15);
             g.MakeMove(1, 14);
@@ -925,8 +901,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_Corner_A74()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A74();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A74();
             g.MakeMove(1, 17);
             g.MakeMove(0, 17);
             g.MakeMove(1, 18);
@@ -960,8 +935,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_Side_A23()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Side_A23();
-            Game g = new Game(m);
+            Game g = s.Scenario_Side_A23();
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
             g.MakeMove(5, 18);
@@ -985,8 +959,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario3dan22_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario3dan22();
-            Game g = new Game(m);
+            Game g = s.Scenario3dan22();
             g.MakeMove(1, 18);
             g.MakeMove(3, 18);
             g.MakeMove(0, 16);
@@ -996,8 +969,7 @@ namespace UnitTestProject
             Boolean enablePassMove = BothAliveHelper.EnableCheckForPassMove(g.Board);
             Assert.AreEqual(enablePassMove, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
@@ -1014,8 +986,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_Side_A23_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Side_A23();
-            Game g = new Game(m);
+            Game g = s.Scenario_Side_A23();
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
             g.MakeMove(5, 18);
@@ -1042,8 +1013,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_WindAndTime_Q30275()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30275();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30275();
             g.MakeMove(3, 18);
             g.MakeMove(3, 17);
             g.MakeMove(0, 15);
@@ -1071,8 +1041,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_XuanXuanGo_Q18500()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_Q18500();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_Q18500();
             g.MakeMove(7, 18);
             g.MakeMove(9, 16);
             g.MakeMove(3, 18);
@@ -1102,8 +1071,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_WuQingYuan_Q31445()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31445();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31445();
             g.MakeMove(4, 17);
             g.MakeMove(4, 16);
             g.MakeMove(4, 18);
@@ -1128,8 +1096,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_WuQingYuan_Q31493_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31493();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31493();
             g.MakeMove(4, 14);
             g.MakeMove(4, 15);
             g.MakeMove(4, 17);
@@ -1156,8 +1123,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_WuQingYuan_Q31493_4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31493();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31493();
             g.MakeMove(4, 14);
             g.MakeMove(4, 15);
             g.MakeMove(4, 17);
@@ -1191,8 +1157,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_Corner_A75()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A75();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A75();
             g.MakeMove(2, 18);
             g.MakeMove(2, 17);
             g.MakeMove(3, 18);
@@ -1229,8 +1194,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_TianLongTu_Q16424_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16424();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16424();
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 17);
@@ -1260,8 +1224,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_WuQingYuan_Q31445_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31445();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31445();
             g.MakeMove(4, 17);
             g.MakeMove(4, 16);
             g.MakeMove(6, 16);
@@ -1286,8 +1249,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_GuanZiPu_Q14971()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_Q14971();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_Q14971();
             g.MakeMove(0, 17);
             g.MakeMove(1, 17);
             g.MakeMove(6, 18);
@@ -1325,8 +1287,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_XuanXuanGo_A28_101Weiqi()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A28_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A28_101Weiqi();
             g.MakeMove(2, 18);
             g.MakeMove(1, 16);
             g.MakeMove(2, 16);
@@ -1363,8 +1324,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_XuanXuanGo_A28_101Weiqi_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A28_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A28_101Weiqi();
             g.MakeMove(2, 18);
             g.MakeMove(1, 16);
             g.MakeMove(2, 16);
@@ -1406,8 +1366,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_XuanXuanGo_A28_101Weiqi_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A28_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A28_101Weiqi();
             g.MakeMove(2, 18);
             g.MakeMove(1, 16);
             g.MakeMove(2, 16);
@@ -1450,8 +1409,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_WuQingYuan_Q31398()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31398();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31398();
             g.MakeMove(6, 17);
             g.MakeMove(4, 17);
             g.MakeMove(6, 16);
@@ -1470,8 +1428,7 @@ namespace UnitTestProject
             Boolean enablePassMove = BothAliveHelper.EnableCheckForPassMove(g.Board);
             Assert.AreEqual(enablePassMove, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -1490,8 +1447,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_XuanXuanGo_A54()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A54();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A54();
             g.MakeMove(1, 18);
             g.MakeMove(1, 16);
             g.MakeMove(1, 17);
@@ -1519,8 +1475,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_GuanZiPu_B18()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_B18();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_B18();
             g.MakeMove(3, 17);
             g.MakeMove(5, 17);
             g.MakeMove(7, 18);
@@ -1551,8 +1506,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_GuanZiPu_B18_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_B18();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_B18();
             g.MakeMove(3, 17);
             g.MakeMove(5, 17);
             g.MakeMove(7, 18);
@@ -1585,8 +1539,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_GuanZiPu_B18_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_B18();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_B18();
             g.GameInfo.Survival = SurviveOrKill.Survive;
             g.GameInfo.targetPoints.Clear();
             g.GameInfo.targetPoints.Add(new Point(3, 17));
@@ -1600,8 +1553,7 @@ namespace UnitTestProject
             g.Board[8, 17] = Content.White;
             g.Board[8, 18] = Content.White;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
@@ -1619,8 +1571,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_GuanZiPu_B18_4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_B18();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_B18();
             g.GameInfo.Survival = SurviveOrKill.Survive;
             g.GameInfo.targetPoints.Clear();
             g.GameInfo.targetPoints.Add(new Point(3, 17));
@@ -1639,8 +1590,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
@@ -1817,9 +1767,7 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(0, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 16));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -1887,9 +1835,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(0, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 16));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -1950,8 +1896,7 @@ namespace UnitTestProject
         public void BothAliveTest_Scenario_XuanXuanGo_Q18341_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_Q18341();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_Q18341();
             g.MakeMove(1, 16);
             g.MakeMove(5, 15);
             g.MakeMove(1, 17);

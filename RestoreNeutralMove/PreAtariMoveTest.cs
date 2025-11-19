@@ -33,7 +33,7 @@ namespace UnitTestProject
             Boolean preAtariMove = ImmovableHelper.PreAtariMove(tryMove);
             Assert.AreEqual(preAtariMove, true);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
@@ -158,8 +158,7 @@ namespace UnitTestProject
             Boolean preAtariMove = ImmovableHelper.PreAtariMove(tryMove);
             Assert.AreEqual(preAtariMove, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead) || moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
@@ -187,8 +186,7 @@ namespace UnitTestProject
             Boolean preAtariMove = ImmovableHelper.PreAtariMove(tryMove);
             Assert.AreEqual(preAtariMove, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 18)), true);
@@ -208,8 +206,7 @@ namespace UnitTestProject
         public void PreAtariMoveTest_Scenario_WuQingYuan_Q3849()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q3849();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q3849();
             g.MakeMove(2, 15);
             g.MakeMove(3, 14);
             g.MakeMove(1, 18);
@@ -222,8 +219,7 @@ namespace UnitTestProject
             Boolean preAtariMove = ImmovableHelper.PreAtariMove(tryMove);
             Assert.AreEqual(preAtariMove, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -241,8 +237,7 @@ namespace UnitTestProject
         public void PreAtariMoveTest_Scenario_TianLongTu_Q16747()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16747();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16747();
             g.MakeMove(3, 18);
             g.MakeMove(5, 17);
             g.MakeMove(6, 15);
@@ -254,8 +249,7 @@ namespace UnitTestProject
             Boolean preAtariMove = ImmovableHelper.PreAtariMove(tryMove);
             Assert.AreEqual(preAtariMove, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(9, 18)), true);

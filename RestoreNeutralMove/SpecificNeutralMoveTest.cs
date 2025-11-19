@@ -199,8 +199,7 @@ namespace UnitTestProject
             Assert.AreEqual(specificNeutralMove != null, true);
             
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 16)) || move.Equals(new Point(5, 17)) || move.Equals(new Point(5, 18)), true);
@@ -231,8 +230,7 @@ namespace UnitTestProject
             Assert.AreEqual(specificNeutralMove != null, true);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.Equals(ConfirmAliveResult.Dead), true);
@@ -261,8 +259,7 @@ namespace UnitTestProject
             Assert.AreEqual(specificNeutralMove != null, true);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.Equals(ConfirmAliveResult.Dead), true);
@@ -303,8 +300,7 @@ namespace UnitTestProject
             Assert.AreEqual(specificNeutralMove != null, true);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.Equals(ConfirmAliveResult.Dead), true);
@@ -470,8 +466,7 @@ namespace UnitTestProject
         public void SpecificNeutralMoveTest_Scenario_Corner_A132()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A132();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A132();
             g.MakeMove(0, 17);
             g.MakeMove(4, 17);
             g.MakeMove(1, 17);
@@ -488,8 +483,7 @@ namespace UnitTestProject
             GameTryMove resultMove = RedundantMoveHelper.GetSpecificNeutralMove(g, new List<GameTryMove>() { tryMove });
             Assert.AreEqual(resultMove != null, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 16)), true);
@@ -508,8 +502,7 @@ namespace UnitTestProject
         public void SpecificNeutralMoveTest_Scenario_XuanXuanGo_A54_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A54();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A54();
             g.MakeMove(1, 18);
             g.MakeMove(0, 17);
             g.MakeMove(6, 18);
@@ -526,8 +519,7 @@ namespace UnitTestProject
             GameTryMove resultMove = RedundantMoveHelper.GetSpecificNeutralMove(g, new List<GameTryMove>() { tryMove });
             Assert.AreEqual(resultMove != null, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 14)), true);
@@ -547,8 +539,7 @@ namespace UnitTestProject
         public void SpecificNeutralMoveTest_Scenario_XuanXuanGo_B7()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_B7();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_B7();
             g.MakeMove(1, 17);
             g.MakeMove(1, 18);
             g.MakeMove(0, 17);
@@ -562,8 +553,7 @@ namespace UnitTestProject
             GameTryMove resultMove = RedundantMoveHelper.GetSpecificNeutralMove(g, new List<GameTryMove>() { tryMove });
             Assert.AreEqual(resultMove != null, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -581,8 +571,7 @@ namespace UnitTestProject
         public void SpecificNeutralMoveTest_Scenario3kyu24_5()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario3kyu24();
-            Game g = new Game(m);
+            Game g = s.Scenario3kyu24();
             g.MakeMove(1, 17);
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
@@ -590,8 +579,7 @@ namespace UnitTestProject
             GameTryMove resultMove = RedundantMoveHelper.GetSpecificNeutralMove(g, new List<GameTryMove>() { tryMove });
             Assert.AreEqual(resultMove != null, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -680,8 +668,7 @@ namespace UnitTestProject
         public void SpecificNeutralMoveTest_Scenario_TianLongTu_Q16827_4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16827();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16827();
             g.MakeMove(7, 17);
             g.MakeMove(8, 16);
             g.MakeMove(3, 18);
@@ -698,8 +685,7 @@ namespace UnitTestProject
             GameTryMove resultMove = RedundantMoveHelper.GetSpecificNeutralMove(g, new List<GameTryMove>() { tryMove });
             Assert.AreEqual(resultMove != null, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -735,8 +721,7 @@ namespace UnitTestProject
             GameTryMove resultMove = RedundantMoveHelper.GetSpecificNeutralMove(g, new List<GameTryMove>() { tryMove });
             Assert.AreEqual(resultMove != null, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);

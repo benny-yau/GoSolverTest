@@ -186,8 +186,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_XuanXuanQiJing_A8()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_A8();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_A8();
             g.MakeMove(0, 17);
             g.MakeMove(3, 17);
             g.MakeMove(1, 17);
@@ -214,8 +213,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_WuQingYuan_Q30986()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q30986();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q30986();
             g.MakeMove(4, 18);
             g.MakeMove(7, 18);
             g.MakeMove(5, 17);
@@ -231,8 +229,7 @@ namespace UnitTestProject
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
             Assert.AreEqual(result != ConfirmAliveResult.Alive, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -250,8 +247,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_TianLongTu_Q16446()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16446();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16446();
             g.MakeMove(3, 16);
             g.MakeMove(2, 16);
             g.MakeMove(2, 17);
@@ -285,8 +281,7 @@ namespace UnitTestProject
         {
             //target group liberty should be more than one
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_B25();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_B25();
             g.MakeMove(8, 17);
             g.MakeMove(7, 18);
             g.MakeMove(2, 17);
@@ -369,8 +364,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_GuanZiPu_B3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_B3();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_B3();
             g.MakeMove(1, 18);
             g.MakeMove(2, 17);
             g.MakeMove(4, 16);
@@ -1197,8 +1191,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_WuQingYuan_Q15126()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q15126();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q15126();
             g.MakeMove(1, 18);
             g.MakeMove(2, 18);
             g.MakeMove(1, 17);
@@ -1228,8 +1221,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_Corner_A28()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A28();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A28();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(1, 16);
@@ -1255,8 +1247,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_XuanXuanQiJing_Weiqi101_2282()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_2282();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_2282();
             g.MakeMove(7, 18);
             g.MakeMove(4, 18);
             g.MakeMove(6, 18);
@@ -1471,8 +1462,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_WindAndTime_Q29998()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q29998();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q29998();
             g.MakeMove(1, 15);
             g.MakeMove(0, 15);
             g.MakeMove(0, 16);
@@ -1495,8 +1485,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_WuQingYuan_Q31177()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31177();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31177();
             g.MakeMove(5, 17);
             g.MakeMove(5, 16);
             g.MakeMove(5, 18);
@@ -1518,8 +1507,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_Corner_A139_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A139();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A139();
             g.MakeMove(2, 17);
             g.MakeMove(2, 18);
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
@@ -1597,8 +1585,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_WuQingYuan_Q31503()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31503();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31503();
             g.MakeMove(4, 18);
             g.MakeMove(5, 18);
             g.MakeMove(3, 18);
@@ -1627,8 +1614,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_Corner_A108()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A108();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A108();
             g.MakeMove(1, 15);
             g.MakeMove(1, 14);
             g.MakeMove(0, 15);
@@ -1683,8 +1669,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_WindAndTime_Q30225_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30225();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30225();
             g.MakeMove(3, 18);
             g.MakeMove(7, 15);
             g.MakeMove(3, 15);
@@ -1695,8 +1680,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -1748,8 +1732,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_WindAndTime_Q29998_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q29998();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q29998();
             g.MakeMove(1, 15);
             g.MakeMove(0, 15);
             g.MakeMove(0, 16);
@@ -1773,8 +1756,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_TianLongTu_Q16924()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16924();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16924();
             g.MakeMove(2, 17);
             g.MakeMove(0, 17);
             g.MakeMove(3, 16);
@@ -1891,8 +1873,7 @@ namespace UnitTestProject
         public void LifeCheckTest_Scenario_WuQingYuan_Q31493()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31493();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31493();
             g.MakeMove(3, 18);
             g.MakeMove(4, 16);
             g.MakeMove(5, 17);
@@ -1919,8 +1900,7 @@ namespace UnitTestProject
         public void LifeCheckTest_ScenarioHighLevel28()
         {
             Scenario s = new Scenario();
-            Game m = s.ScenarioHighLevel28();
-            Game g = new Game(m);
+            Game g = s.ScenarioHighLevel28();
             g.MakeMove(4, 17);
             g.MakeMove(4, 16);
             g.MakeMove(3, 18);
@@ -2116,8 +2096,7 @@ namespace UnitTestProject
             g.MakeMove(2, 15);
             g.MakeMove(0, 15);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);

@@ -23,8 +23,7 @@ namespace UnitTestProject
         public void RestoreNeutralMoveTest_Scenario_WuQingYuan_Q6150()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q6150();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q6150();
             g.MakeMove(0, 15);
             g.MakeMove(1, 16);
             g.MakeMove(0, 14);
@@ -57,8 +56,7 @@ namespace UnitTestProject
         public void RestoreNeutralMoveTest_Scenario_Corner_B21()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_B21();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_B21();
             g.MakeMove(2, 17);
             g.MakeMove(1, 18);
             g.MakeMove(0, 16);
@@ -88,8 +86,7 @@ namespace UnitTestProject
         public void RestoreNeutralMoveTest_Scenario_XuanXuanQiJing_Weiqi101_18410()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_18410();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_18410();
             g.MakeMove(1, 18);
             g.MakeMove(1, 14);
             g.MakeMove(1, 17);
@@ -103,8 +100,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -136,9 +132,7 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(10, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(10, 18));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralPoint, true);
 
@@ -164,8 +158,7 @@ namespace UnitTestProject
         public void RestoreNeutralMoveTest_Scenario4dan17_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario4dan17();
-            Game g = new Game(m);
+            Game g = s.Scenario4dan17();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 15);
@@ -179,8 +172,7 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             g.MakeMove(0, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -222,9 +214,7 @@ namespace UnitTestProject
             GameTryMove endGameMove = tryMoves.Where(m => m.Move.Equals(new Point(5, 16)) || m.Move.Equals(new Point(6, 17))).FirstOrDefault();
             Assert.AreEqual(endGameMove != null, true);
 
-            Point p = new Point(6, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 17));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralPoint, true);
 
@@ -293,8 +283,7 @@ namespace UnitTestProject
         public void RestoreNeutralMoveTest_Scenario_TianLongTu_Q16490()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16490();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16490();
             g.MakeMove(4, 17);
             g.MakeMove(3, 17);
             g.MakeMove(3, 18);
@@ -304,8 +293,7 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             g.MakeMove(8, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -323,8 +311,7 @@ namespace UnitTestProject
         public void RestoreNeutralMoveTest_Scenario_Side_A25()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Side_A25();
-            Game g = new Game(m);
+            Game g = s.Scenario_Side_A25();
             g.MakeMove(4, 17);
             g.MakeMove(4, 18);
             g.MakeMove(4, 16);
@@ -339,8 +326,7 @@ namespace UnitTestProject
             g.MakeMove(5, 16);
             g.MakeMove(5, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -359,8 +345,7 @@ namespace UnitTestProject
         public void RestoreNeutralMoveTest_Scenario4dan17()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario4dan17();
-            Game g = new Game(m);
+            Game g = s.Scenario4dan17();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 15);
@@ -387,8 +372,7 @@ namespace UnitTestProject
         public void RestoreNeutralMoveTest_Scenario_XuanXuanGo_A26()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A26();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A26();
             g.MakeMove(2, 18);
             g.MakeMove(1, 15);
             g.MakeMove(1, 18);

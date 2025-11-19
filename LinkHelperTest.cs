@@ -36,15 +36,12 @@ namespace UnitTestProject
             g.MakeMove(9, 18);
             g.MakeMove(8, 18);
             g.MakeMove(5, 17);
-            Point p = new Point(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
 
             Boolean isLink = LinkHelper.PossibleLinkForGroups(tryMove.TryGame.Board, g.Board);
             Assert.AreEqual(isLink, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)), true);
@@ -63,8 +60,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario2dan21()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario2dan21();
-            Game g = new Game(m);
+            Game g = s.Scenario2dan21();
             g.MakeMove(2, 18);
             g.MakeMove(1, 17);
             g.MakeMove(3, 18);
@@ -72,14 +68,11 @@ namespace UnitTestProject
             g.MakeMove(3, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(2, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 16));
             Boolean isLink = LinkHelper.PossibleLinkForGroups(tryMove.TryGame.Board, g.Board);
             Assert.AreEqual(isLink, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 16)) || move.Equals(new Point(4, 18)), true);
@@ -96,8 +89,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_TianLongTu_Q17132()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17132();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17132();
             g.MakeMove(3, 18);
             g.MakeMove(5, 17);
             g.MakeMove(6, 18);
@@ -117,9 +109,7 @@ namespace UnitTestProject
             g.MakeMove(9, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(4, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean isLink = LinkHelper.PossibleLinkForGroups(tryMove.TryGame.Board, g.Board);
             Assert.AreEqual(isLink, false);
         }
@@ -135,8 +125,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_GuanZiPu_A17()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A17();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A17();
             g.MakeMove(5, 18);
             g.MakeMove(6, 18);
             g.MakeMove(5, 16);
@@ -146,14 +135,11 @@ namespace UnitTestProject
             g.MakeMove(3, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(3, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isLink = tryMove.LinkForGroups();
             Assert.AreEqual(isLink, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)) || move.Equals(new Point(1, 18)), true);
@@ -170,8 +156,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_Corner_A94()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A94();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A94();
             g.MakeMove(4, 18);
             g.MakeMove(3, 17);
             g.MakeMove(0, 17);
@@ -181,17 +166,14 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(2, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isLink = tryMove.LinkForGroups();
             Assert.AreEqual(isLink, true);
 
             Boolean immovable = ImmovableHelper.IsImmovablePoint(tryMove.TryGame.Board, new Point(1, 18), Content.Black);
             Assert.AreEqual(immovable, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
@@ -1632,8 +1614,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_WindAndTime_Q30274()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30274();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30274();
             g.MakeMove(1, 15);
             g.MakeMove(0, 13);
             g.MakeMove(2, 15);
@@ -1643,9 +1624,7 @@ namespace UnitTestProject
             g.MakeMove(3, 3);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(0, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 15));
             Boolean redundantMove = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(redundantMove, false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 15))) != null, true);
@@ -1671,8 +1650,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_WindAndTime_Q30274_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30274();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30274();
             g.MakeMove(1, 15);
             g.MakeMove(0, 13);
             g.MakeMove(2, 15);
@@ -1686,9 +1664,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(0, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 15));
             Boolean redundantMove = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(redundantMove, false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 15))) != null, true);
@@ -1711,8 +1687,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_XuanXuanQiJing_Weiqi101_18497_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_18497();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_18497();
             g.MakeMove(7, 17);
             g.MakeMove(6, 18);
             g.MakeMove(5, 16);
@@ -1730,9 +1705,7 @@ namespace UnitTestProject
             g.Board.GameInfo.movablePoints.Add(new Point(2, 18));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(2, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean coveredEyeMove = RedundantMoveHelper.FindCoveredEyeMove(tryMove);
             Assert.AreEqual(coveredEyeMove, false);
 
@@ -1777,9 +1750,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isNeutralPoint, false);
         }
@@ -1795,8 +1766,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_TianLongTu_Q17078_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17078();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17078();
             g.Board.GameInfo.Survival = SurviveOrKill.KillWithKo;
             g.Board[3, 14] = g.Board[5, 14] = Content.White;
             HashSet<Group> connectedGroups = LinkHelper.GetAllDiagonalConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(3, 15)));
@@ -1815,8 +1785,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_TianLongTu_Q16738()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16738();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16738();
 
             g.MakeMove(5, 18);
             g.MakeMove(0, 17);
@@ -1830,9 +1799,7 @@ namespace UnitTestProject
             g.Board[5, 18] = g.Board[6, 18] = g.Board[1, 18] = Content.Empty;
             g.Board[3, 18] = g.Board[4, 18] = g.Board[3, 16] = Content.Black;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
@@ -1852,8 +1819,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_WindAndTime_Q30274_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30274();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30274();
             g.MakeMove(1, 15);
             g.MakeMove(0, 13);
             g.MakeMove(2, 15);
@@ -1867,9 +1833,7 @@ namespace UnitTestProject
             g.GameInfo.Survival = SurviveOrKill.Kill;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(0, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 15));
             Boolean redundantMove = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(redundantMove, false);
 

@@ -35,8 +35,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 18)), true);
@@ -63,8 +62,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 17)), true);
@@ -91,8 +89,7 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             g.MakeMove(7, 18);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -110,8 +107,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_WindAndTime_Q29958()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q29958();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q29958();
             g.MakeMove(4, 16);
             g.MakeMove(4, 18);
             g.MakeMove(5, 17);
@@ -123,7 +119,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             Game.useMonteCarloRuntime = true;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(7, 17)), true);
@@ -142,8 +138,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_WindAndTime_Q29961()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q29961();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q29961();
 
             g.MakeMove(4, 14);
             g.MakeMove(3, 18);
@@ -156,7 +151,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             Game.useMonteCarloRuntime = true;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 15)), true);
@@ -174,8 +169,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_WindAndTime_Q30370()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30370();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30370();
             g.MakeMove(3, 18);
             g.MakeMove(4, 17);
             g.MakeMove(0, 18);
@@ -185,8 +179,7 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
@@ -204,8 +197,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario1dan10()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario1dan10();
-            Game g = new Game(m);
+            Game g = s.Scenario1dan10();
             g.MakeMove(2, 16);
             g.MakeMove(2, 17);
             g.MakeMove(0, 17);
@@ -215,8 +207,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 14)), true);
@@ -236,8 +227,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario4dan17()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario4dan17();
-            Game g = new Game(m);
+            Game g = s.Scenario4dan17();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 15);
@@ -254,8 +244,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -273,8 +262,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_TianLongTu_Q16605()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16605();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16605();
             g.MakeMove(5, 17);
             g.MakeMove(5, 18);
             g.MakeMove(6, 17);
@@ -288,8 +276,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 15)) || move.Equals(new Point(6, 18)), true);
@@ -308,8 +295,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_TianLongTu_Q14992()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q14992();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q14992();
             g.MakeMove(0, 16);
             g.MakeMove(3, 16);
             g.MakeMove(2, 16);
@@ -322,8 +308,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 16)), true);
@@ -340,8 +325,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_XuanXuanQiJing_Weiqi101_18402()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_18402();
-            Game g = new Game(m); g.MakeMove(0, 17);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_18402(); g.MakeMove(0, 17);
             g.MakeMove(0, 18);
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
@@ -350,8 +334,7 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 15)), true);
@@ -371,8 +354,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_XuanXuanQiJing_Weiqi101_18410()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_18410();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_18410();
             g.MakeMove(1, 18);
             g.MakeMove(0, 18);
             g.MakeMove(1, 17);
@@ -383,8 +365,7 @@ namespace UnitTestProject
             g.MakeMove(2, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 14)), true);
@@ -413,9 +394,7 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
@@ -431,14 +410,11 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_GuanZiPu_Q14981()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_Q14981();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_Q14981();
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
@@ -456,16 +432,13 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario5dan27()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario5dan27();
-            Game g = new Game(m);
+            Game g = s.Scenario5dan27();
             g.MakeMove(5, 18);
             g.MakeMove(4, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(3, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
@@ -481,8 +454,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_TianLongTu_Q16525()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16525();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16525();
             g.MakeMove(6, 16);
             g.MakeMove(6, 15);
             g.MakeMove(6, 18);
@@ -493,9 +465,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
@@ -511,8 +481,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_TianLongTu_Q16919()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16919();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16919();
             g.MakeMove(2, 16);
             g.MakeMove(2, 17);
             g.MakeMove(3, 17);
@@ -524,13 +493,11 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 16);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 16));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 16)), true);
@@ -549,8 +516,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_Corner_A9_Ext()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A9_Ext();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A9_Ext();
             g.MakeMove(1, 18);
             g.MakeMove(3, 18);
             g.MakeMove(0, 15);
@@ -564,8 +530,7 @@ namespace UnitTestProject
             g.Board[0, 15] = Content.Empty;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
 
@@ -584,8 +549,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_Corner_A68()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A68();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A68();
             g.MakeMove(3, 18);
             g.MakeMove(3, 17);
             g.MakeMove(1, 17);
@@ -595,13 +559,11 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(0, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -619,8 +581,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_TianLongTu_Q16487()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16487();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16487();
             g.MakeMove(4, 16);
             g.MakeMove(5, 15);
             g.MakeMove(3, 18);
@@ -628,13 +589,11 @@ namespace UnitTestProject
             g.MakeMove(3, 16);
             g.MakeMove(4, 17);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 18)), true);
@@ -652,8 +611,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_Side_A25()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Side_A25();
-            Game g = new Game(m);
+            Game g = s.Scenario_Side_A25();
             g.MakeMove(4, 17);
             g.MakeMove(4, 18);
             g.MakeMove(4, 16);
@@ -663,13 +621,11 @@ namespace UnitTestProject
             g.MakeMove(5, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 16);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 16));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 16)), true);
@@ -686,8 +642,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_Side_A23()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Side_A23();
-            Game g = new Game(m);
+            Game g = s.Scenario_Side_A23();
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
             g.MakeMove(5, 18);
@@ -695,13 +650,11 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(5, 17);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 17));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 17)), true);
@@ -719,8 +672,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_Side_A25_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Side_A25();
-            Game g = new Game(m);
+            Game g = s.Scenario_Side_A25();
             g.MakeMove(4, 17);
             g.MakeMove(4, 18);
             g.MakeMove(6, 18);
@@ -730,13 +682,11 @@ namespace UnitTestProject
             g.MakeMove(4, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(4, 15);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 15));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 16)), true);
@@ -754,8 +704,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_Corner_A68_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A68();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A68();
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
             g.MakeMove(2, 17);
@@ -765,13 +714,11 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(2, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 17)) || move.Equals(new Point(6, 18)), true);
@@ -789,8 +736,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_WuQingYuan_Q30982()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q30982();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q30982();
             g.MakeMove(7, 18);
             g.MakeMove(5, 16);
             g.MakeMove(4, 16);
@@ -800,14 +746,11 @@ namespace UnitTestProject
             g.MakeMove(9, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(8, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(8, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(8, 18)), true);
@@ -826,8 +769,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_GuanZiPu_B3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_B3();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_B3();
             g.MakeMove(1, 18);
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
@@ -836,9 +778,7 @@ namespace UnitTestProject
             g.MakeMove(0, 15);
             g.MakeMove(4, 16);
 
-            Point p = new Point(2, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -860,8 +800,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_WindAndTime_Q30225()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30225();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30225();
             g.MakeMove(4, 18);
             g.MakeMove(7, 15);
             g.MakeMove(5, 18);
@@ -872,14 +811,11 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(6, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 16));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -899,8 +835,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_WuQingYuan_Q31493()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31493();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31493();
             g.MakeMove(6, 15);
             g.MakeMove(5, 16);
             g.MakeMove(9, 18);
@@ -911,14 +846,11 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -939,8 +871,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_GuanZiPu_Q1970()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_Q1970();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_Q1970();
             g.MakeMove(4, 15);
             g.MakeMove(0, 15);
             g.MakeMove(0, 17);
@@ -953,9 +884,7 @@ namespace UnitTestProject
             g.MakeMove(4, 13);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(4, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 15));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
@@ -971,8 +900,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_WindAndTime_Q30225_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30225();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30225();
             g.MakeMove(4, 18);
             g.MakeMove(7, 15);
             g.MakeMove(5, 16);
@@ -982,14 +910,11 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(6, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 16));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -1006,8 +931,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_WindAndTime_Q30225_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30225();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30225();
             g.MakeMove(4, 18);
             g.MakeMove(7, 15);
             g.MakeMove(5, 16);
@@ -1020,14 +944,11 @@ namespace UnitTestProject
             g.GameInfo.killMovablePoints.Add(new Point(8, 16));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(6, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 16));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -1044,8 +965,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_Corner_B30()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_B30();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_B30();
             g.MakeMove(4, 18);
             g.MakeMove(2, 17);
             g.MakeMove(3, 17);
@@ -1053,14 +973,11 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -1078,8 +995,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_Corner_A84()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A84();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A84();
             g.MakeMove(4, 18);
             g.MakeMove(3, 17);
             g.MakeMove(3, 18);
@@ -1098,9 +1014,7 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(1, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
         }
@@ -1116,8 +1030,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_WuQingYuan_Q31503()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q31503();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q31503();
             g.MakeMove(4, 18);
             g.MakeMove(2, 18);
             g.MakeMove(1, 18);
@@ -1128,9 +1041,7 @@ namespace UnitTestProject
             g.MakeMove(5, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(5, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
@@ -1153,8 +1064,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_XuanXuanGo_A151_101Weiqi()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A151_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
             g.MakeMove(0, 10);
             g.MakeMove(0, 11);
             g.MakeMove(0, 9);
@@ -1163,14 +1073,11 @@ namespace UnitTestProject
             g.MakeMove(1, 11);
             g.MakeMove(3, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 13);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 13));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 13)), true);
@@ -1193,15 +1100,12 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_XuanXuanQiJing_Weiqi101_B74()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_B74();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_B74();
             g.MakeMove(1, 13);
             g.MakeMove(2, 13);
             g.MakeMove(1, 10);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 10);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 10));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
@@ -1217,8 +1121,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_Side_A23_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Side_A23();
-            Game g = new Game(m);
+            Game g = s.Scenario_Side_A23();
             g.MakeMove(5, 18);
             g.MakeMove(2, 18);
             g.MakeMove(7, 18);
@@ -1226,14 +1129,11 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(5, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 17));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -1251,8 +1151,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_XuanXuanGo_A23()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A23();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A23();
             g.MakeMove(4, 18);
             g.MakeMove(5, 17);
             g.MakeMove(5, 18);
@@ -1263,9 +1162,7 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(2, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
@@ -1281,8 +1178,7 @@ namespace UnitTestProject
         public void AtariRedundantMoveTest_Scenario_XuanXuanGo_A18()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A18();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A18();
             g.MakeMove(2, 15);
             g.MakeMove(1, 17);
             g.MakeMove(2, 16);
@@ -1290,14 +1186,11 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(0, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(2, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 17));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);

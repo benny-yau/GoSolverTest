@@ -60,9 +60,7 @@ namespace UnitTestProject
             g.GameInfo.killMovablePoints.Add(new Point(2, 16));
             g.GameInfo.killMovablePoints.Add(new Point(2, 17));
 
-            Point p = new Point(3, 18);
-            GameTryMove move = new GameTryMove(g);
-            move.MakeMoveResult = move.TryGame.MakeMove(p.x, p.y);
+            GameTryMove move = new GameTryMove(g, new Point(3, 18));
             Boolean result = RedundantMoveHelper.RedundantSurvivalLeapMove(move);
             Assert.AreEqual(result, true);
 
@@ -247,8 +245,7 @@ namespace UnitTestProject
         public void LeapMoveTest_Scenario_XuanXuanQiJing_Weiqi101_B19()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_B19();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_B19();
             g.MakeMove(0, 14);
             g.MakeMove(3, 14);
             g.MakeMove(0, 16);
@@ -276,8 +273,7 @@ namespace UnitTestProject
         public void LeapMoveTest_Scenario4dan17()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario4dan17();
-            Game g = new Game(m);
+            Game g = s.Scenario4dan17();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 15);
@@ -296,14 +292,11 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(0, 13);
             g.MakeMove(2, 17);
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isLeapMove = RedundantMoveHelper.RedundantKillLeapMove(tryMove);
             Assert.AreEqual(isLeapMove, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -323,9 +316,7 @@ namespace UnitTestProject
             Scenario s = new Scenario();
             Game g = s.Scenario_GuanZiPu_B3();
 
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isLeapMove = RedundantMoveHelper.RedundantSurvivalLeapMove(tryMove);
             Assert.AreEqual(isLeapMove, false);
 

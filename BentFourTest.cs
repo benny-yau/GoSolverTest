@@ -28,8 +28,7 @@ namespace UnitTestProject
         public void BentFourTest_Scenario7kyu26()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario7kyu26();
-            Game g = new Game(m);
+            Game g = s.Scenario7kyu26();
             g.MakeMove(0, 17);
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
@@ -39,8 +38,7 @@ namespace UnitTestProject
             Boolean bentFour = UniquePatternsHelper.CheckForBentFour(g);
             Assert.AreEqual(bentFour, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -59,8 +57,7 @@ namespace UnitTestProject
         public void BentFourTest_Scenario7kyu26_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario7kyu26();
-            Game g = new Game(m);
+            Game g = s.Scenario7kyu26();
             g.MakeMove(0, 17);
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
@@ -72,8 +69,7 @@ namespace UnitTestProject
             Boolean bentFour = UniquePatternsHelper.CheckForBentFour(g);
             Assert.AreEqual(bentFour, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -91,8 +87,7 @@ namespace UnitTestProject
         public void BentFourTest_Scenario_XuanXuanQiJing_A8()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_A8();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_A8();
             g.MakeMove(3, 17);
             g.MakeMove(2, 17);
             g.MakeMove(1, 18);
@@ -103,7 +98,7 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
             g.MakeMove(4, 18);
             g.MakeMove(3, 17);
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -125,8 +120,7 @@ namespace UnitTestProject
         {
             //not bent four
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A2Q28_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A2Q28_101Weiqi();
             g.MakeMove(1, 15);
             g.MakeMove(0, 15);
             g.MakeMove(0, 16);
@@ -136,7 +130,7 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             g.MakeMove(1, 17);
             g.MakeMove(0, 17);
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -158,8 +152,7 @@ namespace UnitTestProject
         {
             //check for covered eye
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A87();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A87();
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
             g.MakeMove(3, 16);
@@ -196,8 +189,7 @@ namespace UnitTestProject
         public void BentFourTest_Scenario_Corner_A87_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A87();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A87();
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
             g.MakeMove(3, 16);
@@ -234,15 +226,13 @@ namespace UnitTestProject
         public void BentFourTest_Scenario_Corner_A69()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A69();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A69();
             g.MakeMove(1, 18);
             g.MakeMove(1, 17);
             g.MakeMove(0, 18);
             g.MakeMove(4, 18);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -260,8 +250,7 @@ namespace UnitTestProject
         public void BentFourTest_Scenario_AncientJapanese_B6()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_AncientJapanese_B6();
-            Game g = new Game(m);
+            Game g = s.Scenario_AncientJapanese_B6();
             g.MakeMove(0, 16);
             g.MakeMove(1, 18);
             g.MakeMove(1, 17);
@@ -274,8 +263,7 @@ namespace UnitTestProject
             Boolean bentFour = UniquePatternsHelper.CheckForBentFour(g);
             Assert.AreEqual(bentFour, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -338,8 +326,7 @@ namespace UnitTestProject
         public void BentFourTest_Scenario7kyu26_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario7kyu26();
-            Game g = new Game(m);
+            Game g = s.Scenario7kyu26();
             g.MakeMove(0, 17);
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
@@ -352,13 +339,11 @@ namespace UnitTestProject
             g.GameInfo.Survival = SurviveOrKill.Kill;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(1, 18);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -377,8 +362,7 @@ namespace UnitTestProject
         public void BentFourTest_Scenario7kyu26_4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario7kyu26();
-            Game g = new Game(m);
+            Game g = s.Scenario7kyu26();
             g.MakeMove(0, 17);
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
@@ -398,8 +382,7 @@ namespace UnitTestProject
             g.GameInfo.Survival = SurviveOrKill.Kill;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
@@ -441,9 +424,7 @@ namespace UnitTestProject
             g.MakeMove(0, 13);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(0, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 

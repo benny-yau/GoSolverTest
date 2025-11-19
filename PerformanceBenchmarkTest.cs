@@ -27,8 +27,7 @@ namespace UnitTestProject
         public void PerformanceBenchmarkTest_ScenarioHighLevel28()
         {
             Scenario s = new Scenario();
-            Game m = s.ScenarioHighLevel28();
-            Game g = new Game(m);
+            Game g = s.ScenarioHighLevel28();
             g.MakeMove(3, 14);
             g.MakeMove(3, 15);
             g.MakeMove(4, 14);
@@ -58,8 +57,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A27();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A27();
             g.MakeMove(1, 14);
             g.MakeMove(0, 15);
             g.MakeMove(1, 16);
@@ -89,8 +87,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17132();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17132();
             g.MakeMove(5, 18);
             g.MakeMove(6, 18);
             g.MakeMove(6, 17);
@@ -124,8 +121,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A151_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
             g.MakeMove(0, 15);
             g.MakeMove(0, 14);
             g.MakeMove(1, 12);
@@ -153,8 +149,7 @@ namespace UnitTestProject
         public void PerformanceBenchmarkTest_Scenario_XuanXuanGo_Q18500()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_Q18500();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_Q18500();
             g.MakeMove(7, 18);
             g.MakeMove(9, 16);
             g.MakeMove(3, 18);
@@ -188,8 +183,7 @@ namespace UnitTestProject
         {
             //if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16424();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16424();
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 17);
@@ -219,8 +213,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A46_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A46_101Weiqi();
             g.MakeMove(0, 17);
             g.MakeMove(1, 14);
             g.MakeMove(0, 14);
@@ -251,8 +244,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A46_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A46_101Weiqi();
             g.MakeMove(0, 17);
             g.MakeMove(0, 18);
             g.MakeMove(1, 17);
@@ -281,8 +273,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A46_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A46_101Weiqi();
             g.MakeMove(0, 17);
             g.MakeMove(1, 14);
             g.MakeMove(0, 14);
@@ -297,7 +288,6 @@ namespace UnitTestProject
 
             //g.MakeMove(3, 18);
             //List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.UseSolutionPoints = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -318,8 +308,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_Side_B34();
-            Game g = new Game(m);
+            Game g = s.Scenario_Side_B34();
             g.MakeMove(-1, -1);
             g.MakeMove(7, 15);
             g.MakeMove(4, 17);
@@ -332,7 +321,6 @@ namespace UnitTestProject
             g.MakeMove(5, 17);
             */
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.UseSolutionPoints = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -354,8 +342,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17160();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17160();
 
             g.MakeMove(5, 17);
             g.MakeMove(8, 16);
@@ -396,8 +383,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_Q18331();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_Q18331();
             g.MakeMove(1, 14);
             g.MakeMove(0, 16);
             g.MakeMove(1, 16);
@@ -428,8 +414,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario4dan17();
-            Game g = new Game(m);
+            Game g = s.Scenario4dan17();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 15);
@@ -446,8 +431,7 @@ namespace UnitTestProject
             g.MakeMove(2, 13);
             */
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -467,8 +451,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario4dan17();
-            Game g = new Game(m);
+            Game g = s.Scenario4dan17();
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
             g.MakeMove(2, 15);
@@ -477,8 +460,7 @@ namespace UnitTestProject
             g.MakeMove(0, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 17)) || move.Equals(new Point(2, 13)), true);
@@ -497,8 +479,7 @@ namespace UnitTestProject
         {
             //if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A84();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A84();
             g.MakeMove(4, 18);
             g.MakeMove(3, 17);
             g.MakeMove(3, 18);
@@ -507,8 +488,7 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -528,16 +508,14 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A26();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A26();
             g.MakeMove(2, 18);
             g.MakeMove(1, 14);
             g.MakeMove(1, 18);
             g.MakeMove(0, 13);
             g.MakeMove(1, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -557,8 +535,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A26();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A26();
             g.MakeMove(2, 18);
             g.MakeMove(1, 18);
             g.MakeMove(0, 17);
@@ -566,8 +543,7 @@ namespace UnitTestProject
             g.MakeMove(1, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -587,8 +563,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A26();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A26();
             g.MakeMove(2, 18);
             g.MakeMove(3, 16);
             g.MakeMove(1, 15);
@@ -599,8 +574,7 @@ namespace UnitTestProject
             g.MakeMove(0, 13);
             g.MakeMove(3, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -620,8 +594,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A26();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A26();
             g.MakeMove(2, 18);
             g.MakeMove(1, 15);
             g.MakeMove(1, 18);
@@ -632,8 +605,7 @@ namespace UnitTestProject
             g.MakeMove(0, 13);
             g.MakeMove(0, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -651,8 +623,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17132();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17132();
             g.MakeMove(3, 18);
             g.MakeMove(4, 16);
             g.MakeMove(4, 18);
@@ -664,8 +635,7 @@ namespace UnitTestProject
             g.MakeMove(9, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -688,8 +658,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A151_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
             g.MakeMove(0, 15);
             g.MakeMove(0, 14);
             g.MakeMove(0, 10);
@@ -699,8 +668,7 @@ namespace UnitTestProject
             g.MakeMove(3, 15);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -719,8 +687,7 @@ namespace UnitTestProject
         {
             if (!includeLongRunningTests) return;
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q17160();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q17160();
             g.MakeMove(5, 17);
             g.MakeMove(8, 16);
             g.MakeMove(5, 16);
@@ -729,8 +696,7 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -922,11 +888,11 @@ namespace UnitTestProject
         public static Game SearchAnswer(Game m)
         {
             Game g = new Game(m);
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             MonteCarloMapping.searchAnswer = true;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
 
-            Game.UseSolutionPoints = Game.UseMapMoves = true;
+            Game.UseMapMoves = true;
             MonteCarloMapping.searchAnswer = false;
             return g;
         }

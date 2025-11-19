@@ -29,7 +29,7 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             g.MakeMove(6, 16);
 
-            Game.UseSolutionPoints = Game.UseMapMoves = true;
+            Game.UseMapMoves = true;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(9, 18)), true);
@@ -62,7 +62,7 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             g.MakeMove(5, 18);
 
-            Game.UseSolutionPoints = Game.UseMapMoves = true;
+            Game.UseMapMoves = true;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 16)), true);

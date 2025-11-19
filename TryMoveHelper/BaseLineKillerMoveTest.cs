@@ -35,9 +35,7 @@ namespace UnitTestProject
             List<Point> points = new List<Point>() { new Point(8, 18), new Point(1, 18) };
             for (int i = 0; i <= points.Count - 1; i++)
             {
-                Point p = points[i];
-                GameTryMove move = new GameTryMove(g);
-                move.MakeMoveResult = move.TryGame.MakeMove(p.x, p.y);
+                GameTryMove move = new GameTryMove(g, points[i]);
                 Boolean isBaseLine = RedundantMoveHelper.NeutralPointKillMove(move);
                 Assert.AreEqual(isBaseLine, true);
             }
@@ -58,9 +56,7 @@ namespace UnitTestProject
             g.MakeMove(5, 17);
             g.MakeMove(1, 18);
             
-            Point p = new Point(5, 18);
-            GameTryMove move = new GameTryMove(g);
-            move.MakeMoveResult = move.TryGame.MakeMove(p.x, p.y);
+            GameTryMove move = new GameTryMove(g, new Point(5, 18));
             Boolean isBaseLine = RedundantMoveHelper.NeutralPointKillMove(move);
             Assert.AreEqual(isBaseLine, true);
             
@@ -87,9 +83,7 @@ namespace UnitTestProject
             List<Point> points = new List<Point>() { new Point(5, 18), new Point(6, 18), new Point(7, 18) };
             for (int i = 0; i <= points.Count - 1; i++)
             {
-                Point p = points[i];
-                GameTryMove move = new GameTryMove(g);
-                move.MakeMoveResult = move.TryGame.MakeMove(p.x, p.y);
+                GameTryMove move = new GameTryMove(g, points[i]);
                 Boolean isBaseLine = RedundantMoveHelper.NeutralPointKillMove(move);
                 Assert.AreEqual(isBaseLine, true);
             }
@@ -176,8 +170,7 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)), true);
@@ -322,9 +315,7 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(4, 17);
 
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
             Boolean isBaseLine = RedundantMoveHelper.NeutralPointKillMove(tryMove);
@@ -401,9 +392,7 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             g.MakeMove(1, 18);
             g.MakeMove(0, 17);
-            Point p = new Point(0, 14);
-            GameTryMove move = new GameTryMove(g);
-            move.MakeMoveResult = move.TryGame.MakeMove(p.x, p.y);
+            GameTryMove move = new GameTryMove(g, new Point(0, 14));
             Boolean result = RedundantMoveHelper.NeutralPointKillMove(move);
             Assert.AreEqual(result, true);
 

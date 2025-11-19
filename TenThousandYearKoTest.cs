@@ -26,8 +26,7 @@ namespace UnitTestProject
         public void TenThousandYearKoTest_Scenario_GuanZiPu_A2Q28_101Weiqi()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A2Q28_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A2Q28_101Weiqi();
             g.MakeMove(3, 14);
             g.MakeMove(2, 15);
             g.MakeMove(1, 17);
@@ -54,8 +53,7 @@ namespace UnitTestProject
         public void TenThousandYearKoTest_Scenario_GuanZiPu_A2Q28_101Weiqi_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A2Q28_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A2Q28_101Weiqi();
             g.MakeMove(3, 14);
             g.MakeMove(2, 15);
             g.MakeMove(1, 17);
@@ -70,7 +68,7 @@ namespace UnitTestProject
             g.MakeMove(-1, -1);
             g.MakeMove(0, 13);
 
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -89,8 +87,7 @@ namespace UnitTestProject
         public void TenThousandYearKoTest_Scenario_GuanZiPu_A2Q28_101Weiqi_3()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_GuanZiPu_A2Q28_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_GuanZiPu_A2Q28_101Weiqi();
             g.MakeMove(3, 14);
             g.MakeMove(2, 15);
             g.MakeMove(1, 17);
@@ -122,13 +119,12 @@ namespace UnitTestProject
         public void TenThousandYearKoTest_Scenario_Corner_A73_Ext1()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A73_Ext1();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A73_Ext1();
             g.MakeMove(0, 17);
             g.MakeMove(2, 17);
             g.MakeMove(1, 18);
             g.MakeMove(2, 18);
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -151,8 +147,7 @@ namespace UnitTestProject
         public void TenThousandYearKoTest_Scenario_XuanXuanGo_A151_101Weiqi()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A151_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
             g.MakeMove(0, 13);
             g.MakeMove(0, 15);
             g.MakeMove(0, 11);
@@ -191,8 +186,7 @@ namespace UnitTestProject
         public void TenThousandYearKoTest_Scenario_XuanXuanGo_Q18500()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_Q18500();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_Q18500();
             g.MakeMove(8, 18);
             g.MakeMove(10, 18);
             g.MakeMove(8, 17);
@@ -225,8 +219,7 @@ namespace UnitTestProject
         {
             //not ten thousand year ko
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q16466();
-            Game g = new Game(m);
+            Game g = s.Scenario_TianLongTu_Q16466();
             g.MakeMove(5, 17);
             g.MakeMove(5, 16);
             g.MakeMove(6, 17);
@@ -261,8 +254,7 @@ namespace UnitTestProject
         {
             //not ten thousand year ko
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A54();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A54();
             g.MakeMove(2, 18);
             g.MakeMove(1, 18);
             g.MakeMove(1, 17);
@@ -289,8 +281,7 @@ namespace UnitTestProject
         {
             //not ten thousand year ko
             Scenario s = new Scenario();
-            Game m = s.Scenario_TianLongTu_Q2413();
-            Game g = new Game(m); 
+            Game g = s.Scenario_TianLongTu_Q2413(); 
             g.MakeMove(2, 18);
             g.MakeMove(3, 18);
             g.MakeMove(0, 17);
@@ -325,8 +316,7 @@ namespace UnitTestProject
         {
             //not ten thousand year ko
             Scenario s = new Scenario();
-            Game m = s.Scenario_Corner_A113();
-            Game g = new Game(m);
+            Game g = s.Scenario_Corner_A113();
             g.MakeMove(1, 17);
             g.MakeMove(2, 16);
             g.MakeMove(0, 15);

@@ -57,9 +57,7 @@ namespace UnitTestProject
             gi.targetPoints = new List<Point>() { new Point(2, 15) };
 
             g.MakeMove(7, 17);
-            Point p = new Point(4, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 16));
             Boolean redundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, true);
         }
@@ -85,9 +83,7 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(7, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(7, 15));
             Boolean redundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, false);
         }
@@ -117,9 +113,7 @@ namespace UnitTestProject
             g.Board[5, 16] = Content.Black;
             g.Board[6, 17] = Content.Empty;
 
-            Point p = new Point(7, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(7, 15));
             Boolean redundantEyeDiagonal = RedundantMoveHelper.KillEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, true);
         }
@@ -148,9 +142,7 @@ namespace UnitTestProject
             g.MakeMove(7, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point p = new Point(6, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean redundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, false);
 
@@ -184,9 +176,7 @@ namespace UnitTestProject
             g.MakeMove(0, 14);
             g.MakeMove(1, 15);
             g.MakeMove(2, 17);
-            Point p = new Point(2, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 16));
             Boolean redundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, false);
         }
@@ -203,8 +193,7 @@ namespace UnitTestProject
         public void RedundantEyeDiagonalMoveTestScenario_XuanXuanGo_A46_101Weiqi()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A46_101Weiqi();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A46_101Weiqi();
             g.MakeMove(0, 17);
             g.MakeMove(1, 14);
             g.MakeMove(0, 14);
@@ -216,9 +205,7 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
-            Point p = new Point(4, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean redundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, false);
         }
@@ -235,17 +222,14 @@ namespace UnitTestProject
         public void RedundantEyeDiagonalMoveTestScenario_Scenario_Nie19()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Nie19();
-            Game g = new Game(m);
+            Game g = s.Scenario_Nie19();
             g.MakeMove(1, 16);
             g.MakeMove(2, 17);
             g.MakeMove(2, 16);
             g.MakeMove(0, 15);
             g.MakeMove(1, 18);
 
-            Point p = new Point(2, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean redundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, false);
 
@@ -267,8 +251,7 @@ namespace UnitTestProject
         public void RedundantEyeDiagonalMoveTest_Scenario_SiHuoDaQuan_CornerA29_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_SiHuoDaQuan_CornerA29();
-            Game g = new Game(m);
+            Game g = s.Scenario_SiHuoDaQuan_CornerA29();
             g.MakeMove(2, 18);
             g.MakeMove(3, 18);
             g.MakeMove(2, 17);
@@ -277,9 +260,7 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(1, 18);
 
-            Point p = new Point(4, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 16));
             Boolean redundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, false);
 
@@ -302,8 +283,7 @@ namespace UnitTestProject
         public void RedundantEyeDiagonalMoveTestScenario_Scenario_Nie4()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_Nie4();
-            Game g = new Game(m);
+            Game g = s.Scenario_Nie4();
             g.MakeMove(0, 17);
             g.MakeMove(1, 17);
             g.MakeMove(0, 16);
@@ -313,9 +293,7 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
             g.MakeMove(0, 14);
 
-            Point p = new Point(4, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean redundantEyeDiagonal = RedundantMoveHelper.KillEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, false);
 
@@ -348,9 +326,7 @@ namespace UnitTestProject
             g.Board[5, 13] = Content.Empty;
             g.GameInfo.killMovablePoints.Add(new Point(5, 13));
 
-            Point p = new Point(2, 18);
-            GameTryMove move = new GameTryMove(g);
-            move.MakeMoveResult = move.TryGame.MakeMove(p.x, p.y);
+            GameTryMove move = new GameTryMove(g, new Point(2, 18));
             Boolean isNeutralMove = RedundantMoveHelper.NeutralPointKillMove(move);
             Assert.AreEqual(isNeutralMove, true);
 
@@ -379,9 +355,7 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
         }
@@ -409,9 +383,7 @@ namespace UnitTestProject
             g.MakeMove(5, 17);
             g.MakeMove(2, 16);
 
-            Point p = new Point(2, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 17));
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
@@ -441,9 +413,7 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             g.MakeMove(0, 16);
 
-            Point p = new Point(3, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 16));
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
@@ -475,9 +445,7 @@ namespace UnitTestProject
             g.MakeMove(6, 15);
             g.MakeMove(5, 17);
             g.MakeMove(5, 15);
-            Point p = new Point(4, 16);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 16));
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
@@ -509,9 +477,7 @@ namespace UnitTestProject
             g.MakeMove(6, 16);
             g.MakeMove(6, 18);
 
-            Point p = new Point(3, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
@@ -547,9 +513,7 @@ namespace UnitTestProject
             g.MakeMove(1, 14);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(2, 12);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 12));
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.KillEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
@@ -581,9 +545,7 @@ namespace UnitTestProject
             g.MakeMove(3, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(2, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 17));
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
@@ -621,9 +583,7 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(5, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 15));
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
@@ -652,9 +612,7 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(6, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 17));
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.KillEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
@@ -690,9 +648,7 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(1, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 15));
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
@@ -724,8 +680,7 @@ namespace UnitTestProject
             g.MakeMove(7, 18);
             g.MakeMove(3, 16);
 
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -742,8 +697,7 @@ namespace UnitTestProject
         public void RedundantEyeDiagonalMoveTest_Scenario_WuQingYuan_Q30982()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q30982();
-            Game g = new Game(m);
+            Game g = s.Scenario_WuQingYuan_Q30982();
             g.MakeMove(7, 18);
             g.MakeMove(5, 16);
             g.MakeMove(4, 16);
@@ -763,9 +717,7 @@ namespace UnitTestProject
             g.Board[8, 17] = Content.Empty;
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(8, 17);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(8, 17));
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
@@ -798,13 +750,11 @@ namespace UnitTestProject
             g.MakeMove(7, 16);
             g.MakeMove(7, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Point p = new Point(3, 18);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.KillEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -824,8 +774,7 @@ namespace UnitTestProject
         public void RedundantEyeDiagonalMoveTest_Scenario_XuanXuanGo_A16()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanGo_A16();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanGo_A16();
             g.MakeMove(1, 17);
             g.MakeMove(0, 17);
             g.MakeMove(3, 17);
@@ -835,8 +784,7 @@ namespace UnitTestProject
             g.MakeMove(3, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
-            Game.UseSolutionPoints = Game.UseMapMoves = false;
+            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);

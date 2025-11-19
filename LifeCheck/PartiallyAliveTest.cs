@@ -23,8 +23,7 @@ namespace UnitTestProject
         public void PartiallyAliveTest_Scenario_XuanXuanQiJing_Weiqi101_7245()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_7245();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_7245();
             g.MakeMove(2, 16);
             g.MakeMove(2, 17);
             g.MakeMove(5, 18);
@@ -55,13 +54,12 @@ namespace UnitTestProject
         public void PartiallyAliveTest_Scenario_WindAndTime_Q30215()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30215();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30215();
             g.MakeMove(5, 17);
             g.MakeMove(5, 16);
             g.MakeMove(7, 17);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)), true);
@@ -81,13 +79,12 @@ namespace UnitTestProject
         public void PartiallyAliveTest_Scenario_WindAndTime_Q30034()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30034();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30034();
             g.MakeMove(7, 17);
             g.MakeMove(6, 17);
             g.MakeMove(7, 16);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -105,8 +102,7 @@ namespace UnitTestProject
         public void PartiallyAliveTest_Scenario_WindAndTime_Q30034_2()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WindAndTime_Q30034();
-            Game g = new Game(m);
+            Game g = s.Scenario_WindAndTime_Q30034();
             g.MakeMove(4, 18);
             g.MakeMove(7, 17);
             g.MakeMove(4, 17);
@@ -114,7 +110,7 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(6, 18);
 
-            Game.UseMapMoves = Game.UseSolutionPoints = false;
+            Game.UseMapMoves = false;
             Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -140,8 +136,7 @@ namespace UnitTestProject
         public void PartiallyAliveTest_Scenario_XuanXuanQiJing_Weiqi101_18410()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_XuanXuanQiJing_Weiqi101_18410();
-            Game g = new Game(m);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_18410();
             g.MakeMove(3, 17);
             g.MakeMove(1, 17);
             g.MakeMove(0, 17);
