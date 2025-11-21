@@ -60,7 +60,6 @@ namespace UnitTestProject
             g.MakeMove(1, 12);
             g.MakeMove(1, 11);
             g.MakeMove(0, 11);
-            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(Game.PassMove), true);
@@ -91,7 +90,6 @@ namespace UnitTestProject
             g.MakeMove(1, 13);
             g.MakeMove(2, 13);
             g.MakeMove(0, 11);
-            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(Game.PassMove), true);
@@ -124,8 +122,6 @@ namespace UnitTestProject
             g.MakeMove(0, 18);
             g.MakeMove(4, 18);*/
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.UseMapMoves = false;
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 18)), true);
@@ -150,8 +146,6 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(2, 18);
 
-            Game.UseMapMoves = false;
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 16)), true);
@@ -241,7 +235,6 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
             g.MakeMove(4, 18);
             g.GameInfo.SearchDepth = 40;
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(Game.PassMove), true);
@@ -277,8 +270,6 @@ namespace UnitTestProject
             g.MakeMove(0, 18);
             g.MakeMove(5, 18);
             g.GameInfo.SearchDepth = 40;
-            Game.UseMapMoves = false;
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -420,7 +411,6 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 11)), true);
@@ -460,7 +450,6 @@ namespace UnitTestProject
             g.MakeMove(0, 11);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             //ensure sufficient depth to get ko alive
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 14)), true);

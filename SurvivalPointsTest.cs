@@ -89,7 +89,6 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             g.MakeMove(3, 17);*/
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
         }

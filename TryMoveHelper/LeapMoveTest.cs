@@ -25,8 +25,7 @@ namespace UnitTestProject
             Game g = s.Scenario_XuanXuanQiJing_A1();
             g.MakeMove(0, 17);
 
-            GameTryMove move = new GameTryMove(g);
-            move.MakeMoveResult = move.TryGame.MakeMove(6, 18);
+            GameTryMove move = new GameTryMove(g, new Point(6, 18));
             Boolean result = RedundantMoveHelper.RedundantSurvivalLeapMove(move);
             Assert.AreEqual(result, true);
         }
@@ -153,7 +152,6 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)), true);
@@ -182,7 +180,6 @@ namespace UnitTestProject
             g.MakeMove(0, 14);
             g.MakeMove(0, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 12)), true);
@@ -253,7 +250,6 @@ namespace UnitTestProject
             g.MakeMove(0, 11);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 15)), true);
@@ -296,7 +292,6 @@ namespace UnitTestProject
             Boolean isLeapMove = RedundantMoveHelper.RedundantKillLeapMove(tryMove);
             Assert.AreEqual(isLeapMove, true);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);

@@ -35,7 +35,6 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.KoAlive) || moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -68,8 +67,6 @@ namespace UnitTestProject
             g.MakeMove(-1, -1);
             g.MakeMove(0, 13);
 
-            Game.UseMapMoves = false;
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead) || moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
@@ -100,7 +97,6 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             g.MakeMove(3, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead) || moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
@@ -124,8 +120,6 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
             g.MakeMove(1, 18);
             g.MakeMove(2, 18);
-            Game.UseMapMoves = false;
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.KoAlive) || moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -235,7 +229,6 @@ namespace UnitTestProject
             Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g);
             Assert.AreEqual(tenThousandYearKo, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(10, 18)), true);
@@ -296,7 +289,6 @@ namespace UnitTestProject
             Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g);
             Assert.AreEqual(tenThousandYearKo, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);

@@ -36,7 +36,6 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             g.MakeMove(2, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = true;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 15)) || move.Equals(new Point(0, 18)), true);
@@ -59,7 +58,6 @@ namespace UnitTestProject
             g.MakeMove(5, 16);
             g.MakeMove(7, 17);
 
-            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)), true);
@@ -84,7 +82,6 @@ namespace UnitTestProject
             g.MakeMove(6, 17);
             g.MakeMove(7, 16);
 
-            Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -110,8 +107,6 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(6, 18);
 
-            Game.UseMapMoves = false;
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(Game.PassMove), true);

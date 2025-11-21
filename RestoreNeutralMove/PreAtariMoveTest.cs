@@ -33,7 +33,6 @@ namespace UnitTestProject
             Boolean preAtariMove = ImmovableHelper.PreAtariMove(tryMove);
             Assert.AreEqual(preAtariMove, true);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
@@ -68,7 +67,6 @@ namespace UnitTestProject
             Assert.AreEqual(preAtariMove, true);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)) || move.Equals(new Point(4, 16)), true);
@@ -124,7 +122,6 @@ namespace UnitTestProject
             Boolean preAtariMove = ImmovableHelper.PreAtariMove(tryMove);
             Assert.AreEqual(preAtariMove, true);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 15)) || move.Equals(new Point(7, 18)), true);
@@ -158,7 +155,6 @@ namespace UnitTestProject
             Boolean preAtariMove = ImmovableHelper.PreAtariMove(tryMove);
             Assert.AreEqual(preAtariMove, true);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead) || moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
@@ -186,7 +182,6 @@ namespace UnitTestProject
             Boolean preAtariMove = ImmovableHelper.PreAtariMove(tryMove);
             Assert.AreEqual(preAtariMove, true);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 18)), true);
@@ -219,7 +214,6 @@ namespace UnitTestProject
             Boolean preAtariMove = ImmovableHelper.PreAtariMove(tryMove);
             Assert.AreEqual(preAtariMove, true);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -249,7 +243,6 @@ namespace UnitTestProject
             Boolean preAtariMove = ImmovableHelper.PreAtariMove(tryMove);
             Assert.AreEqual(preAtariMove, true);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(9, 18)), true);

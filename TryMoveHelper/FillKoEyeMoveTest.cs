@@ -68,7 +68,6 @@ namespace UnitTestProject
             Boolean isRedundantFillKo = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(isRedundantFillKo, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead) || moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
@@ -129,7 +128,6 @@ namespace UnitTestProject
             Boolean fillKoEye = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(fillKoEye, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -199,7 +197,6 @@ namespace UnitTestProject
             Boolean fillKoEye = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(fillKoEye, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 15)), true);
@@ -233,7 +230,6 @@ namespace UnitTestProject
             Boolean fillKoEye = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(fillKoEye, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
@@ -264,7 +260,6 @@ namespace UnitTestProject
             Boolean fillKoEye = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(fillKoEye, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -294,7 +289,6 @@ namespace UnitTestProject
             Boolean fillKoEye = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(fillKoEye, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 14)), true);
@@ -325,7 +319,6 @@ namespace UnitTestProject
             Boolean fillKoEye = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(fillKoEye, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 14)), true);
@@ -358,7 +351,6 @@ namespace UnitTestProject
             g.GameInfo.Survival = SurviveOrKill.KillWithKo;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -420,7 +412,6 @@ namespace UnitTestProject
             Boolean fillKoEye = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(fillKoEye, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
@@ -451,7 +442,6 @@ namespace UnitTestProject
             g.MakeMove(0, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.KoAlive) || moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -481,7 +471,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 18)), true);
@@ -514,7 +503,6 @@ namespace UnitTestProject
             Assert.AreEqual(isRedundant, true);
             
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -552,7 +540,6 @@ namespace UnitTestProject
             Assert.AreEqual(enablePassMove, true);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
@@ -588,7 +575,6 @@ namespace UnitTestProject
             Assert.AreEqual(isRedundant, false);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -627,7 +613,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -784,7 +769,6 @@ namespace UnitTestProject
             Boolean isRedundantFillKo = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(isRedundantFillKo, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -827,10 +811,7 @@ namespace UnitTestProject
 
             g.MakeMove(3, 3);
 
-            Point q = new Point(5, 16);
-            GameTryMove tryMove2 = new GameTryMove(g);
-            tryMove2.MakeMoveResult = tryMove2.TryGame.MakeMove(q.x, q.y);
-
+            GameTryMove tryMove2 = new GameTryMove(g, new Point(5, 16));
             Boolean isRedundant2 = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove2);
             Assert.AreEqual(isRedundant2, false);
         }
@@ -872,9 +853,7 @@ namespace UnitTestProject
             Assert.AreEqual(isRedundant, false);
 
             g.MakeMove(3, 3);
-            Point q = new Point(5, 15);
-            GameTryMove tryMove2 = new GameTryMove(g);
-            tryMove2.MakeMoveResult = tryMove2.TryGame.MakeMove(q.x, q.y);
+            GameTryMove tryMove2 = new GameTryMove(g, new Point(5, 15));
             Boolean isRedundant2 = RedundantMoveHelper.FillKoEyeMove(tryMove2);
             Assert.AreEqual(isRedundant2, false);
         }
@@ -1043,7 +1022,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -1077,7 +1055,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 17)), true);
@@ -1123,7 +1100,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 10)), true);
@@ -1451,7 +1427,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.FillKoEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);

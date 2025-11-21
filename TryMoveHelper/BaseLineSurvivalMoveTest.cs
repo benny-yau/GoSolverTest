@@ -121,7 +121,6 @@ namespace UnitTestProject
             Boolean isLink = LinkHelper.PossibleLinkForGroups(tryMove.TryGame.Board, g.Board);
             Assert.AreEqual(isLink, true);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 18)), true);
@@ -152,7 +151,6 @@ namespace UnitTestProject
             Boolean isBaseLine = RedundantMoveHelper.NeutralPointSurvivalMove(move);
             Assert.AreEqual(isBaseLine, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move2 = g.Board.LastMove.Value;
             Assert.AreEqual(move2.Equals(new Point(3, 18)), true);
@@ -189,7 +187,6 @@ namespace UnitTestProject
             Assert.AreEqual(isBaseLine, false);
 
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(7, 18)), true);
@@ -263,7 +260,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead) || moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);

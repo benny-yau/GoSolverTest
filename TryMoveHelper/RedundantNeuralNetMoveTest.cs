@@ -31,8 +31,7 @@ namespace UnitTestProject
             List<Point> points = new List<Point>() { new Point(8, 15), new Point(8, 16), new Point(8, 17) };
             foreach (Point p in points)
             {
-                GameTryMove tryMove = new GameTryMove(g);
-                tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p);
+                GameTryMove tryMove = new GameTryMove(g, p);
                 Boolean isRedundant = RedundantMoveHelper.RedundantNeuralNetMove(tryMove);
                 Assert.AreEqual(isRedundant, true);
             }
@@ -152,7 +151,6 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(tryMoves.Count > 0, true);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -180,7 +178,6 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(tryMoves.Count > 0, true);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);

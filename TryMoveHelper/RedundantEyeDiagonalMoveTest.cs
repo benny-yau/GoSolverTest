@@ -146,7 +146,6 @@ namespace UnitTestProject
             Boolean redundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 18)), true);
@@ -233,7 +232,6 @@ namespace UnitTestProject
             Boolean redundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
@@ -264,7 +262,6 @@ namespace UnitTestProject
             Boolean redundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 16)), true);
@@ -297,7 +294,6 @@ namespace UnitTestProject
             Boolean redundantEyeDiagonal = RedundantMoveHelper.KillEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -387,7 +383,6 @@ namespace UnitTestProject
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 17)), true);
@@ -417,7 +412,6 @@ namespace UnitTestProject
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 16)), true);
@@ -449,7 +443,6 @@ namespace UnitTestProject
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 16)), true);
@@ -481,7 +474,6 @@ namespace UnitTestProject
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -517,7 +509,6 @@ namespace UnitTestProject
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.KillEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 12)), true);
@@ -549,7 +540,6 @@ namespace UnitTestProject
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 17)), true);
@@ -616,7 +606,6 @@ namespace UnitTestProject
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.KillEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 17)), true);
@@ -652,7 +641,6 @@ namespace UnitTestProject
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 15)), true);
@@ -680,7 +668,6 @@ namespace UnitTestProject
             g.MakeMove(7, 18);
             g.MakeMove(3, 16);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -721,7 +708,6 @@ namespace UnitTestProject
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(8, 17)), true);
@@ -754,8 +740,6 @@ namespace UnitTestProject
             Boolean isRedundantEyeDiagonal = RedundantMoveHelper.KillEyeDiagonalMove(tryMove);
             Assert.AreEqual(isRedundantEyeDiagonal, false);
 
-            Game.UseMapMoves = false;
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -784,7 +768,6 @@ namespace UnitTestProject
             g.MakeMove(3, 16);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);

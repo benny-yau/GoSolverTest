@@ -21,21 +21,20 @@ namespace UnitTestProject
         public void NeutralPointMoveTest_Scenario_WuQingYuan_Q30935()
         {
             Scenario s = new Scenario();
-            Game m = s.Scenario_WuQingYuan_Q30935();
-            m.MakeMove(1, 17);
-            m.MakeMove(0, 17);
-            m.MakeMove(1, 18);
-            m.MakeMove(2, 16);
-            m.MakeMove(2, 18);
-            m.MakeMove(4, 17);
-            m.MakeMove(3, 18);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(m);
+            Game g = s.Scenario_WuQingYuan_Q30935();
+            g.MakeMove(1, 17);
+            g.MakeMove(0, 17);
+            g.MakeMove(1, 18);
+            g.MakeMove(2, 16);
+            g.MakeMove(2, 18);
+            g.MakeMove(4, 17);
+            g.MakeMove(3, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             List<Point> points = new List<Point>() { new Point(3, 16), new Point(4, 16), new Point(5, 16) };
             foreach (Point p in points)
             {
-                GameTryMove move = new GameTryMove(m);
-                move.MakeMoveResult = move.TryGame.MakeMove(p.x, p.y);
+                GameTryMove move = new GameTryMove(g, p);
                 Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointSurvivalMove(move);
                 Assert.AreEqual(isNeutralPoint, true);
             }
@@ -67,13 +66,11 @@ namespace UnitTestProject
             List<Point> points = new List<Point>() { new Point(4, 13), new Point(4, 14), new Point(4, 15), new Point(4, 16), new Point(4, 18) };
             foreach (Point p in points)
             {
-                GameTryMove move = new GameTryMove(g);
-                move.MakeMoveResult = move.TryGame.MakeMove(p.x, p.y);
+                GameTryMove move = new GameTryMove(g, p);
                 Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(move);
                 Assert.AreEqual(isNeutralPoint, true);
             }
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move2 = g.Board.LastMove.Value;
             Assert.AreEqual(move2.Equals(new Point(1, 17)), true);
@@ -116,13 +113,11 @@ namespace UnitTestProject
             List<Point> points = new List<Point>() { new Point(4, 13), new Point(4, 14) };
             foreach (Point p in points)
             {
-                GameTryMove move = new GameTryMove(g);
-                move.MakeMoveResult = move.TryGame.MakeMove(p.x, p.y);
+                GameTryMove move = new GameTryMove(g, p);
                 Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(move);
                 Assert.AreEqual(isNeutralPoint, true);
             }
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move2 = g.Board.LastMove.Value;
             Assert.AreEqual(move2.Equals(new Point(4, 13)) || move2.Equals(new Point(4, 14)), true);
@@ -153,7 +148,6 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 15)), true);
@@ -191,7 +185,6 @@ namespace UnitTestProject
             Boolean blnConnectAndDie = RedundantMoveHelper.SuicidalConnectAndDie(tryMove);
             Assert.AreEqual(blnConnectAndDie, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
@@ -250,7 +243,6 @@ namespace UnitTestProject
             g.MakeMove(0, 13);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             moveResult.HasFlag(ConfirmAliveResult.Alive);
@@ -283,7 +275,6 @@ namespace UnitTestProject
             GameTryMove endGameMove = tryMoves.Where(t => t.Move.Equals(new Point(8, 18))).FirstOrDefault();
             Assert.AreEqual(endGameMove != null, true);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(8, 18)), true);
@@ -425,7 +416,6 @@ namespace UnitTestProject
             GameTryMove tryMove = tryMoves.Where(t => t.Move.Equals(new Point(0, 14))).FirstOrDefault();
             Assert.AreEqual(tryMove != null, true);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
@@ -472,7 +462,6 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 13)), true);
@@ -509,7 +498,6 @@ namespace UnitTestProject
             GameTryMove tryMove = tryMoves.Where(t => t.Move.Equals(new Point(0, 13))).FirstOrDefault();
             Assert.AreEqual(tryMove != null, true);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 13)) || move.Equals(new Point(0, 18)), true);
@@ -545,7 +533,6 @@ namespace UnitTestProject
             GameTryMove tryMove = tryMoves.Where(t => t.Move.Equals(new Point(4, 16))).FirstOrDefault();
             Assert.AreEqual(tryMove != null, true);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 16)), true);
@@ -576,7 +563,6 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move2 = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -610,7 +596,6 @@ namespace UnitTestProject
             g.MakeMove(0, 13);
             g.MakeMove(1, 13);
             g.MakeMove(0, 15);
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 13)), true);
@@ -648,7 +633,6 @@ namespace UnitTestProject
             Assert.AreEqual(tryMoves.Count > 0, true);
 
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(Game.PassMove), false);
@@ -721,12 +705,10 @@ namespace UnitTestProject
             Boolean isImmovable = ImmovableHelper.IsImmovablePoint(b, p, Content.White);
             Assert.AreEqual(isImmovable, false);
 
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(p.x, p.y);
+            GameTryMove tryMove = new GameTryMove(g, p);
             Boolean isNeutral = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutral, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -764,7 +746,6 @@ namespace UnitTestProject
             Boolean isNeutral = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutral, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -794,8 +775,7 @@ namespace UnitTestProject
             List<Point> points = new List<Point>() { new Point(2, 18), new Point(10, 18) };
             foreach (Point p in points)
             {
-                GameTryMove move = new GameTryMove(g);
-                move.MakeMoveResult = move.TryGame.MakeMove(p.x, p.y);
+                GameTryMove move = new GameTryMove(g, p);
                 Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(move);
                 Assert.AreEqual(isNeutralPoint, true);
             }
@@ -833,7 +813,6 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             g.MakeMove(8, 17);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -894,7 +873,6 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -929,7 +907,6 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 18)), true);
@@ -1040,7 +1017,6 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 12)), true);
@@ -1101,7 +1077,6 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(tryMoves.Count == 1, true);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -1160,7 +1135,6 @@ namespace UnitTestProject
             Assert.AreEqual(WallHelper.IsNonKillableGroup(tryMove.TryGame.Board, new Point(4, 17)), false);
             Assert.AreEqual(isSuicidal, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -1196,7 +1170,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 12)), true);
@@ -1233,7 +1206,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.FindCoveredEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 12)), true);
@@ -1270,7 +1242,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(9, 16)), true);
@@ -1304,7 +1275,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(7, 15)), true);
@@ -1329,7 +1299,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 15)), true);
@@ -1360,7 +1329,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 16)), true);
@@ -1391,7 +1359,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(7, 16)), true);
@@ -1496,7 +1463,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 10)), true);
@@ -1529,7 +1495,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isRedundant, true);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 14)) || move.Equals(new Point(0, 14)) || move.Equals(new Point(7, 18)), true);
@@ -1559,7 +1524,6 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
             //g.Board[0, 16] = Content.White;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 18)), true);
@@ -1582,7 +1546,6 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             g.MakeMove(0, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead) || moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
@@ -1641,7 +1604,6 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -1676,7 +1638,6 @@ namespace UnitTestProject
             g.MakeMove(0, 11);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -1709,7 +1670,6 @@ namespace UnitTestProject
             g.MakeMove(4, 18);
             g.MakeMove(8, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -1736,7 +1696,6 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 15)), true);
@@ -1771,7 +1730,6 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -1809,7 +1767,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -1853,7 +1810,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -1897,7 +1853,6 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
@@ -1933,7 +1888,6 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -1958,7 +1912,6 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -1989,13 +1942,10 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point q = new Point(0, 14);
-            GameTryMove move = new GameTryMove(g);
-            move.MakeMoveResult = move.TryGame.MakeMove(q.x, q.y);
+            GameTryMove move = new GameTryMove(g, new Point(0, 14));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointSurvivalMove(move);
             Assert.AreEqual(isNeutralPoint, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move2 = g.Board.LastMove.Value;
             Assert.AreEqual(move2.Equals(new Point(1, 18)), true);
@@ -2037,7 +1987,6 @@ namespace UnitTestProject
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isNeutralPoint, false);
 
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -2099,13 +2048,10 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Point q = new Point(0, 14);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeMoveResult = tryMove.TryGame.MakeMove(q.x, q.y);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 14));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isNeutralPoint, false);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -2154,7 +2100,6 @@ namespace UnitTestProject
             g.GameInfo.targetPoints = new List<Point>() { new Point(2, 16) };
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
-            Game.useMonteCarloRuntime = Game.UseMapMoves = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);

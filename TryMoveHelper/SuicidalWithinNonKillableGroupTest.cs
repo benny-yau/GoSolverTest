@@ -109,8 +109,7 @@ namespace UnitTestProject
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
 
-            GameTryMove tryMove2 = new GameTryMove(g);
-            tryMove2.MakeMoveResult = tryMove2.TryGame.MakeMove(0, 14);
+            GameTryMove tryMove2 = new GameTryMove(g, new Point(0, 14));
             Boolean isSuicidal2 = RedundantMoveHelper.SuicidalRedundantMove(tryMove2);
             Assert.AreEqual(isSuicidal2, true);
         }
@@ -171,7 +170,6 @@ namespace UnitTestProject
             g.MakeMove(5, 14);
             g.MakeMove(3, 13);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game.useMonteCarloRuntime = false;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
