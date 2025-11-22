@@ -716,7 +716,7 @@ namespace UnitTestProject
  13 . X . O X . O . . . . . . . . . . . . 
  14 . . X . O . X X . . . . . . . . . . . 
  15 . X . X . O . X . . . . . . . . . . . 
- 16 . . X . . O O X . . . . . . . . . . . 
+ 16 . . X X . O O X . . . . . . . . . . . 
  17 . X O O O O . X . . . . . . . . . . . 
  18 . . O . O X X X . . . . . . . . . . .
          */
@@ -740,6 +740,7 @@ namespace UnitTestProject
             g.SetupMove(3, 11, Content.White);
             g.SetupMove(3, 13, Content.White);
             g.SetupMove(3, 15, Content.Black);
+            g.SetupMove(3, 16, Content.Black);
             g.SetupMove(3, 17, Content.White);
             g.SetupMove(4, 11, Content.White);
             g.SetupMove(4, 12, Content.White);

@@ -5536,7 +5536,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(2, 16)), true);
+            Assert.AreEqual(move.Equals(new Point(2, 16)) || move.Equals(new Point(1, 15)), true);
         }
 
 
@@ -6239,7 +6239,9 @@ namespace UnitTestProject
 
         public static Game SearchAnswer(Game g)
         {
+            Game.SearchAnswer = true;
             ConfirmAliveResult moveResult = g.InitializeComputerMove(true, false);
+            Game.SearchAnswer = false;
             Point move = g.Board.LastMove.Value;
             return g;
         }

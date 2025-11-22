@@ -31,8 +31,7 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             g.MakeMove(2, 18);
 
-            Game.UseMapMoves = true; //false
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            ConfirmAliveResult moveResult = g.InitializeComputerMove(false, true);
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 16)), true);
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Mapped), true);

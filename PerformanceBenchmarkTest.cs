@@ -860,11 +860,13 @@ namespace UnitTestProject
             Assert.AreEqual(move.Equals(new Point(1, 16)), true);
         }
 
-		public static Game SearchAnswer(Game g)
-		{
-			ConfirmAliveResult moveResult = g.InitializeComputerMove(true, false);
-			Point move = g.Board.LastMove.Value;
-			return g;
-		}
-	}
+        public static Game SearchAnswer(Game g)
+        {
+            Game.SearchAnswer = true;
+            ConfirmAliveResult moveResult = g.InitializeComputerMove(true, false);
+            Game.SearchAnswer = false;
+            Point move = g.Board.LastMove.Value;
+            return g;
+        }
+    }
 }
