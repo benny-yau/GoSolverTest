@@ -283,5 +283,41 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 16))) != null, true);
         }
+
+        /*
+  9 . X X . . . . . . . . . . . . . . . . 
+ 10 . O X . . . . . . . . . . . . . . . . 
+ 11 . O O X X . . . . . . . . . . . . . . 
+ 12 . O X X . X . . . . . . . . . . . . . 
+ 13 O . O X . X . . . . . . . . . . . . . 
+ 14 . O O X . X . . . . . . . . . . . . . 
+ 15 O X O O X . . . . . . . . . . . . . . 
+ 16 X X O X X . . . . . . . . . . . . . . 
+ 17 . X X . . . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void RedundantNeuralNetMoveTest_Scenario_WindAndTime_Q30199()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WindAndTime_Q30199();
+            g.MakeMove(0, 16);
+            g.MakeMove(1, 12);
+            g.MakeMove(2, 12);
+            g.MakeMove(2, 14);
+            g.MakeMove(0, 14);
+            g.MakeMove(2, 11);
+            g.MakeMove(3, 12);
+
+            g.MakeMove(0, 13);
+            g.MakeMove(3, 13);
+            g.MakeMove(0, 15);
+            g.MakeMove(3, 14);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(move.Equals(new Point(0, 10)) || move.Equals(new Point(0, 11)), true);
+        }
     }
 }
