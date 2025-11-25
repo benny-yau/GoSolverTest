@@ -319,5 +319,25 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 10)) || move.Equals(new Point(0, 11)), true);
         }
+
+        /*
+ 15 O O O O O O . . . . . . . . . . . . . 
+ 16 X X X X X O . . . . . . . . . . . . . 
+ 17 . X O . X O . . . . . . . . . . . . . 
+ 18 . O O X X O . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantNeuralNetMoveTest_Scenario_Corner_B23()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Corner_B23();
+            g.MakeMove(2, 17);
+            g.MakeMove(3, 18);
+            g.MakeMove(2, 18);
+            g.MakeMove(1, 17);
+            g.MakeMove(1, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
+        }
     }
 }

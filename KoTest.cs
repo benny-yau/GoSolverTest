@@ -178,7 +178,7 @@ namespace UnitTestProject
             Assert.AreEqual(w.Board.Move.Equals(Game.PassMove), true);
             Assert.AreEqual(result.HasFlag(ConfirmAliveResult.KoAlive), true);
 
-            ConfirmAliveResult result2 = MonteCarloGame.MonteCarloRealTimeMove(m).Item1;
+            ConfirmAliveResult result2 = MonteCarloGame.MakeMonteCarloTreeSearch(m).Item1;
             Assert.AreEqual(result2.HasFlag(ConfirmAliveResult.KoAlive), true);
         }
 
@@ -378,7 +378,7 @@ namespace UnitTestProject
             Assert.AreEqual(move.Equals(new Point(5, 17)) || move.Equals(new Point(2, 17)), true);
             Assert.AreEqual(result == ConfirmAliveResult.Dead, true);
 
-            ConfirmAliveResult result2 = MonteCarloGame.MonteCarloRealTimeMove(m).Item1;
+            ConfirmAliveResult result2 = MonteCarloGame.MakeMonteCarloTreeSearch(m).Item1;
             Assert.AreEqual(m.Board.Move.Equals(new Point(5, 17)) || m.Board.Move.Equals(new Point(2, 17)), true);
             Assert.AreEqual(result2 == ConfirmAliveResult.Dead, true);
         }
