@@ -248,8 +248,7 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             g.MakeMove(0, 16);
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(Game.PassMove), true);
+            Assert.AreEqual(g.Board.IsPassMove, true);
         }
 
         /*

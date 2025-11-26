@@ -108,8 +108,7 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(Game.PassMove), true);
+            Assert.AreEqual(g.Board.IsPassMove, true);
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
 
             //extended life check for partial alive

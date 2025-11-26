@@ -635,7 +635,7 @@ namespace UnitTestProject
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(Game.PassMove), false);
+            Assert.AreEqual(g.Board.IsPassMove, false);
         }
 
         /*

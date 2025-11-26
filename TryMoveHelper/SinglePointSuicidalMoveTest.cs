@@ -1912,7 +1912,6 @@ namespace UnitTestProject
             g.MakeMove(5, 15);
             g.MakeMove(2, 16);
             g.MakeMove(0, 17);
-            g.GameInfo.SearchDepth = 26;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));

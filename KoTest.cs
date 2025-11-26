@@ -61,8 +61,7 @@ namespace UnitTestProject
             g.MakeMove(1, 11);
             g.MakeMove(0, 11);
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(Game.PassMove), true);
+            Assert.AreEqual(g.Board.IsPassMove, true);
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
         }
 
@@ -91,8 +90,7 @@ namespace UnitTestProject
             g.MakeMove(2, 13);
             g.MakeMove(0, 11);
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(Game.PassMove), true);
+            Assert.AreEqual(g.Board.IsPassMove, true);
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
         }
 
@@ -165,17 +163,16 @@ namespace UnitTestProject
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_Corner_A130();
-            Game m = new Game(g);
-            m.MakeMove(4, 18);
-            m.MakeMove(0, 16);
-            m.MakeMove(3, 18);
-            m.MakeMove(0, 18);
-            m.MakeMove(0, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(0, 16);
+            g.MakeMove(3, 18);
+            g.MakeMove(0, 18);
+            g.MakeMove(0, 17);
             //m.InternalMakeMove(0, 18, true);
 
-            Game w = new Game(m);
-            ConfirmAliveResult result = w.MakeExhaustiveSearch();
-            Assert.AreEqual(w.Board.Move.Equals(Game.PassMove), true);
+            Game m = new Game(g);
+            ConfirmAliveResult result = g.MakeExhaustiveSearch();
+            Assert.AreEqual(g.Board.IsPassMove, true);
             Assert.AreEqual(result.HasFlag(ConfirmAliveResult.KoAlive), true);
 
             ConfirmAliveResult result2 = MonteCarloGame.MakeMonteCarloTreeSearch(m).Item1;
@@ -234,10 +231,8 @@ namespace UnitTestProject
             g.MakeMove(1, 17);
             g.MakeMove(2, 17);
             g.MakeMove(4, 18);
-            g.GameInfo.SearchDepth = 40;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(Game.PassMove), true);
+            Assert.AreEqual(g.Board.IsPassMove, true);
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
         }
 
@@ -269,7 +264,6 @@ namespace UnitTestProject
             g.InternalMakeMove(4, 18, true);
             g.MakeMove(0, 18);
             g.MakeMove(5, 18);
-            g.GameInfo.SearchDepth = 40;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -317,21 +311,20 @@ namespace UnitTestProject
             //require additional random point for kill
             Scenario s = new Scenario();
             Game g = s.Scenario_WuQingYuan_Q31498();
-            Game m = new Game(g);
-            m.MakeMove(1, 17);
-            m.MakeMove(0, 16);
-            m.MakeMove(2, 17);
-            m.MakeMove(3, 16);
-            m.MakeMove(5, 18);
-            m.MakeMove(1, 18);
-            m.MakeMove(0, 17);
-            m.MakeMove(4, 18);
-            m.MakeMove(6, 18);
-            m.MakeMove(3, 18);
-            m.MakeMove(4, 17);
+            g.MakeMove(1, 17);
+            g.MakeMove(0, 16);
+            g.MakeMove(2, 17);
+            g.MakeMove(3, 16);
+            g.MakeMove(5, 18);
+            g.MakeMove(1, 18);
+            g.MakeMove(0, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(6, 18);
+            g.MakeMove(3, 18);
+            g.MakeMove(4, 17);
 
-            Game w = new Game(m);
-            ConfirmAliveResult result = w.MakeExhaustiveSearch();
+            Game m = new Game(g);
+            ConfirmAliveResult result = g.MakeExhaustiveSearch();
             Assert.AreEqual(result == ConfirmAliveResult.Dead, true);
 
             MonteCarloTreeSearch mcts = MonteCarloGame.InitializeMonteCarloComputerMove(m);
@@ -353,28 +346,27 @@ namespace UnitTestProject
             //require additional random point for kill
             Scenario s = new Scenario();
             Game g = s.Scenario_TianLongTu_Q17077();
-            Game m = new Game(g);
-            m.MakeMove(3, 18);
-            m.MakeMove(4, 16);
-            m.MakeMove(6, 18);
-            m.MakeMove(4, 17);
-            m.MakeMove(4, 18);
-            m.MakeMove(5, 18);
+            g.MakeMove(3, 18);
+            g.MakeMove(4, 16);
+            g.MakeMove(6, 18);
+            g.MakeMove(4, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(5, 18);
 
             //m.MakeMove(2, 17);
             //m.MakeMove(1, 18);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(m);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             Point p = new Point(5, 17);
-            GameTryMove tryMove = new GameTryMove(m);
+            GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
             
             Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, true);
 
-            Game w = new Game(m);
-            ConfirmAliveResult result = w.MakeExhaustiveSearch();
-            Point move = w.Board.LastMove.Value;
+            Game m = new Game(g);
+            ConfirmAliveResult result = g.MakeExhaustiveSearch();
+            Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 17)) || move.Equals(new Point(2, 17)), true);
             Assert.AreEqual(result == ConfirmAliveResult.Dead, true);
 

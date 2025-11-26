@@ -142,7 +142,7 @@ namespace UnitTestProject
             Assert.AreEqual(endGameMove != null, true);
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(!move.Equals(Game.PassMove), true);
+            Assert.AreEqual(move.Equals(new Point(4, 18)), true);
         }
 
 

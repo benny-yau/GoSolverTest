@@ -339,5 +339,33 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
         }
+
+        /*
+  9 . O O . . . . . . . . . . . . . . . . 
+ 10 X X . O . . . . . . . . . . . . . . . 
+ 11 . . X O . . . . . . . . . . . . . . . 
+ 12 O . X . . . . . . . . . . . . . . . . 
+ 13 O X X O O . . . . . . . . . . . . . . 
+ 14 X . . X O . . . . . . . . . . . . . . 
+ 15 O X X . O . . . . . . . . . . . . . . 
+ 16 O O O O . . . . . . . . . . . . . . . 
+ 17 . . . . . . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void RedundantNeuralNetMoveTest_Scenario_XuanXuanGo_A151_101Weiqi()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
+            g.MakeMove(0, 13);
+            g.MakeMove(0, 14);
+            g.MakeMove(0, 12);
+            g.MakeMove(0, 10);
+            g.MakeMove(0, 16);
+            g.MakeMove(1, 13);
+            g.MakeMove(0, 15);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(2, 14))) != null, true);
+        }
     }
 }
