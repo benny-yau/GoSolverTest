@@ -2048,7 +2048,7 @@ namespace UnitTestProject
         public void CoveredEyeMoveTest_20221019_7()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.White);
             g.SetupMove(1, 12, Content.Black);
@@ -2112,7 +2112,7 @@ namespace UnitTestProject
         public void CoveredEyeMoveTest_20221024_4()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.White);
             g.SetupMove(0, 17, Content.Black);
@@ -2250,7 +2250,7 @@ namespace UnitTestProject
         public void CoveredEyeMoveTest_x()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.Black);
             g.SetupMove(0, 16, Content.White);
@@ -2314,7 +2314,7 @@ namespace UnitTestProject
         public void CoveredEyeMoveTest_x_2()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.Black);
             g.SetupMove(0, 15, Content.White);
@@ -2383,7 +2383,7 @@ namespace UnitTestProject
         public void CoveredEyeMoveTest_x_3()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.White);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(1, 12, Content.Black);

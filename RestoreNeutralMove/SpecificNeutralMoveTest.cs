@@ -583,7 +583,7 @@ namespace UnitTestProject
         public void SpecificNeutralMoveTest_20221017_5()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 17, Content.White);
             g.SetupMove(1, 13, Content.Black);

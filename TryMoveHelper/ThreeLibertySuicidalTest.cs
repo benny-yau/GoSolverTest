@@ -285,7 +285,7 @@ namespace UnitTestProject
         public void ThreeLibertySuicidalTest_Scenario5dan18_2()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(3, 16));
             g.SetupMove(1, 16, Content.White);

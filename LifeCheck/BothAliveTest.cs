@@ -31,7 +31,7 @@ namespace UnitTestProject
 
         public Game Scenario_SimpleSeki()
         {
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 14);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             var g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(0, 17, Content.Black);
@@ -234,7 +234,7 @@ namespace UnitTestProject
         public Game Scenario_ComplexSeki()
         {
             //see complex seki at https://senseis.xmp.net/?Seki
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.White, 14);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.White);
             var g = new Game(gi);
 
             g.SetupMove(0, 16, Content.Black);
@@ -1609,7 +1609,7 @@ namespace UnitTestProject
         [TestMethod]
         public void BothAliveTest_Scenario_WuQingYuan_Q15126()
         {
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.White, 20);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.White);
             var g = new Game(gi);
             g.SetupMove(0, 13, Content.Black);
             g.SetupMove(0, 14, Content.White);
@@ -1672,7 +1672,7 @@ namespace UnitTestProject
         [TestMethod]
         public void BothAliveTest_Scenario_WuQingYuan_Q15126_2()
         {
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.White, 20);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.White);
             var g = new Game(gi);
             g.SetupMove(0, 13, Content.Black);
             g.SetupMove(0, 14, Content.White);
@@ -1737,7 +1737,7 @@ namespace UnitTestProject
         [TestMethod]
         public void BothAliveTest_Scenario_WuQingYuan_Q15126_3()
         {
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.White, 20);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.White);
             var g = new Game(gi);
             g.SetupMove(0, 13, Content.Black);
             g.SetupMove(0, 14, Content.White);
@@ -1878,7 +1878,7 @@ namespace UnitTestProject
         [TestMethod]
         public void BothAliveTest_Scenario_WuQingYuan_Q15126_5()
         {
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.White, 20);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.White);
             var g = new Game(gi);
             g.SetupMove(0, 13, Content.White);
             g.SetupMove(0, 14, Content.Black);
@@ -2128,7 +2128,7 @@ namespace UnitTestProject
         [TestMethod]
         public void BothAliveTest_Scenario_WuQingYuan_Q15126_6()
         {
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.White, 20);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.White);
             var g = new Game(gi);
             g.SetupMove(0, 13, Content.White);
             g.SetupMove(0, 14, Content.Black);

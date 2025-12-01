@@ -20,7 +20,7 @@ namespace UnitTestProject
         [TestMethod]
         public void LifeCheckTest_ScenarioTestConfirmAlive1()
         {
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 12);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             var g = new Game(gi);
             g.SetupMove(0, 15, Content.Black);
             g.SetupMove(0, 16, Content.Black);

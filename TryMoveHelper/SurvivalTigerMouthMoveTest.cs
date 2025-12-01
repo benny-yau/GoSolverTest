@@ -1066,7 +1066,7 @@ namespace UnitTestProject
         public void RedundantTigerMouthMove_20221209_5()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 14, Content.White);
             g.SetupMove(1, 15, Content.White);
@@ -1150,7 +1150,7 @@ namespace UnitTestProject
         public void RedundantTigerMouthMove_20221231_6()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(0, 17, Content.White);
@@ -1219,7 +1219,7 @@ namespace UnitTestProject
         public void RedundantTigerMouthMove_20221214_5()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.Black);
             g.SetupMove(1, 12, Content.Black);
@@ -1288,7 +1288,7 @@ namespace UnitTestProject
         public void RedundantTigerMouthMove_20221220_7()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 11, Content.White);
             g.SetupMove(1, 13, Content.White);
@@ -1361,7 +1361,7 @@ namespace UnitTestProject
         public void RedundantTigerMouthMove_Scenario3dan22_x()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White);
             Game g = new Game(gi);
             g.SetupMove(2, 16, Content.White);
             g.SetupMove(2, 17, Content.White);

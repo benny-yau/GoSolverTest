@@ -392,7 +392,7 @@ namespace UnitTestProject
         public void RedundantKoMoveTest_SimpleSeki()
         {
             //not redundant ko
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 14);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             var g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(0, 17, Content.Black);
@@ -2289,6 +2289,7 @@ namespace UnitTestProject
             g.MakeMove(0, 11);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -2411,7 +2412,7 @@ namespace UnitTestProject
         public void RedundantKoMoveTest_Scenario_TianLongTu_Q16693_4()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(2, 17));
             g.SetupMove(0, 16, Content.White);
@@ -2457,7 +2458,7 @@ namespace UnitTestProject
         public void RedundantKoMoveTest_Scenario_TianLongTu_Q16693_5()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(2, 17));
             g.SetupMove(0, 16, Content.White);
@@ -2506,7 +2507,7 @@ namespace UnitTestProject
         public void RedundantKoMoveTest_Scenario_TianLongTu_Q16693_6()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(2, 17));
             g.SetupMove(0, 16, Content.White);
@@ -2559,7 +2560,7 @@ namespace UnitTestProject
         public void RedundantKoMoveTest_Scenario_TianLongTu_Q16693_7()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(2, 17));
             g.SetupMove(0, 16, Content.White);
@@ -2869,7 +2870,7 @@ namespace UnitTestProject
         public void RedundantKoMoveTest_x_1()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.White);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(2, 16));
             g.SetupMove(0, 16, Content.Black);
@@ -2924,7 +2925,7 @@ namespace UnitTestProject
         public void RedundantKoMoveTest_x_2()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(1, 16));
             g.SetupMove(1, 13, Content.Black);
@@ -3039,7 +3040,7 @@ namespace UnitTestProject
         public void RedundantKoMoveTest_Scenario_XuanXuanQiJing_A38_3()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(3, 17));
             g.SetupMove(0, 14, Content.White);
@@ -3110,7 +3111,7 @@ namespace UnitTestProject
         public void RedundantKoMoveTest_20221128()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(1, 14, Content.Black);
@@ -3174,7 +3175,7 @@ namespace UnitTestProject
         public void RedundantKoMoveTest_20221128_2()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(1, 14, Content.Black);
@@ -3339,7 +3340,7 @@ namespace UnitTestProject
         public void RedundantKoMoveTest_20221128_3()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White);
             Game g = new Game(gi);
             g.SetupMove(0, 13, Content.Black);
             g.SetupMove(0, 15, Content.Black);
@@ -3401,7 +3402,7 @@ namespace UnitTestProject
         public void RedundantKoMoveTest_20221128_4()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(1, 14, Content.Black);

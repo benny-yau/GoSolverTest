@@ -2986,7 +2986,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_x()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 16);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(3, 16));
             g.SetupMove(0, 17, Content.White);
@@ -3332,7 +3332,7 @@ namespace UnitTestProject
         [TestMethod]
         public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16867_2()
         {
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 20);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             var g = new Game(gi);
             g.SetupMove(2, 16, Content.Black);
             g.SetupMove(2, 17, Content.Black);
@@ -3598,7 +3598,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_x_2()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(3, 16));
             g.SetupMove(0, 14, Content.White);

@@ -1573,7 +1573,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_20221019_6()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.SetupMove(0, 13, Content.White);
             g.SetupMove(0, 14, Content.Black);
@@ -1642,7 +1642,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A28_101Weiqi_2()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             //g.SetupMove(0, 10, Content.White);
             g.SetupMove(0, 11, Content.Black);
@@ -1783,7 +1783,7 @@ namespace UnitTestProject
         public void SuicidalRedundantMoveTest_x_3()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.SetupMove(0, 13, Content.White);
             g.SetupMove(0, 14, Content.Black);

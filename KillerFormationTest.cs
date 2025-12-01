@@ -759,7 +759,7 @@ namespace UnitTestProject
         public void KillerFormationTest_KnifeSixformation()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 13));
             g.SetupMove(3, 11, Content.Black);
@@ -842,7 +842,7 @@ namespace UnitTestProject
         public void KillerFormationTest_KnifeSevenformation()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 13));
             g.SetupMove(3, 11, Content.Black);
@@ -925,7 +925,7 @@ namespace UnitTestProject
         public void KillerFormationTest_FlowerSevenformation()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 13));
             g.SetupMove(2, 13, Content.Black);
@@ -1162,7 +1162,7 @@ namespace UnitTestProject
         public void KillerFormationTest_20230121_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 11, Content.White);
             g.SetupMove(1, 9, Content.Black);
@@ -1239,7 +1239,7 @@ namespace UnitTestProject
         public void KillerFormationTest_Scenario_WuQingYuan_Q31471_x()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 13));
             g.SetupMove(0, 15, Content.Black);
@@ -1326,7 +1326,7 @@ namespace UnitTestProject
         public void KillerFormationTest_Scenario_WuQingYuan_Q31682_x()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 13));
             g.SetupMove(0, 15, Content.Black);

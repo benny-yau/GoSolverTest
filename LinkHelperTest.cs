@@ -295,7 +295,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_WindAndTime_Q30150_2()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(3, 17));
             g.SetupMove(1, 15, Content.Black);
@@ -353,7 +353,7 @@ namespace UnitTestProject
 
         private Game ScenarioForLink()
         {
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 12);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             gi.targetPoints = new List<Point>() { new Point(7, 16) };
             Game g = new Game(gi);
 
@@ -657,7 +657,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_WindAndTime_Q30150_4()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(3, 17));
             g.SetupMove(1, 12, Content.Black);
@@ -724,7 +724,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_WindAndTime_Q30150_5()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(3, 17));
             g.SetupMove(1, 12, Content.Black);
@@ -819,7 +819,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_WindAndTime_Q30150_6()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 17));
             g.SetupMove(1, 11, Content.White);
@@ -892,7 +892,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_WindAndTime_Q30150_7()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 17));
             g.SetupMove(1, 11, Content.White);
@@ -966,7 +966,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_WindAndTime_Q30150_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 17));
             g.SetupMove(1, 11, Content.White);
@@ -1042,7 +1042,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_WindAndTime_Q30150_9()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 17));
             g.SetupMove(1, 11, Content.White);
@@ -1119,7 +1119,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_WindAndTime_Q30150_10()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 17));
             g.SetupMove(0, 17, Content.White);
@@ -1190,7 +1190,7 @@ namespace UnitTestProject
         public void LinkHelperTest_x()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 17));
             g.SetupMove(1, 16, Content.Black);
@@ -1260,7 +1260,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_WindAndTime_Q30150_11()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 17));
             g.SetupMove(1, 11, Content.White);
@@ -1356,7 +1356,7 @@ namespace UnitTestProject
         public void LinkHelperTest_DoubleAtariOnSemiSolidEye()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 14));
             g.SetupMove(2, 12, Content.Black);
@@ -1430,7 +1430,7 @@ namespace UnitTestProject
         public void LinkHelperTest_DoubleAtariOnLinkage()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(4, 14));
             g.SetupMove(2, 12, Content.Black);
@@ -1501,7 +1501,7 @@ namespace UnitTestProject
         public void LinkHelperTest_Scenario_WindAndTime_Q30150_12()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(3, 17));
             g.SetupMove(1, 12, Content.Black);
@@ -1848,7 +1848,7 @@ namespace UnitTestProject
         public void LinkHelperTest_y()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(4, 13, Content.Black);
             g.SetupMove(5, 11, Content.White);

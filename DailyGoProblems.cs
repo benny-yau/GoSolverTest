@@ -30,7 +30,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 13, Content.Black);
             g.SetupMove(0, 14, Content.White);
@@ -91,7 +91,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 15, Content.Black);
             g.SetupMove(1, 16, Content.Black);
@@ -153,7 +153,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 6, Content.Black);
             g.SetupMove(1, 8, Content.Black);
@@ -212,7 +212,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 17, Content.Black);
             g.SetupMove(2, 17, Content.Black);
@@ -276,7 +276,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 17, Content.White);
             g.SetupMove(1, 13, Content.Black);
@@ -332,7 +332,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 13, Content.White);
             g.SetupMove(1, 11, Content.Black);
@@ -389,7 +389,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.SetupMove(2, 16, Content.White);
             g.SetupMove(2, 17, Content.White);
@@ -441,7 +441,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 12, Content.Black);
             g.SetupMove(1, 14, Content.Black);
@@ -499,7 +499,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.SetupMove(0, 13, Content.White);
             g.SetupMove(0, 14, Content.Black);
@@ -565,7 +565,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 17, Content.Black);
             g.SetupMove(1, 14, Content.Black);
@@ -629,7 +629,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 12, Content.Black);
             g.SetupMove(1, 14, Content.Black);
@@ -683,7 +683,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 10, Content.White);
             g.SetupMove(0, 12, Content.Black);
@@ -733,7 +733,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.Black);
             g.SetupMove(0, 15, Content.White);
@@ -788,7 +788,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 16, Content.White);
             g.SetupMove(1, 17, Content.White);
@@ -844,7 +844,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 14, Content.Black);
             g.SetupMove(1, 15, Content.Black);
@@ -907,7 +907,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 17, Content.Black);
             g.SetupMove(2, 15, Content.Black);
@@ -970,7 +970,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.Black);
             g.SetupMove(0, 17, Content.White);
@@ -1029,7 +1029,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 16, Content.Black);
             g.SetupMove(1, 17, Content.Black);
@@ -1088,7 +1088,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 17, Content.Black);
             g.SetupMove(1, 14, Content.Black);
@@ -1152,7 +1152,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.White);
             g.SetupMove(1, 12, Content.Black);
@@ -1210,7 +1210,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 12, Content.White);
             g.SetupMove(1, 14, Content.White);
@@ -1263,7 +1263,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 13, Content.Black);
             g.SetupMove(0, 14, Content.White);
@@ -1330,7 +1330,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 15, Content.Black);
             g.SetupMove(1, 17, Content.White);
@@ -1389,7 +1389,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 11, Content.Black);
             g.SetupMove(0, 12, Content.Black);
@@ -1450,7 +1450,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.Black);
             g.SetupMove(0, 15, Content.White);
@@ -1503,7 +1503,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 14, Content.White);
             g.SetupMove(1, 15, Content.White);
@@ -1568,7 +1568,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.Black);
             g.SetupMove(0, 18, Content.White);
@@ -1616,7 +1616,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.White);
             g.SetupMove(0, 17, Content.Black);
@@ -1667,7 +1667,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 9, Content.Black);
             g.SetupMove(0, 10, Content.White);
@@ -1733,7 +1733,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(2, 11, Content.Black);
             g.SetupMove(2, 12, Content.Black);
@@ -1805,7 +1805,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White);
             Game g = new Game(gi);
             g.SetupMove(1, 10, Content.Black);
             g.SetupMove(1, 12, Content.Black);
@@ -1862,7 +1862,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 11, Content.Black);
             g.SetupMove(1, 11, Content.Black);
@@ -1909,7 +1909,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.White);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.White);
             g.SetupMove(0, 15, Content.White);
@@ -1956,7 +1956,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.White);
             g.SetupMove(1, 13, Content.Black);
@@ -2002,7 +2002,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 13, Content.White);
             g.SetupMove(0, 15, Content.Black);
@@ -2055,7 +2055,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.Black);
             g.SetupMove(0, 16, Content.Black);
@@ -2128,7 +2128,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.Black);
             g.SetupMove(1, 11, Content.White);
@@ -2191,7 +2191,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 13, Content.Black);
             g.SetupMove(0, 14, Content.Black);
@@ -2248,7 +2248,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 14, Content.Black);
             g.SetupMove(1, 16, Content.Black);
@@ -2312,7 +2312,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(0, 17, Content.Black);
@@ -2390,7 +2390,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.White);
             g.SetupMove(0, 17, Content.Black);
@@ -2463,7 +2463,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.Black);
             g.SetupMove(1, 10, Content.Black);
@@ -2527,7 +2527,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 14, Content.White);
             g.SetupMove(1, 15, Content.White);
@@ -2583,7 +2583,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 17, Content.White);
             g.SetupMove(1, 10, Content.Black);
@@ -2640,7 +2640,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 11, Content.White);
             g.SetupMove(0, 16, Content.Black);
@@ -2702,7 +2702,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 16, Content.Black);
             g.SetupMove(1, 17, Content.Black);
@@ -2758,7 +2758,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 14, Content.White);
             g.SetupMove(1, 15, Content.Black);
@@ -2810,7 +2810,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 16, Content.White);
             g.SetupMove(2, 17, Content.White);
@@ -2874,7 +2874,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 13, Content.Black);
             g.SetupMove(1, 14, Content.Black);
@@ -2938,7 +2938,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 12, Content.Black);
             g.SetupMove(1, 14, Content.Black);
@@ -2997,7 +2997,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(1, 14, Content.Black);
@@ -3054,7 +3054,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 11, Content.Black);
             g.SetupMove(0, 12, Content.White);
@@ -3122,7 +3122,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.Black);
             g.SetupMove(1, 15, Content.Black);
@@ -3175,7 +3175,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 12, Content.White);
             g.SetupMove(1, 10, Content.Black);
@@ -3242,7 +3242,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.Black);
             g.SetupMove(0, 15, Content.Black);
@@ -3304,7 +3304,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.White);
             g.SetupMove(1, 13, Content.White);
@@ -3363,7 +3363,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.Black);
             g.SetupMove(1, 14, Content.Black);
@@ -3408,7 +3408,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(1, 12, Content.White);
@@ -3482,7 +3482,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 16, Content.Black);
             g.SetupMove(1, 17, Content.Black);
@@ -3547,7 +3547,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(2, 16, Content.Black);
             g.SetupMove(2, 17, Content.Black);
@@ -3628,7 +3628,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.White);
             g.SetupMove(0, 16, Content.Black);
@@ -3687,7 +3687,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 11, Content.White);
             g.SetupMove(1, 13, Content.White);
@@ -3746,7 +3746,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.White);
             g.SetupMove(0, 15, Content.White);
@@ -3824,7 +3824,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20221109_7()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 12, Content.Black);
             g.SetupMove(1, 11, Content.White);
@@ -3899,7 +3899,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.White);
             g.SetupMove(0, 16, Content.Black);
@@ -3960,7 +3960,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.Black);
             g.SetupMove(0, 17, Content.White);
@@ -4020,7 +4020,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.Black);
             g.SetupMove(0, 15, Content.White);
@@ -4064,7 +4064,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 17, Content.White);
             g.SetupMove(1, 15, Content.White);
@@ -4119,7 +4119,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 12, Content.Black);
             g.SetupMove(0, 13, Content.White);
@@ -4172,7 +4172,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 13, Content.White);
             g.SetupMove(1, 14, Content.White);
@@ -4250,7 +4250,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20221128_2()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.Black);
             g.SetupMove(0, 15, Content.White);
@@ -4306,7 +4306,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 14, Content.White);
             g.SetupMove(1, 15, Content.White);
@@ -4371,7 +4371,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 6, Content.White);
             g.SetupMove(0, 17, Content.Black);
@@ -4459,7 +4459,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 13, Content.Black);
             g.SetupMove(0, 14, Content.Black);
@@ -4510,7 +4510,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.SetupMove(0, 11, Content.White);
             g.SetupMove(0, 12, Content.Black);
@@ -4566,7 +4566,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20221229_7()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 9, Content.Black);
             g.SetupMove(1, 10, Content.Black);
@@ -4623,7 +4623,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20221230_7()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(2, 16, Content.Black);
             g.SetupMove(2, 17, Content.Black);
@@ -4696,7 +4696,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20221231_6()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(0, 17, Content.White);
@@ -4767,7 +4767,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.Black);
             g.SetupMove(0, 17, Content.Black);
@@ -4840,7 +4840,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 11, Content.White);
             g.SetupMove(1, 9, Content.Black);
@@ -4878,7 +4878,7 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
             gi.killMovablePoints.Add(new Point(1, 11));
             gi.killMovablePoints.Add(new Point(0, 10));
-            
+
             g.MakeMove(0, 14);
             g.MakeMove(1, 16);
             g.MakeMove(0, 13);
@@ -4912,27 +4912,27 @@ namespace UnitTestProject
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game g = Scenario_20230422_8();
 
-/*alive
-            g.MakeMove(1, 15);
-            g.MakeMove(1, 14);
-            g.MakeMove(2, 16);
-            g.MakeMove(1, 16);
-            g.MakeMove(2, 15);
-            g.MakeMove(0, 15);*/
-/*both alive
-            g.MakeMove(1, 15);
-            g.MakeMove(1, 14);
-            g.MakeMove(2, 16);
-            g.MakeMove(1, 16);
-            g.MakeMove(0, 15);
-            g.MakeMove(2, 15);
-            g.MakeMove(0, 15);
-            g.MakeMove(3, 15);
-            g.MakeMove(1, 15);
-            g.MakeMove(4, 15);
-            g.MakeMove(5, 15);
-            g.MakeMove(8, 15);
-            g.MakeMove(6, 18);*/
+            /*alive
+                        g.MakeMove(1, 15);
+                        g.MakeMove(1, 14);
+                        g.MakeMove(2, 16);
+                        g.MakeMove(1, 16);
+                        g.MakeMove(2, 15);
+                        g.MakeMove(0, 15);*/
+            /*both alive
+                        g.MakeMove(1, 15);
+                        g.MakeMove(1, 14);
+                        g.MakeMove(2, 16);
+                        g.MakeMove(1, 16);
+                        g.MakeMove(0, 15);
+                        g.MakeMove(2, 15);
+                        g.MakeMove(0, 15);
+                        g.MakeMove(3, 15);
+                        g.MakeMove(1, 15);
+                        g.MakeMove(4, 15);
+                        g.MakeMove(5, 15);
+                        g.MakeMove(8, 15);
+                        g.MakeMove(6, 18);*/
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
@@ -4942,7 +4942,7 @@ namespace UnitTestProject
         public static Game Scenario_20230422_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 11, Content.Black);
             g.SetupMove(0, 12, Content.Black);
@@ -5055,7 +5055,7 @@ namespace UnitTestProject
         public static Game Scenario_20230423_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(2, 13, Content.Black);
             g.SetupMove(2, 14, Content.Black);
@@ -5123,7 +5123,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 9, Content.Black);
             g.SetupMove(0, 11, Content.Black);
@@ -5228,7 +5228,7 @@ namespace UnitTestProject
         public static Game Scenario_20230430_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 17, Content.White);
             g.SetupMove(2, 16, Content.White);
@@ -5270,19 +5270,19 @@ namespace UnitTestProject
             return g;
         }
 
-            /*
-     13 . . . . . . . . X X . . . . . . . . . 
-     14 . . . . X . X X O . X . . . . . . . . 
-     15 . . X . . . . O X O . X . . . . . . . 
-     16 . . . X X O O O . O O X . . . . . . . 
-     17 . . X O O X . . O X O X . . . . . . . 
-     18 . . . . . . X O . X X X . . . . . . .
-             */
-            [TestMethod]
+        /*
+ 13 . . . . . . . . X X . . . . . . . . . 
+ 14 . . . . X . X X O . X . . . . . . . . 
+ 15 . . X . . . . O X O . X . . . . . . . 
+ 16 . . . X X O O O . O O X . . . . . . . 
+ 17 . . X O O X . . O X O X . . . . . . . 
+ 18 . . . . . . X O . X X X . . . . . . .
+         */
+        [TestMethod]
         public void DailyGoProblems_20230501_05()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(2, 15, Content.Black);
             g.SetupMove(2, 17, Content.Black);
@@ -5372,7 +5372,7 @@ namespace UnitTestProject
         public static Game Scenario_20230505_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.Black);
             g.SetupMove(0, 17, Content.Black);
@@ -5425,7 +5425,7 @@ namespace UnitTestProject
         {
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(1, 13, Content.Black);
@@ -5486,7 +5486,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20230517_2()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 11, Content.White);
             g.SetupMove(0, 12, Content.White);
@@ -5563,7 +5563,7 @@ namespace UnitTestProject
         public static Game Scenario_20230603_4()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.Black);
             g.SetupMove(0, 16, Content.White);
@@ -5607,7 +5607,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20230604_2()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 15, Content.Black);
             g.SetupMove(1, 16, Content.Black);
@@ -5668,7 +5668,7 @@ namespace UnitTestProject
         {
             if (!MonteCarloGame.useLeelaZero) return;
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 13, Content.Black);
             g.SetupMove(0, 14, Content.Black);
@@ -5720,7 +5720,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20230813()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 17, Content.White);
             g.SetupMove(1, 11, Content.White);
@@ -5768,7 +5768,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20250311_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.White);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.White);
             g.SetupMove(0, 15, Content.Black);
@@ -5827,7 +5827,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20250326_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 11, Content.White);
             g.SetupMove(1, 12, Content.White);
@@ -5907,7 +5907,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20250403_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 7, Content.White);
             g.SetupMove(2, 7, Content.White);
@@ -5976,7 +5976,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20250420_7()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 12, Content.Black);
             g.SetupMove(0, 13, Content.Black);
@@ -6045,7 +6045,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20250714_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 13, Content.Black);
             g.SetupMove(1, 10, Content.Black);
@@ -6110,7 +6110,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20250727_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 12, Content.Black);
             g.SetupMove(1, 14, Content.Black);
@@ -6156,7 +6156,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20250830_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 14, Content.White);
             g.SetupMove(1, 14, Content.White);
@@ -6194,7 +6194,7 @@ namespace UnitTestProject
         public void DailyGoProblems_20250920_6()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.SetupMove(3, 16, Content.White);
             g.SetupMove(3, 17, Content.White);

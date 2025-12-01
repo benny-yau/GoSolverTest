@@ -764,7 +764,7 @@ namespace UnitTestProject
         public void MustHaveNeutralMoveTest_20221128_2()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(1, 14, Content.Black);
@@ -866,7 +866,7 @@ namespace UnitTestProject
         {
             //not must have move
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(1, 9, Content.Black);
             g.SetupMove(1, 10, Content.Black);
@@ -1025,7 +1025,7 @@ namespace UnitTestProject
         public void MustHaveNeutralMoveTest_Tianyuan()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(2, 14, Content.Black);
             g.SetupMove(2, 15, Content.Black);

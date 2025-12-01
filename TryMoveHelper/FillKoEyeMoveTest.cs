@@ -628,7 +628,7 @@ namespace UnitTestProject
         [TestMethod]
         public void FillKoEyeMoveTest_SimpleSeki()
         {
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 14);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             var g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
             g.SetupMove(0, 17, Content.Black);
@@ -685,7 +685,7 @@ namespace UnitTestProject
         public void FillKoEyeMoveTest_SimpleSeki_2()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.White);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(1, 16));
             g.SetupMove(0, 14, Content.Black);
@@ -871,7 +871,7 @@ namespace UnitTestProject
         public void FillKoEyeMoveTest_Scenario5dan18()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(3, 16));
             g.SetupMove(1, 16, Content.White);
@@ -952,7 +952,7 @@ namespace UnitTestProject
         public void FillKoEyeMoveTest_Scenario5dan18_2()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(3, 16));
             g.SetupMove(1, 16, Content.White);
@@ -1118,7 +1118,7 @@ namespace UnitTestProject
         public void FillKoEyeMoveTest_Scenario5dan18_3()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(3, 16));
             g.SetupMove(1, 16, Content.White);
@@ -1201,7 +1201,7 @@ namespace UnitTestProject
         public void FillKoEyeMoveTest_Scenario5dan18_4()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(3, 16));
             g.SetupMove(1, 16, Content.White);
@@ -1295,7 +1295,7 @@ namespace UnitTestProject
         public void FillKoEyeMoveTest_Scenario5dan18_5()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 22);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
             g.GameInfo.targetPoints.Add(new Point(3, 16));
             g.SetupMove(1, 16, Content.White);
