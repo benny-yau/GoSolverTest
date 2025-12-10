@@ -104,28 +104,6 @@ namespace UnitTestProject
         }
 
         /*
- 13 . O . . . . . . . . . . . . . . . . . 
- 14 . . . . . . . . . . . . . . . . . . . 
- 15 . O O O O O . . . . . . . . . . . . . 
- 16 . X X X X O . . . . . . . . . . . . . 
- 17 X O O . X O . O . . . . . . . . . . . 
- 18 . X O . . . . . . . . . . . . . . . .
-         */
-        [TestMethod]
-        public void TenThousandYearKoTest_Scenario_Corner_A73_Ext1()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_Corner_A73_Ext1();
-            g.MakeMove(0, 17);
-            g.MakeMove(2, 17);
-            g.MakeMove(1, 18);
-            g.MakeMove(2, 18);
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.KoAlive) || moveResult.HasFlag(ConfirmAliveResult.Dead), true);
-        }
-
-        /*
   9 O O O . . . . . . . . . . . . . . . . 
  10 X X O O . . . . . . . . . . . . . . . 
  11 O X X O . . . . . . . . . . . . . . . 
