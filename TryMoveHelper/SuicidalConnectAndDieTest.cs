@@ -4382,9 +4382,17 @@ namespace UnitTestProject
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanGo_A26();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
-            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, true);
+            List<Point> points = new List<Point>() { new Point(0, 17), new Point(1, 18) };
+            foreach (Point p in points)
+            {
+                GameTryMove tryMove = new GameTryMove(g, p);
+                Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+                Assert.AreEqual(isRedundant, true);
+            }
+            g.MakeMove(3, 3);
+            GameTryMove tryMove2 = new GameTryMove(g, new Point(0, 18));
+            Boolean isRedundant2 = RedundantMoveHelper.SuicidalRedundantMove(tryMove2);
+            Assert.AreEqual(isRedundant2, true);
         }
 
         /*
@@ -4531,6 +4539,30 @@ namespace UnitTestProject
         }
 
         /*
+ 14 . O O . . . . . . . . . . . . . . . . 
+ 15 . . . O O O . . . . . . . . . . . . . 
+ 16 . X . X X O . O . . . . . . . . . . . 
+ 17 . X . X X X O . O . . . . . . . . . . 
+ 18 . . O O X O . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_Weiqi101_7245_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_7245();
+            g.MakeMove(5, 18);
+            g.MakeMove(3, 16);
+            g.MakeMove(3, 18);
+            g.MakeMove(3, 17);
+            g.MakeMove(2, 18);
+            g.MakeMove(4, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 16));
+            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
+
+        /*
  13 . . . . X X X X . . . . . . . . . . . 
  14 . . X X O O . . X . . . . . . . . . . 
  15 . . X O X . O . . . . . . . . . . . . 
@@ -4547,6 +4579,43 @@ namespace UnitTestProject
             g.MakeMove(5, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
+            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
+
+        /*
+ 15 . . O . . O O O O . . . . . . . . . . 
+ 16 . . . O O X X X X O O . O . . . . . . 
+ 17 . . O . X . . . . X . O . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_A36()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_GuanZiPu_A36();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(9, 18));
+            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
+
+        /*
+ 14 . X X . . . . . . . . . . . . . . . . 
+ 15 . X O X X X . . . . . . . . . . . . . 
+ 16 . X O . X O X X X . . . . . . . . . . 
+ 17 . . O . O O O O X X . . . . . . . . . 
+ 18 . . . . O . . . O . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_WuQingYuan_Q31453_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WuQingYuan_Q31453();
+            g.MakeMove(4, 16);
+            g.MakeMove(4, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
