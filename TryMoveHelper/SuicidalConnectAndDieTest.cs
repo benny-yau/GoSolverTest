@@ -4619,5 +4619,42 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
+
+        /*
+ 15 . . O O O O O O O . . . . . . . . . . 
+ 16 . . O X X X X X O . O . . . . . . . . 
+ 17 . . O X . . . X . O . . . . . . . . . 
+ 18 . . . X . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_Side_A15()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Side_A15();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(7, 18));
+            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
+
+        /*
+ 14 . . . X X X X . X . . . . . . . . . . 
+ 15 . . . X O O X . . . . . . . . . . . . 
+ 16 . . X . . . O . X X . . . . . . . . . 
+ 17 . . X O O . O . O X . . . . . . . . . 
+ 18 . . . X . . . . O . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_WuQingYuan_Q31575()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WuQingYuan_Q31575();
+            g.Board[7, 15] = Content.Empty;
+            g.Board[6, 14] = g.Board[8, 14] = Content.Black;
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
+            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
     }
 }
