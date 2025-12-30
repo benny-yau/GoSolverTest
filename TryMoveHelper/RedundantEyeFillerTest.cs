@@ -302,9 +302,10 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
             g.MakeMove(3, 17);
             g.MakeMove(6, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(6, 18)) || move.Equals(new Point(5, 18)), true);
+            Assert.AreEqual(move.Equals(new Point(6, 18)), true);
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
         }
 

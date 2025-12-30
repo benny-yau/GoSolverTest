@@ -1874,11 +1874,12 @@ namespace UnitTestProject
             Game g = s.Scenario3dan17();
             g.MakeMove(2, 13);
             g.MakeMove(1, 13);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.Where(n => n.Move.Equals(new Point(1, 13))).FirstOrDefault() != null, false);
             g.MakeMove(1, 12);
             g.MakeMove(0, 12);
             g.MakeMove(1, 11);
             g.MakeMove(0, 11);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 12));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
