@@ -1629,6 +1629,32 @@ namespace UnitTestProject
             Assert.AreEqual(isRedundant, false);
         }
 
+        /*
+ 14 O O . . O . . . . . . . . . . . . . . 
+ 15 . X O O . O . . . . . . . . . . . . . 
+ 16 O X X X X O . . . . . . . . . . . . . 
+ 17 X . O X . X O . . . . . . . . . . . . 
+ 18 . O O . . X O . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_GuanZiPu_A2Q29_101Weiqi()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_GuanZiPu_A2Q29_101Weiqi();
+            g.MakeMove(0, 16);
+            g.MakeMove(0, 17);
+            g.MakeMove(1, 18);
+            g.MakeMove(1, 15);
+            g.MakeMove(2, 17);
+            g.MakeMove(2, 16);
+            g.MakeMove(2, 18);
+            g.MakeMove(3, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
+            Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
+
     }
 
 }

@@ -28,7 +28,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221015_4()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
@@ -71,8 +70,10 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(5, 14));
             gi.killMovablePoints.Add(new Point(5, 15));
 
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g); 
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 16))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 16)), true);
@@ -89,7 +90,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221015_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -127,7 +127,9 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(7, 15));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 15))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 15)), true);
@@ -151,7 +153,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221015_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -192,10 +193,11 @@ namespace UnitTestProject
             g.MakeMove(0, 10);
             g.MakeMove(2, 9);
             g.MakeMove(0, 8);
-            Game m = new Game(g);
-            m.Board.LastMoves.Clear();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Game game = SearchAnswer(m);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(2, 11))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
+            g.Board.LastMoves.Clear();
+            Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 11)), true);
         }
@@ -210,7 +212,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221016_7()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -250,12 +251,14 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(1, 18));
             gi.killMovablePoints.Add(new Point(10, 16));
 
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             g.MakeMove(3, 18);
             g.MakeMove(8, 17);
             g.MakeMove(7, 18);
             g.MakeMove(4, 18);
 
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(5, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)) || move.Equals(new Point(5, 17)), true);
@@ -274,7 +277,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221017_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -312,6 +314,8 @@ namespace UnitTestProject
             gi.movablePoints.Add(new Point(2, 12));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 14))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 14)), true);
@@ -330,7 +334,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221017_6()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -373,9 +376,11 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(0, 17));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(2, 14))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(2, 13)), true);
+            Assert.AreEqual(move.Equals(new Point(2, 14)), true);
         }
 
         /*
@@ -387,7 +392,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221017_7()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
@@ -421,7 +425,9 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
             gi.killMovablePoints.Add(new Point(1, 18));
 
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g); 
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(7, 18))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(7, 18)), true);
@@ -439,7 +445,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221017_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -475,8 +480,10 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(3, 14));
             gi.killMovablePoints.Add(new Point(7, 18));
 
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g); 
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 18))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -497,7 +504,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221019_6()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
@@ -543,14 +549,11 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(0, 9));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            GameTryMove tryMove = new GameTryMove(g, new Point(2, 15));
-            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(2, 15))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(5, 18)), true);
+            Assert.AreEqual(move.Equals(new Point(2, 15)), true);
         }
 
         /*
@@ -563,7 +566,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221019_3()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -604,11 +606,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(9, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            GameTryMove tryMove = new GameTryMove(g, new Point(2, 15));
-            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 18))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -627,7 +626,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221019_4()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -661,10 +659,12 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(7, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 17))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(5, 16)), true);
+            Assert.AreEqual(move.Equals(new Point(1, 17)), true);
         }
 
         /*
@@ -681,7 +681,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221019_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
@@ -716,6 +715,8 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 14))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 14)), true);
@@ -731,7 +732,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221020_2()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -771,6 +771,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(7, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(5, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 17)), true);
@@ -786,7 +788,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221020_4()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
@@ -825,6 +826,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(9, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(4, 18))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 18)), true);
@@ -842,7 +845,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221020_6()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -888,7 +890,9 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(8, 15));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(6, 15))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 15)), true);
@@ -905,7 +909,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221020_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -950,7 +953,9 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(1, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(5, 17))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 17)), true);
@@ -968,7 +973,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221020_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -1012,6 +1016,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(5, 13));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 16))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 16)), true);
@@ -1027,7 +1033,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221020_7()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -1070,6 +1075,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(4, 15));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(8, 18))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(8, 18)), true);
@@ -1086,7 +1093,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221020_3()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -1133,6 +1139,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(8, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 18))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -1150,7 +1158,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221019_7()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -1189,7 +1196,9 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(5, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(2, 16))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 16)), true);
@@ -1208,7 +1217,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221018_6()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
@@ -1243,7 +1251,9 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(6, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 15))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 15)), true);
@@ -1261,7 +1271,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221018_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -1290,6 +1299,7 @@ namespace UnitTestProject
             }
             gi.killMovablePoints.AddRange(gi.movablePoints);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 15))) != null, true);
             /*g.MakeMove(1, 17);
             g.MakeMove(2, 17);
             g.MakeMove(1, 18);
@@ -1305,9 +1315,10 @@ namespace UnitTestProject
             g.MakeMove(0, 15);
             g.MakeMove(2, 14);*/
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(1, 15)) || move.Equals(new Point(1, 17)), true);
+            Assert.AreEqual(move.Equals(new Point(1, 15)), true);
             /*
                         Game game = SearchAnswer(g);
                         Point move = game.Board.LastMove.Value;
@@ -1328,7 +1339,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221018_7()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -1365,10 +1375,12 @@ namespace UnitTestProject
             gi.movablePoints.Add(new Point(0, 13));
             gi.movablePoints.Add(new Point(1, 14));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 16))) != null, true);
             /*g.MakeMove(2, 17);
             g.MakeMove(2, 16);
             g.MakeMove(3, 16);
             g.MakeMove(2, 18);*/
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 16)), true);
@@ -1387,7 +1399,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221018_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -1431,7 +1442,9 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 14))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 14)), true);
@@ -1448,7 +1461,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221018_4()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -1484,7 +1496,9 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(6, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 17))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 17)), true);
@@ -1501,7 +1515,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221018_3()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
@@ -1550,7 +1563,9 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(14, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 18))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -1566,7 +1581,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221018_2()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
@@ -1597,7 +1611,9 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(15, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 18))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -1614,7 +1630,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221021_2()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
@@ -1644,7 +1659,9 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 16))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 16)), true);
@@ -1665,7 +1682,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221021_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -1710,7 +1726,9 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 14))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 14)), true);
@@ -1731,7 +1749,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221021_6()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -1783,7 +1800,9 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(6, 14))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 14)), true);
@@ -1803,7 +1822,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221021_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White);
             Game g = new Game(gi);
@@ -1836,12 +1854,14 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(4, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 18))) != null, true);
             /*g.MakeMove(1, 18);
             g.MakeMove(0, 17);
             g.MakeMove(1, 13);
             g.MakeMove(2, 15);
             g.MakeMove(1, 15);
             g.MakeMove(1, 16);*/
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 18)), true);
@@ -1860,7 +1880,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221022_7()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -1892,6 +1911,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(3, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 15))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 15)), true);
@@ -1907,7 +1928,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221022_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.White);
             Game g = new Game(gi);
@@ -1938,6 +1958,8 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(2, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 17)), true);
@@ -1954,7 +1976,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221023_3()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -1983,6 +2004,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(4, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 16))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 16)), true);
@@ -2000,7 +2023,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221023_4()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
@@ -2034,6 +2056,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(4, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 16))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 16)) || move.Equals(new Point(1, 17)), true);
@@ -2053,7 +2077,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221023_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -2107,7 +2130,9 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(0, 9));
             gi.survivalPoints.Add(new Point(2, 16));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 18))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 15)) || move.Equals(new Point(1, 18)), true);
@@ -2126,7 +2151,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221023_6()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
@@ -2171,7 +2195,9 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(0, 10));
             gi.survivalPoints.Add(new Point(4, 16));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(2, 16))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 16)), true);
@@ -2189,7 +2215,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221023_7()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
@@ -2229,6 +2254,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(4, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 15))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 15)), true);
@@ -2246,7 +2273,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221023_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -2293,6 +2319,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(7, 16));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(4, 15))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(4, 15)), true);
@@ -2310,7 +2338,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221024_3()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -2369,7 +2396,9 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(5, 13));
             gi.killMovablePoints.Add(new Point(6, 14));
 
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);            
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(6, 18))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 18)), true);
@@ -2388,7 +2417,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221024_4()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -2440,7 +2468,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(7, 17));
             gi.killMovablePoints.Add(new Point(7, 18));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 13))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -2461,7 +2490,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221024_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White);
             Game g = new Game(gi);
@@ -2504,11 +2532,8 @@ namespace UnitTestProject
             g.MakeMove(0, 13);
             g.MakeMove(4, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
-            Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
-
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 15))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 15)), true);
@@ -2519,13 +2544,12 @@ namespace UnitTestProject
  14 . O O O . . . . . . . . . . . . . . . 
  15 . O X X X X . . . . . . . . . . . . . 
  16 . X O O . . . . . . . . . . . . . . . 
- 17 . X O . O X X . . . . . . . . . . . . 
- 18 . X O . O O . . . . . . . . . . . . .
+ 17 . X O X O X X . . . . . . . . . . . . 
+ 18 . X O . . O . . . . . . . . . . . . . 
          */
         [TestMethod]
         public void DailyGoProblems_20221025_2()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -2561,7 +2585,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(6, 18));
             gi.movablePoints.Add(new Point(0, 14));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 18))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -2581,7 +2606,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221025_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -2618,6 +2642,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(2, 11));
             gi.killMovablePoints.Add(new Point(0, 10));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 13))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 13)), true);
@@ -2638,7 +2664,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221025_6()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -2685,6 +2710,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(3, 18));
             gi.killMovablePoints.Add(new Point(0, 10));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 13))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 13)), true);
@@ -2700,7 +2727,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221025_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -2740,6 +2766,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(9, 18));
             gi.killMovablePoints.Add(new Point(7, 15));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(5, 18))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 18)), true);
@@ -2756,7 +2784,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221026_4()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -2792,6 +2819,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(1, 12));
             gi.killMovablePoints.Add(new Point(0, 11));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(2, 16))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 16)), true);
@@ -2808,7 +2837,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221026_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
@@ -2853,6 +2881,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(1, 18));
             gi.killMovablePoints.Add(new Point(10, 18));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(5, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 17)), true);
@@ -2872,7 +2902,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221026_6()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -2919,6 +2948,8 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
             gi.killMovablePoints.Add(new Point(1, 15));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(5, 14))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 14)), true);
@@ -2936,7 +2967,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221026_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -2971,12 +3001,14 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(7, 15));
             gi.killMovablePoints.Add(new Point(5, 16));
             gi.killMovablePoints.Add(new Point(8, 18));
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             g.MakeMove(0, 16);
             g.MakeMove(1, 15);
             g.MakeMove(0, 15);
             g.MakeMove(0, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 18))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game m = new Game(g);
             m.Board.LastMoves.Clear();
             Game game = SearchAnswer(m);
@@ -2995,7 +3027,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221027_6()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -3033,6 +3064,11 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(0, 13));
             gi.killMovablePoints.Add(new Point(8, 18));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
+            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 17)), true);
@@ -3052,7 +3088,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221027_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -3098,11 +3133,13 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
             gi.killMovablePoints.Add(new Point(6, 17));
             gi.killMovablePoints.Add(new Point(7, 18));
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             g.MakeMove(2, 18);
             g.MakeMove(3, 17);
             g.MakeMove(4, 17);
             g.MakeMove(0, 15);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             g.Board.LastMoves.Clear();
             g = SearchAnswer(g);
             Point move = g.Board.LastMove.Value;
@@ -3120,7 +3157,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221028_6()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -3153,7 +3189,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(6, 16));
             gi.killMovablePoints.Add(new Point(6, 18));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 17)), true);
@@ -3173,7 +3210,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221028_7()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -3221,6 +3257,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(0, 17));
             gi.killMovablePoints.Add(new Point(2, 18));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(2, 13))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 13)), true);
@@ -3240,7 +3278,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221029_3()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -3285,6 +3322,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(6, 16));
             gi.killMovablePoints.Add(new Point(6, 17));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 17)), true);
@@ -3302,7 +3341,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221029_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
@@ -3346,6 +3384,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(7, 18));
             gi.killMovablePoints.Add(new Point(6, 17));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 17)), true);
@@ -3361,7 +3401,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221029_6()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -3388,6 +3427,8 @@ namespace UnitTestProject
             }
             gi.killMovablePoints.AddRange(gi.movablePoints);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 18))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -3406,7 +3447,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221030_7()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
@@ -3455,6 +3495,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(4, 13));
             gi.killMovablePoints.Add(new Point(4, 12));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 15))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             /*
                         g.MakeMove(0, 15);
                         g.MakeMove(0, 14);
@@ -3480,7 +3522,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221030_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -3522,6 +3563,7 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(8, 17));
             gi.killMovablePoints.Add(new Point(9, 18));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 18))) != null, true);
 
             /*g.MakeMove(3, 18);
             g.MakeMove(2, 18);
@@ -3529,6 +3571,7 @@ namespace UnitTestProject
             g.MakeMove(5, 17);
             g.MakeMove(5, 18);
             g.MakeMove(7, 17);*/
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -3545,7 +3588,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221031_6()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -3604,7 +3646,9 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(10, 15));
             gi.killMovablePoints.Add(new Point(11, 15));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 18))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -3626,7 +3670,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221031_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -3666,7 +3709,9 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(0, 8));
             gi.killMovablePoints.Add(new Point(4, 14));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 12))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 12)), true);
@@ -3685,7 +3730,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221101_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
@@ -3718,13 +3762,15 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
             gi.killMovablePoints.Add(new Point(0, 12));
             gi.killMovablePoints.Add(new Point(6, 18));
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             g.MakeMove(3, 17);
             g.MakeMove(2, 16);
             g.MakeMove(1, 16);
             g.MakeMove(2, 17);
             g.MakeMove(4, 16);
             g.MakeMove(4, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 18))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             g.Board.LastMoves.Clear();
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
@@ -3744,7 +3790,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221102_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -3796,7 +3841,6 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(6, 16));
             gi.killMovablePoints.Add(new Point(6, 17));
             gi.killMovablePoints.Add(new Point(7, 18));
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             /*g.MakeMove(1, 17);
             g.MakeMove(0, 17);
             g.MakeMove(2, 17);
@@ -3804,6 +3848,9 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             g.MakeMove(5, 18);
             g.Board.LastMoves.Clear();*/
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 17)), true);
@@ -3816,8 +3863,8 @@ namespace UnitTestProject
  13 . . O . . O . . . . . . . . . . . . . 
  14 . X O . X . . . . . . . . . . . . . . 
  15 . O X X . . O . . . . . . . . . . . . 
- 16 . . . X O O . . . . . . . . . . . . . 
- 17 . . . O X . O O . . . . . . . . . . . 
+ 16 . O X X O O . . . . . . . . . . . . . 
+ 17 . . O O X . O O . . . . . . . . . . . 
  18 . . . . . . X . . . . . . . . . . . .
          */
         [TestMethod]
@@ -3897,7 +3944,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221112_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
@@ -3937,11 +3983,13 @@ namespace UnitTestProject
             gi.movablePoints.Add(new Point(2, 13));
             gi.movablePoints.Add(new Point(3, 14));
             gi.survivalPoints.Add(new Point(2, 15));
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             g.MakeMove(2, 17);
             g.MakeMove(3, 17);
             g.MakeMove(3, 18);
             g.MakeMove(4, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             g.Board.LastMoves.Clear();
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
@@ -3951,14 +3999,13 @@ namespace UnitTestProject
         /*
  14 X X X . . . . . . . . . . . . . . . . 
  15 . . . X X X . . . . . . . . . . . . . 
- 16 . O . . O X X . X . . . . . . . . . . 
- 17 O X . . . O X O . X . . . . . . . . . 
- 18 . . . . O . O . . . . . . . . . . . . 
+ 16 . O . X O X X . X . . . . . . . . . . 
+ 17 O X . O . O X O . X . . . . . . . . . 
+ 18 . . . . O . O . . . . . . . . . . . .
          */
         [TestMethod]
         public void DailyGoProblems_20221112_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -3999,9 +4046,11 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(8, 17));
             gi.killMovablePoints.Add(new Point(7, 16));
 
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             g.MakeMove(3, 16);
             g.MakeMove(3, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 18))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             g.Board.LastMoves.Clear();
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
@@ -4018,7 +4067,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221120_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -4047,6 +4095,8 @@ namespace UnitTestProject
             }
             gi.killMovablePoints.AddRange(gi.movablePoints);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 17)), true);
@@ -4062,7 +4112,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221124_2()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
@@ -4100,6 +4149,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(4, 15));
             gi.killMovablePoints.Add(new Point(8, 18));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 18))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 18)), true);
@@ -4117,7 +4168,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221125_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -4152,6 +4202,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(5, 18));
             gi.killMovablePoints.Add(new Point(2, 14));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(2, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 17)), true);
@@ -4170,7 +4222,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221126_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
@@ -4228,9 +4279,11 @@ namespace UnitTestProject
             g.MakeMove(2, 13);
             g.MakeMove(3, 14);
             g.MakeMove(4, 17);
-            g.Board.LastMoves.Clear();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(5, 14))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
+            g.Board.LastMoves.Clear();
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(5, 14)), true);
@@ -4304,7 +4357,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221209_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -4344,6 +4396,8 @@ namespace UnitTestProject
                         g.MakeMove(0, 18);*/
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 17)), true);
@@ -4369,7 +4423,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221206_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
@@ -4441,6 +4494,8 @@ namespace UnitTestProject
             g.MakeMove(0, 13);
             g.MakeMove(0, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 15))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 15)), true);
@@ -4457,7 +4512,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221216_6()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -4490,6 +4544,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(6, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 17)), true);
@@ -4508,7 +4564,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20221229_5()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.White);
             Game g = new Game(gi);
@@ -4544,7 +4599,9 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
             gi.killMovablePoints.Add(new Point(3, 18));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 16))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 16)), true);
@@ -4765,7 +4822,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20230103_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -4816,8 +4872,10 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(4, 18);
             g.MakeMove(6, 18);
-            g.Board.LastMoves.Clear();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(6, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
+            g.Board.LastMoves.Clear();
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 17)), true);
@@ -4909,7 +4967,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20230422_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game g = Scenario_20230422_8();
 
             /*alive
@@ -4934,6 +4991,8 @@ namespace UnitTestProject
                         g.MakeMove(8, 15);
                         g.MakeMove(6, 18);*/
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(1, 15))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(1, 15)), true);
@@ -5043,9 +5102,10 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20230423_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game g = Scenario_20230423_8();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(6, 15))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(6, 15)), true);
@@ -5121,7 +5181,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20230427_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -5190,8 +5249,10 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             g.MakeMove(0, 17);
             g.MakeMove(0, 18);
-            g.Board.LastMoves.Clear();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(3, 16))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
+            g.Board.LastMoves.Clear();
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 16)), true);
@@ -5551,10 +5612,11 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20230603_4()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game g = Scenario_20230603_4();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 17)), true);
