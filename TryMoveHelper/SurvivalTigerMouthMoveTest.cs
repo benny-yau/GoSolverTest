@@ -1655,6 +1655,94 @@ namespace UnitTestProject
             Assert.AreEqual(isRedundant, false);
         }
 
+        /*
+ 11 . . O . . . . . . . . . . . . . . . . 
+ 12 . O . . . . . . . . . . . . . . . . . 
+ 13 . X O O . . . . . . . . . . . . . . . 
+ 14 . X X O O . . . . . . . . . . . . . . 
+ 15 X . . X O . . . . . . . . . . . . . . 
+ 16 X O X X O . . . . . . . . . . . . . . 
+ 17 . O X O O . . . . . . . . . . . . . . 
+ 18 . . X O . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_XuanXuanGo_A28_101Weiqi()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A28_101Weiqi();
+            g.MakeMove(0, 16);
+            g.MakeMove(1, 16);
+            g.MakeMove(0, 15);
+            g.MakeMove(3, 18);
+            g.MakeMove(2, 16);
+            g.MakeMove(3, 14);
+            g.MakeMove(2, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 15));
+            Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
+
+        /*
+ 12 X X X . . . . . . . . . . . . . . . . 
+ 13 . O . X . . . . . . . . . . . . . . . 
+ 14 . O . O X . . . . . . . . . . . . . . 
+ 15 X X O O X . . . . . . . . . . . . . . 
+ 16 . O . O X . . . . . . . . . . . . . . 
+ 17 . O O X . X . . . . . . . . . . . . . 
+ 18 . X X . . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_XuanXuanGo_A26_3()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A26();
+            g.MakeMove(2, 18);
+            g.MakeMove(3, 14);
+            g.MakeMove(1, 15);
+            g.MakeMove(1, 14);
+            g.MakeMove(0, 15);
+            g.MakeMove(3, 16);
+            g.MakeMove(1, 18);
+            g.MakeMove(1, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 14));
+            Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
+
+        /*
+ 13 . . . X . . . . . . . . . . . . . . . 
+ 14 . . X . . . . . . . . . . . . . . . . 
+ 15 . X . O X X X X X . X . . . . . . . . 
+ 16 . X O . O O X . O X . . . . . . . . . 
+ 17 . . X O . O O X O O X . . . . . . . . 
+ 18 . . X O O . . O O X X . . . . . . . . 
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_TianLongTu_Q17081()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q17081();
+            g.MakeMove(9, 18);
+            g.MakeMove(3, 18);
+            g.MakeMove(3, 16);
+            g.MakeMove(8, 18);
+            g.MakeMove(5, 18);
+            g.MakeMove(2, 16);
+            g.MakeMove(6, 16);
+            g.MakeMove(5, 17);
+
+            g.MakeMove(7, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(6, 18);
+            g.MakeMove(7, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
+            Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
+
     }
 
 }

@@ -5484,7 +5484,6 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20230513_7()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             Game g = new Game(gi);
@@ -5525,10 +5524,14 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(4, 15));
             gi.killMovablePoints.Add(new Point(2, 14));
             gi.killMovablePoints.Add(new Point(0, 13));
+            g.MakeMove(1, 17);
+            g.MakeMove(1, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 17))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(1, 17)), true);
+            Assert.AreEqual(move.Equals(new Point(0, 17)), true);
         }
 
         /*
