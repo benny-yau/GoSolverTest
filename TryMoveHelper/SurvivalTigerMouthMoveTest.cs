@@ -1919,6 +1919,56 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
+
+        /*
+ 13 . X . . . . . . . . . . . . . . . . . 
+ 14 X O X X X . . . . . . . . . . . . . . 
+ 15 O O O O X X X X . . . . . . . . . . . 
+ 16 X O . O O O O X . . . . . . . . . . . 
+ 17 X X X O X X X . . . . . . . . . . . . 
+ 18 . O O . . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_TianLongTu_Q2413()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q2413();
+            g.MakeMove(0, 17);
+            g.MakeMove(1, 18);
+            g.MakeMove(0, 14);
+            g.MakeMove(0, 15);
+            g.MakeMove(1, 17);
+            g.MakeMove(2, 18);
+            g.MakeMove(0, 16);
+            g.MakeMove(1, 16);
+            g.MakeMove(5, 15);
+
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
+            Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
+
+        /*
+ 15 O O O O . O . . . . . . . . . . . . . 
+ 16 . X X X O . O . . . . . . . . . . . . 
+ 17 . X . O X X O . . . . . . . . . . . . 
+ 18 . . X O . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_Corner_A20()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Corner_A20();
+            g.MakeMove(3, 17);
+            g.MakeMove(3, 16);
+            g.MakeMove(3, 18);
+            g.MakeMove(2, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
+            Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
     }
 }
 
