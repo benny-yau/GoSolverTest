@@ -1266,12 +1266,88 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             GameTryMove tryMove = new GameTryMove(g, new Point(2, 15));
-            Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
+            Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(m => m.Move.Equals(new Point(2, 15))) != null, true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+        }
+
+        /*
+ 11 . . X X X . . . . . . . . . . . . . . 
+ 12 . X . O O X . . . . . . . . . . . . . 
+ 13 . X X O . O X . . . . . . . . . . . . 
+ 14 . X O O O O X . . . . . . . . . . . . 
+ 15 X O . O X X . . . . . . . . . . . . . 
+ 16 . O . X X . X . . . . . . . . . . . . 
+ 17 . O O O X . . . . . . . . . . . . . . 
+ 18 . . . X X . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_20221214_6()
+        {
+            Scenario s = new Scenario();
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
+            Game g = new Game(gi);
+            g.SetupMove(0, 15, Content.Black);
+            g.SetupMove(1, 12, Content.Black);
+            g.SetupMove(1, 13, Content.Black);
+            g.SetupMove(1, 14, Content.Black);
+            g.SetupMove(1, 15, Content.White);
+            g.SetupMove(1, 16, Content.White);
+            g.SetupMove(1, 17, Content.White);
+            g.SetupMove(2, 12, Content.Black);
+            g.SetupMove(2, 13, Content.White);
+            g.SetupMove(2, 14, Content.White);
+            g.SetupMove(2, 17, Content.White);
+            g.SetupMove(3, 11, Content.Black);
+            g.SetupMove(3, 13, Content.White);
+            g.SetupMove(3, 15, Content.White);
+            g.SetupMove(3, 16, Content.Black);
+            g.SetupMove(3, 17, Content.White);
+            g.SetupMove(3, 18, Content.Black);
+            g.SetupMove(4, 11, Content.Black);
+            g.SetupMove(4, 13, Content.White);
+            g.SetupMove(4, 14, Content.White);
+            g.SetupMove(4, 15, Content.White);
+            g.SetupMove(4, 16, Content.Black);
+            g.SetupMove(4, 17, Content.Black);
+            g.SetupMove(4, 18, Content.Black);
+            g.SetupMove(5, 12, Content.Black);
+            g.SetupMove(5, 15, Content.Black);
+            g.SetupMove(6, 13, Content.Black);
+            g.SetupMove(6, 14, Content.Black);
+            g.SetupMove(6, 16, Content.Black);
+
+            g.GameInfo.targetPoints.Add(new Point(1, 17));
+            for (int x = 0; x <= 4; x++)
+            {
+                for (int y = 14; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.movablePoints.Add(new Point(2, 12));
+            gi.movablePoints.Add(new Point(4, 13));
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+            gi.killMovablePoints.Add(new Point(0, 13));
+            g.Board[2, 13] = Content.Black;
+            g.Board[4, 15] = Content.Black;
+            g.Board[4, 13] = Content.Empty;
+            g.Board[2, 13] = Content.Black;
+            g.Board[3, 12] = Content.White;
+            g.Board[4, 12] = Content.White;
+            g.Board[5, 13] = Content.White;
+            g.Board[5, 14] = Content.White;
+            g.Board[3, 14] = Content.White;
+            g.Board[2, 11] = Content.Black;
+            g.Board[2, 12] = Content.Empty;
+
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(2, 15));
+            Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(m => m.Move.Equals(new Point(2, 15))) != null, true);
         }
 
         /*
