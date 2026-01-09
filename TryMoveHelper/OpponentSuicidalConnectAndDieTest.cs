@@ -403,5 +403,32 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
+
+        /*
+ 13 . X X . . . . . . . . . . . . . . . . 
+ 14 . O . . X . . . . . . . . . . . . . . 
+ 15 O O O O . . . . . . . . . . . . . . . 
+ 16 X X X O O X X . . . . . . . . . . . . 
+ 17 X . X X O O X . . . . . . . . . . . . 
+ 18 . O . X O . X . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_B3_5()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_GuanZiPu_B3();
+            g.MakeMove(1, 18);
+            g.MakeMove(2, 17);
+            g.MakeMove(4, 16);
+            g.MakeMove(0, 17);
+            g.MakeMove(0, 15);
+            g.MakeMove(0, 16);
+            g.MakeMove(4, 18);
+            g.MakeMove(6, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
+            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
     }
-    }
+}
