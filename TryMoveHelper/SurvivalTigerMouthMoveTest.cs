@@ -1980,7 +1980,7 @@ namespace UnitTestProject
         public void RedundantTigerMouthMove_Scenario_XuanXuanGo_A151_101Weiqi_3()
         {
             Scenario s = new Scenario();
-            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi(); 
+            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
             g.MakeMove(1, 13);
             g.MakeMove(0, 15);
             g.MakeMove(3, 15);
@@ -2042,6 +2042,28 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
+            Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
+
+        /*
+ 12 . . . . . . . X . . . . . . . . . . . 
+ 13 . . . . . . X . . X . . . . . . . . . 
+ 14 . . . . . . . . O X . . . . . . . . . 
+ 15 . . . . . X X . O X . . . . . . . . . 
+ 16 . . X X X O . . O O X . . . . . . . . 
+ 17 . . X O O . O . . O X . . . . . . . . 
+ 18 . . X O . . . . X O . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_WindAndTime_Q29277()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WindAndTime_Q29277();
+            g.MakeMove(8, 18);
+            g.MakeMove(9, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(5, 17));
             Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
