@@ -2067,6 +2067,43 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
+
+        /*
+ 14 . . X X X . . . . . . . . . . . . . . 
+ 15 . X O O . X X X X . . . . . . . . . . 
+ 16 . X O . O O . O O X . . . . . . . . . 
+ 17 . X O . O . . O X X . . . . . . . . . 
+ 18 . X X O . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_WindAndTime_Q2757()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WindAndTime_Q2757();
+            g.MakeMove(3, 17);
+            g.MakeMove(4, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 17));
+            Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
+        }
+
+        /*
+ 15 . O O O . . . . . . . . . . . . . . . 
+ 16 . . X X O O . . . . . . . . . . . . . 
+ 17 . X . . X O . . . . . . . . . . . . . 
+ 18 . . . X . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_Corner_A27_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Corner_A27();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(3, 17));
+            Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
+            Assert.AreEqual(isRedundant, true);
+        }
     }
 }
 
