@@ -704,7 +704,31 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Boolean connectAndDie = ImmovableHelper.CheckConnectAndDie(g.Board, g.Board.GetGroupAt(new Point(0, 15)), false);
             Assert.AreEqual(connectAndDie, true);
+        }
 
+        /* 
+ 12 . X . . . . . . . . . . . . . . . . . 
+ 13 X . . . . . . . . . . . . . . . . . . 
+ 14 O X X X . . . . . . . . . . . . . . . 
+ 15 O O O X . X . . . . . . . . . . . . . 
+ 16 . O . O O X . . . . . . . . . . . . . 
+ 17 X X O O X X . . . . . . . . . . . . . 
+ 18 . O . X . X . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void ImmovableTest_Scenario_TianLongTu_Q16985()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16985();
+            g.MakeMove(1, 17);
+            g.MakeMove(1, 18);
+            g.MakeMove(5, 18);
+            g.MakeMove(2, 17);
+            g.MakeMove(0, 17);
+            g.MakeMove(1, 16);
+            g.MakeMove(3, 15);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(2, 18))) != null, true);
         }
     }
 }
