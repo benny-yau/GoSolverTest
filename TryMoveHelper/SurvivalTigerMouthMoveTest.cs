@@ -2294,6 +2294,24 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(9, 17));
             Boolean isRedundant = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(9, 17))) != null, true);
+        }
+
+        /*
+ 14 . . X X X X X X X . . . . . . . . . . 
+ 15 . X O O O . O O X . . . . . . . . . . 
+ 16 . X . . . O . O X . X . . . . . . . . 
+ 17 . X O O . . . . O X . . . . . . . . . 
+ 18 . X X O . X . O O O X . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_TianLongTu_Q15301()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q15301();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(6, 16))), true);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(4, 16))), true);
         }
     }
 }
