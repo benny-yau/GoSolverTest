@@ -104,45 +104,6 @@ namespace UnitTestProject
         }
 
         /*
- 14 . . . . . . . . X X X . . . . . . . . 
- 15 . . . X X X X X O O X . . . . . . . . 
- 16 . . X O O O O O O O X . . . . . . . . 
- 17 . . X O O . X X X O X . . . . . . . . 
- 18 . . O . O O X . . O . . . . . . . . . 
-        */
-        [TestMethod]
-        public void RestoreNeutralMoveTest_Scenario_TianLongTu_Q16827_3()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_TianLongTu_Q16827();
-            g.Board[10, 17] = Content.Empty;
-            g.MakeMove(7, 17);
-            g.MakeMove(8, 16);
-            g.MakeMove(3, 18);
-            g.MakeMove(4, 17);
-            g.MakeMove(6, 17);
-            g.MakeMove(4, 16);
-            g.MakeMove(6, 18);
-            g.MakeMove(5, 18);
-            g.Board[4, 18] = Content.White;
-            g.MakeMove(10, 17);
-            g.MakeMove(2, 18);
-
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g, new Point(10, 18));
-            Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
-            Assert.AreEqual(isNeutralPoint, true);
-
-            GameTryMove endGameMove = tryMoves.Where(m => m.Move.Equals(new Point(10, 18))).FirstOrDefault();
-            Assert.AreEqual(endGameMove != null, true);
-
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(10, 18)), true);
-            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
-        }
-
-        /*
     12 . . X . . . . . . . . . . . . . . . . 
     13 . X . X . . . . . . . . . . . . . . . 
     14 O X O X . . . . . . . . . . . . . . . 

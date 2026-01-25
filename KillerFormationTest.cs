@@ -658,13 +658,10 @@ namespace UnitTestProject
             g.Board[5, 18] = Content.Black;
             g.Board[6, 18] = Content.Black;
             g.Board[6, 16] = Content.White;
-
             g.Board[3, 16] = Content.Black;
             g.Board[2, 17] = Content.Empty;
             g.Board[2, 18] = Content.White;
             g.Board[1, 17] = Content.Black;
-
-
             g.Board[5, 16] = Content.White;
             g.Board[6, 17] = Content.Black;
             g.Board[6, 16] = Content.Black;
@@ -713,13 +710,10 @@ namespace UnitTestProject
             g.Board[5, 18] = Content.Black;
             g.Board[6, 18] = Content.Black;
             g.Board[6, 16] = Content.White;
-
             g.Board[3, 16] = Content.Black;
             g.Board[2, 17] = Content.Empty;
             g.Board[2, 18] = Content.White;
             g.Board[1, 17] = Content.Black;
-
-
             g.Board[5, 16] = Content.White;
             g.Board[6, 17] = Content.Black;
             g.Board[6, 16] = Content.White;
@@ -1014,7 +1008,6 @@ namespace UnitTestProject
             g.MakeMove(2, 16);
             g.MakeMove(2, 18);
             g.MakeMove(0, 16);
-
             g.Board[3, 17] = Content.Empty;
             g.Board[3, 16] = Content.Black;
             g.Board[3, 15] = Content.White;
@@ -1027,7 +1020,6 @@ namespace UnitTestProject
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
         }
-
 
         /*
  14 . . . X . X X . . . . . . . . . . . . 
@@ -1051,23 +1043,18 @@ namespace UnitTestProject
             g.MakeMove(5, 17);
             g.MakeMove(3, 18);
             g.MakeMove(1, 18);
-
             g.Board[4, 16] = Content.Empty;
             g.Board[4, 18] = Content.Black;
             g.Board[5, 18] = Content.Empty;
             g.Board[6, 17] = Content.Black;
             g.Board[6, 18] = Content.Empty;
-
             g.Board[4, 14] = Content.Empty;
             g.Board.GameInfo.killMovablePoints.Add(new Point(4, 14));
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
         }
-
 
         /*
  14 . . . . X X X X . . . . . . . . . . . 
@@ -1097,7 +1084,6 @@ namespace UnitTestProject
             g.Board[3, 18] = Content.Empty;
             g.Board[9, 17] = Content.Empty;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
@@ -1106,8 +1092,6 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
-
-
 
         /*
  12 . O . . . . . . . . . . . . . . . . . 
@@ -1131,11 +1115,9 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
             g.MakeMove(2, 18);
             g.MakeMove(1, 16);
-
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
@@ -1143,7 +1125,6 @@ namespace UnitTestProject
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult == ConfirmAliveResult.Dead, true);
-
         }
 
         /*
@@ -1187,9 +1168,7 @@ namespace UnitTestProject
             g.SetupMove(5, 16, Content.Black);
             g.SetupMove(5, 17, Content.Black);
             g.SetupMove(5, 18, Content.Black);
-
             g.GameInfo.targetPoints.Add(new Point(2, 14));
-
             for (int x = 0; x <= 3; x++)
             {
                 for (int y = 12; y <= 18; y++)
@@ -1212,9 +1191,7 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(1, 15);
             g.Board.LastMoves.Clear();
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 16));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
@@ -1223,7 +1200,6 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult == ConfirmAliveResult.Dead, true);
         }
-
 
         /*
  11 . . . . X X X X . . . . . . . . . . . 
@@ -1587,7 +1563,7 @@ namespace UnitTestProject
             g.MakeMove(0, 18);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(tryMoves.Count > 1, true);
+            Assert.AreEqual(tryMoves.Any(n => n.TryGame.Board.IsRandomMove), true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -1643,6 +1619,7 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.Where(t => t.Move.Equals(new Point(1, 17))).FirstOrDefault() != null, true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -1743,6 +1720,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.Where(t => t.Move.Equals(new Point(4, 18))).FirstOrDefault() != null, true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -1780,8 +1758,8 @@ namespace UnitTestProject
  14 . . . . . . . . X X X . . . . . . . . 
  15 . . . X X X X X O O X . . . . . . . . 
  16 . . X O O O O O O O X . . . . . . . . 
- 17 . . X O O . X X X O . . . . . . . . . 
- 18 . . . X O O X . . O . . . . . . . . . 
+ 17 . . X O O . X X X O X . . . . . . . . 
+ 18 . . . X . O X . . O . . . . . . . . . 
          */
         [TestMethod]
         public void KillerFormationTest_Scenario_TianLongTu_Q16827()
@@ -1797,7 +1775,41 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             g.MakeMove(5, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(7, 18))) != null, true);
+            GameTryMove tryMove = new GameTryMove(g, new Point(10, 18));
+            Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
+            Assert.AreEqual(isNeutralPoint, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(10, 18))) != null, true);
+        }
+
+        /*
+ 14 . . . . . . . . X X X . . . . . . . . 
+ 15 . . . X X X X X O O X . . . . . . . . 
+ 16 . . X O O O O O O O X . . . . . . . . 
+ 17 . . X O O . X X X O X . . . . . . . . 
+ 18 . . O . O O X . . O . . . . . . . . . 
+        */
+        [TestMethod]
+        public void KillerFormationTest_Scenario_TianLongTu_Q16827_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16827();
+            g.Board[10, 17] = Content.Empty;
+            g.MakeMove(7, 17);
+            g.MakeMove(8, 16);
+            g.MakeMove(3, 18);
+            g.MakeMove(4, 17);
+            g.MakeMove(6, 17);
+            g.MakeMove(4, 16);
+            g.MakeMove(6, 18);
+            g.MakeMove(5, 18);
+            g.Board[4, 18] = Content.White;
+            g.MakeMove(10, 17);
+            g.MakeMove(2, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = new GameTryMove(g, new Point(10, 18));
+            Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
+            Assert.AreEqual(isNeutralPoint, false);
+            Assert.AreEqual(tryMoves.Where(t => t.Move.Equals(new Point(10, 18))).FirstOrDefault() != null, true);
         }
     }
 }

@@ -206,7 +206,6 @@ namespace UnitTestProject
  16 X X O X O . X . . . . . . . . . . . . 
  17 X X X X O . X . . . . . . . . . . . . 
  18 . . . O O . . . . . . . . . . . . . . 
-
         */
         [TestMethod]
         public void SpecificNeutralMoveTest_Scenario3kyu24_2()
@@ -297,8 +296,6 @@ namespace UnitTestProject
             Assert.AreEqual(moveResult.Equals(ConfirmAliveResult.Dead), true);
         }
 
-
-
         /*
  14 . . . . . . . . X X X . . . . . . . . 
  15 . . . X X X X X O O X . . . . . . . . 
@@ -334,7 +331,6 @@ namespace UnitTestProject
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
 
-
         /*
  14 . . . . . . . . X X X . . . . . . . . 
  15 . . . X X X X X O O X . . . . . . . . 
@@ -357,11 +353,7 @@ namespace UnitTestProject
             g.Board[4, 18] = Content.White;
             g.MakeMove(6, 18);
             g.MakeMove(5, 18);
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove endGameMove = tryMoves.Where(m => m.Move.Equals(new Point(10, 17)) || m.Move.Equals(new Point(10, 18))).FirstOrDefault();
-            Assert.AreEqual(endGameMove != null, true);
-
             GameTryMove tryMove = new GameTryMove(g, new Point(10, 17));
             GameTryMove resultMove = RedundantMoveHelper.GetSpecificNeutralMove(g, new List<GameTryMove>() { tryMove });
             Assert.AreEqual(resultMove != null, true);
@@ -371,7 +363,6 @@ namespace UnitTestProject
             Assert.AreEqual(move.Equals(new Point(10, 17)) || move.Equals(new Point(10, 18)), true);
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
-
 
         /*
  13 . O O . . . . . . . . . . . . . . . . 
@@ -394,7 +385,6 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             g.MakeMove(0, 17);
             g.MakeMove(0, 16);
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(7, 18));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
