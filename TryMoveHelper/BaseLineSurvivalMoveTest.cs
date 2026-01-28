@@ -238,7 +238,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(isRedundant, true);
         }
 
         /*
@@ -246,7 +246,7 @@ namespace UnitTestProject
  15 O . . . . . . . . . . . . . . . . . . 
  16 . O O X X . X . . . . . . . . . . . . 
  17 . O . O X X . . . . . . . . . . . . . 
- 18 . . . . O X . . . . . . . . . . . . . 
+ 18 . . . . O . . . . . . . . . . . . . . 
         */
         [TestMethod]
         public void BaseLineSurvivalMoveTest_Scenario_TianLongTu_Q16456()
