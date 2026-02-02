@@ -2241,5 +2241,114 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(5, 18))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
         }
+
+        /*
+ 12 X X X . . . . . . . . . . . . . . . . 
+ 13 . O . X . . . . . . . . . . . . . . . 
+ 14 . . . . X . . . . . . . . . . . . . . 
+ 15 . . O O X . . . . . . . . . . . . . . 
+ 16 . . . . X . . . . . . . . . . . . . . 
+ 17 . O O X . X . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_XuanXuanGo_A26_3()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A26();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(2, 13))), true);
+        }
+
+        /*
+ 15 . O O O O O . . . . . . . . . . . . . 
+ 16 . O X X X O . . . . . . . . . . . . . 
+ 17 X X . . . O . . . . . . . . . . . . . 
+ 18 . . X . . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_Corner_A40()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Corner_A40();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(4, 18))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 18))) != null, true);
+        }
+
+        /*
+  8 . X . . . . . . . . . . . . . . . . . 
+  9 X . . . . . . . . . . . . . . . . . . 
+ 10 O X X X . . . . . . . . . . . . . . . 
+ 11 O O O O X X . . . . . . . . . . . . . 
+ 12 . O . O O X . . . . . . . . . . . . . 
+ 13 O X . . O . . . . . . . . . . . . . . 
+ 14 X . X O O X X . . . . . . . . . . . . 
+ 15 X . X . X . . . . . . . . . . . . . . 
+ 16 . X X . . X . . . . . . . . . . . . . 
+ 17 . . . . . . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_WindAndTime_Q29264()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WindAndTime_Q29264();
+            g.MakeMove(1, 13);
+            g.MakeMove(0, 13);
+            g.MakeMove(2, 14);
+            g.MakeMove(3, 12);
+            g.MakeMove(0, 14);
+            g.MakeMove(1, 12);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(2, 13))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(2, 13))) != null, true);
+        }
+
+        /*
+ 13 . . . . O . . . . . . . . . . . . . . 
+ 14 . . . . . . O . O . . . . . . . . . . 
+ 15 . . . . O . . . . . . . . . . . . . . 
+ 16 . O O O X X X X O O O O . . . . . . . 
+ 17 . O . . O X O O X X X O . . . . . . . 
+ 18 . O . . O X . X X . O O . . . . . . .
+         */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_XuanXuanGo_B31()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_B31();
+            g.MakeMove(7, 18);
+            g.MakeMove(10, 18);
+            g.MakeMove(4, 16);
+            g.MakeMove(4, 18);
+            g.MakeMove(5, 18);
+            g.MakeMove(4, 17);
+            g.MakeMove(8, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(3, 17))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 17))) != null, true);
+        }
+
+        /*
+ 13 O O O . O . . . . . . . . . . . . . . 
+ 14 . . . O . . . . . . . . . . . . . . . 
+ 15 X . X O . . . . . . . . . . . . . . . 
+ 16 . . . . O . . . . . . . . . . . . . . 
+ 17 O X . X O . . . . . . . . . . . . . . 
+ 18 X . X O O . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_XuanXuanGo_A82_101Weiqi()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A82_101Weiqi();
+            g.MakeMove(0, 17);
+            g.MakeMove(0, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(1, 14))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 14))) != null, true);
+        }
+
     }
 }
