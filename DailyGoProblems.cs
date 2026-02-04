@@ -206,8 +206,8 @@ namespace UnitTestProject
         /*
  15 . . . X X X X X X X X . . . . . . . . 
  16 . . . X O O O O O . . X . . . . . . . 
- 17 . X X O O . X X . O X . . . . . . . . 
- 18 . . . . . . . . . O X . . . . . . . .
+ 17 . X X O O . X X O O X . . . . . . . . 
+ 18 . . . X O . . X . O X . . . . . . . .
          */
         [TestMethod]
         public void DailyGoProblems_20221016_7()
@@ -1065,7 +1065,7 @@ namespace UnitTestProject
 
             g.GameInfo.targetPoints.Add(new Point(2, 16));
 
-            for (int x = 2; x <= 8; x++)
+            for (int x = 2; x <= 9; x++)
             {
                 for (int y = 16; y <= 18; y++)
                     gi.movablePoints.Add(new Point(x, y));
@@ -2959,9 +2959,9 @@ namespace UnitTestProject
  12 . X . . . . . . . . . . . . . . . . . 
  13 . . . . . . . . . . . . . . . . . . . 
  14 . X X X X . . . . . . . . . . . . . . 
- 15 . . . O X . . X . . . . . . . . . . . 
- 16 . . . O X . X . . . . . . . . . . . . 
- 17 . O . O . . . X . . . . . . . . . . . 
+ 15 X O . O X . . X . . . . . . . . . . . 
+ 16 X . . O X . X . . . . . . . . . . . . 
+ 17 O O . O . . . X . . . . . . . . . . . 
  18 . . . . . . . . . . . . . . . . . . .
          */
         [TestMethod]
@@ -3080,10 +3080,10 @@ namespace UnitTestProject
  12 O O X . . . . . . . . . . . . . . . . 
  13 O O X . . . . . . . . . . . . . . . . 
  14 . X O X X . . . . . . . . . . . . . . 
- 15 . X O O O X . . . . . . . . . . . . . 
+ 15 O X O O O X . . . . . . . . . . . . . 
  16 . O O X X . X . . . . . . . . . . . . 
- 17 . O X . . . . . . . . . . . . . . . . 
- 18 . . . . . . . . . . . . . . . . . . . 
+ 17 . O X O X . . . . . . . . . . . . . . 
+ 18 . . X . . . . . . . . . . . . . . . .
          */
         [TestMethod]
         public void DailyGoProblems_20221027_8()
@@ -3723,8 +3723,8 @@ namespace UnitTestProject
  13 . O O O O O . . . . . . . . . . . . . 
  14 . . X X X O . . . . . . . . . . . . . 
  15 . . X . X O . . . . . . . . . . . . . 
- 16 . . . O . O . . . . . . . . . . . . . 
- 17 . X . . . O . O . . . . . . . . . . . 
+ 16 . X O O X O . . . . . . . . . . . . . 
+ 17 . X O X O O . O . . . . . . . . . . . 
  18 . . . . . . . . . . . . . . . . . . .
          */
         [TestMethod]
@@ -3938,8 +3938,8 @@ namespace UnitTestProject
  14 . . O . . . . . . . . . . . . . . . . 
  15 O O O X X X O . . . . . . . . . . . . 
  16 X X X O O X O . . . . . . . . . . . . 
- 17 . . . . . O O . . . . . . . . . . . . 
- 18 . . . . . . . . . . . . . . . . . . .
+ 17 . . X O O O O . . . . . . . . . . . . 
+ 18 . . . X . . . . . . . . . . . . . . .
          */
         [TestMethod]
         public void DailyGoProblems_20221112_5()
@@ -4212,12 +4212,12 @@ namespace UnitTestProject
         /*
  11 . . . . O O O O . . . . . . . . . . . 
  12 . . O O X X X O . . . . . . . . . . . 
- 13 . O . X O . X O . . . . . . . . . . . 
- 14 . O X . O . . X O . . . . . . . . . . 
- 15 . O X X . . . X O . . . . . . . . . . 
- 16 . . O X X . X X O . . . . . . . . . . 
- 17 . . O O . X O O O . . . . . . . . . . 
- 18 . . . . O O . . . . . . . . . . . . . 
+ 13 . O O X O . X O . . . . . . . . . . . 
+ 14 . O X X O . X X O . . . . . . . . . . 
+ 15 . O X X . O . X O . . . . . . . . . . 
+ 16 . . O X X X X X O . . . . . . . . . . 
+ 17 . . O O O X O O O . . . . . . . . . . 
+ 18 . . . . O O . . . . . . . . . . . . .
          */
         [TestMethod]
         public void DailyGoProblems_20221126_5()
@@ -4411,10 +4411,10 @@ namespace UnitTestProject
   8 . . . . O X . . . . . . . . . . . . . 
   9 . . . O O X . . . . . . . . . . . . . 
  10 . . . X O X . . . . . . . . . . . . . 
- 11 . . O O X O O . . . . . . . . . . . . 
- 12 . . . X X . . . . . . . . . . . . . . 
+ 11 . O O O X O O . . . . . . . . . . . . 
+ 12 O X X X X . . . . . . . . . . . . . . 
  13 . O . X . O . . . . . . . . . . . . . 
- 14 . . X . O . . . . . . . . . . . . . . 
+ 14 O . X . O . . . . . . . . . . . . . . 
  15 . . X . . . . . . . . . . . . . . . . 
  16 . . X O . . . . . . . . . . . . . . . 
  17 X X O . O . . . . . . . . . . . . . . 
@@ -4671,10 +4671,10 @@ namespace UnitTestProject
         /*
  13 . . . . X X X X X . . . . . . . . . . 
  14 . . . . X O O O O X X . . . . . . . . 
- 15 . . . X . . . . . O X . . . . . . . . 
- 16 . . X . X O . . . O X . . . . . . . . 
- 17 . . X O O . O . . . X . . . . . . . . 
- 18 . . . . . . . . X . . . . . . . . . . 
+ 15 . . . X . . . . O O X . . . . . . . . 
+ 16 . . X . X O . X O O X . . . . . . . . 
+ 17 . . X O O . O O X X X . . . . . . . . 
+ 18 . . . . . . . . X . . . . . . . . . .
          */
         [TestMethod]
         public void DailyGoProblems_20221230_7()
@@ -4817,7 +4817,7 @@ namespace UnitTestProject
  15 X O . . X X X X . . . . . . . . . . . 
  16 O O O O O O O O X X X . . . . . . . . 
  17 X . X . O . . X O O X . . . . . . . . 
- 18 . . X . X X O . O O X . . . . . . . .
+ 18 . . X . X X O . O O X . . . . . . . . 
          */
         [TestMethod]
         public void DailyGoProblems_20230103_8()
@@ -4886,17 +4886,16 @@ namespace UnitTestProject
  10 . X . . . . . . . . . . . . . . . . . 
  11 O . . . . . . . . . . . . . . . . . . 
  12 . X X X . . . . . . . . . . . . . . . 
- 13 . O O X . . . . . . . . . . . . . . . 
- 14 . . O O X . . . . . . . . . . . . . . 
- 15 . . . . X . . . . . . . . . . . . . . 
- 16 . . . . X X . . . . . . . . . . . . . 
+ 13 X O O X . . . . . . . . . . . . . . . 
+ 14 X O O O X . . . . . . . . . . . . . . 
+ 15 . X O . X . . . . . . . . . . . . . . 
+ 16 X O . . X X . . . . . . . . . . . . . 
  17 . O . . O X . . . . . . . . . . . . . 
  18 . O O X X X . . . . . . . . . . . . .
          */
         [TestMethod]
         public void DailyGoProblems_20230121_8()
         {
-            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Scenario s = new Scenario();
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
             Game g = new Game(gi);
@@ -4948,6 +4947,8 @@ namespace UnitTestProject
             g.MakeMove(1, 14);
             g.Board.LastMoves.Clear();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(n => n.Move.Equals(new Point(0, 12))) != null, true);
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(2, 16)) || move.Equals(new Point(0, 12)), true);
@@ -5260,11 +5261,11 @@ namespace UnitTestProject
 
         /*
  13 . . . . . . O O O . O . . . . . . . . 
- 14 . . . O O O . . . . . . . . . . . . . 
+ 14 . . . O O O X X O . . . . . . . . . . 
  15 . . . O X X X . X O . . . . . . . . . 
- 16 . . O X . . . . X O . . . . . . . . . 
- 17 . O . O X O . . . O . . . . . . . . . 
- 18 . . . O X X X X . O . . . . . . . . .
+ 16 . . O X X O . O X O . . . . . . . . . 
+ 17 . O . O X O . . X O . . . . . . . . . 
+ 18 . . . O X X X X O O . . . . . . . . .
          */
         [TestMethod]
         public void DailyGoProblems_20230430_8()
@@ -5478,8 +5479,8 @@ namespace UnitTestProject
  14 . X . X . . . . . . . . . . . . . . . 
  15 . O O X . X X . . . . . . . . . . . . 
  16 O X X O O . . . . . . . . . . . . . . 
- 17 . . O X O X X . . . . . . . . . . . . 
- 18 . . . . X . . . . . . . . . . . . . .
+ 17 . X O X O X X . . . . . . . . . . . . 
+ 18 . O . . X . . . . . . . . . . . . . .
          */
         [TestMethod]
         public void DailyGoProblems_20230513_7()
@@ -5826,8 +5827,8 @@ namespace UnitTestProject
  14 O O O O O O . . . . . . . . . . . . . 
  15 X X X X O X X . . . . . . . . . . . . 
  16 . O . X X O X . . . . . . . . . . . . 
- 17 . . O . . O X . . . . . . . . . . . . 
- 18 . . . . . . . . . . . . . . . . . . .
+ 17 . . O . X O X . . . . . . . . . . . . 
+ 18 . . . O . . . . . . . . . . . . . . .
          */
         [TestMethod]
         public void DailyGoProblems_20250311_8()
@@ -5960,13 +5961,13 @@ namespace UnitTestProject
   9 . . . O . . . . . . . . . . . . . . . 
  10 . . . O O . . . . . . . . . . . . . . 
  11 . . O X . O . . . . . . . . . . . . . 
- 12 . . . X . O . . . . . . . . . . . . . 
+ 12 . O . X . O . . . . . . . . . . . . . 
  13 . . X . O . . . . . . . . . . . . . . 
  14 . . X O . . . . . . . . . . . . . . . 
- 15 . . . O . . . . . . . . . . . . . . . 
+ 15 . . X O . . . . . . . . . . . . . . . 
  16 . . X O . . . . . . . . . . . . . . . 
- 17 . . O X O O . . . . . . . . . . . . . 
- 18 . . . . . . . . . . . . . . . . . . .
+ 17 . X O . O O . . . . . . . . . . . . . 
+ 18 . . . O . . . . . . . . . . . . . . .
          */
         [TestMethod]
         public void DailyGoProblems_20250403_8()
@@ -6033,9 +6034,9 @@ namespace UnitTestProject
  13 X O O X X . . . . . . . . . . . . . . 
  14 O X O O X . . . . . . . . . . . . . . 
  15 . X X O X . X X . . . . . . . . . . . 
- 16 . . X O O O O X . . . . . . . . . . . 
+ 16 O . X O O O O X . . . . . . . . . . . 
  17 . O X O . X O X . . . . . . . . . . . 
- 18 . . O . . . O . . . . . . . . . . . . 
+ 18 . X O . . . O . . . . . . . . . . . .
          */
         [TestMethod]
         public void DailyGoProblems_20250420_7()

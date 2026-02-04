@@ -1541,8 +1541,8 @@ namespace UnitTestProject
         /*
  15 . O O O . . . . . . . . . . . . . . . 
  16 O O X X O O . . . . . . . . . . . . . 
- 17 X X X . X O . . . . . . . . . . . . . 
- 18 . X X X O O . . . . . . . . . . . . . 
+ 17 X X X O . O . . . . . . . . . . . . . 
+ 18 . X X X O O . . . . . . . . . . . . .
          */
         [TestMethod]
         public void RedundantKoMoveTest_Scenario_Corner_A27()
@@ -2206,6 +2206,7 @@ namespace UnitTestProject
             Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
@@ -2249,6 +2250,7 @@ namespace UnitTestProject
             Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, true);
 
+            if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);

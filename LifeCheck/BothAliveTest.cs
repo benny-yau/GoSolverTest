@@ -2182,5 +2182,39 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
         }
+
+        /*
+ 12 X X X . . . . . . . . . . . . . . . . 
+ 13 O O O X . . . . . . . . . . . . . . . 
+ 14 . O O X X . . . . . . . . . . . . . . 
+ 15 X X O O X . . . . . . . . . . . . . . 
+ 16 . X O X X . . . . . . . . . . . . . . 
+ 17 X O O X . . . . . . . . . . . . . . . 
+ 18 . O . O . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void BothAliveTest_Scenario_XuanXuanGo_A27_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A27();
+            g.MakeMove(1, 14);
+            g.MakeMove(1, 16);
+            g.MakeMove(2, 16);
+            g.MakeMove(0, 15);
+            g.MakeMove(2, 17);
+            g.MakeMove(0, 17);
+            g.MakeMove(2, 14);
+            g.MakeMove(2, 18);
+            g.MakeMove(1, 18);
+            g.MakeMove(3, 14);
+            g.MakeMove(3, 18);
+            g.MakeMove(3, 16);
+            g.MakeMove(-1, -1);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Assert.AreEqual(g.Board.IsPassMove, true);
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
+        }
+
     }
 }
