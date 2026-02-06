@@ -1215,9 +1215,8 @@ namespace UnitTestProject
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanGo_Q18500();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g, new Point(5, 17));
-            Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(5, 17))), true);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(6, 18))), true);
         }
 
 
@@ -1240,7 +1239,6 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(6, 16));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
-
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(6, 16))) != null, true);
         }
 

@@ -27,37 +27,6 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(1, 18);
             g.MakeMove(1, 14);
-            g.MakeMove(0, 14);
-            g.MakeMove(1, 16);
-            g.MakeMove(2, 15);
-
-            Point p = new Point(3, 15);
-            GameTryMove move = new GameTryMove(g);
-            move.MakeKoMove(p, SurviveOrKill.Survive);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(move);
-            Assert.AreEqual(isRedundantKo, true);
-
-            (ConfirmAliveResult result, List<GameTryMove> tryMoves, GameTryMove koBlockedMove) = g.GetSurvivalMoves(g);
-            Assert.AreEqual(koBlockedMove == null, true);
-        }
-
-        /*
- 13 . O O O . . . . . . . . . . . . . . . 
- 14 O X X O O . . . . . . . . . . . . . . 
- 15 . X O . O . . . . . . . . . . . . . . 
- 16 . X X O O . O . . . . . . . . . . . . 
- 17 X . X . . O . . . . . . . . . . . . . 
- 18 . O . . . . . . . . . . . . . . . . .
-         */
-        [TestMethod]
-        public void RedundantKoMoveTest_Scenario_XuanXuanGo_A46_101Weiqi_2()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_XuanXuanGo_A46_101Weiqi();
-            g.MakeMove(3, 14);
-            g.MakeMove(0, 17);
-            g.MakeMove(1, 18);
-            g.MakeMove(1, 14);
             g.MakeMove(2, 15);
             g.MakeMove(1, 16);
             g.MakeMove(0, 14);
@@ -74,18 +43,16 @@ namespace UnitTestProject
             Assert.AreEqual(koBlockedMove == null, true);
         }
 
-
-
         /*
  13 . O O O . . . . . . . . . . . . . . . 
  14 O X X O O . . . . . . . . . . . . . . 
- 15 . X O . O . . . . . . . . . . . . . . 
+ 15 . X . X O . . . . . . . . . . . . . . 
  16 . X X O O . O . . . . . . . . . . . . 
  17 X . X . . O . . . . . . . . . . . . . 
  18 . O . . . . . . . . . . . . . . . . .
          */
         [TestMethod]
-        public void RedundantKillerKoMoveTest_Scenario_XuanXuanGo_A46_101Weiqi()
+        public void RedundantKoMoveTest_Scenario_XuanXuanGo_A46_101Weiqi_2()
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanGo_A46_101Weiqi();
@@ -107,37 +74,6 @@ namespace UnitTestProject
             (ConfirmAliveResult result, List<GameTryMove> tryMoves, GameTryMove koBlockedMove) = g.GetKillMoves(g);
             Assert.AreEqual(koBlockedMove == null, true);
         }
-
-        /*
- 13 . O O O . . . . . . . . . . . . . . . 
- 14 O X X O O . . . . . . . . . . . . . . 
- 15 . X . X O . . . . . . . . . . . . . . 
- 16 . X X O O . O . . . . . . . . . . . . 
- 17 X . X . . O . . . . . . . . . . . . . 
- 18 . O . . . . . . . . . . . . . . . . .
-         */
-        [TestMethod]
-        public void RedundantKillerKoMoveTest_Scenario_XuanXuanGo_A46_101Weiqi_2()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_XuanXuanGo_A46_101Weiqi();
-            g.MakeMove(3, 14);
-            g.MakeMove(0, 17);
-            g.MakeMove(1, 18);
-            g.MakeMove(1, 14);
-            g.MakeMove(0, 14);
-            g.MakeMove(1, 16);
-
-            Point p = new Point(2, 15);
-            GameTryMove tryMove = new GameTryMove(g);
-            tryMove.MakeKoMove(p, SurviveOrKill.Survive);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
-            Assert.AreEqual(isRedundantKo, true);
-
-            (ConfirmAliveResult result, List<GameTryMove> tryMoves, GameTryMove koBlockedMove) = g.GetKillMoves(g);
-            Assert.AreEqual(koBlockedMove == null, true);
-        }
-
 
         /*
  11 . O . . . . . . . . . . . . . . . . . 
