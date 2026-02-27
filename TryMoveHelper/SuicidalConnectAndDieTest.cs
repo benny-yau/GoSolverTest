@@ -4915,5 +4915,23 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(3, 18))), true);
         }
+
+        /*
+ 14 . . . . . . . . X X X . . . . . . . . 
+ 15 . . . X X X X X O O X . . . . . . . . 
+ 16 . . X O . O O O . O X . . . . . . . . 
+ 17 . . X O . . O X X O X . . . . . . . . 
+ 18 . . . . . . . . . O . . . . . . . . . 
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16827_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16827();
+            g.MakeMove(7, 17);
+            g.MakeMove(6, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(6, 18))), true);
+        }
     }
 }
