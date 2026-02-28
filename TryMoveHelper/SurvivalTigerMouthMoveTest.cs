@@ -2313,6 +2313,41 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(6, 16))), true);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(4, 16))), true);
         }
+
+        /*
+ 13 . . X X X X . . . . . . . . . . . . . 
+ 14 . . X O O O X X . . . . . . . . . . . 
+ 15 . . X O . X O . X . . . . . . . . . . 
+ 16 . X O . O . . O X . . . . . . . . . . 
+ 17 . X O . X . O X X . X . . . . . . . . 
+ 18 . X O . . . . O . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_TianLongTu_Q17143()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q17143();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(6, 16))), true);
+        }
+
+        /*
+ 13 . . . . X X X X . . . . . . . . . . . 
+ 14 . . X X O . . . X . . . . . . . . . . 
+ 15 . . X O . . O . . . . . . . . . . . . 
+ 16 . . X O . . O X X . . . . . . . . . . 
+ 17 . X O . O . . O X . . . . . . . . . . 
+ 18 . X . . . . O . X . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_TianLongTu_Q17250()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q17250();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(6, 17))), true);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(3, 17))), true);
+        }
     }
 }
 

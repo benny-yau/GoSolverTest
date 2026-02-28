@@ -2375,5 +2375,24 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(0, 17))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 17))) != null, true);
         }
+
+        /*
+ 12 . . . . O . . . . . . . . . . . . . . 
+ 13 O O O O . O . . . . . . . . . . . . . 
+ 14 . . X . O . . . . . . . . . . . . . . 
+ 15 . X . X O . . . . . . . . . . . . . . 
+ 16 . . . X O . . . . . . . . . . . . . . 
+ 17 . . X . O . . . . . . . . . . . . . . 
+ 18 . . . . O . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_XuanXuanQiJing_Weiqi101_18410()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_18410();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(3, 18))), true);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(0, 14))), true);
+        }
     }
 }
