@@ -285,7 +285,6 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 10));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralPoint, true);
-            Assert.AreEqual(tryMove.MustHaveNeutralPoint, false);
 
             GameTryMove specificNeutralMove = RedundantMoveHelper.GetSpecificNeutralMove(g, new List<GameTryMove>() { tryMove });
             Assert.AreEqual(specificNeutralMove != null, true);

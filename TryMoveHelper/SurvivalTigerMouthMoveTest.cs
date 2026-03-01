@@ -2348,6 +2348,51 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(6, 17))), true);
             Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(3, 17))), true);
         }
+
+        /*
+ 13 . . . . . . . O . . . . . . . . . . . 
+ 14 . . . . . . O . O . . . . . . . . . . 
+ 15 . . . . . O . . . O O O . . . . . . . 
+ 16 . . . O O X X X X . X O . . . . . . . 
+ 17 . O . O X . . X . X X O . . . . . . . 
+ 18 . . . X . X O O O . X . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_XuanXuanGo_Q18500()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_Q18500();
+            g.MakeMove(8, 18);
+            g.MakeMove(9, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(3, 18);
+            g.MakeMove(6, 18);
+            g.MakeMove(10, 18);
+            g.MakeMove(7, 18);
+            g.MakeMove(7, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(5, 17))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 17))) != null, true);
+        }
+
+        /*
+ 12 . X X X X X . . . . . . . . . . . . . 
+ 13 X O O O O O X X . . . . . . . . . . . 
+ 14 X . . . . . O X . . . . . . . . . . . 
+ 15 . X O . . . . O X . . . . . . . . . . 
+ 16 . X O O O . O . X . . . . . . . . . . 
+ 17 . X X . . . . X . . . . . . . . . . . 
+ 18 . . . X X X X . . . . . . . . . . . . 
+       */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_TianLongTu_Q16604()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16604();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(6, 15))), true);
+        }
+
     }
 }
 
