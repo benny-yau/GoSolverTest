@@ -1983,7 +1983,7 @@ namespace UnitTestProject
  15 X X O O X X . . . . . . . . . . . . . 
  16 . O . . O X . . . . . . . . . . . . . 
  17 . O . O . X . . . . . . . . . . . . . 
- 18 . 。 . . X . . . . . . . . . . . . . . 
+ 18 . . . . X . . . . . . . . . . . . . . 
          */
         [TestMethod]
         public void SuicidalRedundantMoveTest_Scenario_Nie1()
@@ -4933,5 +4933,42 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(6, 18))), true);
         }
+
+        /*
+ 12 . . . X . . . . . . . . . . . . . . . 
+ 13 . X X . X . . . . . . . . . . . . . . 
+ 14 X O O O X . . . . . . . . . . . . . . 
+ 15 . O . O O X . . . . . . . . . . . . . 
+ 16 . . X X O X . . . . . . . . . . . . . 
+ 17 . O O O X X . . . . . . . . . . . . . 
+ 18 . . . X . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_WuQingYuan_Q31326()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WuQingYuan_Q31326();
+            g.MakeMove(3, 16);
+            g.MakeMove(3, 15);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(1, 18))), false);
+        }
+
+        /*
+ 14 . X X X . . . . . . . . . . . . . . . 
+ 15 O . . . . . . . . . . . . . . . . . . 
+ 16 . O . X X . X . . . . . . . . . . . . 
+ 17 . O . O . X . . . . . . . . . . . . . 
+ 18 . . . . O . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16456()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16456();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(1, 18))), true);
+        }
+
     }
 }

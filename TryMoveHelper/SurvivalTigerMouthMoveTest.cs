@@ -2393,6 +2393,41 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(6, 15))), true);
         }
 
+        /*
+ 13 . . . . . X X . . . . . . . . . . . . 
+ 14 . . . X X O X . . . . . . . . . . . . 
+ 15 . . X . O O O X . . . . . . . . . . . 
+ 16 . . X O . . O X . X . . . . . . . . . 
+ 17 . . X . O . . O X . . . . . . . . . . 
+ 18 . . . . . . . O . . . . . . . . . . . 
+       */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario4dan13()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario4dan13();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(4, 16))), true);
+        }
+
+        /*
+ 11 . . O O O . . . . . . . . . . . . . . 
+ 12 . O . X X O . . . . . . . . . . . . . 
+ 13 . O X . . . . . . . . . . . . . . . . 
+ 14 . O X X X O O . O . . . . . . . . . . 
+ 15 . . O X . X O . . . . . . . . . . . . 
+ 16 . . O X . X . . O . . . . . . . . . . 
+ 17 . . O O X . . . . O . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . . 
+       */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_GuanZiPu_A25()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_GuanZiPu_A25();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(4, 16))), false);
+        }
     }
 }
 
