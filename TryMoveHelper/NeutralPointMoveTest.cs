@@ -2393,5 +2393,37 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(3, 18))), true);
             Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(0, 14))), true);
         }
+
+        /*
+ 14 . X X . . . . . . . . . . . . . . . . 
+ 15 . X O X X X . . . . . . . . . . . . . 
+ 16 . X O . . O X X X . . . . . . . . . . 
+ 17 . . O . . O O O X X . . . . . . . . . 
+ 18 . . . . O . . . O . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_WuQingYuan_Q31453()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WuQingYuan_Q31453();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(4, 16))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 16))) != null, true);
+        }
+
+        /*
+ 15 . O O O O O O . . . . . . . . . . . . 
+ 16 . X . . X X O . O . . . . . . . . . . 
+ 17 . X . . . X X O . . . . . . . . . . . 
+ 18 . . . . . . . O . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_Corner_A94()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Corner_A94();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(2, 16))), true);
+        }
     }
 }

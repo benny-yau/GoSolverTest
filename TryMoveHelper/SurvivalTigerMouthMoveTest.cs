@@ -2430,23 +2430,41 @@ namespace UnitTestProject
         }
 
         /*
- 14 . O O . O . . . . . . . . . . . . . . 
- 15 . X . O . O . . . . . . . . . . . . . 
- 16 . X . X X O . . . . . . . . . . . . . 
- 17 X X . . . O . . . . . . . . . . . . . 
- 18 . . X O . O . . . . . . . . . . . . .
-         */
+ 13 . . . O O . O . . . . . . . . . . . . 
+ 14 . . . O X X . O O O O . . . . . . . . 
+ 15 . . O . . . X X X X O . . . . . . . . 
+ 16 . . O X . X O O . . O . . . . . . . . 
+ 17 . . O X X . O . X . O . . . . . . . . 
+ 18 . . O O X X . . . . . . . . . . . . . 
+       */
         [TestMethod]
-        public void RedundantTigerMouthMove_Scenario_XuanXuanGo_A28_2()
+        public void RedundantTigerMouthMove_Scenario_XuanXuanGo_A171_101Weiqi()
         {
             Scenario s = new Scenario();
-            Game g = s.Scenario_XuanXuanGo_A28();
-            g.MakeMove(3, 18);
-            g.MakeMove(2, 18);
+            Game g = s.Scenario_XuanXuanGo_A171_101Weiqi();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(1, 18))), false);
-            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 18))) != null, true);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(5, 15))), true);
         }
+
+        /*
+ 12 . X X X X . . . . . . . . . . . . . . 
+ 13 . O X O O X X . . . . . . . . . . . . 
+ 14 . O O . . O X . . . . . . . . . . . . 
+ 15 . X . O O . X . . . . . . . . . . . . 
+ 16 . . O . X . X . . . . . . . . . . . . 
+ 17 . O X X . X . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . . 
+       */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_XuanXuanGo_Q18331()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_Q18331();
+            g.MakeMove(1, 14);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(3, 14))), true);
+        }
+
     }
 }
 

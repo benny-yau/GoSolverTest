@@ -18,7 +18,7 @@ namespace UnitTestProject
  18 . . O O . . . . . . . . . . . . . . . 
         */
         [TestMethod]
-        public void LifeCheckTest_ScenarioTestConfirmAlive1()
+        public void RedundantEyeDiagonalMoveTest_x()
         {
             var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
             var g = new Game(gi);
@@ -79,10 +79,8 @@ namespace UnitTestProject
             g.MakeMove(7, 17);
             g.MakeMove(6, 16);
             g.MakeMove(6, 18);
-
             g.MakeMove(4, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
             GameTryMove tryMove = new GameTryMove(g, new Point(7, 15));
             Boolean redundantEyeDiagonal = RedundantMoveHelper.SurvivalEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, false);
@@ -91,8 +89,8 @@ namespace UnitTestProject
         /*
  14 . . . . O O O O . . . . . . . . . . . 
  15 . . . O . X X . O . . . . . . . . . . 
- 16 . . O . X . O X . O . O . . . . . . . 
- 17 . . O X . X O X . O O . . . . . . . . 
+ 16 . . O . X X O X . O . O . . . . . . . 
+ 17 . . O X . X . X . O O . . . . . . . . 
  18 . . . X O . X . . . . . . . . . . . .
          */
         [TestMethod]
@@ -106,13 +104,11 @@ namespace UnitTestProject
             g.MakeMove(7, 17);
             g.MakeMove(6, 16);
             g.MakeMove(6, 18);
-
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             g.Board[5, 16] = Content.Black;
             g.Board[6, 17] = Content.Empty;
-
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(7, 15));
             Boolean redundantEyeDiagonal = RedundantMoveHelper.KillEyeDiagonalMove(tryMove);
             Assert.AreEqual(redundantEyeDiagonal, true);
@@ -131,13 +127,11 @@ namespace UnitTestProject
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanGo_Q18358();
-
             g.MakeMove(5, 17);
             g.MakeMove(4, 17);
             g.MakeMove(3, 16);
             g.MakeMove(5, 18);
             g.MakeMove(3, 17);
-
             g.MakeMove(3, 18);
             g.MakeMove(7, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
