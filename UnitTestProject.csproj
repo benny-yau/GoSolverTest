@@ -86,6 +86,7 @@
     <Compile Include="TryMoveHelper\MultiPointSuicidalMoveTest.cs" />
     <Compile Include="TryMoveHelper\OpponentSuicidalConnectAndDieTest.cs" />
     <Compile Include="TryMoveHelper\RedundantNeuralNetMoveTest.cs" />
+    <Compile Include="TryMoveHelper\RedundantNonSuicidalMoveTest.cs" />
     <Compile Include="TryMoveHelper\SuicidalWithinNonKillableGroupTest.cs" />
     <Compile Include="TryMoveHelper\ThreeLibertySuicidalTest.cs" />
     <Compile Include="TryMoveHelper\CreateRandomMoveTest.cs" />
