@@ -2525,5 +2525,36 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
+
+        /*
+  8 . O . . . . . . . . . . . . . . . . . 
+  9 X O . O . . . . . . . . . . . . . . . 
+ 10 . X O . . . . . . . . . . . . . . . . 
+ 11 X X O . . . . . . . . . . . . . . . . 
+ 12 O . X O . . . . . . . . . . . . . . . 
+ 13 . X X O O . . . . . . . . . . . . . . 
+ 14 . X O . O . . . . . . . . . . . . . . 
+ 15 . X X O O . . . . . . . . . . . . . . 
+ 16 X O O O . . . . . . . . . . . . . . . 
+ 17 . O . . . . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void CoveredEyeMoveTest_Scenario_XuanXuanGo_A41_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A41();
+            g.MakeMove(3, 13);
+            g.MakeMove(3, 14);
+            g.MakeMove(3, 15);
+            g.MakeMove(1, 13);
+            g.MakeMove(0, 12);
+            g.MakeMove(1, 14);
+            g.MakeMove(2, 14);
+            g.MakeMove(0, 11);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.FindCoveredEyeMove(new GameTryMove(g, new Point(3, 14))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 14))) != null, true);
+        }
     }
 }
