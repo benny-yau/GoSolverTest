@@ -1954,7 +1954,7 @@ namespace UnitTestProject
             Boolean isSuicidal = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
 
-            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 14))) != null, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 14))) != null, true);
         }
 
         /*

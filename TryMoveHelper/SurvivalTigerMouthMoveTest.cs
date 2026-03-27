@@ -2500,6 +2500,24 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(8, 17))), true);
         }
 
+        /*
+ 12 O O O O O . . . . . . . . . . . . . . 
+ 13 . X X X X O . . . . . . . . . . . . . 
+ 14 . . . . X O . . . . . . . . . . . . . 
+ 15 X . X X O . . . . . . . . . . . . . . 
+ 16 . X O O O . . . . . . . . . . . . . . 
+ 17 O X O . . O . . . . . . . . . . . . . 
+ 18 . O . . . . . . . . . . . . . . . . . 
+       */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario1dan31()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario1dan31();
+            g.MakeMove(0, 15);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(1, 15))), true);
+        }
     }
 }
 
