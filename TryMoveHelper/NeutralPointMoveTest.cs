@@ -2425,5 +2425,26 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(2, 16))), true);
         }
+
+        /*
+ 15 . X X X X . . . . . . . . . . . . . . 
+ 16 X O O O . X . . . . . . . . . . . . . 
+ 17 . X O . O X . . . . . . . . . . . . . 
+ 18 X . . O . . . . . . . . . . . . . . . 
+       */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_Phenomena_Q25185()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Phenomena_Q25185();
+            g.MakeMove(2, 17);
+            g.MakeMove(0, 16);
+            g.MakeMove(0, 17);
+            g.MakeMove(0, 18);
+            g.MakeMove(3, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(0, 15))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 15))) != null, true);
+        }
     }
 }
