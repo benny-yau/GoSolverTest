@@ -1596,7 +1596,7 @@ namespace UnitTestProject
  15 . . X X X X X X . . . . . . . . . . . 
  16 . X O O O . . O X X . . . . . . . . . 
  17 . X O . X O O . O X . . . . . . . . . 
- 18 . X O . . X . . O X . . . . . . . . . 
+ 18 . X O . . . . . O X . . . . . . . . . 
 
         */
         [TestMethod]

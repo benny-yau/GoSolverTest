@@ -473,7 +473,7 @@ namespace UnitTestProject
 
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isRedundant = RedundantMoveHelper.FillKoEyeMove(tryMove);
-            Assert.AreEqual(isRedundant, true);
+            Assert.AreEqual(isRedundant, false);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -1426,6 +1426,49 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.FillKoEyeMove(new GameTryMove(g, new Point(2, 18))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(2, 18))) != null, true);
+        }
+
+        /*
+ 12 X . . . . . . . . . . . . . . . . . . 
+ 13 O X X X . . . . . . . . . . . . . . . 
+ 14 . O O X X . . . . . . . . . . . . . . 
+ 15 O O . O X . . . . . . . . . . . . . . 
+ 16 O O O X . . . . . . . . . . . . . . . 
+ 17 X O O X . X . . . . . . . . . . . . . 
+ 18 . O X . X . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void FillKoEyeMoveTest_Scenario_GuanZiPu_A2Q28_101Weiqi()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_GuanZiPu_A2Q28_101Weiqi();
+            g.MakeMove(0, 14);
+            g.MakeMove(0, 15);
+            g.MakeMove(2, 18);
+            g.MakeMove(1, 18);
+            g.MakeMove(0, 17);
+            g.MakeMove(0, 13);
+
+            g.MakeMove(0, 12);
+            g.MakeMove(1, 16);
+            g.MakeMove(0, 14);
+            g.MakeMove(0, 16);
+            g.MakeMove(2, 15);
+            g.MakeMove(1, 15);
+            g.MakeMove(3, 14);
+            g.MakeMove(1, 17);
+            g.MakeMove(2, 15);
+            g.MakeMove(3, 18);
+            g.MakeMove(4, 18);
+            g.MakeMove(0, 13);
+            g.MakeMove(2, 18);
+            g.MakeMove(3, 15);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.FillKoEyeMove(new GameTryMove(g, new Point(3, 18))), false);
+
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead) || moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
         }
     }
 }
