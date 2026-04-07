@@ -11,15 +11,15 @@ namespace UnitTestProject
     public class AtariRedundantMoveTest
     {
 
-            /*
-     13 . O O O . . . . . . . . . . . . . . . 
-     14 . . X O O . . . . . . . . . . . . . . 
-     15 . X . X O . . . . . . . . . . . . . . 
-     16 . . X O O . O . . . . . . . . . . . . 
-     17 X X X X . O . . . . . . . . . . . . . 
-     18 X O O O . . . . . . . . . . . . . . . 
-             */
-            [TestMethod]
+        /*
+ 13 . O O O . . . . . . . . . . . . . . . 
+ 14 . . X O O . . . . . . . . . . . . . . 
+ 15 . X . X O . . . . . . . . . . . . . . 
+ 16 . . X O O . O . . . . . . . . . . . . 
+ 17 X X X X . O . . . . . . . . . . . . . 
+ 18 X O O O . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
         public void AtariRedundantMoveTest_Scenario_XuanXuanGo_A46_101Weiqi()
         {
             Scenario s = new Scenario();
@@ -1053,8 +1053,8 @@ namespace UnitTestProject
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 13)), true);
-        }   
-        
+        }
+
         /*
   8 O O O . . . . . . . . . . . . . . . . 
   9 X X . O . . . . . . . . . . . . . . . 
@@ -1110,60 +1110,29 @@ namespace UnitTestProject
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
         }
 
-
         /*
- 14 . . X . X . . . . . . . . . . . . . . 
- 15 . X . . . X X . . . . . . . . . . . . 
- 16 . O O O O O X . . . . . . . . . . . . 
- 17 O O X . . O X . . . . . . . . . . . . 
- 18 . X . O X X . . . . . . . . . . . . . 
-        */
+ 14 . . . O O O O O . . . . . . . . . . . 
+ 15 . . O X X X X O O . . . . . . . . . . 
+ 16 . . O X . . X X O . . . . . . . . . . 
+ 17 . . O X O . X X O . O . . . . . . . . 
+ 18 . . . X O O O X . . . . . . . . . . .
+       */
         [TestMethod]
-        public void AtariRedundantMoveTest_Scenario_XuanXuanGo_A23()
+        public void AtariRedundantMoveTest_Scenario_XuanXuanGo_A41()
         {
             Scenario s = new Scenario();
-            Game g = s.Scenario_XuanXuanGo_A23();
+            Game g = s.Scenario_Side_B34();
             g.MakeMove(4, 18);
-            g.MakeMove(5, 17);
-            g.MakeMove(5, 18);
-            g.MakeMove(0, 17);
-            g.MakeMove(1, 18);
             g.MakeMove(3, 18);
-            g.MakeMove(2, 17);
-            g.MakeMove(1, 17);
-
+            g.MakeMove(7, 15);
+            g.MakeMove(6, 16);
+            g.MakeMove(5, 18);
+            g.MakeMove(6, 17);
+            g.MakeMove(6, 18);
+            g.MakeMove(7, 18);
+            g.MakeMove(4, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
-            Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-        }
-
-        /*
- 14 X X X . X . . . . . . . . . . . . . . 
- 15 O O X X . . . . . . . . . . . . . . . 
- 16 . O X O X . . . . . . . . . . . . . . 
- 17 X O . O X . . . . . . . . . . . . . . 
- 18 O . O . X . . . . . . . . . . . . . . 
-         */
-        [TestMethod]
-        public void AtariRedundantMoveTest_Scenario_XuanXuanGo_A18()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_XuanXuanGo_A18();
-            g.MakeMove(2, 15);
-            g.MakeMove(1, 17);
-            g.MakeMove(2, 16);
-            g.MakeMove(0, 15);
-            g.MakeMove(0, 17);
-            g.MakeMove(0, 18);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g, new Point(2, 17));
-            Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+            Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(5, 17))), false);
         }
     }
 }

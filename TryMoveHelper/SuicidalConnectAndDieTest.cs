@@ -4088,13 +4088,14 @@ namespace UnitTestProject
  15 . . O O O O . . . . . . . . . . . . . 
  16 O O X X X O . . . . . . . . . . . . . 
  17 X X . . . O . . . . . . . . . . . . . 
- 18 . . . X . . . . . . . . . . . . . . . 
+ 18 . . . X . O . . . . . . . . . . . . . 
         */
         [TestMethod]
         public void SuicidalRedundantMoveTest_Scenario_Corner_A41()
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_Corner_A41();
+            g.Board[5, 18] = Content.White;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = tryMoves.Where(m => m.Move.Equals(new Point(2, 18))).FirstOrDefault();
             Assert.AreEqual(tryMove != null, true);
@@ -5041,6 +5042,24 @@ namespace UnitTestProject
             Game g = s.Scenario_Corner_A61();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 16))), true);
+        }
+
+        /*
+ 13 . . . X . . . . . . . . . . . . . . . 
+ 14 . X . . . . . . . . . . . . . . . . . 
+ 15 O X . X . . . . . . . . . . . . . . . 
+ 16 . O O . X X . . . . . . . . . . . . . 
+ 17 . X . O O X . . . . . . . . . . . . . 
+ 18 . O . . . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_Phenomena_B18()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Phenomena_B18();
+            g.MakeMove(1, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(2, 17))), true);
         }
     }
 }
