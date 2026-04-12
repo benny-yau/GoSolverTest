@@ -97,5 +97,28 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(5, 17))), false);
         }
+
+        /*
+  9 . O O . . . . . . . . . . . . . . . . 
+ 10 . X . O . . . . . . . . . . . . . . . 
+ 11 . . X O . . . . . . . . . . . . . . . 
+ 12 . . X . . . . . . . . . . . . . . . . 
+ 13 . . X O O . . . . . . . . . . . . . . 
+ 14 . X . X O . . . . . . . . . . . . . . 
+ 15 O X X . O . . . . . . . . . . . . . . 
+ 16 . O O O . . . . . . . . . . . . . . . 
+ 17 . . . . . . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantNonSuicidalMoveTest_Scenario_XuanXuanGo_A151_101Weiqi()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
+            g.MakeMove(0, 15);
+            g.MakeMove(1, 14);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(1, 12))), false);
+        }
     }
 }
