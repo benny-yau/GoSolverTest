@@ -1134,5 +1134,36 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(5, 17))), false);
         }
+
+        /*
+ 12 . O . . . . . . . . . . . . . . . . . 
+ 13 . . O . . . . . . . . . . . . . . . . 
+ 14 . O . O . . . . . . . . . . . . . . . 
+ 15 . X X O . . . . . . . . . . . . . . . 
+ 16 X X X X O O . . O . . . . . . . . . . 
+ 17 X . O X X O . . . . . . . . . . . . . 
+ 18 X . . X . O . . . . . . . . . . . . . 
+       */
+        [TestMethod]
+        public void AtariRedundantMoveTest_Scenario_Corner_A113()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Corner_A113();
+            g.MakeMove(1, 17);
+            g.MakeMove(1, 16);
+            g.MakeMove(2, 17);
+            g.MakeMove(0, 17);
+            g.MakeMove(1, 18);
+            g.MakeMove(0, 16);
+            g.MakeMove(2, 16);
+            g.MakeMove(0, 18);
+            g.MakeMove(2, 18);
+            g.MakeMove(3, 18);
+            g.MakeMove(2, 17);
+            g.MakeMove(2, 16);
+            g.MakeMove(5, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(2, 18))), true);
+        }
     }
 }
