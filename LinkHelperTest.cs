@@ -340,7 +340,7 @@ namespace UnitTestProject
                     gi.movablePoints.Add(new Point(x, y));
             }
             gi.killMovablePoints.AddRange(gi.movablePoints);
-            
+
             HashSet<Group> groups = LinkHelper.GetAllDiagonalConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(2, 18)));
             Boolean groupsLinked = LinkHelper.IsDiagonallyConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(2, 18)), g.Board.GetGroupAt(new Point(4, 14)));
             Assert.AreEqual(groupsLinked, false);
@@ -448,7 +448,7 @@ namespace UnitTestProject
             g.Board[2, 18] = Content.Black;
             g.Board[3, 18] = Content.Black;
             g.Board[4, 17] = Content.Empty;
-            
+
             Boolean isLinked = LinkHelper.CheckIsDiagonalLinked(new Point(4, 16), new Point(5, 17), g.Board);
             Assert.AreEqual(isLinked, false);
             Boolean groupsLinked = LinkHelper.IsDiagonallyConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(4, 16)), g.Board.GetGroupAt(new Point(8, 16)));
@@ -603,53 +603,13 @@ namespace UnitTestProject
             Assert.AreEqual(connectedGroups.Contains(g.Board.GetGroupAt(new Point(4, 16))), true);
         }
 
-
-
-        /*
- 12 . . . . . X X X . . . . . . . . . . . 
- 13 . . . X X O O X . . . . . . . . . . . 
- 14 . . . X X O X O X . . . . . . . . . . 
- 15 . . . X . O . O . . . . . . . . . . . 
- 16 . . X O X X O O X . . . . . . . . . . 
- 17 . . . O . O O O X . . . . . . . . . . 
- 18 . . . O O X X X X . . . . . . . . . . 
-         */
-        [TestMethod]
-        public void LinkHelperTest_Scenario_WindAndTime_Q30150_3()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_WindAndTime_Q30150();
-            g.MakeMove(4, 16);
-            g.MakeMove(4, 18);
-            g.MakeMove(5, 16);
-            g.MakeMove(6, 16);
-            g.MakeMove(2, 18);
-            g.MakeMove(5, 15);
-
-            g.Board[4, 14] = Content.Black;
-            g.Board[5, 14] = Content.White;
-            g.Board[6, 14] = Content.Black;
-            g.Board[3, 18] = Content.White;
-            g.Board[2, 18] = Content.Empty;
-
-            g.Board[6, 18] = Content.Black;
-            g.Board[5, 18] = Content.Black;
-            g.Board[6, 17] = Content.White;
-
-            g.Board[2, 17] = Content.Empty;
-            g.Board[8, 15] = Content.Empty;
-
-            HashSet<Group> connectedGroups = LinkHelper.GetAllDiagonalConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(3, 18)));
-            Assert.AreEqual(connectedGroups.Contains(g.Board.GetGroupAt(new Point(5, 13))), false);
-        }
-
         /*
  11 . . O O O . . . . . . . . . . . . . . 
  12 . X O . O X . . . . . . . . . . . . . 
  13 . . X O . O X . . . . . . . . . . . . 
  14 . . X . O . X X . . . . . . . . . . . 
  15 . X . X . O . X . . . . . . . . . . . 
- 16 . . X . . O O X . . . . . . . . . . . 
+ 16 . . X X . O O X . . . . . . . . . . . 
  17 . X O O O O . X . . . . . . . . . . . 
  18 . . O . O X X X . . . . . . . . . . . 
          */
@@ -673,6 +633,7 @@ namespace UnitTestProject
             g.SetupMove(3, 11, Content.White);
             g.SetupMove(3, 13, Content.White);
             g.SetupMove(3, 15, Content.Black);
+            g.SetupMove(3, 16, Content.Black);
             g.SetupMove(3, 17, Content.White);
             g.SetupMove(4, 11, Content.White);
             g.SetupMove(4, 12, Content.White);
@@ -1174,76 +1135,7 @@ namespace UnitTestProject
 
             HashSet<Group> connectedGroups = LinkHelper.GetAllDiagonalConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(3, 11)));
             Assert.AreEqual(connectedGroups.Contains(g.Board.GetGroupAt(new Point(2, 17))), false);
-
         }
-
-
-        /*
- 13 . . . . . . X X X . . . . . . . . . . 
- 14 . . . . . X O O . X X X . . . . . . . 
- 15 . . X X X X X . O O O X . . . . . . . 
- 16 . X . O O . O O . . O X . . . . . . . 
- 17 . X . . . O . . O . X X . . . . . . . 
- 18 . X X X . O . X X X X . . . . . . . .
-         */
-        [TestMethod]
-        public void LinkHelperTest_x()
-        {
-            Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
-            Game g = new Game(gi);
-            g.GameInfo.targetPoints.Add(new Point(4, 17));
-            g.SetupMove(1, 16, Content.Black);
-            g.SetupMove(1, 17, Content.Black);
-            g.SetupMove(1, 18, Content.Black);
-            g.SetupMove(2, 15, Content.Black);
-            g.SetupMove(2, 18, Content.Black);
-            g.SetupMove(3, 15, Content.Black);
-            g.SetupMove(3, 16, Content.White);
-            g.SetupMove(3, 18, Content.Black);
-            g.SetupMove(4, 15, Content.Black);
-            g.SetupMove(4, 16, Content.White);
-            g.SetupMove(5, 14, Content.Black);
-            g.SetupMove(5, 15, Content.Black);
-            g.SetupMove(5, 17, Content.White);
-            g.SetupMove(5, 18, Content.White);
-            g.SetupMove(6, 13, Content.Black);
-            g.SetupMove(6, 14, Content.White);
-            g.SetupMove(6, 15, Content.Black);
-            g.SetupMove(6, 16, Content.White);
-            g.SetupMove(7, 13, Content.Black);
-            g.SetupMove(7, 14, Content.White);
-            g.SetupMove(7, 16, Content.White);
-            g.SetupMove(7, 18, Content.Black);
-            g.SetupMove(8, 13, Content.Black);
-            g.SetupMove(8, 15, Content.White);
-            g.SetupMove(8, 17, Content.White);
-            g.SetupMove(8, 18, Content.Black);
-            g.SetupMove(9, 14, Content.Black);
-            g.SetupMove(9, 15, Content.White);
-            g.SetupMove(9, 18, Content.Black);
-            g.SetupMove(10, 14, Content.Black);
-            g.SetupMove(10, 15, Content.White);
-            g.SetupMove(10, 16, Content.White);
-            g.SetupMove(10, 17, Content.Black);
-            g.SetupMove(10, 18, Content.Black);
-            g.SetupMove(11, 14, Content.Black);
-            g.SetupMove(11, 15, Content.Black);
-            g.SetupMove(11, 16, Content.Black);
-            g.SetupMove(11, 17, Content.Black);
-
-            for (int x = 2; x <= 11; x++)
-            {
-                for (int y = 14; y <= 18; y++)
-                    gi.movablePoints.Add(new Point(x, y));
-            }
-            gi.killMovablePoints.AddRange(gi.movablePoints);
-
-            HashSet<Group> connectedGroups = LinkHelper.GetAllDiagonalConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(6, 16)));
-            Assert.AreEqual(connectedGroups.Contains(g.Board.GetGroupAt(new Point(3, 16))), false);
-
-        }
-
 
         /*
  10 . . . O . . . . . . . . . . . . . . . 
@@ -1315,9 +1207,214 @@ namespace UnitTestProject
 
             HashSet<Group> connectedGroups = LinkHelper.GetAllDiagonalConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(3, 11)));
             Assert.AreEqual(connectedGroups.Contains(g.Board.GetGroupAt(new Point(2, 17))), false);
+        }
+
+        /*
+ 11 . . O X X . . . . . . . . . . . . . . 
+ 12 . X O . O O . . . . . . . . . . . . . 
+ 13 . X . O X . O . . . . . . . . . . . . 
+ 14 . . X . O X . O . . . . . . . . . . . 
+ 15 . X . X . O X O . . . . . . . . . . . 
+ 16 . . X . . . O X . . . . . . . . . . . 
+ 17 . X O O O O . X . . . . . . . . . . . 
+ 18 . . O . O X X X . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void LinkHelperTest_Scenario_WindAndTime_Q30150_12()
+        {
+            Scenario s = new Scenario();
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
+            Game g = new Game(gi);
+            g.GameInfo.targetPoints.Add(new Point(3, 17));
+            g.SetupMove(1, 12, Content.Black);
+            g.SetupMove(1, 15, Content.Black);
+            g.SetupMove(1, 17, Content.Black);
+            g.SetupMove(2, 11, Content.White);
+            g.SetupMove(2, 12, Content.White);
+            g.SetupMove(1, 13, Content.Black);
+            g.SetupMove(2, 14, Content.Black);
+            g.SetupMove(2, 16, Content.Black);
+            g.SetupMove(2, 17, Content.White);
+            g.SetupMove(2, 18, Content.White);
+            g.SetupMove(3, 11, Content.White);
+            g.SetupMove(3, 13, Content.White);
+            g.SetupMove(3, 15, Content.Black);
+            g.SetupMove(3, 17, Content.White);
+            g.SetupMove(4, 11, Content.White);
+            g.SetupMove(4, 12, Content.White);
+            g.SetupMove(4, 13, Content.Black);
+            g.SetupMove(4, 14, Content.White);
+            g.SetupMove(4, 17, Content.White);
+            g.SetupMove(4, 18, Content.White);
+            g.SetupMove(5, 12, Content.White);
+            g.SetupMove(5, 15, Content.White);
+            g.SetupMove(5, 16, Content.White);
+            g.SetupMove(5, 17, Content.White);
+            g.SetupMove(5, 18, Content.Black);
+            g.SetupMove(6, 13, Content.White);
+            g.SetupMove(6, 14, Content.Black);
+            g.SetupMove(6, 16, Content.White);
+            g.SetupMove(6, 18, Content.Black);
+            g.SetupMove(7, 14, Content.Black);
+            g.SetupMove(7, 15, Content.Black);
+            g.SetupMove(7, 16, Content.Black);
+            g.SetupMove(7, 17, Content.Black);
+            g.SetupMove(7, 18, Content.Black);
+
+            for (int x = 0; x <= 7; x++)
+            {
+                for (int y = 10; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+
+            g.Board[7, 14] = g.Board[7, 15] = Content.White;
+            g.Board[6, 14] = g.Board[5, 16] = Content.Empty;
+            g.Board[6, 15] = g.Board[5, 14] = Content.Black;
+            g.Board[3, 11] = g.Board[4, 11] = Content.Black;
+
+            HashSet<Group> connectedGroups = LinkHelper.GetAllDiagonalConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(2, 18)));
+            Assert.AreEqual(connectedGroups.Contains(g.Board.GetGroupAt(new Point(2, 12))), false);
 
         }
 
+        /*
+ 10 . . . O . . . . . . . . . . . . . . . 
+ 11 . O . O X X . . . . . . . . . . . . . 
+ 12 . X O . O . X . . . . . . . . . . . . 
+ 13 . X O X O . . X . . . . . . . . . . . 
+ 14 . X O X O . . X . . . . . . . . . . . 
+ 15 . X X . O O . X . . . . . . . . . . . 
+ 16 . X O O X O O X . . . . . . . . . . . 
+ 17 . O . X O O O X . . . . . . . . . . . 
+ 18 . . O O X X X X . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void LinkHelperTest_Scenario_WindAndTime_Q30150_13()
+        {
+            Scenario s = new Scenario();
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
+            Game g = new Game(gi);
+            g.GameInfo.targetPoints.Add(new Point(4, 17));
+            g.SetupMove(1, 11, Content.White);
+            g.SetupMove(1, 12, Content.Black);
+            g.SetupMove(1, 13, Content.Black);
+            g.SetupMove(1, 14, Content.Black);
+            g.SetupMove(1, 15, Content.Black);
+            g.SetupMove(1, 16, Content.Black);
+            g.SetupMove(2, 12, Content.White);
+            g.SetupMove(2, 13, Content.White);
+            g.SetupMove(2, 14, Content.White);
+            g.SetupMove(2, 15, Content.Black);
+            g.SetupMove(2, 16, Content.White);
+            g.SetupMove(2, 18, Content.White);
+            g.SetupMove(3, 10, Content.White);
+            g.SetupMove(3, 11, Content.White);
+            g.SetupMove(3, 13, Content.Black);
+            g.SetupMove(3, 14, Content.Black);
+            g.SetupMove(3, 18, Content.White);
+            g.SetupMove(4, 11, Content.Black);
+            g.SetupMove(4, 12, Content.White);
+            g.SetupMove(4, 13, Content.White);
+            g.SetupMove(4, 14, Content.White);
+            g.SetupMove(4, 15, Content.White);
+            g.SetupMove(4, 16, Content.Black);
+            g.SetupMove(4, 17, Content.White);
+            g.SetupMove(4, 18, Content.Black);
+            g.SetupMove(5, 11, Content.Black);
+            g.SetupMove(5, 15, Content.White);
+            g.SetupMove(5, 16, Content.White);
+            g.SetupMove(5, 17, Content.White);
+            g.SetupMove(5, 18, Content.Black);
+            g.SetupMove(6, 12, Content.Black);
+            g.SetupMove(6, 16, Content.White);
+            g.SetupMove(6, 17, Content.White);
+            g.SetupMove(6, 18, Content.Black);
+            g.SetupMove(7, 13, Content.Black);
+            g.SetupMove(7, 14, Content.Black);
+            g.SetupMove(7, 15, Content.Black);
+            g.SetupMove(7, 16, Content.Black);
+            g.SetupMove(7, 17, Content.Black);
+            g.SetupMove(7, 18, Content.Black);
+
+            g.SetupMove(3, 16, Content.White);
+            g.SetupMove(3, 17, Content.Black);
+            g.SetupMove(1, 17, Content.White);
+            for (int x = 0; x <= 7; x++)
+            {
+                for (int y = 10; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+
+            HashSet<Group> connectedGroups = LinkHelper.GetAllDiagonalConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(2, 18)));
+            Assert.AreEqual(connectedGroups.Contains(g.Board.GetGroupAt(new Point(2, 12))), false);
+        }
+
+        /*
+ 13 . . . . . . X X X . . . . . . . . . . 
+ 14 . . . . . X O O . X X X . . . . . . . 
+ 15 . . X X X X X . O O O X . . . . . . . 
+ 16 . X . O O . O O . . O X . . . . . . . 
+ 17 . X . . . O . . O . X X . . . . . . . 
+ 18 . X X X . O . X X X X . . . . . . . .
+         */
+        [TestMethod]
+        public void LinkHelperTest_x()
+        {
+            Scenario s = new Scenario();
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
+            Game g = new Game(gi);
+            g.GameInfo.targetPoints.Add(new Point(4, 17));
+            g.SetupMove(1, 16, Content.Black);
+            g.SetupMove(1, 17, Content.Black);
+            g.SetupMove(1, 18, Content.Black);
+            g.SetupMove(2, 15, Content.Black);
+            g.SetupMove(2, 18, Content.Black);
+            g.SetupMove(3, 15, Content.Black);
+            g.SetupMove(3, 16, Content.White);
+            g.SetupMove(3, 18, Content.Black);
+            g.SetupMove(4, 15, Content.Black);
+            g.SetupMove(4, 16, Content.White);
+            g.SetupMove(5, 14, Content.Black);
+            g.SetupMove(5, 15, Content.Black);
+            g.SetupMove(5, 17, Content.White);
+            g.SetupMove(5, 18, Content.White);
+            g.SetupMove(6, 13, Content.Black);
+            g.SetupMove(6, 14, Content.White);
+            g.SetupMove(6, 15, Content.Black);
+            g.SetupMove(6, 16, Content.White);
+            g.SetupMove(7, 13, Content.Black);
+            g.SetupMove(7, 14, Content.White);
+            g.SetupMove(7, 16, Content.White);
+            g.SetupMove(7, 18, Content.Black);
+            g.SetupMove(8, 13, Content.Black);
+            g.SetupMove(8, 15, Content.White);
+            g.SetupMove(8, 17, Content.White);
+            g.SetupMove(8, 18, Content.Black);
+            g.SetupMove(9, 14, Content.Black);
+            g.SetupMove(9, 15, Content.White);
+            g.SetupMove(9, 18, Content.Black);
+            g.SetupMove(10, 14, Content.Black);
+            g.SetupMove(10, 15, Content.White);
+            g.SetupMove(10, 16, Content.White);
+            g.SetupMove(10, 17, Content.Black);
+            g.SetupMove(10, 18, Content.Black);
+            g.SetupMove(11, 14, Content.Black);
+            g.SetupMove(11, 15, Content.Black);
+            g.SetupMove(11, 16, Content.Black);
+            g.SetupMove(11, 17, Content.Black);
+
+            for (int x = 2; x <= 11; x++)
+            {
+                for (int y = 14; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+
+            HashSet<Group> connectedGroups = LinkHelper.GetAllDiagonalConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(6, 16)));
+            Assert.AreEqual(connectedGroups.Contains(g.Board.GetGroupAt(new Point(3, 16))), false);
+        }
 
         /*
  13 . . . . . . X X X . . . . . . . . . . 
@@ -1487,74 +1584,6 @@ namespace UnitTestProject
             Assert.AreEqual(connectedGroups.Contains(g.Board.GetGroupAt(new Point(5, 13))), false);
         }
 
-        /*
- 11 . . O X X . . . . . . . . . . . . . . 
- 12 . X O . O O . . . . . . . . . . . . . 
- 13 . X . O X . O . . . . . . . . . . . . 
- 14 . . X . O X . O . . . . . . . . . . . 
- 15 . X . X . O X O . . . . . . . . . . . 
- 16 . . X . . . O X . . . . . . . . . . . 
- 17 . X O O O O . X . . . . . . . . . . . 
- 18 . . O . O X X X . . . . . . . . . . .
-         */
-        [TestMethod]
-        public void LinkHelperTest_Scenario_WindAndTime_Q30150_12()
-        {
-            Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
-            Game g = new Game(gi);
-            g.GameInfo.targetPoints.Add(new Point(3, 17));
-            g.SetupMove(1, 12, Content.Black);
-            g.SetupMove(1, 15, Content.Black);
-            g.SetupMove(1, 17, Content.Black);
-            g.SetupMove(2, 11, Content.White);
-            g.SetupMove(2, 12, Content.White);
-            g.SetupMove(1, 13, Content.Black);
-            g.SetupMove(2, 14, Content.Black);
-            g.SetupMove(2, 16, Content.Black);
-            g.SetupMove(2, 17, Content.White);
-            g.SetupMove(2, 18, Content.White);
-            g.SetupMove(3, 11, Content.White);
-            g.SetupMove(3, 13, Content.White);
-            g.SetupMove(3, 15, Content.Black);
-            g.SetupMove(3, 17, Content.White);
-            g.SetupMove(4, 11, Content.White);
-            g.SetupMove(4, 12, Content.White);
-            g.SetupMove(4, 13, Content.Black);
-            g.SetupMove(4, 14, Content.White);
-            g.SetupMove(4, 17, Content.White);
-            g.SetupMove(4, 18, Content.White);
-            g.SetupMove(5, 12, Content.White);
-            g.SetupMove(5, 15, Content.White);
-            g.SetupMove(5, 16, Content.White);
-            g.SetupMove(5, 17, Content.White);
-            g.SetupMove(5, 18, Content.Black);
-            g.SetupMove(6, 13, Content.White);
-            g.SetupMove(6, 14, Content.Black);
-            g.SetupMove(6, 16, Content.White);
-            g.SetupMove(6, 18, Content.Black);
-            g.SetupMove(7, 14, Content.Black);
-            g.SetupMove(7, 15, Content.Black);
-            g.SetupMove(7, 16, Content.Black);
-            g.SetupMove(7, 17, Content.Black);
-            g.SetupMove(7, 18, Content.Black);
-
-            for (int x = 0; x <= 7; x++)
-            {
-                for (int y = 10; y <= 18; y++)
-                    gi.movablePoints.Add(new Point(x, y));
-            }
-            gi.killMovablePoints.AddRange(gi.movablePoints);
-
-            g.Board[7, 14] = g.Board[7, 15] = Content.White;
-            g.Board[6, 14] = g.Board[5, 16] = Content.Empty;
-            g.Board[6, 15] = g.Board[5, 14] = Content.Black;
-            g.Board[3, 11] = g.Board[4, 11] = Content.Black;
-
-            HashSet<Group> connectedGroups = LinkHelper.GetAllDiagonalConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(2, 18)));
-            Assert.AreEqual(connectedGroups.Contains(g.Board.GetGroupAt(new Point(2, 12))), false);
-
-        }
 
         /*
   8 . . . . . O X . . . . . . . . . . . . 
