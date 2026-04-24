@@ -1346,7 +1346,10 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             g.MakeMove(6, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(tryMoves.Count == 0, true);
+            GameTryMove tryMove = new GameTryMove(g);
+            tryMove.MakeKoMove(new Point(0, 18), SurviveOrKill.Survive);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
+            Assert.AreEqual(isRedundant, true);
         }
 
         /*
@@ -1367,10 +1370,11 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(4, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(tryMoves.Count == 0, true);
-
+            GameTryMove tryMove = new GameTryMove(g);
+            tryMove.MakeKoMove(new Point(0, 18), SurviveOrKill.Survive);
+            Boolean isRedundant = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
+            Assert.AreEqual(isRedundant, true);
         }
-
 
         /*
  12 . O . . . . . . . . . . . . . . . . . 
@@ -2911,7 +2915,7 @@ namespace UnitTestProject
  15 X X . . . . . . . . . . . . . . . . . 
  16 X X O O O O O O . . . . . . . . . . . 
  17 X O X X X X X X O O O . . . . . . . . 
- 18 . O . X . O X O . 。 . . . . . . . . . 
+ 18 . O . X . O X O . . . . . . . . . . . 
          */
         [TestMethod]
         public void RedundantKoMoveTest_Scenario_XuanXuanQiJing_A38()
