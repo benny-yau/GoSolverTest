@@ -1100,5 +1100,48 @@ namespace UnitTestProject
             Assert.AreEqual(moveResult.Equals(ConfirmAliveResult.Dead), true);
         }
 
+        /*
+ 14 . X X X . . . . . . . . . . . . . . . 
+ 15 . . O O X . . . . . . . . . . . . . . 
+ 16 . O . . X . . . . . . . . . . . . . . 
+ 17 X O X O X . X . . . . . . . . . . . . 
+ 18 . . O . . . . . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void MustHaveNeutralMoveTest_Sekiyama_Q2396()
+        {
+            //https://www.101weiqi.com/book/1279/2721/2396/
+            Scenario s = new Scenario();
+            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.Black);
+            Game g = new Game(gi);
+            g.SetupMove(1, 14, Content.Black);
+            g.SetupMove(1, 17, Content.White);
+            g.SetupMove(2, 14, Content.Black);
+            g.SetupMove(2, 15, Content.White);
+            g.SetupMove(2, 17, Content.Black);
+            g.SetupMove(2, 18, Content.White);
+            g.SetupMove(3, 14, Content.Black);
+            g.SetupMove(3, 15, Content.White);
+            g.SetupMove(3, 17, Content.White);
+            g.SetupMove(4, 15, Content.Black);
+            g.SetupMove(4, 16, Content.Black);
+            g.SetupMove(4, 17, Content.Black);
+            g.SetupMove(6, 17, Content.Black);
+            g.GameInfo.targetPoints.Add(new Point(2, 15));
+            for (int x = 0; x <= 3; x++)
+            {
+                for (int y = 14; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.movablePoints.Add(new Point(4, 18));
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+            gi.killMovablePoints.Add(new Point(5, 18));
+            gi.killMovablePoints.Add(new Point(0, 13));
+            g.MakeMove(0, 17);
+            g.MakeMove(1, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(4, 18))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 18))) != null, true);
+        }
     }
 }
