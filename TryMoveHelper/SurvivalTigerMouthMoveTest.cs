@@ -2518,6 +2518,23 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(1, 15))), true);
         }
+
+        /*
+ 14 . . O . . . . . . . . . . . . . . . . 
+ 15 . O O . O . . . . . . . . . . . . . . 
+ 16 X X O X . O . . . . . . . . . . . . . 
+ 17 . . X . X O . O . . . . . . . . . . . 
+ 18 . . . . . X . . . . . . . . . . . . .
+       */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_AncientJapanese_B6()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_AncientJapanese_B6();
+            g.MakeMove(0, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(4, 18))), true);
+        }
     }
 }
 
