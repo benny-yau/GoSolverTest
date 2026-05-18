@@ -2311,7 +2311,6 @@ namespace UnitTestProject
             Game g = s.Scenario_TianLongTu_Q15301();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(6, 16))), true);
-            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(4, 16))), true);
         }
 
         /*

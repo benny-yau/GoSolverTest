@@ -319,5 +319,24 @@ namespace UnitTestProject
             Assert.AreEqual(tryMoves.Where(n => n.Move.Equals(new Point(1, 18))).FirstOrDefault() != null, true);
         }
 
+
+        /*
+ 12 . . O . . . . . . . . . . . . . . . . 
+ 13 . O . O O O . . . . . . . . . . . . . 
+ 14 . . X X X O . . . . . . . . . . . . . 
+ 15 X X X . X . . . . . . . . . . . . . . 
+ 16 . O . . X O . . . . . . . . . . . . . 
+ 17 . . O X O . O . . . . . . . . . . . . 
+ 18 . . . . . O . . . . . . . . . . . . . 
+        */
+        [TestMethod]
+        public void LeapMoveTest_Scenario_TianLongTu_Q14992()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q14992();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            GameTryMove tryMove = tryMoves.Where(n => n.Move.Equals(new Point(1, 18))).FirstOrDefault();
+            Assert.AreEqual(tryMove != null, true);
+        }
     }
 }
