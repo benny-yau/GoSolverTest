@@ -3458,5 +3458,37 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(2, 16))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(2, 16))) != null, true);
         }
+
+        /*
+ 15 O O O O O O . O . . . . . . . . . . . 
+ 16 O X X X X X O . . . . . . . . . . . . 
+ 17 . O X . . X X O O . . . . . . . . . . 
+ 18 . O . X X X O . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_GuanZiPu_A17_5()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_GuanZiPu_A17();
+            g.MakeMove(1, 17);
+            g.MakeMove(5, 16);
+            g.MakeMove(3, 17);
+            g.MakeMove(3, 16);
+            g.MakeMove(0, 16);
+            g.MakeMove(3, 18);
+            g.MakeMove(6, 18);
+            g.MakeMove(5, 18);
+
+            g.MakeMove(4, 17);
+            g.MakeMove(2, 16);
+            g.MakeMove(1, 18);
+            g.MakeMove(4, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(2, 18))), true);
+
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+        }
     }
 }
