@@ -8001,14 +8001,15 @@ namespace UnitTestProject
         }
 
         /*
- 11 . . . . X X . . . . . . . . . . . . . 
+ 10 . . . . . . O . . . . . . . . . . . . 
+ 11 . . . . X X O . . . . . . . . . . . . 
  12 . . . X . O X . . . . . . . . . . . . 
  13 . . X X . O . X . . . . . . . . . . . 
  14 . . O X O O . . . . . . . . . . . . . 
  15 . . O O X O X X X . . . . . . . . . . 
  16 . O . . X X O O X O O . . . . . . . . 
  17 . . O . X O O . O X O . . . . . . . . 
- 18 . . . X . X . . . . . . . . . . . . .
+ 18 . . . X . X . . . . . . . . . . . . . 
         */
         [TestMethod]
         public void DailyGoProblems_20260609_5()
@@ -8053,24 +8054,36 @@ namespace UnitTestProject
             g.SetupMove(9, 17, Content.Black);
             g.SetupMove(10, 16, Content.White);
             g.SetupMove(10, 17, Content.White);
+            g.Board[6, 10] = Content.White;
+            g.Board[6, 11] = Content.White;
             g.GameInfo.targetPoints.Add(new Point(5, 15));
-            for (int x = 3; x <= 10; x++)
+            for (int x = 4; x <= 10; x++)
             {
                 for (int y = 16; y <= 18; y++)
                     gi.movablePoints.Add(new Point(x, y));
             }
-            gi.movablePoints.Add(new Point(2, 18));
+            gi.movablePoints.Add(new Point(3, 17));
+            gi.movablePoints.Add(new Point(3, 18));
             gi.killMovablePoints.AddRange(gi.movablePoints);
             gi.killMovablePoints.Add(new Point(4, 12));
             gi.killMovablePoints.Add(new Point(4, 13));
             gi.killMovablePoints.Add(new Point(6, 13));
             gi.killMovablePoints.Add(new Point(6, 14));
-            gi.movablePoints.Add(new Point(2, 16));
-            gi.movablePoints.Add(new Point(1, 18));
+            gi.movablePoints.Add(new Point(3, 16));
+            gi.movablePoints.Add(new Point(2, 18));
             gi.movablePoints.Add(new Point(11, 18));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.FillKoEyeMove(new GameTryMove(g, new Point(4, 18))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 18))) != null, true);
+            g.MakeMove(4, 18);
+            g.MakeMove(7, 17);
+            g.MakeMove(4, 13);
+            g.MakeMove(7, 18);
+            g.MakeMove(9, 18);
+            g.MakeMove(10, 18);
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
 
         public static Game SearchAnswer(Game g)

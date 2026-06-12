@@ -1451,12 +1451,13 @@ namespace UnitTestProject
         }
 
         /*
- 13 . . X X X . . . . . . . . . . . . . . 
+ 12 . . . . . O . . . . . . . . . . . . . 
+ 13 . . X X X O . . . . . . . . . . . . . 
  14 . X O O O X X . . . . . . . . . . . . 
  15 . X O . O O X . . . . . . . . . . . . 
  16 . X O O X X O O O . . . . . . . . . . 
  17 . X O O . X X X O . O . . . . . . . . 
- 18 . X X O X . O X O . . . . . . . . . . 
+ 18 . X X O X . O X O . . . . . . . . . .
          */
         [TestMethod]
         public void BothAliveTest_Scenario_GuanZiPu_B18_2()
@@ -1474,6 +1475,11 @@ namespace UnitTestProject
             g.Board[7, 17] = Content.Black;
             g.Board[7, 18] = Content.Black;
             g.Board[8, 18] = Content.White;
+            g.Board[5, 12] = Content.White;
+            g.Board[5, 13] = Content.White;
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Boolean enablePassMove = BothAliveHelper.EnableCheckForPassMove(g.Board);
+            Assert.AreEqual(enablePassMove, true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Assert.AreEqual(g.Board.IsPassMove, true);
