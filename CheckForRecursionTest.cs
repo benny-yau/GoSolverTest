@@ -32,7 +32,7 @@ namespace UnitTestProject
             g.MakeMove(1, 16);
 
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -102,7 +102,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(new Point(7, 16), SurviveOrKill.Survive);
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();

@@ -1506,7 +1506,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, p);
             
             Assert.AreEqual(RedundantMoveHelper.RedundantCoveredEyeMove(tryMove), false);
-            Assert.AreEqual(RedundantMoveHelper.RedundantSurvivalKoMove(tryMove), false);
+            Assert.AreEqual(RedundantMoveHelper.RedundantKoMove(tryMove), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(p)) != null, true);
 
 

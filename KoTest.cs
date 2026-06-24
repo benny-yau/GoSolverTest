@@ -361,7 +361,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
             
-            Boolean isRedundantKo = RedundantMoveHelper.RedundantSurvivalKoMove(tryMove);
+            Boolean isRedundantKo = RedundantMoveHelper.RedundantKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, true);
 
             Game m = new Game(g);
