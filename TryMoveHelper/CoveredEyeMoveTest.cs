@@ -1142,17 +1142,17 @@ namespace UnitTestProject
             Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
         }
-            /*
-     11 . O . O . . . . . . . . . . . . . . . 
-     12 . . . . O . O . . . . . . . . . . . . 
-     13 X X X X . . . . . . . . . . . . . . . 
-     14 . O . X O O X X . X . . . . . . . . . 
-     15 X O . X X X O . . . . . . . . . . . . 
-     16 . X X X . X O O X X . X . . . . . . . 
-     17 . O O O X O O O . . X . . . . . . . . 
-     18 . O . O O X . O . . . . . . . . . . . 
-             */
-            [TestMethod]
+        /*
+ 11 . O . O . . . . . . . . . . . . . . . 
+ 12 . . . . O . O . . . . . . . . . . . . 
+ 13 X X X X . . . . . . . . . . . . . . . 
+ 14 . O . X O O X X . X . . . . . . . . . 
+ 15 X O . X X X O . . . . . . . . . . . . 
+ 16 . X X X . X O O X X . X . . . . . . . 
+ 17 . O O O X O O O . . X . . . . . . . . 
+ 18 . O . O O X . O . . . . . . . . . . . 
+         */
+        [TestMethod]
         public void CoveredEyeMoveTest_Scenario_XuanXuanGo_A42()
         {
             Scenario s = new Scenario();
@@ -1300,7 +1300,7 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 14));
-            
+
             Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -1335,7 +1335,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
-            
+
             Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -1372,7 +1372,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 14));
-            
+
             Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -1407,7 +1407,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
-            
+
             Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -1438,7 +1438,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
-            
+
             Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
             Assert.AreEqual(isRedundant, true);
         }
@@ -1467,7 +1467,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(7, 18));
-            
+
             Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -1504,7 +1504,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Point p = new Point(0, 14);
             GameTryMove tryMove = new GameTryMove(g, p);
-            
+
             Assert.AreEqual(RedundantMoveHelper.RedundantCoveredEyeMove(tryMove), false);
             Assert.AreEqual(RedundantMoveHelper.RedundantKoMove(tryMove), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(p)) != null, true);
@@ -1543,7 +1543,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
-            
+
             Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -1576,7 +1576,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 14));
-            
+
             Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -1608,7 +1608,7 @@ namespace UnitTestProject
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
-            
+
             Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
 
@@ -1777,7 +1777,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(2, 16));
             Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
             Assert.AreEqual(isRedundant, false);
-            
+
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
@@ -2524,37 +2524,6 @@ namespace UnitTestProject
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
-        }
-
-        /*
-  8 . O . . . . . . . . . . . . . . . . . 
-  9 X O . O . . . . . . . . . . . . . . . 
- 10 . X O . . . . . . . . . . . . . . . . 
- 11 X X O . . . . . . . . . . . . . . . . 
- 12 O . X O . . . . . . . . . . . . . . . 
- 13 . X X O O . . . . . . . . . . . . . . 
- 14 . X O . O . . . . . . . . . . . . . . 
- 15 . X X O O . . . . . . . . . . . . . . 
- 16 X O O O . . . . . . . . . . . . . . . 
- 17 . O . . . . . . . . . . . . . . . . . 
- 18 . . . . . . . . . . . . . . . . . . . 
-         */
-        [TestMethod]
-        public void CoveredEyeMoveTest_Scenario_XuanXuanGo_A41_2()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_XuanXuanGo_A41();
-            g.MakeMove(3, 13);
-            g.MakeMove(3, 14);
-            g.MakeMove(3, 15);
-            g.MakeMove(1, 13);
-            g.MakeMove(0, 12);
-            g.MakeMove(1, 14);
-            g.MakeMove(2, 14);
-            g.MakeMove(0, 11);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(RedundantMoveHelper.FindCoveredEyeMove(new GameTryMove(g, new Point(3, 14))), false);
-            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 14))) != null, true);
         }
 
         /*

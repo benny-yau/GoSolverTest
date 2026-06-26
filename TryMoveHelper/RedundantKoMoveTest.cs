@@ -1,9 +1,10 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Go;
-using ScenarioCollection;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using Go;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ScenarioCollection;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace UnitTestProject
 {
@@ -3455,7 +3456,7 @@ namespace UnitTestProject
   9 . O O . . . . . . . . . . . . . . . . 
  10 O X . O . . . . . . . . . . . . . . . 
  11 X . X O . . . . . . . . . . . . . . . 
- 12 . O X . . . . . . . . . . . . . . . . 
+ 12 . . X . . . . . . . . . . . . . . . . 
  13 . . X O O . . . . . . . . . . . . . . 
  14 X . . X O . . . . . . . . . . . . . . 
  15 O X X . O . . . . . . . . . . . . . . 
@@ -3474,13 +3475,9 @@ namespace UnitTestProject
             g.MakeMove(0, 14);
             g.MakeMove(0, 10);
             g.MakeMove(0, 11);
-
+            Assert.AreEqual(RedundantMoveHelper.RedundantKoMove(new GameTryMove(g, new Point(0, 16))), true);
             g.MakeMove(1, 12);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            GameTryMove tryMove = new GameTryMove(g, new Point(0, 16));
-            Boolean isRedundant = RedundantMoveHelper.RedundantKoMove(tryMove);
-            Assert.AreEqual(isRedundant, true);
+            Assert.AreEqual(RedundantMoveHelper.RedundantKoMove(new GameTryMove(g, new Point(0, 16))), true);
         }
 
         /*
