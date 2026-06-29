@@ -239,6 +239,7 @@ namespace UnitTestProject
 
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(6, 18))) != null, true);
 
         }
 
@@ -270,7 +271,7 @@ namespace UnitTestProject
  13 . . . X X X X . . . . . . . . . . . . 
  14 . X X O O . O X X . . . . . . . . . . 
  15 . . X O . . O . O X . . . . . . . . . 
- 16 . X O O . O X . O X . . . . . . . . . 
+ 16 . X O O . O . . O X . . . . . . . . . 
  17 . X O . . O X . O X . . . . . . . . . 
  18 . X X X X X O O O X . . . . . . . . . 
 
@@ -286,6 +287,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(6, 16));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(6, 16))) != null, true);
         }
 
         /*
@@ -311,6 +313,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 13));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 13))) != null, true);
 
             GameTryMove tryMove2 = new GameTryMove(g, new Point(0, 14));
             Boolean isSuicidal2 = RedundantMoveHelper.SuicidalRedundantMove(tryMove2);
@@ -365,6 +368,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 17))) != null, true);
 
             GameTryMove tryMove2 = new GameTryMove(g, new Point(0, 18));
             Boolean isSuicidal2 = RedundantMoveHelper.SuicidalRedundantMove(tryMove2);
@@ -453,6 +457,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 18))) != null, true);
         }
 
         /*
@@ -511,6 +516,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 17))) != null, true);
 
             Boolean connectAndDie = ImmovableHelper.CheckConnectAndDie(g.Board, g.Board.GetGroupAt(new Point(0, 17)));
             Assert.AreEqual(connectAndDie, true);
@@ -531,10 +537,10 @@ namespace UnitTestProject
             Game g = s.Scenario_WuQingYuan_Q31493();
             g.MakeMove(3, 18);
             g.MakeMove(4, 17);
-
             GameTryMove tryMove = new GameTryMove(g, new Point(5, 16));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(5, 16))) != null, true);
         }
 
         /*
@@ -552,10 +558,10 @@ namespace UnitTestProject
             Game g = s.Scenario_TianLongTu_Q17081();
             g.MakeMove(9, 18);
             g.MakeMove(8, 18);
-
-            GameTryMove tryMove = new GameTryMove(g, new Point(5, 17));
+           GameTryMove tryMove = new GameTryMove(g, new Point(5, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(5, 17))) != null, true);
         }
 
         /*
@@ -570,10 +576,10 @@ namespace UnitTestProject
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanQiJing_A61();
-
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(4, 17))) != null, true);
         }
 
         /*
@@ -593,6 +599,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(1, 18))) != null, true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -618,6 +625,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(4, 17))) != null, true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -642,6 +650,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 17))) != null, true);
         }
 
         /*
@@ -663,11 +672,13 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(2, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(2, 17))) != null, true);
             g.MakeMove(2, 17);
             g.MakeMove(3, 17);
             GameTryMove tryMove2 = new GameTryMove(g, new Point(2, 18));
             Boolean isSuicidal2 = RedundantMoveHelper.SuicidalRedundantMove(tryMove2);
             Assert.AreEqual(isSuicidal2, false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(2, 18))) != null, true);
 
 
             g.MakeMove(2, 18);
@@ -695,6 +706,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 13));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(4, 13))) != null, true);
         }
 
         /*
@@ -772,6 +784,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 12));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(0, 12))) != null, true);
         }
 
         /*
@@ -795,6 +808,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 13));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(1, 13))) != null, true);
         }
 
 
@@ -821,6 +835,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(3, 18))) != null, true);
         }
 
         /*
@@ -852,6 +867,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 15));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 15))) != null, true);
 
             GameTryMove tryMove2 = new GameTryMove(g, new Point(0, 18));
             Boolean isSuicidal2 = RedundantMoveHelper.SuicidalRedundantMove(tryMove2);
@@ -886,6 +902,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 17))) != null, true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -953,6 +970,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 16));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 16))) != null, true);
         }
 
 
@@ -1055,6 +1073,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(2, 11));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(2, 11))) != null, true);
         }
 
         /*
@@ -1082,6 +1101,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 18))) != null, true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -2147,7 +2167,6 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             g.MakeMove(0, 18);
             g.MakeMove(1, 17);
-            g.GameInfo.RuntimeScript_KillMove = null;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             List<Point> points = new List<Point>() { new Point(0, 17), new Point(1, 16), new Point(2, 18) };
             foreach (Point p in points)
@@ -3823,6 +3842,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
         }
 
         /*
@@ -3844,6 +3864,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(4, 17))) != null, true);
         }
 
         /*
@@ -4081,6 +4102,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(2, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(2, 17))) != null, true);
         }
 
         /*
@@ -4121,6 +4143,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 18))) != null, true);
         }
 
         /*
@@ -4146,6 +4169,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(3, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 17))) != null, true);
         }
 
         /*
@@ -4196,6 +4220,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 15));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 15))) != null, true);
         }
 
         /*
@@ -4214,6 +4239,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 17))) != null, true);
         }
 
         /*
@@ -4234,6 +4260,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 16));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 16))) != null, true);
         }
 
         /*
@@ -4253,6 +4280,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(5, 16));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 16))) != null, true);
         }
 
         /*
@@ -4279,6 +4307,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(3, 12));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 12))) != null, true);
         }
 
         /*
@@ -4301,6 +4330,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(5, 12));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 12))) != null, true);
         }
 
         /*
@@ -4320,6 +4350,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(5, 16));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 16))) != null, true);
         }
 
         /*
@@ -4366,6 +4397,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 16));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 16))) != null, true);
         }
 
         /*
@@ -4413,6 +4445,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(6, 18))) != null, true);
         }
 
         /*
@@ -4435,6 +4468,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 18))) != null, true);
         }
 
         /*
@@ -4457,6 +4491,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(6, 18))) != null, true);
         }
 
         /*
@@ -4477,6 +4512,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 17))) != null, true);
         }
 
         /*
@@ -4497,6 +4533,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 18))) != null, true);
         }
 
         /*
@@ -4521,6 +4558,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 18))) != null, true);
         }
 
         /*
@@ -4563,6 +4601,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(0, 16));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 16))) != null, true);
         }
 
         /*
@@ -4583,6 +4622,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(4, 18))), false);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(5, 18))), true);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 18))) != null, true);
         }
 
         /*
@@ -4600,6 +4640,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(9, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(9, 18))) != null, true);
         }
 
         /*
@@ -4620,6 +4661,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(2, 18))) != null, true);
         }
 
         /*
@@ -4637,6 +4679,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(7, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(7, 18))) != null, true);
         }
 
         /*
@@ -4655,6 +4698,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(6, 18))) != null, true);
         }
 
         /*
@@ -4673,6 +4717,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(6, 16));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(6, 16))) != null, true);
         }
 
         /*
@@ -4695,6 +4740,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
         }
 
         /*
@@ -4714,6 +4760,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 17))) != null, true);
         }
 
         /*
@@ -4738,6 +4785,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(3, 12));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 12))) != null, true);
         }
 
         /*
@@ -4759,6 +4807,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(2, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(2, 17))) != null, true);
         }
 
         /*
@@ -4778,6 +4827,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 18))) != null, true);
         }
 
         /*
@@ -4795,6 +4845,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(6, 18));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(6, 18))) != null, true);
         }
 
         /*
