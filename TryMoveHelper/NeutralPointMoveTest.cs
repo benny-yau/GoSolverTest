@@ -2057,47 +2057,61 @@ namespace UnitTestProject
         }
 
         /*
- 11 . . O . . . . . . . . . . . . . . . . 
- 12 . O O . . . . . . . . . . . . . . . . 
+ 12 . O O O . . . . . . . . . . . . . . . 
  13 . X X O . . . . . . . . . . . . . . . 
- 14 X . X O O . . . . . . . . . . . . . . 
- 15 O X X X O . . . . . . . . . . . . . . 
- 16 . O X X O . . . . . . . . . . . . . . 
- 17 O O O X O . . . . . . . . . . . . . . 
- 18 . . O X O . . . . . . . . . . . . . .
+ 14 X . X O O O . . . . . . . . . . . . . 
+ 15 O X X X X O . . . . . . . . . . . . . 
+ 16 . O O O X O . . . . . . . . . . . . . 
+ 17 O O O O X O . . . . . . . . . . . . . 
+ 18 . . O X X O . . . . . . . . . . . . . 
         */
         [TestMethod]
         public void NeutralPointMoveTest_Scenario_XuanXuanGo_A28_101Weiqi_8()
         {
             Scenario s = new Scenario();
-            Game g = s.Scenario_XuanXuanGo_A28_101Weiqi();
-            g.MakeMove(2, 18);
-            g.MakeMove(1, 16);
-            g.MakeMove(2, 16);
-            g.MakeMove(0, 17);
-            g.MakeMove(1, 15);
-            g.MakeMove(1, 18);
-            g.MakeMove(3, 14);
-            g.MakeMove(0, 15);
-            g.MakeMove(0, 14);
-            g.MakeMove(3, 3);
-
-            g.Board[1, 14] = Content.Empty;
-            g.Board[3, 14] = Content.White;
-            g.Board[2, 15] = Content.Black;
-            g.Board[2, 13] = Content.Black;
-            g.Board[2, 12] = Content.White;
-
-            g.Board[3, 17] = Content.Black;
-            g.Board[1, 18] = Content.Empty;
-            g.Board[2, 18] = Content.White;
-            g.Board[2, 17] = Content.White;
-            g.Board[3, 18] = Content.Black;
-            g.Board[4, 18] = Content.White;
-
-            g.GameInfo.targetPoints = new List<Point>() { new Point(2, 16) };
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
+            Game g = new Game(gi);
+            g.SetupMove(0, 14, Content.Black);
+            g.SetupMove(0, 15, Content.White);
+            g.SetupMove(0, 17, Content.White);
+            g.SetupMove(1, 12, Content.White);
+            g.SetupMove(1, 13, Content.Black);
+            g.SetupMove(1, 15, Content.Black);
+            g.SetupMove(1, 16, Content.White);
+            g.SetupMove(1, 17, Content.White);
+            g.SetupMove(2, 12, Content.White);
+            g.SetupMove(2, 13, Content.Black);
+            g.SetupMove(2, 14, Content.Black);
+            g.SetupMove(2, 15, Content.Black);
+            g.SetupMove(2, 16, Content.White);
+            g.SetupMove(2, 17, Content.White);
+            g.SetupMove(2, 18, Content.White);
+            g.SetupMove(3, 12, Content.White);
+            g.SetupMove(3, 13, Content.White);
+            g.SetupMove(3, 14, Content.White);
+            g.SetupMove(3, 15, Content.Black);
+            g.SetupMove(3, 16, Content.White);
+            g.SetupMove(3, 17, Content.White);
+            g.SetupMove(3, 18, Content.Black);
+            g.SetupMove(4, 14, Content.White);
+            g.SetupMove(4, 15, Content.Black);
+            g.SetupMove(4, 16, Content.Black);
+            g.SetupMove(4, 17, Content.Black);
+            g.SetupMove(4, 18, Content.Black);
+            g.SetupMove(5, 14, Content.White);
+            g.SetupMove(5, 15, Content.White);
+            g.SetupMove(5, 16, Content.White);
+            g.SetupMove(5, 17, Content.White);
+            g.SetupMove(5, 18, Content.White);
+            g.GameInfo.targetPoints.Add(new Point(2, 15));
+            for (int x = 0; x <= 3; x++)
+            {
+                for (int y = 12; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+            gi.killMovablePoints.Add(new Point(0, 11));
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);

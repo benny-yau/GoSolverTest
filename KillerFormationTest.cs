@@ -1461,7 +1461,7 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             g.MakeMove(0, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g, new Point(2, 17));
+            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, true);
 
@@ -1810,6 +1810,35 @@ namespace UnitTestProject
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointKillMove(tryMove);
             Assert.AreEqual(isNeutralPoint, false);
             Assert.AreEqual(tryMoves.Where(t => t.Move.Equals(new Point(10, 18))).FirstOrDefault() != null, true);
+        }
+
+        /*
+ 13 . X . . . . . . . . . . . . . . . . . 
+ 14 . . . . . . . . . . . . . . . . . . . 
+ 15 X X X X X X . . . . . . . . . . . . . 
+ 16 O O O O O X X . . . . . . . . . . . . 
+ 17 O X O O O O X . . . . . . . . . . . . 
+ 18 . X X . O X X . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void KillerFormationTest_Scenario_TianLongTu_Q16693()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16693();
+            g.MakeMove(2, 18);
+            g.MakeMove(4, 18);
+            g.MakeMove(5, 16);
+            g.MakeMove(0, 16);
+            g.MakeMove(1, 18);
+            g.MakeMove(2, 17);
+            g.MakeMove(5, 18);
+            g.MakeMove(4, 17);
+            g.MakeMove(1, 17);
+            g.MakeMove(0, 17);
+            g.Board[0, 15] = Content.Black;
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 18))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 18))) != null, true);
         }
     }
 }
