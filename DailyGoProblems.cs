@@ -8292,6 +8292,54 @@ namespace UnitTestProject
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
         }
 
+        /*
+ 15 O O O O O O O . . . . . . . . . . . . 
+ 16 X X X X X X O . . . . . . . . . . . . 
+ 17 X . . . X X O . . . . . . . . . . . . 
+ 18 . O O O X O O . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void DailyGoProblems_20260705_3()
+        {
+            Scenario s = new Scenario();
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
+            Game g = new Game(gi);
+            g.SetupMove(0, 15, Content.White);
+            g.SetupMove(0, 16, Content.Black);
+            g.SetupMove(0, 17, Content.Black);
+            g.SetupMove(1, 15, Content.White);
+            g.SetupMove(1, 16, Content.Black);
+            g.SetupMove(1, 18, Content.White);
+            g.SetupMove(2, 15, Content.White);
+            g.SetupMove(2, 16, Content.Black);
+            g.SetupMove(2, 18, Content.White);
+            g.SetupMove(3, 15, Content.White);
+            g.SetupMove(3, 16, Content.Black);
+            g.SetupMove(3, 18, Content.White);
+            g.SetupMove(4, 15, Content.White);
+            g.SetupMove(4, 16, Content.Black);
+            g.SetupMove(4, 18, Content.Black);
+            g.SetupMove(5, 15, Content.White);
+            g.SetupMove(5, 16, Content.Black);
+            g.SetupMove(5, 17, Content.Black);
+            g.SetupMove(5, 18, Content.White);
+            g.SetupMove(6, 15, Content.White);
+            g.SetupMove(6, 16, Content.White);
+            g.SetupMove(6, 17, Content.White);
+            g.SetupMove(6, 18, Content.White);
+            g.GameInfo.targetPoints.Add(new Point(3, 16));
+            for (int x = 0; x <= 5; x++)
+            {
+                for (int y = 16; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+            g.MakeMove(4, 17);
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
+        }
+
         public static Game SearchAnswer(Game g)
         {
             Game.SearchAnswer = true;

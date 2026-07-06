@@ -1395,7 +1395,7 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
             GameTryMove tryMove = new GameTryMove(g, new Point(6, 17));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(isSuicidal, true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;

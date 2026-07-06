@@ -146,6 +146,7 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(2, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 18))), true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
