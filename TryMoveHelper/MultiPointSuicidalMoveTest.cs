@@ -3490,5 +3490,40 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
+
+        /*
+ 12 . . . . X X . . . . . . . . . . . . . 
+ 13 . . . X . O X X . . . . . . . . . . . 
+ 14 . . X O O O O O X . . . . . . . . . . 
+ 15 . . X O X X O O X . . . . . . . . . . 
+ 16 . . X O X . O X . . . . . . . . . . . 
+ 17 . X O O O . O . X . . . . . . . . . . 
+ 18 . X X X . . O . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_WindAndTime_Q30358_4()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WindAndTime_Q30358();
+            g.MakeMove(5, 15);
+            g.MakeMove(6, 18);
+            g.MakeMove(4, 18);
+            g.MakeMove(7, 15);
+            g.MakeMove(2, 18);
+            g.MakeMove(6, 15);
+            g.MakeMove(4, 16);
+            g.MakeMove(4, 17);
+            g.Board[2, 14] = Content.Black;
+            g.Board[3, 14] = Content.White;
+            g.Board[3, 18] = Content.Black;
+            g.Board[4, 18] = Content.Empty;
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(5, 16))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 16))) != null, true);
+
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+        }
     }
 }
