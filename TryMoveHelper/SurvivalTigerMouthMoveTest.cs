@@ -867,7 +867,7 @@ namespace UnitTestProject
             g.MakeMove(7, 18);
             g.MakeMove(5, 18);
             g.MakeMove(5, 15);
-
+            g.Board[1, 18] = Content.Black;
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 18));
