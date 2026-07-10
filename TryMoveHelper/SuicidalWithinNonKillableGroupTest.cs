@@ -40,10 +40,9 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             g.MakeMove(1, 13);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            GameTryMove tryMove = new GameTryMove(g, new Point(2, 11));
-            Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isSuicidal, true);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(2, 11))), true);
+            g.MakeMove(3, 3);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(2, 11))), true);
         }
 
         /*
