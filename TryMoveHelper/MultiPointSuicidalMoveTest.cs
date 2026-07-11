@@ -2924,6 +2924,7 @@ namespace UnitTestProject
             g.Board[4, 16] = Content.Black;
             g.Board[3, 17] = Content.White;
 
+            g.Board.GameInfo.killMovablePoints.Add(new Point(0, 14));
             g.Board.GameInfo.killMovablePoints.Add(new Point(4, 18));
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
