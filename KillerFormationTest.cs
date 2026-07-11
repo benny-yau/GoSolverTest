@@ -1958,5 +1958,28 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(5, 18))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
         }
+
+        /*
+ 14 . . . . . . . . . X X . . . . . . . . 
+ 15 . . . . X . X X X . O X . . . . . . . 
+ 16 . . X . X O O . X . O X . . . . . . . 
+ 17 . . . X O . . O O O O X . . . . . . . 
+ 18 . . . X . O . X X . O X . . . . . . .
+         */
+        [TestMethod]
+        public void KillerFormationTest_Scenario_WuQingYuan_Q30919()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WuQingYuan_Q30919();
+            g.MakeMove(8, 16);
+            g.MakeMove(7, 17);
+            g.MakeMove(3, 18);
+            g.MakeMove(10, 18);
+            g.MakeMove(8, 18);
+            g.MakeMove(9, 17);
+            g.MakeMove(7, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(9, 18))), true);
+        }
     }
 }

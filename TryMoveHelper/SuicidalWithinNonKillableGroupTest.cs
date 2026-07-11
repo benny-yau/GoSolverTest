@@ -39,9 +39,8 @@ namespace UnitTestProject
             g.MakeMove(0, 17);
             g.MakeMove(2, 18);
             g.MakeMove(1, 13);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(2, 11))), true);
             g.MakeMove(3, 3);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(2, 11))), true);
         }
 
@@ -174,5 +173,33 @@ namespace UnitTestProject
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
         }
 
+        /*
+ 13 . . . O O O O O . . . . . . . . . . . 
+ 14 . . . . X O . O . . . . . . . . . . . 
+ 15 . . O . X O . O . . . . . . . . . . . 
+ 16 . . O X X O . . O . . . . . . . . . . 
+ 17 . . O X . X O . O . . . . . . . . . . 
+ 18 . . X . X X X O O . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_WindAndTime_Q29961()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WindAndTime_Q29961();
+            g.MakeMove(4, 14);
+            g.MakeMove(3, 18);
+            g.MakeMove(6, 16);
+            g.MakeMove(5, 14);
+            g.MakeMove(5, 18);
+            g.MakeMove(4, 17);
+            g.MakeMove(4, 16);
+            g.MakeMove(5, 15);
+            g.MakeMove(2, 18);
+            g.MakeMove(5, 16);
+            g.MakeMove(4, 18);
+            g.MakeMove(6, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(6, 16))), true);
+        }
     }
 }
