@@ -124,9 +124,9 @@ namespace UnitTestProject
  13 X X X X X . . . . . . . . . . . . . . 
  14 X O O O X . . . . . . . . . . . . . . 
  15 X X X O X . . . . . . . . . . . . . . 
- 16 . O O O X . . . . . . . . . . . . . . 
+ 16 O O O O X . . . . . . . . . . . . . . 
  17 . O . O O X . . . . . . . . . . . . . 
- 18 . X . . O X . . . . . . . . . . . . .
+ 18 O X X . O X . . . . . . . . . . . . .
          */
         [TestMethod]
         public void SuicidalMoveWithinKillerGroupTest_ScenarioHighLevel32()
@@ -145,6 +145,33 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(2, 17))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(2, 17))) != null, true);
+        }
+
+        /*
+ 13 . . . X X X . . . . . . . . . . . . . 
+ 14 . . X O O O X X X . . . . . . . . . . 
+ 15 . . X O . X O O X . . . . . . . . . . 
+ 16 . . X O O X . O X . . . . . . . . . . 
+ 17 . . X X O O O O X . . . . . . . . . . 
+ 18 . . . . X O . O X . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalMoveWithinKillerGroupTest_Scenario_WuQingYuan_Q31603()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WuQingYuan_Q31603();
+            g.MakeMove(5, 15);
+            g.MakeMove(6, 15);
+            g.MakeMove(6, 18);
+            g.MakeMove(6, 17);
+            g.MakeMove(3, 17);
+            g.MakeMove(4, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(5, 18);
+            g.MakeMove(3, 3);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(4, 15))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 15))) != null, true);
         }
     }
 }
