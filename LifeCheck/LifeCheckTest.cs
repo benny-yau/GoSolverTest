@@ -922,7 +922,7 @@ namespace UnitTestProject
             g.SetupMove(11, 16, Content.Black);
             g.SetupMove(11, 17, Content.Black);
 
-            gi.targetPoints = new List<Point>() { new Point(7, 15) };
+            gi.targetPoints = new List<Point>() { new Point(8, 15) };
             for (int x = 0; x <= 10; x++)
             {
                 for (int y = 15; y <= 18; y++)
@@ -995,7 +995,7 @@ namespace UnitTestProject
             g.SetupMove(10, 16, Content.Black);
             g.SetupMove(10, 17, Content.Black);
 
-            gi.targetPoints = new List<Point>() { new Point(7, 15) };
+            gi.targetPoints = new List<Point>() { new Point(7, 17) };
             for (int x = 2; x <= 9; x++)
             {
                 for (int y = 15; y <= 18; y++)
