@@ -2308,6 +2308,5 @@ namespace UnitTestProject
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
             Assert.AreEqual(result != ConfirmAliveResult.Alive, true);
         }
-
     }
 }

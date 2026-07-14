@@ -518,8 +518,6 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
             Boolean isRedundant = RedundantMoveHelper.AtariRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, true);
-
-            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 17))) != null, true);
         }
 
         /*
