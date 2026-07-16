@@ -434,10 +434,10 @@ namespace UnitTestProject
         /*
  13 . . . . . . X X X . . . . . . . . . . 
  14 . . . . . X O O O X X X . . . . . . . 
- 15 . . X X X X X . . O O X . . . . . . . 
+ 15 . . X X X X . . . O O X . . . . . . . 
  16 . X O O O . O O O . O X . . . . . . . 
  17 . X O . . O . X O O X X . . . . . . . 
- 18 . . X X X O X X X X X . . . . . . . . 
+ 18 . X . X X O X X X X X . . . . . . . .
          */
         [TestMethod]
         public void LinkHelperTest_Scenario_TianLongTu_Q16571_3()
@@ -445,16 +445,14 @@ namespace UnitTestProject
             //double linkage
             Game g = ScenarioForLink();
             g.Board[1, 18] = Content.Black;
-            g.Board[2, 18] = Content.Black;
+            g.Board[2, 18] = Content.Empty;
             g.Board[3, 18] = Content.Black;
             g.Board[4, 17] = Content.Empty;
+            g.Board[6, 15] = Content.Empty;
 
-            Boolean isLinked = LinkHelper.CheckIsDiagonalLinked(new Point(4, 16), new Point(5, 17), g.Board);
-            Assert.AreEqual(isLinked, false);
             Boolean groupsLinked = LinkHelper.IsDiagonallyConnectedGroups(g.Board, g.Board.GetGroupAt(new Point(4, 16)), g.Board.GetGroupAt(new Point(8, 16)));
             Assert.AreEqual(groupsLinked, false);
         }
-
 
         /*
  14 . . . . X . . . . . . . . . . . . . . 

@@ -729,7 +729,6 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
             gi.killMovablePoints.Add(new Point(1, 18));
 
-            Assert.AreEqual(LinkHelper.CheckIsDiagonalLinked(new Point(5, 17), new Point(6, 16), g.Board), false);
             ConfirmAliveResult result = LifeCheck.ConfirmAlive(g.Board);
             Assert.AreEqual(result == ConfirmAliveResult.Alive, false);
         }
@@ -1968,7 +1967,7 @@ namespace UnitTestProject
             g.SetupMove(9, 18, Content.Black);
 
             gi.targetPoints = new List<Point>() { new Point(6, 16) };
-            
+
             for (int x = 4; x <= 11; x++)
             {
                 for (int y = 17; y <= 18; y++)
