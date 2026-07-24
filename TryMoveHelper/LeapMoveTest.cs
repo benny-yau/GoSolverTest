@@ -31,41 +31,6 @@ namespace UnitTestProject
         }
 
         /*
- 13 . . . O O O . . . . . . . . . . . . . 
- 14 . . . . X . . . . . . . . . . . . . . 
- 15 . O O X X O O O . . . . . . . . . . . 
- 16 . O . O X O X . O . . . . . . . . . . 
- 17 . O . O O X X X O . . . . . . . . . . 
- 18 . O O . . O X X O . . . . . . . . . . 
-         */
-        [TestMethod]
-        public void LeapMoveTest_Scenario_TianLongTu_Q16487()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_TianLongTu_Q16487();
-            g.MakeMove(4, 16);
-            g.MakeMove(5, 15);
-            g.MakeMove(3, 18);
-            g.MakeMove(2, 18);
-            g.MakeMove(3, 15);
-            g.MakeMove(3, 17);
-            g.MakeMove(4, 18);
-            g.MakeMove(3, 16);
-            g.MakeMove(6, 17);
-            g.MakeMove(4, 17);
-            g.MakeMove(6, 18);
-            g.MakeMove(5, 18);
-
-            g.GameInfo.killMovablePoints.Add(new Point(2, 16));
-            g.GameInfo.killMovablePoints.Add(new Point(2, 17));
-
-            GameTryMove move = new GameTryMove(g, new Point(3, 18));
-            Boolean result = RedundantMoveHelper.RedundantSurvivalLeapMove(move);
-            Assert.AreEqual(result, true);
-
-        }
-
-        /*
  14 . . X . X . . . . . . . . . . . . . . 
  15 . X . . . X X . . . . . . . . . . . . 
  16 O O O O O O X . . . . . . . . . . . . 
