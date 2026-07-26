@@ -303,5 +303,30 @@ namespace UnitTestProject
             GameTryMove tryMove = tryMoves.Where(n => n.Move.Equals(new Point(1, 18))).FirstOrDefault();
             Assert.AreEqual(tryMove != null, true);
         }
+
+        /*
+ 14 . . . . X X . . . . . . . . . . . . . 
+ 15 X X X X O X . . . . . . . . . . . . . 
+ 16 X O O O O X . X . . . . . . . . . . . 
+ 17 . X X O . O X . . . . . . . . . . . . 
+ 18 . . O . O . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void LeapMoveTest_Scenario_WuQingYuan_Q31498()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WuQingYuan_Q31498();
+            g.MakeMove(1, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(0, 16);
+            g.MakeMove(2, 18);
+            g.MakeMove(2, 17);
+            g.MakeMove(3, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantKillLeapMove(new GameTryMove(g, new Point(0, 18))), false);
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+        }
     }
 }

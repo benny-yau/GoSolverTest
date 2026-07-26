@@ -302,12 +302,6 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove endGameMove = tryMoves.Where(m => m.Move.Equals(new Point(4, 18)) || m.Move.Equals(new Point(3, 18))).FirstOrDefault();
             Assert.AreEqual(endGameMove == null, true);
-
-            return;
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(9, 18)), true);
-
         }
 
 
@@ -358,7 +352,6 @@ namespace UnitTestProject
         [TestMethod]
         public void NeutralPointMoveTest_Scenario_XuanXuanQiJing_Weiqi101_18497()
         {
-            //IsLinkForGroup - not neutral point
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanQiJing_Weiqi101_18497();
             g.MakeMove(5, 18);
@@ -373,11 +366,8 @@ namespace UnitTestProject
             g.MakeMove(9, 18);
             g.MakeMove(5, 17);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-
             GameTryMove tryMove = new GameTryMove(g, new Point(6, 16));
-            Boolean isLinkForGroups = tryMove.LinkForGroups();
-            Assert.AreEqual(isLinkForGroups, true);
+            Assert.AreEqual(tryMove.PossibleLinkForGroups, true);
 
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -2499,6 +2489,34 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(1, 18))), true);
+        }
+
+        /*
+ 14 . . . X X X . . . . . . . . . . . . . 
+ 15 . . . X O O X X X X . . . . . . . . . 
+ 16 . . X X O O O O O X . . . . . . . . . 
+ 17 . X . . X O . X O X . . . . . . . . . 
+ 18 . X . . X . O . O X . . . . . . . . . 
+         */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_TianLongTu_Q16470()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16470();
+            g.MakeMove(4, 17);
+            g.MakeMove(6, 16);
+            g.MakeMove(4, 18);
+            g.MakeMove(6, 18);
+            g.MakeMove(7, 17);
+            g.MakeMove(5, 15);
+            g.MakeMove(3, 15);
+            g.MakeMove(5, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(3, 17))), true);
+
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
     }
 }

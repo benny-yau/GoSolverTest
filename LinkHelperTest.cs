@@ -134,8 +134,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             GameTryMove tryMove = new GameTryMove(g, new Point(3, 18));
-            Boolean isLink = tryMove.LinkForGroups();
-            Assert.AreEqual(isLink, true);
+            Assert.AreEqual(tryMove.PossibleLinkForGroups, true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -164,8 +163,7 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
 
             GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
-            Boolean isLink = tryMove.LinkForGroups();
-            Assert.AreEqual(isLink, true);
+            Assert.AreEqual(tryMove.PossibleLinkForGroups, true);
 
             Boolean immovable = ImmovableHelper.IsImmovablePoint(tryMove.TryGame.Board, new Point(1, 18), Content.Black);
             Assert.AreEqual(immovable, true);
