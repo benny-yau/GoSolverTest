@@ -923,6 +923,7 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(5, 17));
             Boolean isSuicidal = RedundantMoveHelper.RedundantTigerMouthMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 17))) != null, true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -2532,6 +2533,26 @@ namespace UnitTestProject
             g.MakeMove(0, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(4, 18))), true);
+        }
+
+        /*
+ 13 . . . O . . . . . . . . . . . . . . . 
+ 14 O . . . O O O . . . . . . . . . . . . 
+ 15 . O O O X X . . . . . . . . . . . . . 
+ 16 O X X X . X O O . . . . . . . . . . . 
+ 17 . O X . X X X O . . . . . . . . . . . 
+ 18 . . O O . . . . . . . . . . . . . . .
+       */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_WindAndTime_Q30370()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WindAndTime_Q30370();
+            g.MakeMove(4, 17);
+            g.MakeMove(3, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(0, 17))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 17))) != null, true);
         }
     }
 }

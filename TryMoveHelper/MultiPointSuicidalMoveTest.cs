@@ -3608,5 +3608,39 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(2, 18))), false);
         }
 
+        /*
+ 12 . O O . O O O . . . . . . . . . . . . 
+ 13 . X O . O . O O . . . . . . . . . . . 
+ 14 O O X X X O . O . . . . . . . . . . . 
+ 15 . O O X X O O O . . . . . . . . . . . 
+ 16 O X X X X O X X O . . . . . . . . . . 
+ 17 . O O X X O X O O . . . . . . . . . . 
+ 18 O . X . X . X . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_20260727_8()
+        {
+            Game g = DailyGoProblems.Scenario_20260727_8();
+            g.MakeMove(4, 18);
+            g.MakeMove(5, 17);
+            g.MakeMove(3, 15);
+            g.MakeMove(0, 16);
+            g.MakeMove(3, 16);
+            g.MakeMove(5, 14);
+            g.MakeMove(6, 14);
+            g.MakeMove(6, 13);
+            g.MakeMove(4, 17);
+            g.MakeMove(6, 15);
+            g.MakeMove(2, 18);
+            g.MakeMove(5, 16);
+            g.MakeMove(6, 18);
+            g.MakeMove(5, 15);
+            g.MakeMove(0, 15);
+            g.MakeMove(0, 14);
+            g.MakeMove(0, 17);
+            g.MakeMove(0, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(1, 18))), true);
+        }
     }
 }

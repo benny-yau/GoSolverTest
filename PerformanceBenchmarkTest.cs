@@ -783,6 +783,62 @@ namespace UnitTestProject
             Assert.AreEqual(move.Equals(new Point(1, 16)), true);
         }
 
+        /*
+ 12 . O O . O O O . . . . . . . . . . . . 
+ 13 . X O . O X . O . . . . . . . . . . . 
+ 14 O O X X X O . O . . . . . . . . . . . 
+ 15 . O O X X . . O . . . . . . . . . . . 
+ 16 O X X X X . X X O . . . . . . . . . . 
+ 17 . O O X . O X O O . . . . . . . . . . 
+ 18 . . . . X . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void PerformanceBenchmarkTest_20260727_8()
+        {
+            if (!includeLongRunningTests) return;
+            Game g = DailyGoProblems.Scenario_20260727_8();
+            g.MakeMove(4, 18);
+            g.MakeMove(5, 17);
+            g.MakeMove(3, 15);
+            g.MakeMove(0, 16);
+            g.MakeMove(3, 16);
+
+            g.MakeMove(5, 14);
+            g.MakeMove(0, 15);
+            g.MakeMove(0, 14);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+        }
+
+        /*
+ 12 . O O . O O O . . . . . . . . . . . . 
+ 13 . X O . O X . O . . . . . . . . . . . 
+ 14 . O X X X O . O . . . . . . . . . . . 
+ 15 . O O X X . . O . . . . . . . . . . . 
+ 16 O X X X X . X X O . . . . . . . . . . 
+ 17 . O O X . X X O O . . . . . . . . . . 
+ 18 . . . . O . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void PerformanceBenchmarkTest_20260727_8_2()
+        {
+            if (!includeLongRunningTests) return;
+            Game g = DailyGoProblems.Scenario_20260727_8();
+            g.MakeMove(5, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(3, 15);
+            g.MakeMove(0, 16);
+            g.MakeMove(3, 16);
+            g.MakeMove(5, 14);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+        }
+
+
         public static Game SearchAnswer(Game g)
         {
             Game.SearchAnswer = true;

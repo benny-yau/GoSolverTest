@@ -3502,5 +3502,57 @@ namespace UnitTestProject
             Boolean isRedundantKo = RedundantMoveHelper.RedundantKoMove(tryMove);
             Assert.AreEqual(isRedundantKo, false);
         }
+
+        /*
+ 11 . . O . . . . . . . . . . . . . . . . 
+ 12 . O . . . . . . . . . . . . . . . . . 
+ 13 . X O O . . . . . . . . . . . . . . . 
+ 14 O X X O O . . . . . . . . . . . . . . 
+ 15 . O X X O . . . . . . . . . . . . . . 
+ 16 O O X X O . . . . . . . . . . . . . . 
+ 17 . O X O O . . . . . . . . . . . . . . 
+ 18 . X X . . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantKoMoveTest_Scenario_XuanXuanGo_A28_101Weiqi_8()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A28_101Weiqi();
+            g.MakeMove(2, 18);
+            g.MakeMove(1, 16);
+            g.MakeMove(2, 16);
+            g.MakeMove(3, 14);
+            g.MakeMove(1, 18);
+            g.MakeMove(0, 16);
+            g.MakeMove(0, 15);
+            g.MakeMove(1, 15);
+            g.MakeMove(2, 15);
+            g.MakeMove(0, 14);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 17))) != null, true);
+        }
+
+        /*
+ 14 . . . X X X X . . . . . . . . . . . . 
+ 15 . . X O O O O X X . . . . . . . . . . 
+ 16 . . X O X X O O X . . . . . . . . . . 
+ 17 . . X O X . O O X . . . . . . . . . . 
+ 18 . . O . . X . O . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void RedundantKoMoveTest_Scenario_TianLongTu_Q16859()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16859();
+            g.MakeMove(4, 16);
+            g.MakeMove(3, 15);
+            g.MakeMove(5, 16);
+            g.MakeMove(6, 16);
+            g.MakeMove(5, 18);
+            g.MakeMove(6, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 18))) != null, true);
+        }
+
     }
 }

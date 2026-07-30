@@ -312,5 +312,32 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
+
+        /*
+ 12 . O O . O O O . . . . . . . . . . . . 
+ 13 . X O . O . O O . . . . . . . . . . . 
+ 14 . O X X X O . O . . . . . . . . . . . 
+ 15 . O O X X X . O . . . . . . . . . . . 
+ 16 O X X X X . X X O . . . . . . . . . . 
+ 17 . O O X . O X O O . . . . . . . . . . 
+ 18 . . X . X . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void CheckForRecursionTest_20260727_8()
+        {
+            Game g = DailyGoProblems.Scenario_20260727_8();
+            g.MakeMove(4, 18);
+            g.MakeMove(5, 17);
+            g.MakeMove(3, 15);
+            g.MakeMove(0, 16);
+            g.MakeMove(3, 16);
+            g.MakeMove(5, 14);
+            g.MakeMove(5, 15);
+            g.MakeMove(6, 13);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(0, 17))), true);
+            g.MakeMove(2, 18);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(1, 18))), true);
+        }
     }
 }

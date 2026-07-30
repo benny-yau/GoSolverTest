@@ -2518,5 +2518,35 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
+
+        /*
+ 13 . . . . . . . O . . . . . . . . . . . 
+ 14 . . . . . . O . O . . . . . . . . . . 
+ 15 . . . . . O . . . O O O . . . . . . . 
+ 16 . . . O O X X X X O X O . . . . . . . 
+ 17 . O . O X . . . X X X O . . . . . . . 
+ 18 . . . X . X . O O X . . . . . . . . . 
+         */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_XuanXuanGo_Q18500_4()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_Q18500();
+            g.MakeMove(8, 18);
+            g.MakeMove(8, 17);
+            g.MakeMove(7, 18);
+            g.MakeMove(9, 18);
+            g.MakeMove(9, 16);
+            g.MakeMove(9, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(3, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(2, 18))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(2, 18))) != null, true);
+
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+        }
     }
 }
