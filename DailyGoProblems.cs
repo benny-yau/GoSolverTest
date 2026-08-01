@@ -8774,13 +8774,14 @@ namespace UnitTestProject
         public void DailyGoProblems_20260727_8()
         {
             Game g = Scenario_20260727_8();
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 13))), true);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 14))), true);
-            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 15))), true);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 17))), true);
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             g.MakeMove(5, 17);
-            g.MakeMove(5, 15);
-            g.MakeMove(0, 16);
+            g.MakeMove(3, 18);
             g.MakeMove(3, 15);
+            g.MakeMove(0, 16);
             MonteCarloTreeSearch.searchDepthToVerify = 7;
             Game game = SearchAnswer(g);
             Point move = game.Board.LastMove.Value;
@@ -8790,7 +8791,7 @@ namespace UnitTestProject
         public static Game Scenario_20260727_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 12);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 6);
             Game g = new Game(gi);
             g.SetupMove(1, 12, Content.White);
             g.SetupMove(1, 13, Content.Black);

@@ -3554,5 +3554,35 @@ namespace UnitTestProject
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 18))) != null, true);
         }
 
+        /*
+ 13 . X X X . . . . . . . . . . . . . . . 
+ 14 O O O . X . . . . . . . . . . . . . . 
+ 15 O X . O X . . . . . . . . . . . . . . 
+ 16 X X O X . . . . . . . . . . . . . . . 
+ 17 . X O X . X . . . . . . . . . . . . . 
+ 18 . O . O . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantKoMoveTest_Scenario_GuanZiPu_A2Q28_101Weiqi_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_GuanZiPu_A2Q28_101Weiqi();
+            g.MakeMove(1, 15);
+            g.MakeMove(0, 15);
+            g.MakeMove(0, 16);
+            g.MakeMove(0, 14);
+            g.MakeMove(2, 18);
+            g.MakeMove(1, 18);
+            g.MakeMove(1, 17);
+
+            g.MakeMove(3, 18);
+            g.MakeMove(1, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantKoMove(new GameTryMove(g, new Point(0, 17))), false);
+
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), true);
+        }
     }
 }
