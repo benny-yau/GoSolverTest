@@ -8762,18 +8762,19 @@ namespace UnitTestProject
         }
 
         /*
- 12 . O O . O O O . . . . . . . . . . . . 
+ 12 O O O . O O O . . . . . . . . . . . . 
  13 . X O . O X . O . . . . . . . . . . . 
  14 . O X X X . . O . . . . . . . . . . . 
  15 . O O . X . . O . . . . . . . . . . . 
  16 . X X O X . X X O . . . . . . . . . . 
  17 . O O X . . X O O . . . . . . . . . . 
- 18 . . . . . . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
         */
         [TestMethod]
         public void DailyGoProblems_20260727_8()
         {
             Game g = Scenario_20260727_8();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 13))), true);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 14))), true);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 17))), true);
@@ -8791,7 +8792,7 @@ namespace UnitTestProject
         public static Game Scenario_20260727_8()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 6);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 14);
             Game g = new Game(gi);
             g.SetupMove(1, 12, Content.White);
             g.SetupMove(1, 13, Content.Black);
@@ -8841,6 +8842,8 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(8, 18));
             gi.survivalPoints.Add(new Point(1, 14));
             gi.survivalPoints.Add(new Point(1, 17));
+            g.Board[0, 12] = Content.White;
+
             return g;
         }
 

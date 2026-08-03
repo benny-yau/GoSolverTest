@@ -5144,5 +5144,25 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 14))), true);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 15))), true);
         }
+
+        /*
+ 13 . X . X . . . . . . . . . . . . . . . 
+ 14 . X O X . . . . . . . . . . . . . . . 
+ 15 X O X X . . . . . . . . . . . . . . . 
+ 16 O O O O X X X . . . . . . . . . . . . 
+ 17 X . . . O O X . . . . . . . . . . . . 
+ 18 . O . . . X X . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_Nie4_5()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Nie4();
+            g.MakeMove(0, 17);
+            g.MakeMove(0, 16);
+            g.MakeMove(5, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(4, 18))), true);
+        }
     }
 }
