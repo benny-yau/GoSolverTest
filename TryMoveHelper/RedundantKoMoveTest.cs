@@ -1980,7 +1980,7 @@ namespace UnitTestProject
             Game g = s.Scenario_WindAndTime_Q30152();
             g.GameInfo.Survival = SurviveOrKill.KillWithKo;
             g.GameInfo.targetPoints.Clear();
-            g.GameInfo.targetPoints.Add(new Point(3, 15));
+            g.GameInfo.targetPoints.Add(new Point(0, 12));
             g.MakeMove(2, 13);
             g.MakeMove(3, 14);
             g.MakeMove(1, 13);
