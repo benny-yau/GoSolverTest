@@ -133,8 +133,8 @@ namespace UnitTestProject
             g.MakeMove(2, 10);
             g.MakeMove(-1, -1);
 
-            g.Board[1, 16] = Content.Empty;
-            g.GameInfo.killMovablePoints.Add(new Point(1, 16));
+            g.Board[3, 11] = Content.Empty;
+            g.GameInfo.killMovablePoints.Add(new Point(3, 11));
             g.GameInfo.Survival = SurviveOrKill.KillWithKo;
 
             Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g);
@@ -142,7 +142,7 @@ namespace UnitTestProject
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive) || moveResult.HasFlag(ConfirmAliveResult.BothAlive), true);
+            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
 
         }
 
