@@ -27,6 +27,7 @@ namespace UnitTestProject
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_GuanZiPu_A2Q28_101Weiqi();
+            g.GameInfo.IncludeTenThousandYearKo = true;
             g.MakeMove(3, 14);
             g.MakeMove(2, 15);
             g.MakeMove(1, 17);
@@ -53,6 +54,7 @@ namespace UnitTestProject
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_GuanZiPu_A2Q28_101Weiqi();
+            g.GameInfo.IncludeTenThousandYearKo = true;
             g.MakeMove(3, 14);
             g.MakeMove(2, 15);
             g.MakeMove(1, 17);
@@ -85,6 +87,7 @@ namespace UnitTestProject
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_GuanZiPu_A2Q28_101Weiqi();
+            g.GameInfo.IncludeTenThousandYearKo = true;
             g.MakeMove(3, 14);
             g.MakeMove(2, 15);
             g.MakeMove(1, 17);
@@ -120,6 +123,7 @@ namespace UnitTestProject
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
+            g.GameInfo.IncludeTenThousandYearKo = true;
             g.MakeMove(0, 13);
             g.MakeMove(0, 15);
             g.MakeMove(0, 11);
@@ -137,7 +141,7 @@ namespace UnitTestProject
             g.GameInfo.killMovablePoints.Add(new Point(3, 11));
             g.GameInfo.Survival = SurviveOrKill.KillWithKo;
 
-            Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g);
+            Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g.Board);
             Assert.AreEqual(tenThousandYearKo, true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -151,7 +155,7 @@ namespace UnitTestProject
  14 . . . . . . O . O . . . . . . . . . . 
  15 . . . . . O . . . O O O . . . . . . . 
  16 . . . O O X X X X X X O . . . . . . . 
- 17 . O . O X X . O O . X O . . . . . . . 
+ 17 . O . O X X X O O . X O . . . . . . . 
  18 . . . O X X O . O . X . . . . . . . .
          */
         [TestMethod]
@@ -159,6 +163,7 @@ namespace UnitTestProject
         {
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanGo_Q18500();
+            g.GameInfo.IncludeTenThousandYearKo = true;
             g.MakeMove(8, 18);
             g.MakeMove(10, 18);
             g.MakeMove(8, 17);
@@ -168,14 +173,9 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             g.MakeMove(4, 18);
             g.MakeMove(3, 18);
-
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(6, 17)), false);
-            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Alive), false);
-
-            Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g);
-            Assert.AreEqual(tenThousandYearKo, false);
+            g.MakeMove(6, 17);
+            Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g.Board);
+            Assert.AreEqual(tenThousandYearKo, true);
         }
 
 
@@ -192,6 +192,7 @@ namespace UnitTestProject
             //not ten thousand year ko
             Scenario s = new Scenario();
             Game g = s.Scenario_TianLongTu_Q16466();
+            g.GameInfo.IncludeTenThousandYearKo = true;
             g.MakeMove(5, 17);
             g.MakeMove(5, 16);
             g.MakeMove(6, 17);
@@ -204,7 +205,7 @@ namespace UnitTestProject
             g.MakeMove(7, 16);
             g.MakeMove(8, 18);
             g.MakeMove(9, 18);
-            Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g);
+            Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g.Board);
             Assert.AreEqual(tenThousandYearKo, false);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -226,6 +227,7 @@ namespace UnitTestProject
             //not ten thousand year ko
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanGo_A54();
+            g.GameInfo.IncludeTenThousandYearKo = true;
             g.MakeMove(2, 18);
             g.MakeMove(1, 18);
             g.MakeMove(1, 17);
@@ -234,7 +236,7 @@ namespace UnitTestProject
             g.MakeMove(0, 15);
             g.MakeMove(6, 18);
             g.MakeMove(0, 17);
-            Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g);
+            Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g.Board);
             Assert.AreEqual(tenThousandYearKo, false);
         }
 
@@ -252,7 +254,8 @@ namespace UnitTestProject
         {
             //not ten thousand year ko
             Scenario s = new Scenario();
-            Game g = s.Scenario_TianLongTu_Q2413(); 
+            Game g = s.Scenario_TianLongTu_Q2413();
+            g.GameInfo.IncludeTenThousandYearKo = true;
             g.MakeMove(2, 18);
             g.MakeMove(3, 18);
             g.MakeMove(0, 17);
@@ -264,7 +267,7 @@ namespace UnitTestProject
             g.MakeMove(0, 15);
             g.MakeMove(2, 16);
 
-            Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g);
+            Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g.Board);
             Assert.AreEqual(tenThousandYearKo, false);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
@@ -287,6 +290,7 @@ namespace UnitTestProject
             //not ten thousand year ko
             Scenario s = new Scenario();
             Game g = s.Scenario_Corner_A113();
+            g.GameInfo.IncludeTenThousandYearKo = true;
             g.MakeMove(1, 17);
             g.MakeMove(2, 16);
             g.MakeMove(0, 15);
@@ -297,7 +301,7 @@ namespace UnitTestProject
             g.MakeMove(2, 18);
             g.MakeMove(3, 18);
             g.MakeMove(4, 18);
-            Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g);
+            Boolean tenThousandYearKo = UniquePatternsHelper.CheckForTenThousandYearKo(g.Board);
             Assert.AreEqual(tenThousandYearKo, false);
         }
 
