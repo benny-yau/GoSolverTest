@@ -6,14 +6,9 @@ using System.Collections.Generic;
 
 namespace UnitTestProject
 {
-    /// <summary>
-    /// now obsolete
-    /// </summary>
     [TestClass]
     public class TenThousandYearKoTest
     {
-        //https://senseis.xmp.net/?TenThousandYearKo
-
         /*
  13 . X X X . . . . . . . . . . . . . . . 
  14 . O O X X . . . . . . . . . . . . . . 
@@ -178,7 +173,6 @@ namespace UnitTestProject
             Assert.AreEqual(tenThousandYearKo, true);
         }
 
-
         /*
  14 . . . . . . . X X . . . . . . . . . . 
  15 . . X X X X X O O X . . . . . . . . . 
@@ -189,7 +183,6 @@ namespace UnitTestProject
         [TestMethod]
         public void TenThousandYearKoTest_Scenario_TianLongTu_Q16466()
         {
-            //not ten thousand year ko
             Scenario s = new Scenario();
             Game g = s.Scenario_TianLongTu_Q16466();
             g.GameInfo.IncludeTenThousandYearKo = true;
@@ -224,10 +217,10 @@ namespace UnitTestProject
         [TestMethod]
         public void TenThousandYearKoTest_Scenario_XuanXuanGo_A54()
         {
-            //not ten thousand year ko
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanGo_A54();
             g.GameInfo.IncludeTenThousandYearKo = true;
+            g.GameInfo.Survival = SurviveOrKill.KillWithKo;
             g.MakeMove(2, 18);
             g.MakeMove(1, 18);
             g.MakeMove(1, 17);
@@ -252,10 +245,10 @@ namespace UnitTestProject
         [TestMethod]
         public void TenThousandYearKoTest_Scenario_TianLongTu_Q2413()
         {
-            //not ten thousand year ko
             Scenario s = new Scenario();
             Game g = s.Scenario_TianLongTu_Q2413();
             g.GameInfo.IncludeTenThousandYearKo = true;
+            g.GameInfo.Survival = SurviveOrKill.KillWithKo;
             g.MakeMove(2, 18);
             g.MakeMove(3, 18);
             g.MakeMove(0, 17);
@@ -287,10 +280,10 @@ namespace UnitTestProject
         [TestMethod]
         public void TenThousandYearKoTest_Scenario_Corner_A113()
         {
-            //not ten thousand year ko
             Scenario s = new Scenario();
             Game g = s.Scenario_Corner_A113();
             g.GameInfo.IncludeTenThousandYearKo = true;
+            g.GameInfo.Survival = SurviveOrKill.KillWithKo;
             g.MakeMove(1, 17);
             g.MakeMove(2, 16);
             g.MakeMove(0, 15);
