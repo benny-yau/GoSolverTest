@@ -1765,12 +1765,13 @@ namespace UnitTestProject
 
             g.Board[6, 17] = Content.Empty;
             g.Board[7, 17] = Content.Empty;
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
             GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
             Boolean isNeutralPoint = RedundantMoveHelper.NeutralPointSurvivalMove(tryMove);
             Assert.AreEqual(isNeutralPoint, false);
+
+            Boolean isLink = LinkHelper.PossibleLinkForGroups(tryMove.TryGame.Board, g.Board);
+            Assert.AreEqual(isLink, true);
         }
 
         /*
