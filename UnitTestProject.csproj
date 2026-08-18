@@ -70,7 +70,6 @@
     <Compile Include="BentFourTest.cs" />
     <Compile Include="LifeCheck\BothAliveTest.cs" />
     <Compile Include="DictatePointsTest.cs" />
-    <Compile Include="CorrectedSolutionsTest.cs" />
     <Compile Include="KoTest.cs" />
     <Compile Include="CheckForRecursionTest.cs" />
     <Compile Include="LifeCheck\PartiallyAliveTest.cs" />
