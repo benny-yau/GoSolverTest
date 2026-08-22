@@ -8777,7 +8777,8 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 13))), true);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 14))), true);
-            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 17))), true);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 17))), true); 
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(6, 13))), true);
             if (!PerformanceBenchmarkTest.includeLongRunningTests) return;
             g.MakeMove(5, 17);
             g.MakeMove(3, 18);
@@ -9884,6 +9885,120 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 16))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 16))) != null, true);
+        }
+
+        /*
+ 10 . . . X X X . . . . . . . . . . . . . 
+ 11 . . X . . O X X . . . . . . . . . . . 
+ 12 . . X . O . O X . . . . . . . . . . . 
+ 13 . X O . . . O X . . . . . . . . . . . 
+ 14 . X O . . . O X . . . . . . . . . . . 
+ 15 . X O O O . O X . . . . . . . . . . . 
+ 16 . . X X . . . X . . . . . . . . . . . 
+ 17 . . . . X X X . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void DailyGoProblems_20260821_8()
+        {
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
+            Game g = new Game(gi);
+            g.SetupMove(1, 13, Content.Black);
+            g.SetupMove(1, 14, Content.Black);
+            g.SetupMove(1, 15, Content.Black);
+            g.SetupMove(2, 11, Content.Black);
+            g.SetupMove(2, 12, Content.Black);
+            g.SetupMove(2, 13, Content.White);
+            g.SetupMove(2, 14, Content.White);
+            g.SetupMove(2, 15, Content.White);
+            g.SetupMove(2, 16, Content.Black);
+            g.SetupMove(3, 10, Content.Black);
+            g.SetupMove(3, 15, Content.White);
+            g.SetupMove(3, 16, Content.Black);
+            g.SetupMove(4, 10, Content.Black);
+            g.SetupMove(4, 12, Content.White);
+            g.SetupMove(4, 15, Content.White);
+            g.SetupMove(4, 17, Content.Black);
+            g.SetupMove(5, 10, Content.Black);
+            g.SetupMove(5, 11, Content.White);
+            g.SetupMove(5, 17, Content.Black);
+            g.SetupMove(6, 11, Content.Black);
+            g.SetupMove(6, 12, Content.White);
+            g.SetupMove(6, 13, Content.White);
+            g.SetupMove(6, 14, Content.White);
+            g.SetupMove(6, 15, Content.White);
+            g.SetupMove(6, 17, Content.Black);
+            g.SetupMove(7, 11, Content.Black);
+            g.SetupMove(7, 12, Content.Black);
+            g.SetupMove(7, 13, Content.Black);
+            g.SetupMove(7, 14, Content.Black);
+            g.SetupMove(7, 15, Content.Black);
+            g.SetupMove(7, 16, Content.Black);
+            g.GameInfo.targetPoints.Add(new Point(2, 13));
+            for (int x = 2; x <= 6; x++)
+            {
+                for (int y = 11; y <= 16; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(6, 16))), true);
+        }
+
+        /*
+ 14 . . X . X X X . . . . . . . . . . . . 
+ 15 . . . X O O X . . X . . . . . . . . . 
+ 16 . X X O O X O X X . . . . . . . . . . 
+ 17 X O O . . X . O O X X . . . . . . . . 
+ 18 . O . O . X . O . . . . . . . . . . . 
+        */
+        [TestMethod]
+        public void DailyGoProblems_20260822_8()
+        {
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
+            Game g = new Game(gi);
+            g.SetupMove(0, 17, Content.Black);
+            g.SetupMove(1, 16, Content.Black);
+            g.SetupMove(1, 17, Content.White);
+            g.SetupMove(1, 18, Content.White);
+            g.SetupMove(2, 14, Content.Black);
+            g.SetupMove(2, 16, Content.Black);
+            g.SetupMove(2, 17, Content.White);
+            g.SetupMove(3, 15, Content.Black);
+            g.SetupMove(3, 16, Content.White);
+            g.SetupMove(4, 14, Content.Black);
+            g.SetupMove(4, 15, Content.White);
+            g.SetupMove(4, 16, Content.White);
+            g.SetupMove(5, 14, Content.Black);
+            g.SetupMove(5, 15, Content.White);
+            g.SetupMove(5, 18, Content.Black);
+            g.SetupMove(6, 14, Content.Black);
+            g.SetupMove(6, 15, Content.Black);
+            g.SetupMove(6, 16, Content.White);
+            g.SetupMove(7, 16, Content.Black);
+            g.SetupMove(7, 17, Content.White);
+            g.SetupMove(7, 18, Content.White);
+            g.SetupMove(8, 16, Content.Black);
+            g.SetupMove(8, 17, Content.White);
+            g.SetupMove(9, 15, Content.Black);
+            g.SetupMove(9, 17, Content.Black);
+            g.SetupMove(10, 17, Content.Black);
+            g.GameInfo.targetPoints.Add(new Point(3, 16));
+            for (int x = 0; x <= 8; x++)
+            {
+                for (int y = 16; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.movablePoints.Add(new Point(9, 18));
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+            gi.killMovablePoints.Add(new Point(0, 15));
+            gi.killMovablePoints.Add(new Point(10, 18));
+            g.MakeMove(5, 17);
+            g.MakeMove(3, 18);
+            g.MakeMove(5, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(6, 17))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(6, 17))) != null, true);
         }
 
         public static Game SearchAnswer(Game g)

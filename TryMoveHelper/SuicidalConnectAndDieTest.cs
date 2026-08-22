@@ -4424,8 +4424,8 @@ namespace UnitTestProject
 
         /*
  12 . . . . . X X . . . . . . . . . . . . 
- 13 . . . X X O . X . . . . . . . . . . . 
- 14 . . . X O . O X . . . . . . . . . . . 
+ 13 . . . X X O O X . . . . . . . . . . . 
+ 14 . . . X O X O X . . . . . . . . . . . 
  15 . . X . O . O X . . . . . . . . . . . 
  16 . X . . . O O X . . . . . . . . . . . 
  17 . X O O . O X . X . . . . . . . . . . 
@@ -4437,6 +4437,8 @@ namespace UnitTestProject
             Scenario s = new Scenario();
             Game g = s.Scenario_WindAndTime_Q30057();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            g.MakeMove(5, 14);
+            g.MakeMove(6, 13);
             GameTryMove tryMove = new GameTryMove(g, new Point(4, 17));
             Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isRedundant, false);
