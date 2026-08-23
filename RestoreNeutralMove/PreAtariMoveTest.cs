@@ -247,5 +247,30 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(9, 18)), true);
         }
+
+        /*
+ 10 . . O . . . . . . . . . . . . . . . . 
+ 11 . O . . . . . . . . . . . . . . . . . 
+ 12 X X O O O . . . . . . . . . . . . . . 
+ 13 . . X X . O . . . . . . . . . . . . . 
+ 14 O X X . . O . . . . . . . . . . . . . 
+ 15 . X O O X O . . . . . . . . . . . . . 
+ 16 . X X X O . . . . . . . . . . . . . . 
+ 17 X O O O . O . . . . . . . . . . . . . 
+ 18 O . . . . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void PreAtariMoveTest_Scenario5dan9()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario5dan9();
+            g.MakeMove(1, 15);
+            g.MakeMove(3, 15);
+            g.MakeMove(2, 14);
+            g.MakeMove(0, 14);
+            g.MakeMove(1, 14);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 11))) != null, true);
+        }
     }
 }
