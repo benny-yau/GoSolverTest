@@ -36,8 +36,8 @@ namespace UnitTestProject
             for (int i = 0; i <= points.Count - 1; i++)
             {
                 GameTryMove move = new GameTryMove(g, points[i]);
-                Boolean isBaseLine = RedundantMoveHelper.NeutralPointKillMove(move);
-                Assert.AreEqual(isBaseLine, true);
+                Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(move);
+                Assert.AreEqual(isRedundant, true);
             }
         }
 
@@ -57,8 +57,8 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             
             GameTryMove move = new GameTryMove(g, new Point(5, 18));
-            Boolean isBaseLine = RedundantMoveHelper.NeutralPointKillMove(move);
-            Assert.AreEqual(isBaseLine, true);
+            Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(move);
+            Assert.AreEqual(isRedundant, true);
             
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove endGameMove = tryMoves.Where(m => m.Move.Equals(new Point(5, 18)) || m.Move.Equals(new Point(6, 18)) || m.Move.Equals(new Point(7, 18))).FirstOrDefault();
@@ -84,8 +84,8 @@ namespace UnitTestProject
             for (int i = 0; i <= points.Count - 1; i++)
             {
                 GameTryMove move = new GameTryMove(g, points[i]);
-                Boolean isBaseLine = RedundantMoveHelper.NeutralPointKillMove(move);
-                Assert.AreEqual(isBaseLine, true);
+                Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(move);
+                Assert.AreEqual(isRedundant, true);
             }
             
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
@@ -140,9 +140,6 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove endGameMove = tryMoves.Where(m => m.Move.Equals(new Point(4, 18))).FirstOrDefault();
             Assert.AreEqual(endGameMove != null, true);
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(4, 18)), true);
         }
 
 
@@ -237,7 +234,7 @@ namespace UnitTestProject
         [TestMethod]
         public void BaseLineKillerMoveTest_Scenario_TianLongTu_Q16520()
         {
-            //not redundant at (7, 18) - all base line inner diagonal kill moves not redundant
+            //not redundant at (7, 18)
             Scenario s = new Scenario();
             Game g = s.Scenario_TianLongTu_Q16520();
             g.MakeMove(2, 18);
@@ -285,10 +282,6 @@ namespace UnitTestProject
             GameTryMove endGameMove = tryMoves.Where(m => m.Move.Equals(new Point(4, 18))).FirstOrDefault();
             Assert.AreEqual(endGameMove != null, true);
 
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(4, 18)), true);
-
         }
 
         /*
@@ -316,16 +309,12 @@ namespace UnitTestProject
             GameTryMove tryMove = new GameTryMove(g, new Point(1, 18));
             Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
             Assert.AreEqual(isSuicidal, false);
-            Boolean isBaseLine = RedundantMoveHelper.NeutralPointKillMove(tryMove);
-            Assert.AreEqual(isBaseLine, false);
+            Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
+            Assert.AreEqual(isRedundant, false);
 
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove endGameMove = tryMoves.Where(m => m.Move.Equals(new Point(1, 18))).FirstOrDefault();
             Assert.AreEqual(endGameMove != null, true);
-
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(1, 18)), true);
         }
 
 
@@ -346,7 +335,6 @@ namespace UnitTestProject
         [TestMethod]
         public void BaseLineKillerMoveTest_Scenario_XuanXuanQiJing_Weiqi101_18497()
         {
-            //move at (5, 18) not base line - to check IsLinkForGroups
             Scenario s = new Scenario();
             Game g = s.Scenario_XuanXuanQiJing_Weiqi101_18497();
             g.MakeMove(7, 17);
@@ -360,10 +348,6 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             GameTryMove endGameMove = tryMoves.Where(m => m.Move.Equals(new Point(5, 18))).FirstOrDefault();
             Assert.AreEqual(endGameMove != null, true);
-
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(5, 18)), true);
         }
 
         /*

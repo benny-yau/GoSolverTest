@@ -1897,5 +1897,65 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 17))), true);
         }
+
+        /*
+  9 O O O . . . . . . . . . . . . . . . . 
+ 10 X X O O . . . . . . . . . . . . . . . 
+ 11 . X X O . . . . . . . . . . . . . . . 
+ 12 O X X . . . . . . . . . . . . . . . . 
+ 13 O O X O O . . . . . . . . . . . . . . 
+ 14 . . X X O . . . . . . . . . . . . . . 
+ 15 X X X . O . . . . . . . . . . . . . . 
+ 16 . O O O . . . . . . . . . . . . . . . 
+ 17 . . . . . . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void KillerFormationTest_Scenario_XuanXuanGo_A151_101Weiqi()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
+            g.MakeMove(1, 13);
+            g.MakeMove(0, 15);
+            g.MakeMove(0, 9);
+            g.MakeMove(1, 12);
+            g.MakeMove(0, 12);
+            g.MakeMove(2, 14);
+            g.MakeMove(0, 13);
+            g.MakeMove(0, 10);
+            g.MakeMove(2, 10);
+            g.MakeMove(1, 11);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(0, 14))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 14))) != null, true);
+        }
+
+        /*
+ 13 . . . . X X X . . . . . . . . . . . . 
+ 14 . . X X O O X X . . . . . . . . . . . 
+ 15 . . . O O . O X . . . . . . . . . . . 
+ 16 . X X O X O O X . . . . . . . . . . . 
+ 17 . X O O X . O X . . . . . . . . . . . 
+ 18 . X O . X . O X . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void KillerFormationTest_Scenario_Nie61()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Nie61();
+            g.MakeMove(1, 18);
+            g.MakeMove(3, 17);
+            g.MakeMove(4, 17);
+            g.MakeMove(5, 16);
+            g.MakeMove(4, 16);
+            g.MakeMove(4, 15);
+            g.MakeMove(4, 18);
+            g.MakeMove(6, 15);
+            g.MakeMove(6, 14);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            ConfirmAliveResult moveResult = g.InitializeComputerMove();
+            Point move = g.Board.LastMove.Value;
+            Assert.AreEqual(move.Equals(new Point(5, 17)), true);
+        }
     }
 }
