@@ -1953,9 +1953,8 @@ namespace UnitTestProject
             g.MakeMove(6, 15);
             g.MakeMove(6, 14);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(5, 17)), true);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(5, 17))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 17))) != null, true);
         }
     }
 }

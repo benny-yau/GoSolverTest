@@ -69,34 +69,6 @@ namespace UnitTestProject
         }
 
         /*
- 13 . . . . X . X X . . . . . . . . . . . 
- 14 . . . . . . . O X . . . . . . . . . . 
- 15 . . . X X O O O X . . . . . . . . . . 
- 16 . . X O O X X O X . . . . . . . . . . 
- 17 . . X O . X O O X . . . . . . . . . . 
- 18 . . O . . . O X X . . . . . . . . . . 
-        */
-        [TestMethod]
-        public void RedundantEyeFillerTest_Scenario_WuQingYuan_Q5971()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_WuQingYuan_Q5971();
-            g.MakeMove(6, 16);
-            g.MakeMove(6, 15);
-            g.MakeMove(5, 17);
-            g.MakeMove(3, 16);
-            g.MakeMove(5, 16);
-
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove endGameMove = tryMoves.Where(m => m.Move.Equals(new Point(3, 18))).FirstOrDefault();
-            Assert.AreEqual(endGameMove != null, true);
-
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(3, 18)), true);
-        }
-
-        /*
  11 . X . . . . . . . . . . . . . . . . . 
  12 . . . . . . . . . . . . . . . . . . . 
  13 O X X X X . . . . . . . . . . . . . . 

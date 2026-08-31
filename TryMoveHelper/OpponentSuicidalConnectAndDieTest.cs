@@ -503,5 +503,47 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
         }
+
+        /*
+ 15 . . X . . X X X . X X . . . . . . . . 
+ 16 . . . X X O O . . O X . . . . . . . . 
+ 17 . . X O O . . O . O X . X . . . . . . 
+ 18 . . . . . . . . . X . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q2174()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q2174();
+            g.MakeMove(9, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(4, 18))), true);
+        }
+
+        /*
+  9 . O . . . . . . . . . . . . . . . . . 
+ 10 . . . . . . . . . . . . . . . . . . . 
+ 11 X O O . . . . . . . . . . . . . . . . 
+ 12 X X X O . . . . . . . . . . . . . . . 
+ 13 O . X O . . . . . . . . . . . . . . . 
+ 14 O . X O . . . . . . . . . . . . . . . 
+ 15 O X X O . . . . . . . . . . . . . . . 
+ 16 . . X O . . . . . . . . . . . . . . . 
+ 17 X X O . O . . . . . . . . . . . . . . 
+ 18 X X O . . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_A39_3()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanQiJing_A39(); 
+            g.MakeMove(0, 13);
+            g.MakeMove(2, 14);
+            g.MakeMove(0, 14);
+            g.MakeMove(0, 12);
+            g.MakeMove(0, 15);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(1, 14))), true);
+        }
     }
 }
