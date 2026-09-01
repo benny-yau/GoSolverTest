@@ -521,29 +521,55 @@ namespace UnitTestProject
         }
 
         /*
-  9 . O . . . . . . . . . . . . . . . . . 
- 10 . . . . . . . . . . . . . . . . . . . 
- 11 X O O . . . . . . . . . . . . . . . . 
- 12 X X X O . . . . . . . . . . . . . . . 
- 13 O . X O . . . . . . . . . . . . . . . 
- 14 O . X O . . . . . . . . . . . . . . . 
- 15 O X X O . . . . . . . . . . . . . . . 
- 16 . . X O . . . . . . . . . . . . . . . 
- 17 X X O . O . . . . . . . . . . . . . . 
- 18 X X O . . . . . . . . . . . . . . . .
+ 13 . . . X . X . . . . . . . . . . . . . 
+ 14 . . . . . . . X . . . . . . . . . . . 
+ 15 . X . X X X O X X . . . . . . . . . . 
+ 16 . . X O O O O O X . . . . . . . . . . 
+ 17 . X O . . . . O X . . . . . . . . . . 
+ 18 . . O O X X X O X . . . . . . . . . . 
          */
         [TestMethod]
-        public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_A39_3()
+        public void SuicidalRedundantMoveTest_Scenario_XuanXuanQiJing_Weiqi101_2282z()
         {
             Scenario s = new Scenario();
-            Game g = s.Scenario_XuanXuanQiJing_A39(); 
-            g.MakeMove(0, 13);
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_2282();
+            g.MakeMove(7, 15);
+            g.MakeMove(6, 16);
+            g.MakeMove(6, 18);
+            g.MakeMove(7, 18);
+            g.MakeMove(5, 18);
+            g.MakeMove(3, 18);
+            g.MakeMove(4, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(5, 17))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 17))) != null, true);
+        }
+
+        /*
+ 11 . . . O . . . . . . . . . . . . . . . 
+ 12 O O O . . . . . . . . . . . . . . . . 
+ 13 X X X O O . . . . . . . . . . . . . . 
+ 14 . X . X . O . . . . . . . . . . . . . 
+ 15 O X X O O . . . . . . . . . . . . . . 
+ 16 O . X . . . . . . . . . . . . . . . . 
+ 17 O X X O O . . . . . . . . . . . . . . 
+ 18 . X O . . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_XuanXuanGo_A37_101Weiqi()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A37_101Weiqi();
             g.MakeMove(2, 14);
-            g.MakeMove(0, 14);
-            g.MakeMove(0, 12);
+            g.MakeMove(1, 14);
+            g.MakeMove(0, 16);
+            g.MakeMove(1, 18);
+            g.MakeMove(0, 17);
+            g.MakeMove(0, 13);
             g.MakeMove(0, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(1, 14))), true);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(1, 16))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 16))) != null, true);
         }
     }
 }
