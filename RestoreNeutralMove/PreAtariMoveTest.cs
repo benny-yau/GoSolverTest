@@ -272,5 +272,21 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 11))) != null, true);
         }
+
+        /*
+ 14 O O O O . . . . . . . . . . . . . . . 
+ 15 X X X . O . . . . . . . . . . . . . . 
+ 16 . . . X O . . . . . . . . . . . . . . 
+ 17 . X . . O . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void PreAtariMoveTest_Scenario_Corner_A125()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Corner_A125();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 17))) != null, true);
+        }
     }
 }

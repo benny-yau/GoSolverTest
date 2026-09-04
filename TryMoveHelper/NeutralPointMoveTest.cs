@@ -2250,24 +2250,6 @@ namespace UnitTestProject
         }
 
         /*
- 12 X X X . . . . . . . . . . . . . . . . 
- 13 . O . X . . . . . . . . . . . . . . . 
- 14 . . . . X . . . . . . . . . . . . . . 
- 15 . . O O X . . . . . . . . . . . . . . 
- 16 . . . . X . . . . . . . . . . . . . . 
- 17 . O O X . X . . . . . . . . . . . . . 
- 18 . . . . . . . . . . . . . . . . . . .
-         */
-        [TestMethod]
-        public void NeutralPointMoveTest_Scenario_XuanXuanGo_A26_3()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_XuanXuanGo_A26();
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(2, 13))), true);
-        }
-
-        /*
  15 . O O O O O . . . . . . . . . . . . . 
  16 . O X X X O . . . . . . . . . . . . . 
  17 X X . . . O . . . . . . . . . . . . . 
