@@ -451,5 +451,65 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 13))) != null, true);
         }
+
+        /*
+ 13 . . . X . . . . . . . . . . . . . . . 
+ 14 . X X . . . . . . . . . . . . . . . . 
+ 15 X . O X X . . . . . . . . . . . . . . 
+ 16 . X O O O X X . . . . . . . . . . . . 
+ 17 X O O . O O X . X . . . . . . . . . . 
+ 18 O O O . O X X . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantNonSuicidalMoveTest_Scenario_XuanXuanGo_B10()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_B10();
+            g.MakeMove(2, 17);
+            g.MakeMove(0, 17);
+            g.MakeMove(0, 16);
+            g.MakeMove(1, 16);
+            g.MakeMove(1, 17);
+            g.MakeMove(0, 15);
+            g.MakeMove(1, 18);
+            g.MakeMove(3, 18);
+            g.MakeMove(4, 17);
+            g.MakeMove(6, 18);
+            g.MakeMove(2, 18);
+            g.MakeMove(5, 18);
+            g.MakeMove(0, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 15))) != null, true);
+        }
+
+        /*
+ 13 . X . . . . . . . . . . . . . . . . . 
+ 14 X X X X X . . . . . . . . . . . . . . 
+ 15 O X O O . X . . . . . . . . . . . . . 
+ 16 O O O O X . X . . . . . . . . . . . . 
+ 17 X X X O O O X . . . . . . . . . . . . 
+ 18 . O O O X X X . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantNonSuicidalMoveTest_Scenario_TianLongTu_Q16924()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16924();
+            g.MakeMove(2, 17);
+            g.MakeMove(3, 16);
+            g.MakeMove(0, 17);
+            g.MakeMove(0, 16);
+            g.MakeMove(1, 17);
+            g.MakeMove(2, 16);
+            g.MakeMove(5, 18);
+            g.MakeMove(4, 17);
+
+            g.MakeMove(4, 18);
+            g.MakeMove(3, 18);
+            g.MakeMove(0, 14);
+            g.MakeMove(2, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 15))) != null, true);
+        }
     }
 }
