@@ -3661,6 +3661,7 @@ namespace UnitTestProject
             Game g = s.Scenario_XuanXuanQiJing_Weiqi101_A40();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(3, 14))), true);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(2, 14))), true);
         }
 
         /*

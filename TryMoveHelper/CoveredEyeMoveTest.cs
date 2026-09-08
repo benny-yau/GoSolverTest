@@ -428,10 +428,8 @@ namespace UnitTestProject
             Scenario s = new Scenario();
             Game g = s.Scenario4dan10();
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            GameTryMove tryMove = new GameTryMove(g, new Point(0, 9));
-            Boolean coveredEyeMove = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
-            Assert.AreEqual(coveredEyeMove, false);
+            Assert.AreEqual(RedundantMoveHelper.RedundantCoveredEyeMove(new GameTryMove(g, new Point(0, 9))), false);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(0, 15))), true);
         }
 
         /*
@@ -987,10 +985,8 @@ namespace UnitTestProject
             g.MakeMove(4, 15);
             g.MakeMove(5, 16);
             g.MakeMove(2, 14);
-
-            GameTryMove tryMove = new GameTryMove(g, new Point(0, 13));
-            Boolean isRedundant = RedundantMoveHelper.RedundantCoveredEyeMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantCoveredEyeMove(new GameTryMove(g, new Point(0, 13))), false);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
