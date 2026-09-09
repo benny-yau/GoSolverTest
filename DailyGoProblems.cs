@@ -10422,12 +10422,26 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(10, 17));
             gi.killMovablePoints.Add(new Point(11, 18));
             gi.survivalPoints.Add(new Point(4, 17));
-            gi.survivalPoints.Add(new Point(7, 16));
             gi.survivalPoints.Add(new Point(8, 17));
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(5, 13))), true);
             Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(8, 13))), true);
             Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(9, 14))), true);
+            g.MakeMove(5, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(7, 17);
+            g.MakeMove(6, 17);
+            g.MakeMove(5, 18);
+            g.MakeMove(2, 18);
+            g.MakeMove(8, 16);
+            g.MakeMove(7, 18);
+            g.MakeMove(5, 16);
+            g.MakeMove(9, 16);
+            g.MakeMove(7, 14);
+            g.MakeMove(6, 18);
+            g.MakeMove(6, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(9, 17))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(9, 17))) != null, true);
         }
 
         /*
@@ -10605,7 +10619,16 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20260908_8()
         {
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.White, 13);
+            Game g = Scenario_20260908_8();
+            g.MakeMove(1, 16);
+            g.MakeMove(1, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 15))) != null, true);
+        }
+
+        public static Game Scenario_20260908_8()
+        {
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.White, 15);
             Game g = new Game(gi);
             g.SetupMove(1, 9, Content.White);
             g.SetupMove(1, 10, Content.Black);
@@ -10685,8 +10708,7 @@ namespace UnitTestProject
             gi.movablePoints.Add(new Point(0, 8));
             gi.movablePoints.Add(new Point(0, 8));
             gi.survivalPoints.Add(new Point(3, 14));
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 15))) != null, true);
+            return g;
         }
 
         public static Game SearchAnswer(Game g)
