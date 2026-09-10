@@ -10376,6 +10376,30 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20260902_8()
         {
+            Game g = Scenario_20260902_8();
+            Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(5, 13))), true);
+            Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(8, 13))), true);
+            Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(9, 14))), true);
+            g.MakeMove(5, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(7, 17);
+            g.MakeMove(6, 17);
+            g.MakeMove(5, 18);
+            g.MakeMove(2, 18);
+            g.MakeMove(8, 16);
+            g.MakeMove(7, 18);
+            g.MakeMove(5, 16);
+            g.MakeMove(9, 16);
+            g.MakeMove(7, 14);
+            g.MakeMove(6, 18);
+            g.MakeMove(6, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(9, 17))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(9, 17))) != null, true);
+        }
+
+        public static Game Scenario_20260902_8()
+        {
             var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(2, 14, Content.White);
@@ -10423,25 +10447,7 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(11, 18));
             gi.survivalPoints.Add(new Point(4, 17));
             gi.survivalPoints.Add(new Point(8, 17));
-            Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(5, 13))), true);
-            Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(8, 13))), true);
-            Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(9, 14))), true);
-            g.MakeMove(5, 17);
-            g.MakeMove(4, 18);
-            g.MakeMove(7, 17);
-            g.MakeMove(6, 17);
-            g.MakeMove(5, 18);
-            g.MakeMove(2, 18);
-            g.MakeMove(8, 16);
-            g.MakeMove(7, 18);
-            g.MakeMove(5, 16);
-            g.MakeMove(9, 16);
-            g.MakeMove(7, 14);
-            g.MakeMove(6, 18);
-            g.MakeMove(6, 16);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(9, 17))), false);
-            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(9, 17))) != null, true);
+            return g;
         }
 
         /*
@@ -10628,7 +10634,7 @@ namespace UnitTestProject
 
         public static Game Scenario_20260908_8()
         {
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.White, 15);
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.White, 15);
             Game g = new Game(gi);
             g.SetupMove(1, 9, Content.White);
             g.SetupMove(1, 10, Content.Black);
@@ -10691,7 +10697,7 @@ namespace UnitTestProject
             g.SetupMove(9, 13, Content.Black);
             g.SetupMove(9, 14, Content.White);
             g.SetupMove(9, 16, Content.White);
-            g.GameInfo.targetPoints.Add(new Point(1, 15));
+            g.GameInfo.targetPoints.Add(new Point(3, 14));
             for (int x = 0; x <= 2; x++)
             {
                 for (int y = 9; y <= 18; y++)
@@ -10704,10 +10710,10 @@ namespace UnitTestProject
             }
             gi.movablePoints.Add(new Point(3, 18));
             gi.killMovablePoints.AddRange(gi.movablePoints);
-            gi.killMovablePoints.Add(new Point(4, 18));
-            gi.movablePoints.Add(new Point(0, 8));
-            gi.movablePoints.Add(new Point(0, 8));
-            gi.survivalPoints.Add(new Point(3, 14));
+            gi.movablePoints.Add(new Point(4, 18));
+            gi.survivalPoints.Add(new Point(1, 14));
+            gi.survivalPoints.Add(new Point(1, 15));
+            gi.survivalPoints.Add(new Point(7, 12));
             return g;
         }
 

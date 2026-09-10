@@ -571,5 +571,40 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(1, 16))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 16))) != null, true);
         }
+
+        /*
+ 13 . O O O O . . . . . . . . . . . . . . 
+ 14 O . X X . . . . . . . . . . . . . . . 
+ 15 O X . . . O . . . . . . . . . . . . . 
+ 16 . X X X X O . . . . . . . . . . . . . 
+ 17 . O . . O X O . . . . . . . . . . . . 
+ 18 . . . . . X O . . . . . . . . . . . . 
+
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_WindAndTime_Q29366()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WindAndTime_Q29366();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(3, 15))), true);
+        }
+
+        /*
+ 14 . . O O O O O . . . . . . . . . . . . 
+ 15 . O O X X X O . . . . . . . . . . . . 
+ 16 . O X . . X O . . . . . . . . . . . . 
+ 17 . O X X . X O . O . . . . . . . . . . 
+ 18 . X O . . . . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario1dan29()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario1dan29();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(4, 16))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 16))) != null, true);
+        }
     }
 }
