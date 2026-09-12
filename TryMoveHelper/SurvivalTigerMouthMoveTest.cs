@@ -2577,6 +2577,31 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(0, 11))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 11))) != null, true);
         }
+
+        /*
+ 14 . . . . . . X X . . . . . . . . . . . 
+ 15 . . . X X X O O X X . . . . . . . . . 
+ 16 . . X . O O X O O . . . . . . . . . . 
+ 17 . . X O O O X . O X X . . . . . . . . 
+ 18 . . X X . O . . . O . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantTigerMouthMove_Scenario_TianLongTu_Q16735()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16735();
+            g.MakeMove(6, 16);
+            g.MakeMove(7, 16);
+            g.MakeMove(6, 17);
+            g.MakeMove(4, 17);
+            g.MakeMove(3, 18);
+            g.MakeMove(5, 18);
+            g.MakeMove(2, 18);
+            g.MakeMove(5, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(8, 18))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(8, 18))) != null, true);
+        }
     }
 }
 

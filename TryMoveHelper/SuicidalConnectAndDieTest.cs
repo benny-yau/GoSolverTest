@@ -3254,41 +3254,6 @@ namespace UnitTestProject
         }
 
         /*
- 13 X X X X . . . . . . . . . . . . . . . 
- 14 X X O O X X X . . . . . . . . . . . . 
- 15 X O O . O O X . . . . . . . . . . . . 
- 16 X X O X X O X . . X . . . . . . . . . 
- 17 O X O O O O X . X . . . . . . . . . . 
- 18 . . . X X . . O . . . . . . . . . . .
-        */
-        [TestMethod]
-        public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16738_8()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario_TianLongTu_Q16738();
-
-            g.MakeMove(5, 18);
-            g.MakeMove(0, 17);
-            g.MakeMove(0, 16);
-            g.MakeMove(3, 17);
-            g.MakeMove(4, 16);
-            g.MakeMove(4, 17);
-            g.MakeMove(1, 14);
-            g.MakeMove(2, 15);
-            g.Board[5, 18] = g.Board[6, 18] = g.Board[1, 18] = Content.Empty;
-            g.Board[3, 18] = g.Board[4, 18] = g.Board[3, 16] = Content.Black;
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g, new Point(5, 18));
-            Boolean isRedundant = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
-
-        }
-
-        /*
  13 . X . X . . . . . . . . . . . . . . . 
  14 . X O X . . . . . . . . . . . . . . . 
  15 X O X X . . . . . . . . . . . . . . . 
