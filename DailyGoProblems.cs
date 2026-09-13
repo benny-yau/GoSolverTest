@@ -10717,6 +10717,114 @@ namespace UnitTestProject
             return g;
         }
 
+        /*
+  7 . X X X . . . . . . . . . . . . . . . 
+  8 O O O X . X . . . . . . . . . . . . . 
+  9 . . O . . . . . . . . . . . . . . . . 
+ 10 . . O X X . . . . . . . . . . . . . . 
+ 11 . . O O O X . . . . . . . . . . . . . 
+ 12 . X . X O X . . . . . . . . . . . . . 
+ 13 . X . X O X . . . . . . . . . . . . . 
+ 14 X X O O O O X . . . . . . . . . . . . 
+ 15 . X X O . X X . . . . . . . . . . . . 
+ 16 X O O O . . . . . . . . . . . . . . . 
+ 17 . X X O . X . . . . . . . . . . . . . 
+ 18 . . X O . . . . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void DailyGoProblems_20260912_8()
+        {
+            Game g = Scenario_20260912_8();
+            g.MakeMove(1, 13);
+            g.MakeMove(2, 14);
+            g.MakeMove(1, 14);
+            g.MakeMove(0, 15);
+            g.MakeMove(0, 14);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(0, 12))) != null, true);
+            g.MakeMove(1, 11);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(0, 11))) != null, true);
+        }
+
+        /*
+  7 . X X X . . . . . . . . . . . . . . . 
+  8 O O O X . X . . . . . . . . . . . . . 
+  9 . . O . . . . . . . . . . . . . . . . 
+ 10 . . O X X . . . . . . . . . . . . . . 
+ 11 . . O O O X . . . . . . . . . . . . . 
+ 12 . X . X O X . . . . . . . . . . . . . 
+ 13 . . . X O X . . . . . . . . . . . . . 
+ 14 . . . O O O X . . . . . . . . . . . . 
+ 15 . X X O . X X . . . . . . . . . . . . 
+ 16 X O O O . . . . . . . . . . . . . . . 
+ 17 . X X O . X . . . . . . . . . . . . . 
+ 18 . . X O . . . . . . . . . . . . . . . 
+        */
+        public static Game Scenario_20260912_8()
+        {
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
+            Game g = new Game(gi);
+            g.SetupMove(0, 8, Content.White);
+            g.SetupMove(0, 16, Content.Black);
+            g.SetupMove(1, 7, Content.Black);
+            g.SetupMove(1, 8, Content.White);
+            g.SetupMove(1, 12, Content.Black);
+            g.SetupMove(1, 15, Content.Black);
+            g.SetupMove(1, 16, Content.White);
+            g.SetupMove(1, 17, Content.Black);
+            g.SetupMove(2, 7, Content.Black);
+            g.SetupMove(2, 8, Content.White);
+            g.SetupMove(2, 9, Content.White);
+            g.SetupMove(2, 10, Content.White);
+            g.SetupMove(2, 11, Content.White);
+            g.SetupMove(2, 15, Content.Black);
+            g.SetupMove(2, 16, Content.White);
+            g.SetupMove(2, 17, Content.Black);
+            g.SetupMove(2, 18, Content.Black);
+            g.SetupMove(3, 7, Content.Black);
+            g.SetupMove(3, 8, Content.Black);
+            g.SetupMove(3, 10, Content.Black);
+            g.SetupMove(3, 11, Content.White);
+            g.SetupMove(3, 12, Content.Black);
+            g.SetupMove(3, 13, Content.Black);
+            g.SetupMove(3, 14, Content.White);
+            g.SetupMove(3, 15, Content.White);
+            g.SetupMove(3, 16, Content.White);
+            g.SetupMove(3, 17, Content.White);
+            g.SetupMove(3, 18, Content.White);
+            g.SetupMove(4, 10, Content.Black);
+            g.SetupMove(4, 11, Content.White);
+            g.SetupMove(4, 12, Content.White);
+            g.SetupMove(4, 13, Content.White);
+            g.SetupMove(4, 14, Content.White);
+            g.SetupMove(5, 8, Content.Black);
+            g.SetupMove(5, 11, Content.Black);
+            g.SetupMove(5, 12, Content.Black);
+            g.SetupMove(5, 13, Content.Black);
+            g.SetupMove(5, 14, Content.White);
+            g.SetupMove(5, 15, Content.Black);
+            g.SetupMove(5, 17, Content.Black);
+            g.SetupMove(6, 14, Content.Black);
+            g.SetupMove(6, 15, Content.Black);
+            g.GameInfo.targetPoints.Add(new Point(1, 16));
+            for (int x = 0; x <= 2; x++)
+            {
+                for (int y = 9; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+            gi.killMovablePoints.Add(new Point(0, 7));
+            gi.killMovablePoints.Add(new Point(3, 9));
+            gi.killMovablePoints.Add(new Point(4, 15));
+            gi.killMovablePoints.Add(new Point(4, 16));
+            gi.killMovablePoints.Add(new Point(4, 17));
+            gi.killMovablePoints.Add(new Point(4, 18));
+            gi.survivalPoints.Add(new Point(1, 17));
+            gi.survivalPoints.Add(new Point(1, 15));
+            gi.survivalPoints.Add(new Point(1, 12));
+            gi.survivalPoints.Add(new Point(3, 12));
+            return g;
+        }
+
         public static Game SearchAnswer(Game g)
         {
             Game.SearchAnswer = true;
