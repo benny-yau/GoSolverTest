@@ -10846,7 +10846,7 @@ namespace UnitTestProject
             g.MakeMove(5, 18);
             g.MakeMove(4, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g, new Point(2, 18));
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(0, 16))), true);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(2, 18))) != null, true);
 
             MonteCarloTreeSearch.searchDepthToVerify = 7;
@@ -10865,7 +10865,7 @@ namespace UnitTestProject
         */
         public static Game Scenario_20260914_8()
         {
-            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black);
+            var gi = new GameInfo(SurviveOrKill.Survive, Content.Black, 15);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.White);
             g.SetupMove(1, 14, Content.White);
