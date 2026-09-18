@@ -1163,5 +1163,21 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(2, 18))), true);
         }
+
+        /*
+ 14 . . . . X X X . . . . . . . . . . . . 
+ 15 . . . X X O . X X . . . . . . . . . . 
+ 16 . . X O O . X O O X X . . . . . . . . 
+ 17 . . X O . . O . O O X . . . . . . . . 
+ 18 . . . . . . . O . X . . . . . . . . . 
+        */
+        [TestMethod]
+        public void AtariRedundantMoveTest_Scenario_WuQingYuan_Q31177()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WuQingYuan_Q31177();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(6, 15))), true);
+        }
     }
 }
