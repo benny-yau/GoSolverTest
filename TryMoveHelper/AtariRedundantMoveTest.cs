@@ -1165,19 +1165,88 @@ namespace UnitTestProject
         }
 
         /*
- 14 . . . . X X X . . . . . . . . . . . . 
- 15 . . . X X O . X X . . . . . . . . . . 
- 16 . . X O O . X O O X X . . . . . . . . 
- 17 . . X O . . O . O O X . . . . . . . . 
- 18 . . . . . . . O . X . . . . . . . . . 
-        */
+ 13 . . . X X X X X . . . . . . . . . . . 
+ 14 . . X O O O O O X . . . . . . . . . . 
+ 15 . . X . O . O . X . . . . . . . . . . 
+ 16 . . . X O X X O X . . . . . . . . . . 
+ 17 . . X X X O O . O X X . . . . . . . . 
+ 18 . . . O . X . O O O X . . . . . . . .
+         */
         [TestMethod]
-        public void AtariRedundantMoveTest_Scenario_WuQingYuan_Q31177()
+        public void AtariRedundantMoveTest_Scenario_WindAndTime_Q30225_4()
         {
             Scenario s = new Scenario();
-            Game g = s.Scenario_WuQingYuan_Q31177();
+            Game g = s.Scenario_WindAndTime_Q30225();
+            g.MakeMove(5, 16);
+            g.MakeMove(4, 15);
+            g.MakeMove(6, 16);
+            g.MakeMove(7, 18);
+            g.MakeMove(5, 18);
+            g.MakeMove(3, 18);
+            g.MakeMove(3, 17);
+            g.MakeMove(6, 15);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(6, 15))), true);
+            Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(4, 18))), false);
+        }
+
+        /*
+ 14 X X . . X . . . . . . . . . . . . . . 
+ 15 X O X X . . X . . . . . . . . . . . . 
+ 16 O O O O X . X . . . . . . . . . . . . 
+ 17 . O O X O O X . . . . . . . . . . . . 
+ 18 . . . . X . X . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void AtariRedundantMoveTest_Scenario_TianLongTu_Q17154()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q17154();
+            g.MakeMove(0, 15);
+            g.MakeMove(1, 17);
+            g.MakeMove(3, 17);
+            g.MakeMove(0, 16);
+            g.MakeMove(4, 18);
+            g.MakeMove(3, 16);
+            g.MakeMove(6, 18);
+            g.MakeMove(2, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(5, 18))), false);
+        }
+
+        /*
+ 14 O O O O O O . . . . . . . . . . . . . 
+ 15 O X X X X X O . . . . . . . . . . . . 
+ 16 . O . . . . O . . . . . . . . . . . . 
+ 17 X O X X X X . O . . . . . . . . . . . 
+ 18 . O X . . X . O . . . . . . . . . . . 
+        */
+        [TestMethod]
+        public void AtariRedundantMoveTest_Scenario_XuanXuanQiJing_A36()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanQiJing_A36();
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(0, 18))), true);
+        }
+
+        /*
+ 13 . . . . . . . O . . . . . . . . . . . 
+ 14 . O . . . . O . . O . . . . . . . . . 
+ 15 . . O . O O O X X O . . . . . . . . . 
+ 16 . O X X X X . O X O . . . . . . . . . 
+ 17 . O X . O . . X O O . . . . . . . . . 
+ 18 . O O X . X . X . . . . . . . . . . . 
+        */
+        [TestMethod]
+        public void AtariRedundantMoveTest_Scenario_WuQingYuan_Q31670()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WuQingYuan_Q31670();
+            g.MakeMove(7, 18);
+            g.MakeMove(6, 15);
+            g.MakeMove(5, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(8, 14))), true);
         }
     }
 }

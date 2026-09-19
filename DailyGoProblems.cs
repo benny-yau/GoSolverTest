@@ -10963,8 +10963,70 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(3, 18))), true);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(7, 17))), true);
+            g.MakeMove(5, 17);
+            Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(2, 16))), true);
         }
 
+        /*
+ 14 . . . X X X X X . . . . . . . . . . . 
+ 15 . . X . . . . O X X . . . . . . . . . 
+ 16 . . X O X O . . O X . . . . . . . . . 
+ 17 . . X O . O . . O X . . . . . . . . . 
+ 18 . . X O . . . . O X . . . . . . . . .
+        */
+        [TestMethod]
+        public void DailyGoProblems_20260918_8()
+        {
+            Game g = Scenario_20260918_8();
+            g.MakeMove(4, 16);
+            g.MakeMove(5, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(5, 15))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 15))) != null, true);
+        }
+
+        /*
+ 14 . . . X X X X X . . . . . . . . . . . 
+ 15 . . X . . . . O X X . . . . . . . . . 
+ 16 . . X O . . . . O X . . . . . . . . . 
+ 17 . . X O . O . . O X . . . . . . . . . 
+ 18 . . X O . . . . O X . . . . . . . . .
+        */
+        public static Game Scenario_20260918_8()
+        {
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
+            Game g = new Game(gi);
+            g.SetupMove(2, 15, Content.Black);
+            g.SetupMove(2, 16, Content.Black);
+            g.SetupMove(2, 17, Content.Black);
+            g.SetupMove(2, 18, Content.Black);
+            g.SetupMove(3, 14, Content.Black);
+            g.SetupMove(3, 16, Content.White);
+            g.SetupMove(3, 17, Content.White);
+            g.SetupMove(3, 18, Content.White);
+            g.SetupMove(4, 14, Content.Black);
+            g.SetupMove(5, 14, Content.Black);
+            g.SetupMove(5, 17, Content.White);
+            g.SetupMove(6, 14, Content.Black);
+            g.SetupMove(7, 14, Content.Black);
+            g.SetupMove(7, 15, Content.White);
+            g.SetupMove(8, 15, Content.Black);
+            g.SetupMove(8, 16, Content.White);
+            g.SetupMove(8, 17, Content.White);
+            g.SetupMove(8, 18, Content.White);
+            g.SetupMove(9, 15, Content.Black);
+            g.SetupMove(9, 16, Content.Black);
+            g.SetupMove(9, 17, Content.Black);
+            g.SetupMove(9, 18, Content.Black);
+            g.GameInfo.targetPoints.Add(new Point(5, 17));
+            for (int x = 3; x <= 8; x++)
+            {
+                for (int y = 15; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+            return g;
+        }
 
         public static Game SearchAnswer(Game g)
         {
