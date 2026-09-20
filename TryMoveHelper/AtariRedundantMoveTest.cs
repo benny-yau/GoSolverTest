@@ -1248,5 +1248,30 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(8, 14))), true);
         }
+
+        /*
+ 14 . . . . . . . X X . . . . . . . . . . 
+ 15 . . . X X X X O O X . . . . . . . . . 
+ 16 . . X O . O O O . X X . . . . . . . . 
+ 17 . . X O . . O . O O X . X . . . . . . 
+ 18 . . . X X O . . O X . . . . . . . . . 
+         */
+        [TestMethod]
+        public void AtariRedundantMoveTest_Scenario_TianLongTu_Q17132()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q17132();
+            g.MakeMove(3, 18);
+            g.MakeMove(7, 16);
+            g.MakeMove(9, 16);
+            g.MakeMove(5, 18);
+            g.MakeMove(9, 18);
+            g.MakeMove(8, 18);
+            g.MakeMove(4, 18);
+            g.MakeMove(6, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(4, 17))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 17))) != null, true);
+        }
     }
 }

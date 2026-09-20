@@ -10965,6 +10965,7 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(7, 17))), true);
             g.MakeMove(5, 17);
             Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(2, 16))), true);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(7, 17))), true);
         }
 
         /*
