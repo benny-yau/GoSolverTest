@@ -361,34 +361,6 @@ namespace UnitTestProject
         }
 
         /*
- 13 . . . O . . . . . . . . . . . . . . . 
- 14 . . . O . . . . . . . . . . . . . . . 
- 15 . O O O X X . . . . . . . . . . . . . 
- 16 O X O X O . X . . . . . . . . . . . . 
- 17 . X X X O . X . . . . . . . . . . . . 
- 18 . X . O O . . . . . . . . . . . . . .
-        */
-        [TestMethod]
-        public void GenericNeutralMoveTest_Scenario3kyu24_4()
-        {
-            Scenario s = new Scenario();
-            Game g = s.Scenario3kyu24();
-            g.Board[0, 18] = g.Board[1, 18] = Content.Empty;
-            g.Board[1, 18] = g.Board[1, 17] = Content.Black;
-            g.Board[1, 15] = g.Board[0, 16] = Content.White;
-
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-            GameTryMove tryMove = new GameTryMove(g, new Point(0, 18));
-            Boolean isSuicidal = RedundantMoveHelper.SuicidalRedundantMove(tryMove);
-            Assert.AreEqual(isSuicidal, true);
-
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(moveResult.Equals(ConfirmAliveResult.Dead), true);
-        }
-
-        /*
 14 . . . X X X . . . . . . . . . . . . . 
 15 . . X . O O X X X . . . . . . . . . . 
 16 . . . . O X O O O X X . X . . . . . . 

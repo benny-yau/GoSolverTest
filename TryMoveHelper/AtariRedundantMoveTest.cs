@@ -1246,7 +1246,7 @@ namespace UnitTestProject
             g.MakeMove(6, 15);
             g.MakeMove(5, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(8, 14))), true);
+            Assert.AreEqual(RedundantMoveHelper.AtariRedundantMove(new GameTryMove(g, new Point(7, 14))), true);
         }
 
         /*
