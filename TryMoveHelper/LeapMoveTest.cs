@@ -323,11 +323,32 @@ namespace UnitTestProject
             g.MakeMove(2, 17);
             g.MakeMove(3, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(RedundantMoveHelper.RedundantKillLeapMove(new GameTryMove(g, new Point(0, 18))), false);
+            Assert.AreEqual(RedundantMoveHelper.RedundantKillLeapMove(new GameTryMove(g, new Point(0, 18))), true);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(1, 18))), true);
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
+        }
+
+        /*
+ 12 . . O . . . . . . . . . . . . . . . . 
+ 13 . O . O O O . . . . . . . . . . . . . 
+ 14 . . X X X O . . . . . . . . . . . . . 
+ 15 X X X . X . . . . . . . . . . . . . . 
+ 16 . O . . X O . . . . . . . . . . . . . 
+ 17 . . O X O . O . . . . . . . . . . . . 
+ 18 . X . O . O . . . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void LeapMoveTest_Scenario_TianLongTu_Q14992_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q14992();
+            g.MakeMove(1, 18);
+            g.MakeMove(3, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantSurvivalLeapMove(new GameTryMove(g, new Point(1, 17))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 17))) != null, true);
         }
     }
 }
