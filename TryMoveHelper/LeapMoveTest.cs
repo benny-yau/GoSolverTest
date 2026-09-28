@@ -350,5 +350,78 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.RedundantSurvivalLeapMove(new GameTryMove(g, new Point(1, 17))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 17))) != null, true);
         }
+
+        /*
+ 14 . . . O O O O . . . . . . . . . . . . 
+ 15 . . . O X X X O O . . . . . . . . . . 
+ 16 . . O X . . O X O . . . . . . . . . . 
+ 17 . . O X . X . X O . O . . . . . . . . 
+ 18 . . . . . . X O . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void LeapMoveTest_Scenario_Side_B35()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Side_B35();
+            g.MakeMove(5, 17);
+            g.MakeMove(7, 18);
+            g.MakeMove(6, 18);
+            g.MakeMove(6, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantSurvivalLeapMove(new GameTryMove(g, new Point(3, 18))), true);
+        }
+
+        /*
+  8 . . . . . O X . . . . . . . . . . . . 
+  9 . . X X O O X . . . . . . . . . . . . 
+ 10 . . O O X X O . . . . . . . . . . . . 
+ 11 . . O X . X O . . . . . . . . . . . . 
+ 12 . . O X X X O . . . . . . . . . . . . 
+ 13 . . O . X O O . . . . . . . . . . . . 
+ 14 . . . O X . . . . . . . . . . . . . . 
+ 15 . . O . X O O O O . . . . . . . . . . 
+ 16 . . . O X O . X X O O O . . . . . . . 
+ 17 . . . O X O X O X X X O . . . . . . . 
+ 18 . . . . X . . . . . O . . . . . . . .
+         */
+        [TestMethod]
+        public void LeapMoveTest_Scenario_XuanXuanQiJing_Weiqi101_18497()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanQiJing_Weiqi101_18497();
+            g.MakeMove(7, 17);
+            g.MakeMove(4, 17);
+            g.MakeMove(10, 18);
+            g.MakeMove(8, 17);
+            g.MakeMove(5, 16);
+            g.MakeMove(4, 18);
+            g.MakeMove(5, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantSurvivalLeapMove(new GameTryMove(g, new Point(8, 18))), true);
+        }
+
+        /*
+ 15 . . X . X . X X X X X . . . . . . . . 
+ 16 . . . X X O O X . X O X X . . . . . . 
+ 17 . . X X O O O O X O . O X . . . . . . 
+ 18 . . X O O . O X . O . . X . . . . . .
+         */
+        [TestMethod]
+        public void LeapMoveTest_Scenario_WuQingYuan_Q30982()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_WuQingYuan_Q30982();
+            g.MakeMove(7, 18);
+            g.MakeMove(5, 16);
+            g.MakeMove(4, 16);
+            g.MakeMove(9, 18);
+            g.MakeMove(5, 18);
+            g.MakeMove(5, 17);
+            g.MakeMove(9, 16);
+            g.MakeMove(6, 18);
+            g.MakeMove(8, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantSurvivalLeapMove(new GameTryMove(g, new Point(10, 17))), false);
+        }
     }
 }
