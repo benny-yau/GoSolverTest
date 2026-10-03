@@ -423,5 +423,37 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.RedundantSurvivalLeapMove(new GameTryMove(g, new Point(10, 17))), false);
         }
+
+        /*
+  9 O O O . . . . . . . . . . . . . . . . 
+ 10 X X O O . . . . . . . . . . . . . . . 
+ 11 . . X O . . . . . . . . . . . . . . . 
+ 12 O X X . . . . . . . . . . . . . . . . 
+ 13 X . X O O . . . . . . . . . . . . . . 
+ 14 . O O X O . . . . . . . . . . . . . . 
+ 15 X X X . O . . . . . . . . . . . . . . 
+ 16 . O O O . . . . . . . . . . . . . . . 
+ 17 . . . . . . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void LeapMoveTest_Scenario_XuanXuanGo_A151_101Weiqi()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_XuanXuanGo_A151_101Weiqi();
+            g.MakeMove(2, 10);
+            g.MakeMove(0, 10);
+            g.MakeMove(0, 12);
+            g.MakeMove(1, 12);
+            g.MakeMove(0, 9);
+            g.MakeMove(0, 15);
+            g.MakeMove(2, 14);
+
+            g.MakeMove(0, 13);
+            g.MakeMove(1, 14);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantSurvivalLeapMove(new GameTryMove(g, new Point(0, 11))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 11))) != null, true);
+        }
     }
 }
