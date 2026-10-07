@@ -749,5 +749,95 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(5, 18))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
         }
+
+        /*
+ 14 . X . . . . . . . . . . . . . . . . . 
+ 15 . . X X X X X . . . . . . . . . . . . 
+ 16 X X O O . O O X . . . . . . . . . . . 
+ 17 O O . . . . O X . . . . . . . . . . . 
+ 18 . . . X . . . X . . . . . . . . . . . 
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q17077()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q17077();
+            g.MakeMove(3, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(2, 17))), true);
+        }
+
+        /*
+ 14 . . . . X X X . . . . . . . . . . . . 
+ 15 . X X X O O . X X X . . . . . . . . . 
+ 16 . X X O . . . O O X . . . . . . . . . 
+ 17 . X O O . O O O . X . . . . . . . . . 
+ 18 . X X O . . X X X . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16525()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16525();
+            g.MakeMove(2, 18);
+            g.MakeMove(3, 18);
+            g.MakeMove(2, 16);
+            g.MakeMove(3, 17);
+            g.MakeMove(6, 18);
+            g.MakeMove(6, 17);
+            g.MakeMove(7, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(4, 16))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 16))) != null, true);
+        }
+
+        /*
+ 13 . . . . X X X X . . . . . . . . . . . 
+ 14 . . X X O O . . X . . . . . . . . . . 
+ 15 . . X O . . O . . . . . . . . . . . . 
+ 16 . . X O . . O X X . . . . . . . . . . 
+ 17 . X O . O O . O X . . . . . . . . . . 
+ 18 . X X . X O O X X . . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q17250_4()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q17250();
+            g.MakeMove(2, 18);
+            g.MakeMove(5, 14);
+            g.MakeMove(4, 18);
+            g.MakeMove(5, 18);
+            g.MakeMove(6, 17);
+            g.MakeMove(5, 17);
+            g.MakeMove(7, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(4, 15))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 15))) != null, true);
+        }
+
+        /*
+ 14 . . . . . . X X . . . . . . . . . . . 
+ 15 . . . X X X O O X X . . . . . . . . . 
+ 16 . . X X O O . . O . . . . . . . . . . 
+ 17 . . X O . O . . O X X . . . . . . . . 
+ 18 . . X X O . O . . O . . . . . . . . .
+         */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_Scenario_TianLongTu_Q16735_2()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16735();
+            g.MakeMove(5, 18);
+            g.MakeMove(4, 18);
+            g.MakeMove(2, 18);
+            g.MakeMove(5, 17);
+            g.MakeMove(3, 18);
+            g.MakeMove(6, 18);
+            g.MakeMove(3, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(6, 16))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(6, 16))) != null, true);
+        }
     }
 }

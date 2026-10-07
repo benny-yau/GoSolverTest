@@ -2667,5 +2667,23 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.NeutralPointSurvivalMove(new GameTryMove(g, new Point(4, 17))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(4, 17))) != null, true);
         }
+
+        /*
+ 14 . . . . . . . X X . X . . . . . . . . 
+ 15 . . . X X X X O O O X . . . . . . . . 
+ 16 . . X O O . X O . O X . . . . . . . . 
+ 17 . . X O . . . . O X X . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void NeutralPointMoveTest_Scenario_TianLongTu_Q16571()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_TianLongTu_Q16571();
+            g.MakeMove(6, 16);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointSurvivalMove(new GameTryMove(g, new Point(6, 17))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(6, 17))) != null, true);
+        }
     }
 }
