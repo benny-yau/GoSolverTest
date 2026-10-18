@@ -734,5 +734,24 @@ namespace UnitTestProject
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(7, 18))) != null, true);
         }
 
+        /*
+ 15 . . O O O O O O O . . . . . . . . . . 
+ 16 . . O X X X X X O . O . . . . . . . . 
+ 17 . . O X O O . X . O . . . . . . . . . 
+ 18 . . . X . X . . . . . . . . . . . . .
+         */
+        [TestMethod]
+        public void RedundantNonSuicidalMoveTest_Scenario_Side_A15()
+        {
+            Scenario s = new Scenario();
+            Game g = s.Scenario_Side_A15();
+            g.MakeMove(5, 17);
+            g.MakeMove(5, 18);
+            g.MakeMove(4, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(8, 18))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(8, 18))) != null, true);
+        }
+
     }
 }

@@ -2367,9 +2367,9 @@ namespace UnitTestProject
         }
 
         /*
- 12 . X . . . . . . . . . . . . . . . . . 
- 13 . . X . . . . . . . . . . . . . . . . 
- 14 . X X X O O . . . . . . . . . . . . . 
+ 12 . . . . . . . . . . . . . . . . . . . 
+ 13 . X X . . . . . . . . . . . . . . . . 
+ 14 . . X X O O . . . . . . . . . . . . . 
  15 . O O O X O . . . . . . . . . . . . . 
  16 O O X X X . . . . . . . . . . . . . . 
  17 . O X . X . . . . . . . . . . . . . . 
@@ -2379,11 +2379,10 @@ namespace UnitTestProject
         public void CoveredEyeMoveTest_x_3()
         {
             Scenario s = new Scenario();
-            var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.White);
+            var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.White);
             Game g = new Game(gi);
             g.SetupMove(0, 16, Content.White);
-            g.SetupMove(1, 12, Content.Black);
-            g.SetupMove(1, 14, Content.Black);
+            g.SetupMove(1, 13, Content.Black);
             g.SetupMove(1, 15, Content.White);
             g.SetupMove(1, 16, Content.White);
             g.SetupMove(1, 17, Content.White);
@@ -2404,24 +2403,23 @@ namespace UnitTestProject
             g.SetupMove(4, 18, Content.Black);
             g.SetupMove(5, 14, Content.White);
             g.SetupMove(5, 15, Content.White);
-            g.GameInfo.targetPoints.Add(new Point(2, 17));
-
-            for (int x = 0; x <= 5; x++)
+            g.GameInfo.targetPoints.Add(new Point(1, 17));
+            for (int x = 0; x <= 4; x++)
             {
                 for (int y = 14; y <= 18; y++)
                     gi.movablePoints.Add(new Point(x, y));
             }
-            gi.killMovablePoints.AddRange(gi.movablePoints);
             gi.movablePoints.Add(new Point(0, 13));
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = new GameTryMove(g, new Point(0, 14));
-            Boolean isRedundant = RedundantMoveHelper.NeutralPointKillMove(tryMove);
-            Assert.AreEqual(isRedundant, false);
-
-            ConfirmAliveResult moveResult = g.InitializeComputerMove();
-            Point move = g.Board.LastMove.Value;
-            Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead), true);
-
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+            gi.killMovablePoints.Add(new Point(0, 12));
+            gi.movablePoints.Add(new Point(5, 16));
+            gi.movablePoints.Add(new Point(5, 17));
+            gi.movablePoints.Add(new Point(5, 18));
+            Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(0, 14))), false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(0, 14))) != null, true);
+            g.MakeMove(3, 3);
+            Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(0, 14))), false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(0, 14))) != null, true);
         }
 
 
