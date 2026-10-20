@@ -2702,7 +2702,7 @@ namespace UnitTestProject
             Game g = s.Scenario_Corner_B6();
             g.MakeMove(1, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMoveOnly(new GameTryMove(g, new Point(1, 15))), false);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(1, 15))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 15))) != null, true);
         }
 
@@ -2723,7 +2723,7 @@ namespace UnitTestProject
             g.MakeMove(1, 16);
             g.MakeMove(3, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMoveOnly(new GameTryMove(g, new Point(5, 17))), false);
+            Assert.AreEqual(RedundantMoveHelper.NeutralPointKillMove(new GameTryMove(g, new Point(5, 17))), false);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 17))) != null, true);
         }
     }
