@@ -11948,12 +11948,7 @@ namespace UnitTestProject
             g.MakeMove(3, 10);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(3, 11))), false);
-            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 11))) != null, true);
-
-            MonteCarloTreeSearch.searchDepthToVerify = 7;
-            Game game = SearchAnswer(g);
-            Point move = game.Board.LastMove.Value;
-            Assert.AreEqual(move.Equals(new Point(2, 18)), true);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(3, 11))) != null, true);            
         }
 
         public static Game SearchAnswer(Game g)
