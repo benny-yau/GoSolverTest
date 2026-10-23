@@ -411,13 +411,29 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(3, 16);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            GameTryMove tryMove = tryMoves.Where(m => m.Move.Equals(new Point(9, 16))).FirstOrDefault();
-            Assert.AreEqual(tryMove != null, true);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(9, 16))) != null, true);
 
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.Equals(ConfirmAliveResult.Dead), true);
         }
 
+        /*
+ 13 . . O . . . . . . . . . . . . . . . . 
+ 14 . O . . . . . . . . . . . . . . . . . 
+ 15 O X O O . . . . . . . . . . . . . . . 
+ 16 . X X X O O . O . . . . . . . . . . . 
+ 17 X . X . X . O . . . . . . . . . . . . 
+ 18 . O O . X . . . . . . . . . . . . . . 
+        */
+        [TestMethod]
+        public void GenericNeutralMoveTest_20261023_6()
+        {
+            Scenario s = new Scenario();
+            Game g = DailyGoProblems.Scenario_20261023_6();
+            g.MakeMove(4, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
+        }
     }
 }

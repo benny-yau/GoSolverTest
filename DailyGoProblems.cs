@@ -11962,6 +11962,14 @@ namespace UnitTestProject
         [TestMethod]
         public void DailyGoProblems_20261023_6()
         {
+            Game g = Scenario_20261023_6();
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
+            g.MakeMove(3, 18);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
+        }
+
+        public static Game Scenario_20261023_6()
+        {
             var gi = new GameInfo(SurviveOrKill.SurviveWithKo, Content.Black);
             Game g = new Game(gi);
             g.SetupMove(0, 15, Content.White);
@@ -11994,9 +12002,7 @@ namespace UnitTestProject
             gi.killMovablePoints.AddRange(gi.movablePoints);
             gi.killMovablePoints.Add(new Point(0, 13));
             gi.killMovablePoints.Add(new Point(7, 18));
-            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
-            g.MakeMove(3, 18);
-            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
+            return g;
         }
 
         public static Game SearchAnswer(Game g)

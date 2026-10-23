@@ -310,5 +310,26 @@ namespace UnitTestProject
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(0, 17))) != null, true);
         }
+
+        /*
+ 13 . . O . . . . . . . . . . . . . . . . 
+ 14 . O . . . . . . . . . . . . . . . . . 
+ 15 O X O O . . . . . . . . . . . . . . . 
+ 16 . X X X O O . O . . . . . . . . . . . 
+ 17 X . X . X O O . . . . . . . . . . . . 
+ 18 . O O X . X O . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void SuicidalMoveWithinKillerGroupTest_20261023_6()
+        {
+            Scenario s = new Scenario();
+            Game g = DailyGoProblems.Scenario_20261023_6();
+            g.MakeMove(5, 18);
+            g.MakeMove(5, 17);
+            g.MakeMove(3, 18);
+            g.MakeMove(6, 18);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(1, 17))) != null, true);
+        }
     }
 }
