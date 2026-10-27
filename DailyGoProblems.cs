@@ -12005,6 +12005,49 @@ namespace UnitTestProject
             return g;
         }
 
+        /*
+ 12 . X . X . . . . . . . . . . . . . . . 
+ 13 . X . X . . . . . . . . . . . . . . . 
+ 14 . O O O X . . . . . . . . . . . . . . 
+ 15 . . . . X . . . . . . . . . . . . . . 
+ 16 . . . . X . . . . . . . . . . . . . . 
+ 17 . O O . X . . . . . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void DailyGoProblems_20261027_8()
+        {
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
+            Game g = new Game(gi);
+            g.SetupMove(1, 12, Content.Black);
+            g.SetupMove(1, 13, Content.Black);
+            g.SetupMove(1, 14, Content.White);
+            g.SetupMove(1, 17, Content.White);
+            g.SetupMove(2, 14, Content.White);
+            g.SetupMove(2, 17, Content.White);
+            g.SetupMove(3, 12, Content.Black);
+            g.SetupMove(3, 13, Content.Black);
+            g.SetupMove(3, 14, Content.White);
+            g.SetupMove(4, 14, Content.Black);
+            g.SetupMove(4, 15, Content.Black);
+            g.SetupMove(4, 16, Content.Black);
+            g.SetupMove(4, 17, Content.Black);
+            g.GameInfo.targetPoints.Add(new Point(2, 17));
+            for (int x = 0; x <= 4; x++)
+            {
+                for (int y = 14; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.movablePoints.Add(new Point(0, 13));
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+            gi.killMovablePoints.Add(new Point(0, 12));
+            gi.killMovablePoints.Add(new Point(2, 13));
+            gi.killMovablePoints.Add(new Point(5, 18));
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantNonSuicidalMove(new GameTryMove(g, new Point(2, 16))), false);
+            Assert.AreEqual(tryMoves.FirstOrDefault(t => t.Move.Equals(new Point(2, 16))) != null, true);
+        }
+
         public static Game SearchAnswer(Game g)
         {
             Game.SearchAnswer = true;
