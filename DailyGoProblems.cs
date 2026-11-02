@@ -12277,10 +12277,34 @@ namespace UnitTestProject
  15 . O O X O X X O O O . . . . . . . . . 
  16 O X X X O . X X X O . . . . . . . . . 
  17 O . X X . O X O O . . . . . . . . . . 
- 18 . . X O O . O . . . . . . . . . . . .
+ 18 . . X O O . O . . . . . . . . . . . . 
         */
         [TestMethod]
         public void DailyGoProblems_20261031_8()
+        {
+            Game g = Scenario_20261031_8();
+            g.MakeMove(3, 18);
+            g.MakeMove(2, 18);
+            g.MakeMove(6, 18);
+            g.MakeMove(3, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(5, 18);
+            g.MakeMove(5, 17);
+            g.MakeMove(6, 17);
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(7, 18))), false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(7, 18))) != null, true);
+        }
+
+        /*
+ 13 . . O O O O O . . . . . . . . . . . . 
+ 14 . . O X X X O . . . . . . . . . . . . 
+ 15 . O O X O X X O O O . . . . . . . . . 
+ 16 O X X X O . X X X O . . . . . . . . . 
+ 17 O . X . . . . O O . . . . . . . . . . 
+ 18 . . . . . . . . . . . . . . . . . . .
+         */
+        public static Game Scenario_20261031_8()
         {
             var gi = new GameInfo(SurviveOrKill.KillWithKo, Content.White);
             Game g = new Game(gi);
@@ -12327,17 +12351,7 @@ namespace UnitTestProject
             gi.killMovablePoints.Add(new Point(0, 14));
             gi.killMovablePoints.Add(new Point(10, 17));
             gi.killMovablePoints.Add(new Point(11, 18));
-            g.MakeMove(3, 18);
-            g.MakeMove(2, 18);
-            g.MakeMove(6, 18);
-            g.MakeMove(3, 17);
-            g.MakeMove(4, 18);
-            g.MakeMove(5, 18);
-            g.MakeMove(5, 17);
-            g.MakeMove(6, 17);
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            Assert.AreEqual(RedundantMoveHelper.RedundantTigerMouthMove(new GameTryMove(g, new Point(7, 18))), false);
-            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(7, 18))) != null, true);
+            return g;
         }
 
         public static Game SearchAnswer(Game g)

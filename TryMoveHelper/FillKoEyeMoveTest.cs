@@ -1470,5 +1470,32 @@ namespace UnitTestProject
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(moveResult.HasFlag(ConfirmAliveResult.Dead) || moveResult.HasFlag(ConfirmAliveResult.KoAlive), true);
         }
+
+        /*
+ 13 . . O O O O O . . . . . . . . . . . . 
+ 14 . . O X X X O . . . . . . . . . . . . 
+ 15 . O O X . X X O O O . . . . . . . . . 
+ 16 O X X X . . X X X O . . . . . . . . . 
+ 17 O . X X . O X O O . . . . . . . . . . 
+ 18 . . X O O . O . . . . . . . . . . . .
+       */
+        [TestMethod]
+        public void FillKoEyeMoveTest_20261031_8()
+        {
+            Game g = DailyGoProblems.Scenario_20261031_8();
+            g.MakeMove(3, 18);
+            g.MakeMove(2, 18);
+            g.MakeMove(6, 18);
+            g.MakeMove(3, 17);
+            g.MakeMove(4, 18);
+            g.MakeMove(5, 18);
+            g.MakeMove(5, 17);
+            g.MakeMove(6, 17);
+            g.Board[4, 15] = Content.Empty;
+            g.Board[4, 16] = Content.Empty;
+            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
+            Assert.AreEqual(RedundantMoveHelper.FillKoEyeMove(new GameTryMove(g, new Point(5, 18))), false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
+        }
     }
 }
