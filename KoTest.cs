@@ -110,15 +110,6 @@ namespace UnitTestProject
             g.MakeMove(1, 18);
             g.MakeMove(4, 18);
             g.MakeMove(4, 17);
-            /*
-            g.MakeMove(0, 18);
-            g.MakeMove(0, 17);
-            g.MakeMove(0, 16);
-            g.MakeMove(1, 16);
-            g.InternalMakeMove(1, 17, true);
-            g.MakeMove(3, 18);
-            g.MakeMove(0, 18);
-            g.MakeMove(4, 18);*/
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
@@ -168,8 +159,6 @@ namespace UnitTestProject
             g.MakeMove(3, 18);
             g.MakeMove(0, 18);
             g.MakeMove(0, 17);
-            //m.InternalMakeMove(0, 18, true);
-
             Game m = new Game(g);
             ConfirmAliveResult result = g.MakeExhaustiveSearch();
             Assert.AreEqual(g.Board.IsPassMove, true);
@@ -219,7 +208,6 @@ namespace UnitTestProject
         [TestMethod]
         public void KoTest_Scenario_Corner_A80()
         {
-            //non-direct ko or multi-stage ko
             Scenario s = new Scenario();
             Game g = s.Scenario_Corner_A80();
             g.MakeMove(1, 18);
@@ -307,8 +295,6 @@ namespace UnitTestProject
         [TestMethod]
         public void KoTest_Scenario_WuQingYuan_Q31498()
         {
-            //not ko
-            //require additional random point for kill
             Scenario s = new Scenario();
             Game g = s.Scenario_WuQingYuan_Q31498();
             g.MakeMove(1, 17);
@@ -322,7 +308,6 @@ namespace UnitTestProject
             g.MakeMove(6, 18);
             g.MakeMove(3, 18);
             g.MakeMove(4, 17);
-
             Game m = new Game(g);
             ConfirmAliveResult result = g.MakeExhaustiveSearch();
             Assert.AreEqual(result == ConfirmAliveResult.Dead, true);
@@ -342,8 +327,6 @@ namespace UnitTestProject
         [TestMethod]
         public void KoTest_Scenario_TianLongTu_Q17077()
         {
-            //not ko
-            //require additional random point for kill
             Scenario s = new Scenario();
             Game g = s.Scenario_TianLongTu_Q17077();
             g.MakeMove(3, 18);
@@ -352,11 +335,7 @@ namespace UnitTestProject
             g.MakeMove(4, 17);
             g.MakeMove(4, 18);
             g.MakeMove(5, 18);
-
-            //m.MakeMove(2, 17);
-            //m.MakeMove(1, 18);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
             Point p = new Point(5, 17);
             GameTryMove tryMove = new GameTryMove(g);
             tryMove.MakeKoMove(p, SurviveOrKill.Kill);
@@ -399,10 +378,7 @@ namespace UnitTestProject
             g.MakeMove(0, 9);
             g.MakeMove(2, 14);
             g.MakeMove(0, 10);
-
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-
-
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(0, 11)), true);
@@ -436,12 +412,9 @@ namespace UnitTestProject
             g.MakeMove(0, 15);
             g.MakeMove(0, 14);
             g.MakeMove(2, 14);
-
-
             g.MakeMove(0, 10);
             g.MakeMove(0, 11);
             List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
-            //ensure sufficient depth to get ko alive
             ConfirmAliveResult moveResult = g.InitializeComputerMove();
             Point move = g.Board.LastMove.Value;
             Assert.AreEqual(move.Equals(new Point(3, 14)), true);
