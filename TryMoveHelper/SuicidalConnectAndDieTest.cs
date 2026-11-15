@@ -5740,5 +5740,32 @@ namespace UnitTestProject
             Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(6, 18))), false);
             Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(6, 18))) != null, true);
         }
+
+        /*
+ 13 . . . X . . X . . . . . . . . . . . . 
+ 14 . . . . X . . . . . . . . . . . . . . 
+ 15 . . X X O O X X X X . . . . . . . . . 
+ 16 . . X O O O O O O X . . . . . . . . . 
+ 17 . X . O X X X . O X . . . . . . . . . 
+ 18 . . . . . . . O X X . . . . . . . . .
+        */
+        [TestMethod]
+        public void SuicidalRedundantMoveTest_20261113_8()
+        {
+            Game g = DailyGoProblems.Scenario_20261113_8();
+            g.MakeMove(4, 17);
+            g.MakeMove(4, 16);
+            g.MakeMove(8, 18);
+            g.MakeMove(7, 18);
+            g.MakeMove(6, 17);
+            g.Board[2, 17] = Content.Empty;
+            g.Board[2, 18] = Content.Empty;
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(5, 18))), false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
+            g.MakeMove(4, 18);
+            Assert.AreEqual(RedundantMoveHelper.SuicidalRedundantMove(new GameTryMove(g, new Point(5, 18))), false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
+        }
+
     }
 }
