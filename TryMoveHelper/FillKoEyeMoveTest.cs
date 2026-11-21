@@ -1493,9 +1493,31 @@ namespace UnitTestProject
             g.MakeMove(6, 17);
             g.Board[4, 15] = Content.Empty;
             g.Board[4, 16] = Content.Empty;
-            List<GameTryMove> tryMoves = GameHelper.GetTryMovesForGame(g);
             Assert.AreEqual(RedundantMoveHelper.FillKoEyeMove(new GameTryMove(g, new Point(5, 18))), false);
             Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(5, 18))) != null, true);
+        }
+
+        /*
+ 12 . . X X . . . . . . . . . . . . . . . 
+ 13 . X O X . . . . . . . . . . . . . . . 
+ 14 . X O X . . . . . . . . . . . . . . . 
+ 15 X O O O X X X X . . . . . . . . . . . 
+ 16 . X . O O O O X . . . . . . . . . . . 
+ 17 X X O X X . O X . . . . . . . . . . . 
+ 18 . O O O . . O . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void FillKoEyeMoveTest_20261120_8()
+        {
+            Game g = DailyGoProblems.Scenario_20261120_8();
+            g.MakeMove(3, 17);
+            g.MakeMove(3, 16);
+            g.MakeMove(2, 18);
+            g.MakeMove(3, 18);
+            g.MakeMove(4, 17);
+            g.MakeMove(2, 18);
+            Assert.AreEqual(RedundantMoveHelper.FillKoEyeMove(new GameTryMove(g, new Point(0, 16))), false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(0, 16))) != null, true);
         }
     }
 }

@@ -12569,6 +12569,89 @@ namespace UnitTestProject
             return g;
         }
 
+        /*
+ 12 . . X X . . . . . . . . . . . . . . . 
+ 13 . X O X . . . . . . . . . . . . . . . 
+ 14 . X O X . . . . . . . . . . . . . . . 
+ 15 X O O O X X X X . . . . . . . . . . . 
+ 16 . X O O O O O X . . . . . . . . . . . 
+ 17 X X O X X . O X . . . . . . . . . . . 
+ 18 . O . O . . O . . . . . . . . . . . .
+        */
+        [TestMethod]
+        public void DailyGoProblems_20261120_8()
+        {
+            Game g = Scenario_20261120_8();
+            g.MakeMove(3, 17);
+            g.MakeMove(3, 16);
+            g.MakeMove(2, 18);
+            g.MakeMove(3, 18);
+            g.MakeMove(4, 17);
+            g.MakeMove(2, 16);
+            Assert.AreEqual(RedundantMoveHelper.FillKoEyeMove(new GameTryMove(g, new Point(0, 16))), false);
+            Assert.AreEqual(GameHelper.GetTryMovesForGame(g).FirstOrDefault(t => t.Move.Equals(new Point(0, 16))) != null, true);
+        }
+
+        /*
+ 12 . . X X . . . . . . . . . . . . . . . 
+ 13 . X O X . . . . . . . . . . . . . . . 
+ 14 . X O X . . . . . . . . . . . . . . . 
+ 15 X O O O X X X X . . . . . . . . . . . 
+ 16 . X . . O O O X . . . . . . . . . . . 
+ 17 X X O . . . O X . . . . . . . . . . . 
+ 18 . O . . . . O . . . . . . . . . . . .
+         */
+        public static Game Scenario_20261120_8()
+        {
+            var gi = new GameInfo(SurviveOrKill.Kill, Content.Black);
+            Game g = new Game(gi);
+            g.SetupMove(0, 15, Content.Black);
+            g.SetupMove(0, 17, Content.Black);
+            g.SetupMove(1, 13, Content.Black);
+            g.SetupMove(1, 14, Content.Black);
+            g.SetupMove(1, 15, Content.White);
+            g.SetupMove(1, 16, Content.Black);
+            g.SetupMove(1, 17, Content.Black);
+            g.SetupMove(1, 18, Content.White);
+            g.SetupMove(2, 12, Content.Black);
+            g.SetupMove(2, 13, Content.White);
+            g.SetupMove(2, 14, Content.White);
+            g.SetupMove(2, 15, Content.White);
+            g.SetupMove(2, 17, Content.White);
+            g.SetupMove(3, 12, Content.Black);
+            g.SetupMove(3, 13, Content.Black);
+            g.SetupMove(3, 14, Content.Black);
+            g.SetupMove(3, 15, Content.White);
+            g.SetupMove(4, 15, Content.Black);
+            g.SetupMove(4, 16, Content.White);
+            g.SetupMove(5, 15, Content.Black);
+            g.SetupMove(5, 16, Content.White);
+            g.SetupMove(6, 15, Content.Black);
+            g.SetupMove(6, 16, Content.White);
+            g.SetupMove(6, 17, Content.White);
+            g.SetupMove(6, 18, Content.White);
+            g.SetupMove(7, 15, Content.Black);
+            g.SetupMove(7, 16, Content.Black);
+            g.SetupMove(7, 17, Content.Black);
+            g.GameInfo.targetPoints.Add(new Point(4, 16));
+            for (int x = 0; x <= 3; x++)
+            {
+                for (int y = 12; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            for (int x = 4; x <= 5; x++)
+            {
+                for (int y = 17; y <= 18; y++)
+                    gi.movablePoints.Add(new Point(x, y));
+            }
+            gi.movablePoints.Add(new Point(0, 11));
+            gi.killMovablePoints.AddRange(gi.movablePoints);
+            gi.killMovablePoints.Add(new Point(7, 18));
+            gi.killMovablePoints.Add(new Point(1, 11));
+            gi.killMovablePoints.Add(new Point(0, 10));
+            return g;
+        }
+
         public static Game SearchAnswer(Game g)
         {
             Game.SearchAnswer = true;
